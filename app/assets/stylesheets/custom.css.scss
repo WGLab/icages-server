@@ -1,0 +1,35 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+h1 {
+    font-size: 45px;
+    font-weight: bold;
+}
+#logo {
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 38px;
+    color: rgb(69, 194, 124);
+}
+
+#logo:hover {
+	    color: white;
+}
+.code {
+    padding: 5px;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    background-color: #eee;
+}
+
+#flash_msg {
+	   background-color: #DFF0D8; 
+	   color: #468847;
+	   padding: 0.5em 1em;
+	   margin-top: 1em;
+	   margin-bottom: 1em;
+	   border-radius: 5px;
+	   display: none;
+}
+
+#home_content {
+	      margin-top: 50px;
+}
