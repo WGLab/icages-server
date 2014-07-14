@@ -22,7 +22,7 @@
 	
 	
         $("form").submit(function(e) {
-            var url = "http://ec2-54-213-22-151.us-west-2.compute.amazonaws.com/upload";
+            var url = "upload";
 	    
             e.preventDefault();
 	    
@@ -41,6 +41,7 @@
                             $("#flash_msg").addClass('bounceOut');
                             setTimeout(function() {
                                 $("#flash_msg").css("display", "none");
+				window.location.href = window.location.origin + "/result/" + data;
                             }, 750);
                         }, 3000);
 			
