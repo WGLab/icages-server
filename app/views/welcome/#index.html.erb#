@@ -1,6 +1,4 @@
-<div class="container home_content">
-  
-  <h1 class="text-center">Welcome to Project iCAGES!!!</h1>
+ <h1 class="text-center">Welcome to Project iCAGES!!!</h1>
   
   <section>
     <h3>Sample data</h3>
@@ -31,4 +29,3 @@
     </div>
   </form>
   <script src="assets/upload.js"></script>
-</div>

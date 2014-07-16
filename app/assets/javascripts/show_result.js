@@ -2,9 +2,9 @@
     var width = 960,
         height = 550;
 
-    var fill = d3.scale.category10();2
+    var fill = d3.scale.category10();
 
-    d3.json("../result/result-" + id + ".json", function(error, root) {
+    d3.json("../results/result-" + id + ".json", function(error, root) {
 
         var nodes = root.children;
         var force = d3.layout.force()
