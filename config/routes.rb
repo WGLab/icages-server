@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   match 'upload', to: 'upload#handle_upload', via: :post
+  match 'upload', to: 'upload#options', via: :options
   match 'result/:id', to: 'result#show', via: :get
 
-  # Example of regular route:
+  # Example of regular route:3
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

@@ -1,25 +1,39 @@
-class UploadController < ApplicationController
+class UploadController < ApplicationController 
   protect_from_forgery except: :handle_uplaod
-  before_filter :add_headers, :only => :handle_upload
+  before_filter :add_headers, :only => [:handle_upload, :options]
+
+  def options
+    head :ok
+  end
+    
 
   def handle_upload
+
     inputData = params[:inputData]
+
+    inputFile = params[:inputFile]
     
-    submission = Submission.create(done: false)
+    logger.debug "Input file is [#{'empty' if inputFile.nil?}].." 
 
-    Thread.new { exec_query(submission.id, inputData) }
-
-    render text: "#{submission.id}"
+    if inputData
+      submission = Submission.create(done: false)
+      Thread.new { exec_query(submission.id, inputData, {isFile: false}) }
+      render text: "Submission: #{submission.id} created"
+    elsif inputFile
+      submission = Submission.create(done: false)
+      Thread.new { exec_query(submission.id, inputFile, {isFile: true}) }
+      render text: "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created"
+    end
     
   end
 
   private 
   
-  def exec_query(id, inputData)
+  def exec_query(id, data, opts)
     working_dir = Rails.root
     input_file = working_dir.join('public', 'uploads', 'input.txt')
     File.open(input_file,'w') do |file|
-      file.write(inputData)
+      file.write(opts[:isFile] ? data.read : data)
     end
    
     results_dir = working_dir.join('public', 'results')
@@ -31,11 +45,9 @@ class UploadController < ApplicationController
     
   end
 
-
-
   def add_headers
     headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST'
+    headers['Access-Control-Allow-Methods'] = 'POST OPTIONS'
     headers['Access-Control-Request-Method'] = '*'
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
