@@ -5,19 +5,17 @@
     
     $(function() {
         $('#inputData').on('input', function() {
-	    
-            if (goodFormat($('#inputData textarea').prop("value"))) {
-                $(this).removeClass('has-error');
-                $(this).addClass('has-success has-feedback');
-                $('#inputData span').removeClass("glyphicon-remove");
-                $('#inputData span').addClass("glyphicon-ok");
-            } else {
-                $(this).removeClass('has-success');
-                $(this).addClass('has-error has-feedback');
-                $('#inputData span').removeClass("glyphicon-ok");
-                $('#inputData span').addClass("glyphicon-remove");
-            }
-	    
+	   if (goodFormat($('#inputData textarea').prop("value"))) {
+                 $(this).removeClass('has-error');
+                 $(this).addClass('has-success has-feedback');
+                 $('#inputData span').removeClass("glyphicon-remove");
+                 $('#inputData span').addClass("glyphicon glyphicon-ok form-control-feedback");
+             } else {
+                 $(this).removeClass('has-success');
+                 $(this).addClass('has-error has-feedback');
+                 $('#inputData span').removeClass("glyphicon-ok");
+                 $('#inputData span').addClass("glyphicon glyphicon-remove form-control-feedback");
+             } 
         });
 	
 	

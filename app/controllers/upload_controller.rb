@@ -31,14 +31,14 @@ class UploadController < ApplicationController
   
   def exec_query(id, data, opts)
     working_dir = Rails.root
-    input_file = working_dir.join('public', 'uploads', 'input.txt')
+    input_file = '/home/cocodong/project/iCAGES/pipeline/input_old.txt'
     File.open(input_file,'w') do |file|
       file.write(opts[:isFile] ? data.read : data)
     end
    
     results_dir = working_dir.join('public', 'results')
-    script = working_dir.join('public','script','mockscript.rb')
-    `ruby #{script} > #{results_dir}/result-#{id}.json`
+    script = '/home/cocodong/project/iCAGES/pipeline_old.pl'
+    `perl #{script}; cp /home/cocodong/project/iCAGES/pipeline/result.json #{results_dir}/result-#{id}.json`
     
     submission = Submission.find(id)
     submission.update(done: true)
