@@ -5,6 +5,7 @@ h1 {
     font-size: 45px;
     font-weight: bold;
 }
+
 #logo {
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 38px;
@@ -12,8 +13,9 @@ h1 {
 }
 
 #logo:hover {
-	    color: white;
+    color: white;
 }
+
 .code {
     padding: 5px;
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
@@ -21,15 +23,34 @@ h1 {
 }
 
 #flash_msg {
-	   background-color: #DFF0D8; 
-	   color: #468847;
-	   padding: 0.5em 1em;
-	   margin-top: 1em;
-	   margin-bottom: 1em;
-	   border-radius: 5px;
-	   display: none;
+    background-color: #DFF0D8; 
+    color: #468847;
+    padding: 0.5em 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    display: none;
 }
 
 .home_content {
-	      margin-top: 50px;
+    margin-top: 50px;
+}
+
+#upload_progress {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#file_dropzone {
+    height: 9em;
+    text-align: center;
+    border: 4px dashed #c3c3c3;
+} 
+
+#file_dropzone>div {
+    margin-top: 32px;
+    font-size: 30px;
+    color: #BDBDBD;
+    font-family: Geog
+
 }

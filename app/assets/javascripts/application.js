@@ -15,3 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require d3/d3.min
+//= require jquery-file-upload/js/vendor/jquery.ui.widget
+//= require jquery-file-upload/js/jquery.iframe-transport
+//= require jquery-file-upload/js/jquery.fileupload

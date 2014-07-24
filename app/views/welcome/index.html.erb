@@ -1,6 +1,6 @@
 <div class="container home_content">
   
-  <h1 class="text-center">Welcome to Project iCAGES!!!</h1>
+  <H1 class="home_contenttext-center">Integrated CAncer GEnome Score</h1>
   
   <section>
     <h3>Sample data</h3>
@@ -18,17 +18,34 @@
   </section>
   
   <div id="flash_msg">submit successfully!!!</div>
-  
-  <form class="form" role="form" action="http://ec2-54-213-22-151.us-west-2.compute.amazonaws.com/upload" method="post">
-    <div class="form-group" id="inputData">
-      <label class="control-label" for="inputData">Data to be analyzed...</label>
-      <textarea class="form-control" required name="inputData" placeholder="Please enter your data here...Or copy & paste the sample..." rows="7"></textarea>
-      <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Submit</button>
-      
-    </div>
-  </form>
+  <div class="row">
+    <section class="col-md-6">
+      <div class="form-group" id="inputData">
+        <label class="control-label" for="inputData">Data to be analyzed</label>
+        <textarea class="form-control" required name="inputData" placeholder="Please enter your data here...Or copy & paste the sample" rows="7"></textarea>
+        <span></span>
+      </div>
+      <button id="submit_text" class="btn btn-success">Submit</button>
+            </section>
+    <section class="col-md-6">
+      <label class="control-label" for="inputFile">Or you can upload a vcf file...</label>
+                
+      <div id="file_dropzone"><div>Drag & drop you file here</div></div>
+      <div id="upload_progress" class="progress">
+        <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
+          <span class="sr-only"></span>
+        </div>
+      </div>
+      <div>
+        <span class="btn btn-success fileinput-button">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span>Upload file...</span>
+          <!-- The file input field used as target for the file upload widget -->
+          <input id="file_upload" type="file" name="inputFile">
+        </span>
+      </div>
+    </section>
+  </div>
+  <script src="assets/upload_file.js"></script>
   <script src="assets/upload.js"></script>
 </div>

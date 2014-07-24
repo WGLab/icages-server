@@ -21,7 +21,7 @@
         });
 	
 	
-        $("form").submit(function(e) {
+        $("#submit_text").click(function(e) {
             var url = "upload";
 	    
             e.preventDefault();
@@ -33,7 +33,7 @@
                     type: "POST",
                     data: $('#inputData textarea').serialize(),
                     success: function(data) {
-                        console.log("server returned\n" + data);
+                        console.log("server returned\n" + data.msg);
 			
                         $('#flash_msg').removeClass('bounceIn bounceOut');
                         $("#flash_msg").css("display", "block").addClass('bounceIn');
@@ -41,7 +41,7 @@
                             $("#flash_msg").addClass('bounceOut');
                             setTimeout(function() {
                                 $("#flash_msg").css("display", "none");
-				window.location.href = window.location.origin + "/result/" + data;
+				window.location.href = window.location.origin + "/result/" + data.id;
                             }, 750);
                         }, 3000);
 			
