@@ -10,10 +10,9 @@ h1 {
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 38px;
     color: rgb(69, 194, 124);
-}
-
-#logo:hover {
-    color: white;
+    &:hover {
+	color: white;
+    }
 }
 
 .code {
@@ -45,12 +44,29 @@ h1 {
     height: 9em;
     text-align: center;
     border: 4px dashed #c3c3c3;
+    &>div {
+	margin-top: 32px;
+	font-size: 30px;
+	color: #BDBDBD;
+    	font-family: Geog;
+    }	
 } 
 
-#file_dropzone>div {
-    margin-top: 32px;
-    font-size: 30px;
-    color: #BDBDBD;
-    font-family: Geog
-
+#email_sign {
+    width: 1%;
+}
+section {
+    margin-bottom: 2em;
+}
+.hz-bar {
+    height: 45px;
+    .hz-label {
+        padding: 7px 0 7px;
+        font-weight: bold;
+        display: inline-block;
+    }
+}
+.input-indicator {
+    /*customization for showing indicator without control label*/
+    top: 0;
 }
