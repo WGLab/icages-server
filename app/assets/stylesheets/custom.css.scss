@@ -15,12 +15,6 @@ h1 {
     }
 }
 
-.code {
-    padding: 5px;
-    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-    background-color: #eee;
-}
-
 #flash_msg {
     background-color: #DFF0D8; 
     color: #468847;
@@ -29,19 +23,6 @@ h1 {
     margin-bottom: 1em;
     border-radius: 5px;
     display: none;
-}
-
-.btn-danger{
-    margin-top: 1px;
-    margin-bottom: 1px;
-    padding: 3px;
-    border-radius: 2px;
-    
-    font-size: 15px;
-}
-
-.annovar{
-	color:#000000;
 }
 
 .home_content {
@@ -69,10 +50,11 @@ h1 {
     width: 1%;
 }
 section {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 .hz-bar {
     height: 45px;
+    margin-bottom: 0.5em;
     .hz-label {
         padding: 7px 0 7px;
         font-weight: bold;

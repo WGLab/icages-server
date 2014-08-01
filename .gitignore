@@ -20,9 +20,15 @@
 /public/uploads/*
 /public/results/*
 
-#*#
-#*
-*#
-.#*
+\#*\#
+\#*.*\#
+\#*
+*\#
+.\#*
 *.swp
 *.swo
+*.*~
+*~
+
+# icages config file
+icages_config.json
