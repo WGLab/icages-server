@@ -40,10 +40,19 @@
 
      }
 
-     $('.btn-danger').popover({
- 	 
-	})
+     $('#ex_button').popover({
+	html: true,
+	title: "Example <a id='ex_popover_close' class='close'> &times;</a>",
+	template: "<div class='popover example' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>"
+     }).click(function(e) {
+	e.stopPropagation();
+     });
 
+     $(document).click(function(e) {
+	if ($(e.target).is('#ex_popover_close')) {
+	   $('#ex_button').popover('hide');
+        }
+     }); 
 
      $(function() {
          showBootstrapIndicator('#data_input', '#data_input textarea', "#data_input .input-indicator", goodDataFormat);
