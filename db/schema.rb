@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714031240) do
+ActiveRecord::Schema.define(version: 20140731015436) do
 
   create_table "submissions", force: true do |t|
     t.boolean  "done"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
 end
