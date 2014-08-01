@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   match 'upload', to: 'upload#handle_upload', via: :post
   match 'upload', to: 'upload#options', via: :options
-  match 'result/:id', to: 'result#show', via: :get
+  get 'result/:id', to: 'result#show', as: 'result'
 
   # Example of regular route:3
   #   get 'products/:id' => 'catalog#view'

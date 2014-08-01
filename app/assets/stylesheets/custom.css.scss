@@ -31,6 +31,19 @@ h1 {
     display: none;
 }
 
+.btn-danger{
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 3px;
+    border-radius: 2px;
+    
+    font-size: 15px;
+}
+
+.annovar{
+	color:#000000;
+}
+
 .home_content {
     margin-top: 50px;
 }
@@ -56,7 +69,7 @@ h1 {
     width: 1%;
 }
 section {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 .hz-bar {
     height: 45px;

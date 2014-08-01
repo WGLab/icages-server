@@ -1,6 +1,7 @@
 class UploadController < ApplicationController 
   protect_from_forgery except: :handle_upload
   before_filter :add_headers, :only => [:handle_upload, :options]
+  #Thread::abort_on_exception = true
 
   def options
     head :ok
@@ -13,20 +14,22 @@ class UploadController < ApplicationController
 
     inputFile = params[:inputFile]
 
-    email = params[:email]
+    email = params[:email] || ''
     
     logger.debug "Input file is [#{'empty' if inputFile.nil?}].." 
 
-    email_msg = (email.nil? || email.empty?) ? '':'for ' + email
+    email_msg = email.empty? ? '':'for ' + email
 
     if inputData
-      submission = Submission.create(done: false)
-      Thread.new { exec_query(submission.id, inputData, {isFile: false}) }
-      render json: {id: submission.id, msg:"Submission: #{submission.id} created #{email_msg}"}
+      submission = Submission.create(done: false, email: email)
+      t = Thread.new { exec_query(submission.id, inputData, {isFile: false}) }
+      t.join
+      render json: {id: submission.id, msg:"Submission: #{submission.id} created #{email_msg} url: #{result_path(submission, only_path: false)}"}
     elsif inputFile
-      submission = Submission.create(done: false)
-      Thread.new { exec_query(submission.id, inputFile, {isFile: true}) }
-      render json: {id: submission.id, msg: "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created"}
+      submission = Submission.create(done: false, email: email)
+      t = Thread.new { exec_query(submission.id, inputFile, {isFile: true}) }
+      t.join
+      render json: {id: submission.id, msg: "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{email_msg}"}
     end
     
   end
@@ -46,7 +49,8 @@ class UploadController < ApplicationController
     
     submission = Submission.find(id)
     submission.update(done: true)
-    
+    NotificationMailer.job_done(submission).deliver unless submission.email.empty?
+   
   end
 
   def add_headers

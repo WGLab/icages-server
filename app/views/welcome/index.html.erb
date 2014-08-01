@@ -2,24 +2,7 @@
 
         <h1 class="text-center">Integrated CAncer GEnome Score</h1>
 
-        <section>
-            <h3>Sample Data</h3>
-            <p class="code">
-                1 12919840 T C
-                <br>1 35332717 C A
-                <br>1 55148456 G T
-                <br>1 70504789 C T
-                <br>1 167059520 A T
-                <br>1 182496864 A T
-                <br>1 197073351 C T
-                <br>1 216373211 G T
-                <br>
-            </p>
-        </section>
-
-
-        <div id="flash_msg">submit successfully!!!</div>
-        <section>
+	<section>
             <form class="form-inline" role="form">
                 <div class="input-group" id="email_input">
                     <div id="email_sign" class="input-group-addon">@</div>
@@ -28,13 +11,17 @@
                 </div>
             </form>
         </section>
+
+
+        <div id="flash_msg">submit successfully!!!</div>
         <section class="row">
             <section class="col-md-6">
                 <div class="hz-bar">
-                    <span class="hz-label">Enter data directly</span>
+                    <span class="hz-label">Enter data directly with <a class = "annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="example (click button to return)" data-content="1 12919840 12919840 T C">input format</button></span>
+
                 </div>
                 <div class="form-group" id="data_input">
-                    <textarea class="form-control" required name="inputData" placeholder="Please enter your data here...Or copy & paste the sample" rows="7"></textarea>
+                    <textarea class="form-control" required name="inputData" placeholder="Please enter your data here...Or copy & paste the example" rows="7"></textarea>
                     <span class="input-indicator"></span>
                 </div>
                 <button id="submit_text" class="btn btn-success">Submit text</button>

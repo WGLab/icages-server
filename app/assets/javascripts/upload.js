@@ -1,10 +1,10 @@
  (function() {
      function goodDataFormat(val) {
-         return /^(\s*[0-9]\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*[0-9]\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
+         return /^(\s*[0-9]\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*[0-9]\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
      }
 
      function goodEmailFormat(val) {
-         return /[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/g.test(val);
+         return /[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum|edu)\b/g.test(val);
      }
 
      function showBootstrapIndicator(container, input, indicator, validator, html5) {
@@ -40,6 +40,9 @@
 
      }
 
+     $('.btn-danger').popover({
+ 	 
+	})
 
 
      $(function() {
@@ -77,6 +80,7 @@
                              $("#flash_msg").addClass('bounceOut');
                              setTimeout(function() {
                                  $("#flash_msg").css("display", "none");
+				 window.location.href = window.location.origin + "/result/" + data.id;
                              }, 750);
                          }, 3000);
 
@@ -102,18 +106,19 @@
                  $('#file_dropzone>div').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
                  $('#submit_file').on("click", function() {
                      var email_val = $('#email_input input').val();
-                     if (goodEmailFormat(email)) {
-                         if (!goodEmailFormat(email_val)) {
-                             alert("You did not submit a valid email address, so we might not send you an email notification when the job is done, i say 'might' because I can actually hack your computer based on the IP address and get your email address, but I'm not gonna do that because I'm a responsible and respectful hacker...Just kidding I don't know nothing about hacking, no worries.");
-                         }
-                         data.submit();
+		     var goodEmail = goodEmailFormat(email_val);
+		     if (!goodEmail) {
+                         alert("You did not submit a valid email address, so we might not send you an email notification when the job is done, i say 'might' because I can actually hack your computer based on the IP address and get your email address, but I'm not gonna do that because I'm a responsible and respectful hacker...Just kidding I don't know nothing about hacking, no worries.");
                      }
-                 });
+		     data.formData = {email: goodEmail ? email_val : ''};
+                     data.submit();
+                });
              },
              done: function(e, data) {
                  x_data = data;
                  console.log("server returned: " + data.result.msg);
                  $('#file_dropzone>div').html(data.result.msg);
+		 window.location.href = window.location.origin + "/result/" + data.result.id;
              },
              progress: function(e, data) {
                  var progress = parseInt(data.loaded / data.total * 100, 10);
