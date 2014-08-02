@@ -1,6 +1,6 @@
  (function() {
      function goodDataFormat(val) {
-         return /^(\s*[0-9]\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*[0-9]\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
+         return /^(\s*[A-Z0-9]+\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*[A-Z0-9]+\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
      }
 
      function goodEmailFormat(val) {
