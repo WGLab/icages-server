@@ -2,6 +2,16 @@
   <h3>Submission id: <%= @submission.id %></h3>
   <% if @submission.done %>
     <script>var SUBMISSION_ID = <%= @submission.id %>;</script>
+    <section class="hz-chart" id="bubbleChart">
+       <div class="hz-title">
+         <h4>Bubble Chart</h4>
+       </div>
+    </section>
+    <section class="hz-chart" id="barChart">
+      <div class="hz-title">
+        <h4>Bar Chart</h4>
+      </div>
+    </section>
     <script src="../assets/show_result.js"></script>
   <% else %>
     <p>Your result will be shown momentarily, this page will refresh every 30 seconds</p>

@@ -65,3 +65,24 @@ section {
     /*customization for showing indicator without control label*/
     top: 0;
 }
+.hz-chart {
+    position: relative;
+    background-color: rgb(245, 245, 175);
+    .hz-title {
+        position: absolute;
+        padding-left: 2em;
+        background-color: bisque;
+        border: 3px solid white;
+        width: 100%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .bar:hover {
+        fill: #f0ad4e !important;
+    }
+    .axis path,
+    .axis line {
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+}
