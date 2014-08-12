@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notification from iCAGES</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <style>
+    .block {
+        padding: 10px;
+        font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+        background-color: #eee;
+        margin: 10px 0 10px;
+        border-radius: 4px;
+        border: 1px solid #efefef;
+    }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <center>
+	  <h1>Thank you for using i
+              <small>(ntegrated)</small>CA
+              <small>(ncer)</small>GE
+              <small>(nome)</small>S
+              <small>(core)</small>
+          </h1>
+	</center>
+        <div class="block">
+            <p>Looks like our little system has figured out what to spit out with your fancy data input (or file). So we kindly decided we should notify you a little bit about this, so you can then go to the following link:</p>
+            <p><a href="<%= @url %>"><%= @url %></a>
+            </p>
+            <p>to be impressed.</p>
+        </div>
+
+        <strong>--Team iCAGES</strong>
+
+    </div>
+</body>
+</html>

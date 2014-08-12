@@ -1,0 +1,88 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+h1 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+#logo {
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 38px;
+    color: rgb(69, 194, 124);
+    &:hover {
+	color: white;
+    }
+}
+
+#flash_msg {
+    background-color: #DFF0D8; 
+    color: #468847;
+    padding: 0.5em 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    display: none;
+}
+
+.home_content {
+    margin-top: 50px;
+}
+
+#upload_progress {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#file_dropzone {
+    height: 9em;
+    text-align: center;
+    border: 4px dashed #c3c3c3;
+    &>div {
+	margin-top: 32px;
+	font-size: 30px;
+	color: #BDBDBD;
+    	font-family: Geog;
+    }	
+} 
+
+#email_sign {
+    width: 1%;
+}
+section {
+    margin-bottom: 2em;
+}
+.hz-bar {
+    height: 45px;
+    margin-bottom: 0.5em;
+    .hz-label {
+        padding: 7px 0 7px;
+        font-weight: bold;
+        display: inline-block;
+    }
+}
+.input-indicator {
+    /*customization for showing indicator without control label*/
+    top: 0;
+}
+.hz-chart {
+    position: relative;
+    background-color: rgb(245, 245, 175);
+    .hz-title {
+        position: absolute;
+        padding-left: 2em;
+        background-color: bisque;
+        border: 3px solid white;
+        width: 100%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .bar:hover {
+        fill: #f0ad4e !important;
+    }
+    .axis path,
+    .axis line {
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+}
