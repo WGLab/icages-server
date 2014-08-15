@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'static_pages/about'
+
+  get 'static_pages/example'
+
+  get 'static_pages/contact'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,7 +17,9 @@ Rails.application.routes.draw do
   match 'upload', to: 'upload#handle_upload', via: :post
   match 'upload', to: 'upload#options', via: :options
   get 'result/:id', to: 'result#show', as: 'result'
-  get 'about', to: 'about#index'
+  get 'about', to: 'static_pages#about'
+  get 'example', to: 'static_pages#example'
+  get 'contact', to: 'static_pages#contact'
   get 'upload', to: 'upload#index'
 
   # Example of regular route:3

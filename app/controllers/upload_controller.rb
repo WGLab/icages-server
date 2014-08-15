@@ -47,13 +47,14 @@ class UploadController < ApplicationController
    
     results_dir = working_dir.join('public', 'results')
     `perl #{CONFIG['script']['path']}; cp #{CONFIG['script']['output']} #{results_dir}/result-#{id}.json`
-    
+   
+     
     ActiveRecord::Base.connection_pool.with_connection do
 	submission = Submission.find(id)
 	submission.update(done: true)
+        NotificationMailer.job_done(submission).deliver unless submission.email.empty?
     end
 
-    NotificationMailer.job_done(submission).deliver unless submission.email.empty?
   end
 
   def add_headers
