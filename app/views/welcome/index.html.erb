@@ -1,51 +1,116 @@
-<div class="container home_content">
-
-        <section><center><h1>Integrated CAncer GEnome Score</h1></center></section>
-
-	<section>
-            <form class="form-inline" role="form">
-                <div class="input-group" id="email_input">
-                    <div id="email_sign" class="input-group-addon">@</div>
-                    <input type="email" class="form-control" required placeholder="Please leave an email address so we can send you a notification when job's done">
-                    <span class="input-indicator"></span>
-                </div>
-            </form>
-        </section>
-
-
-        <div id="flash_msg">submit successfully!!!</div>
-        <section class="row">
-            <section class="col-md-6">
-                <div class="hz-bar">
-                    <span class="hz-label">Enter data with <a class = "annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> <button id="ex_button" type="button" class="btn btn-sm btn-danger" data-toggle="popover" data-content="1 12919840 12919840 T C"><i class='glyphicon glyphicon-asterisk'></i>&nbsp;input format</button></span>
-
-                </div>
-                <div class="form-group" id="data_input">
-                    <textarea class="form-control" required name="inputData" placeholder="Please enter your data here..." rows="7"></textarea>
-                    <span class="input-indicator"></span>
-                </div>
-                <button id="submit_text" class="btn btn-success">Submit text</button>
-            </section>
-            <section class="col-md-6">
-                <div class="hz-bar">
-                    <span class="hz-label">Or you can</span>
-                    <span class="btn btn-default fileinput-button">
-                        <span>add a file...</span>
-                        <!-- The file input field used as target for the file upload widget -->
-                        <input id="file_upload" type="file" name="inputFile">
-                    </span>
-                </div>
-
-                <div id="file_dropzone">
-                    <div>Drag & drop your file here</div>
-                </div>
-                <div id="upload_progress" class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
-                        <span class="sr-only"></span>
-                    </div>
-                </div>
-                <button id="submit_file" class="btn btn-success">Submit file</button>
-            </section>
-        </section>
-	<script src="assets/upload.js"></script>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://www.mitre.org/sites/default/files/images/dna-human-genome.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>What is iCAGES?</h1>
+              <p>iCAGES (integrated CAncer GEnome Score) is an effective tool for prioritizing cancer driver genes for a patient. Given his/her genomic mutation information, iCAGES can accurately prioritize a list of candidate cancer driver genes.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Get started</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+        <img src="http://blacklemag.com/wp-content/uploads/2014/02/Wang-cancer-cell-NCI.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>How does it work?</h1>
+              <p>iCAGES is based on two layer design. The first layer takes somatic mutations as input and output a score for each mutation, evaluating its cancer driving potential. The second layer takes the output from the first layer as input and through a two-step ranking system, it outputs a list of prioritized genes that are predicted to be personalized cancer driver genes.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://vonkruska.com/wp-content/uploads/2012/11/Cancer-Research.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Why should I choose iCAGES?</h1>
+              <p>iCAGES is simple and effective. It has a very friendly user-interface, which is very easy for researchers, clinicians and other medical professionals to use. It demonstrates high performance in our current study. And ... it is fast.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
 </div>
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Personalized analysis</h2>
+          <p>iCAGES is designed for solving real-life problems. It uses genomic information each patient and comes up with a list of genes that are responsible for this particular patient, shedding light into personalized cancer therapy.</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Integration of prior knowledge</h2>
+          <p>iCAGES prioritizes cancer driver genes for each patient, not only based on his/her genomic information, but also on prior knowledge on gene-cancer association. Such feature is realized using Phenolyzer package designed by Hui Yang in Dr. Kai Wang's lab. Using such prior knowledge generated from decades of research, iCAGES stands on the shoulder of giants and enhances its accuracy of cancer driver gene prediction.</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Machine-learning based models</h2>
+          <p>iCAGES uses radial Support Vector Machine and integrates nine features measuring the deleteriousness of a mutation. Such integration greatly enhances the performance of iCAGES and can generate a more reliable output.</p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+   </div>
+

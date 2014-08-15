@@ -1,0 +1,55 @@
+<div class="container home-content">
+        <section>
+            <center>
+                <h1>Integrated CAncer GEnome Score</h1>
+            </center>
+        </section>
+
+        <section>
+            <form class="form-inline" role="form">
+                <div class="input-group" id="email_input">
+                    <div id="email_sign" class="input-group-addon">@</div>
+                    <input type="email" class="form-control" required placeholder="Please leave an email address so we can send you a notification when job's done">
+                    <span class="input-indicator"></span>
+                </div>
+            </form>
+        </section>
+
+
+        <div id="flash_msg">submit successfully!!!</div>
+        <section class="row">
+            <section class="col-md-6">
+                <div class="hz-bar">
+                    <span class="hz-label">Enter data directly with <a class="annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> 
+                        <button id="ex_button" type="button" class="btn btn-sm btn-danger" data-toggle="popover" data-content="1 12919840 12919840 T C"><i class='glyphicon glyphicon-star'></i>&nbsp;input format</button>
+                    </span>
+
+                </div>
+                <div class="form-group" id="data_input">
+                    <textarea class="form-control" required name="inputData" placeholder="Please enter your data here..." rows="7"></textarea>
+                    <span class="input-indicator"></span>
+                </div>
+                <button id="submit_text" class="btn btn-success">Submit text</button>
+            </section>
+            <section class="col-md-6">
+                <div class="hz-bar">
+                    <span class="hz-label">Or you can</span>
+                    <span class="btn btn-default fileinput-button">
+                        <span>add a file...</span>
+                        <input id="file_upload" type="file" name="inputFile">
+                    </span>
+                </div>
+
+                <div id="file_dropzone">
+                    <div>Drag & drop your file here</div>
+                </div>
+                <div id="upload_progress" class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+                <button id="submit_file" class="btn btn-success">Submit file</button>
+            </section>
+        </section>
+        <script src="assets/upload.js"></script>
+</div>

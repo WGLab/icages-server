@@ -3,6 +3,9 @@ class UploadController < ApplicationController
   before_filter :add_headers, :only => [:handle_upload, :options]
   #Thread::abort_on_exception = true
 
+  def index
+  end
+
   def options
     head :ok
   end
@@ -45,10 +48,12 @@ class UploadController < ApplicationController
     results_dir = working_dir.join('public', 'results')
     `perl #{CONFIG['script']['path']}; cp #{CONFIG['script']['output']} #{results_dir}/result-#{id}.json`
     
-    submission = Submission.find(id)
-    submission.update(done: true)
+    ActiveRecord::Base.connection_pool.with_connection do
+	submission = Submission.find(id)
+	submission.update(done: true)
+    end
+
     NotificationMailer.job_done(submission).deliver unless submission.email.empty?
-   
   end
 
   def add_headers
