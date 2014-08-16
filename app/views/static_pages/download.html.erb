@@ -25,34 +25,35 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">General workflow of iCAGES: <span class="text-muted">input somatic mutations and output cancer driver genes</span></h2>
+          <h2 class="featurette-heading">General workflow of iCAGES <span class="text-muted">input somatic mutations and output cancer driver genes</span></h2>
           <p class="lead">iCAGES takes two forms of input, <a href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format or VCF files. Using these data, iCAGES then runs its two-layer pipeline and after approximately 10-15 minutes, it can generate its output summarizing cancer driver genes that it nominated and can notify you through email.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="/img/icages_flowchart.png" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
         </div>
-      </div> <!--  -->
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-      	<div class="col-md-5">
-          <img class="featurette-image img-responsive" src="/img/first_layer.png" alt="Generic placeholder image">
-        </div> 
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First layer of iCAGES: <span class="text-muted">from somatic mutation calls to prioritized list of candidate cancer driver mutations</span></h2>
-          <p class="lead">To comprehensively evaluate the effect of rare and common mutations on cancer pathogenesis, we used radial Support Vector Machine (SVM) trained on somatic non-synonymous Single Nucleotide Variations (nsSNVs) from COSMIC and Uniprot databases as the first layer for iCAGES. Using somatic mutations as input, iCAGES can calculate the correponding radial SVM predicted score for each mutation, evaluating the cancer diriver potential for each mutation.</p>
-        </div>
-	</div>
+      </div>
 
       <hr class="featurette-divider">
 
       <div class="row featurette">
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
         <div class="col-md-7">
-          <h2 class="featurette-heading">Second layer of iCAGES: <span class="text-muted">from candidate driver mutations to cancer driver genes</span></h2>
-          <p class="lead">To incorporate valuable knowledge generated from decades of research, we add one more layer on top of the last radial SVM layer. This layer weights each mutation using its correponding gene's <a href="http://phenolyzer.usc.edu/">Phenolyzer</a> score, which evaluates the genetic-phenotypic association based on previous knowledge. Then it filters for genes that harbor rather deleterious mutations and ranks these genes according to their total weighted score, iCAGES score.</p>
+          <h2 class="featurette-heading">First layer of iCAGES <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Second layer of iCAGES <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive" src="/img/another_second_layer.png" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
         </div>
       </div>
 

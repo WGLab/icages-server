@@ -1,6 +1,6 @@
  (function() {
      function goodDataFormat(val) {
-         return /^(\s*[A-Z0-9]+\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*[A-Z0-9]+\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
+         return /^(\s*[XY0-9]+\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*[XY0-9]+\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
      }
 
      function goodEmailFormat(val) {
@@ -41,7 +41,9 @@
      }
 
      $('#ex_button').popover({
+        container: 'body',
 	html: true,
+	placement: 'bottom',
 	title: "Example <a id='ex_popover_close' class='close'> &times;</a>",
 	template: "<div class='popover example' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>"
      }).click(function(e) {

@@ -17,9 +17,6 @@ Rails.application.routes.draw do
   match 'upload', to: 'upload#handle_upload', via: :post
   match 'upload', to: 'upload#options', via: :options
   get 'result/:id', to: 'result#show', as: 'result'
-  get 'about', to: 'static_pages#about'
-  get 'example', to: 'static_pages#example'
-  get 'contact', to: 'static_pages#contact'
   get 'upload', to: 'upload#index'
 
   # Example of regular route:3
@@ -70,4 +67,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+ end

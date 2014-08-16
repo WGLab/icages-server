@@ -25,7 +25,7 @@ h1 {
     display: none;
 }
 
-.home-content {
+.hz-content {
     margin-top: 90px;
 }
 
@@ -37,13 +37,36 @@ h1 {
 #file_dropzone {
     height: 9em;
     text-align: center;
-    border: 4px dashed #c3c3c3;
+    border: 1px dashed #c3c3c3;
     &>div {
-	margin-top: 32px;
-	font-size: 30px;
-	color: #BDBDBD;
-    	font-family: Geog;
+	margin-top: 35px;
+	font-size: 20px;
+	color: #5a5a5a;
     }	
+    .hz-file-btn {
+        font-size: 24px;
+        color: rgba(66, 139, 202, 0.64);
+        overflow: hidden;
+        position: relative;
+        border-radius: 50%;
+        input {
+            position: absolute;
+            top: 0;
+            right: 0;   
+            margin: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+            direction: ltr;
+            cursor: pointer;
+        }
+        span {
+            vertical-align: text-top;
+        }
+        &:hover {
+            color: #428bca;
+        }
+    }
 } 
 
 #email_sign {
@@ -53,7 +76,7 @@ section {
     margin-bottom: 2em;
 }
 .hz-bar {
-    height: 45px;
+    height: 20px;
     margin-bottom: 0.5em;
     .hz-label {
         padding: 7px 0 7px;
@@ -84,5 +107,34 @@ section {
     .axis line {
         stroke: #000;
         shape-rendering: crispEdges;
+    }
+}
+.hz-inline {
+    display: inline-table;
+    vertical-align: middle;
+    .form-control {
+        border-radius: 0;
+    }
+    & > .form-control {
+        width: 100%;
+        vertical-align: middle;
+    }
+}
+#ex_button {
+    padding: 0px;
+}
+#submit_text {
+    margin-top: 10px;
+}
+footer {
+    margin-top: 20px;
+}
+.hz-form {
+    border-radius: 4px;
+    box-shadow: 0 4px 6px 1px rgba(50, 50, 50, 0.14);
+    background-color: rgb(248, 248, 248);
+    padding: 2em 0 1em;
+    label {
+       font-size: 18px;
     }
 }
