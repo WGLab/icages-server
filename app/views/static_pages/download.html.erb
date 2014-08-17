@@ -10,7 +10,7 @@
 		  <li id="hour"></li>
 		  <li id="min"></li>
 		      </ul>
-            <h1 class="animated fadeInDown">iCAGES</h1><h2 class="animated fadeInDown">a rapid, effect tool for prioritizing cancer driver genes</h2><p class="animated fadeIn">iCAGES is a rapid, efficient tool to prioritizer cancer driver genes. Given somatic mutations detected in whole exome sequencing of tumor-normal pair, iCAGES can run through a two-layer process and output a priorized list of candidate cancer driver genes. We also developed this web interface of iCAGES to help average biologists or clinicians who do not want to download and install iCAGES tool to do rapid whole exome variant analysis on this web server, prioritize candidate cancer driver genes which are specific for a patient. With the rapid development and deployment of next-generation sequencing technologies, we hope that iCAGES can take full advantage massive amounts of cancer sequencing data and shed light on personalized cancer therapy.</p> </div></div>
+            <h1 class="animated fadeInDown">iCAGES package</h1><h2 class="animated fadeInDown">command line iCAGES can be downloaded <a href="/download/icages.tar.gz">here</a>, or you can follow the instructions below to download and use iCAGES through command line.</h2></div></div>
 
 
 
@@ -20,46 +20,32 @@
 
     <div class="container marketing">
 
-      <!-- START THE FEATURETTES -->
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">General workflow of iCAGES <span class="text-muted">input somatic mutations and output cancer driver genes</span></h2>
-          <p class="lead">iCAGES takes two forms of input, <a href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format or VCF files. Using these data, iCAGES then runs its two-layer pipeline and after approximately 10-15 minutes, it can generate its output summarizing cancer driver genes that it nominated and can notify you through email.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
+     <div class="container">
+      <div class="page-header">
+        <h2>Download iCAGES</h2>
       </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-        <div class="col-md-7">
-          <h2 class="featurette-heading">First layer of iCAGES <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
+      <p class="lead">Copy and paste the command line below to download and uncompress iCAGES.</p>
+            <div class="jumbotron">
+                <div class="lead"><code>wget http://icages.usc.edu:5000/download/icages.tar.gz</code></div>
+                <div class="lead"><code>tar -zxvf icages.tar.gz</code></div>
+            </div>
+    </div>
+    
+    
+     <div class="container">
+      <div class="page-header">
+        <h2>Quick start using examples</h2>
       </div>
+      <p class="lead">In the <code>icages</code> folder, there is an example file called <code>input.txt</code>. It was in <a href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format. (Note that it can also take vcf file as input and the example input file is also given: <code>input.vcf</code>. You can also play around yourself). Copy paste the command line below to run this simple example and check the result, input.txt.icages </p>
+            <div class="jumbotron">
+                <div class="lead"><code>cd icages</code></div>
+                <div class="lead"><code>icages.pl input.txt</code></div>
+                <div class="lead"><code>less input.txt.icages</code></div>
+            </div>
+    </div>
 
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">Second layer of iCAGES <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <!-- /END THE FEATURETTES -->
+    
+    <!-- /END THE FEATURETTES -->
 
 
     </div><!-- /.container -->

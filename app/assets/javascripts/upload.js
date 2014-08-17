@@ -72,7 +72,8 @@
              var goodData = goodDataFormat(text_val);
              var goodEmail = goodEmailFormat(email_val);
              if (!goodEmail) {
-                 alert("You did not submit a valid email address, so we might not send you an email notification, i say 'might' because I can actually hack your computer based on the IP address and get your email address, but I'm not gonna do that because I'm a responsible and respectful hacker...Just kidding I don't know nothing about hacking, no worries.");
+		alert("Please enter a valid email address.");
+                return;
              }
 
              if (goodData) {
@@ -119,7 +120,8 @@
                      var email_val = $('#email_input input').val();
 		     var goodEmail = goodEmailFormat(email_val);
 		     if (!goodEmail) {
-                         alert("You did not submit a valid email address, so we might not send you an email notification when the job is done, i say 'might' because I can actually hack your computer based on the IP address and get your email address, but I'm not gonna do that because I'm a responsible and respectful hacker...Just kidding I don't know nothing about hacking, no worries.");
+			alert("Please enter a valid email address.");
+                        return;	
                      }
 		     data.formData = {email: goodEmail ? email_val : ''};
                      data.submit();
@@ -144,9 +146,6 @@
          })
          .on('dragleave', function(e) {
              $(this).css('border-color', '#c3c3c3');
-         })
-         .on('drop', function(e) {
-             $('#file_dropzone>div').html("Uploading...");
          });
  })();
 
