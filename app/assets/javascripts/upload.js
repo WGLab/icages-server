@@ -1,6 +1,6 @@
  (function() {
      function goodDataFormat(val) {
-         return /^(\s*[XY0-9]+\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*[XY0-9]+\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
+         return /^(\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
      }
 
      function goodEmailFormat(val) {
@@ -44,7 +44,7 @@
         container: 'body',
 	html: true,
 	placement: 'bottom',
-	title: "Example <a id='ex_popover_close' class='close'> &times;</a>",
+	title: "Explaination <a id='ex_popover_close' class='close'> &times;</a>",
 	template: "<div class='popover example' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>"
      }).click(function(e) {
 	e.stopPropagation();

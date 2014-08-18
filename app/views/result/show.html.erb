@@ -2,17 +2,24 @@
   <h3>Submission id: <%= @submission.id %></h3>
   <% if @submission.done %>
     <script>var SUBMISSION_ID = <%= @submission.id %>;</script>
-    <section class="hz-chart" id="bubbleChart">
-       <div class="hz-title">
-         <h4>Bubble Chart</h4>
-       </div>
-    </section>
-    <section class="hz-chart" id="barChart">
-      <div class="hz-title">
-        <h4>Bar Chart</h4>
-      </div>
-    </section>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#bubble_chart" role="tab" data-toggle="tab">Bubble Chart</a>
+        </li>
+        <li><a href="#bar_chart" role="tab" data-toggle="tab">Bar Chart</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="bubble_chart">
+           <section class="hz-chart">
+           </section>
+        </div>
+        <div class="tab-pane fade" id="bar_chart">
+           <section class="hz-chart">
+           </section>
+        </div>
+    </div>
     <script src="../assets/show_result.js"></script>
+
   <% else %>
     <div class="progress">
         <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%"><span class="sr-only">Loading...</span></div>

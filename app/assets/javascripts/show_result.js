@@ -41,7 +41,7 @@
             .on("tick", tick)
             .start();
 
-        var svg = d3.select("#bubbleChart").append("svg")
+        var svg = d3.select("#bubble_chart > section").append("svg")
             .attr("width", width)
             .attr("height", height);
 
@@ -152,15 +152,15 @@
                 bottom: 30,
                 left: 80
             },
-            width = 1000 - margin.left - margin.right + barLabelWidth,
-            height = data.length * barHeight - margin.top - margin.bottom;
+            width = 1000+ barLabelWidth,
+            height = data.length * barHeight;
 
         var x = d3.scale.linear()
-            .range([0, width - barLabelWidth]);
+            .range([0, width - margin.left - margin.right - barLabelWidth]);
 
 
         var y = d3.scale.ordinal()
-            .rangeRoundBands([0, height], .1);
+            .rangeBands([0, height], .1, .5);
 
         var xAxis = d3.svg.axis()
             .scale(x)
@@ -173,8 +173,8 @@
         //     .scale(y)
         //     .orient("left");
 
-        var svg = d3.select("#barChart").append("svg")
-            .attr("width", width + margin.left + margin.right)
+        var svg = d3.select("#bar_chart > section").append("svg")
+            .attr("width", width)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
