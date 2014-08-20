@@ -40,21 +40,28 @@
 
      }
 
-     $('#ex_button').popover({
-        container: 'body',
-	html: true,
-	placement: 'bottom',
-	title: "Explaination <a id='ex_popover_close' class='close'> &times;</a>",
-	template: "<div class='popover example' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>"
-     }).click(function(e) {
-	e.stopPropagation();
-     });
+     function addPopover(prefix) {
+         $('#' + prefix + '_btn').popover({
+             container: 'body',
+             html: true,
+             placement: 'bottom',
+             title: "Example <a id='" + prefix + "_close' class='close'> &times;</a>",
+             template: "<div class='popover example' role='tooltip'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div></div>"
+         }).click(function(e) {
+             e.stopPropagation();
+         });
 
-     $(document).click(function(e) {
-	if ($(e.target).is('#ex_popover_close')) {
-	   $('#ex_button').popover('hide');
-        }
-     }); 
+         $(document).click(function(e) {
+             if ($(e.target).is("#" + prefix + "_close")) {
+                 $('#' + prefix + '_btn').popover('hide');
+             }
+         });
+     }
+
+     
+     addPopover('an_ex');
+     addPopover('vcf_ex'); 
+
 
      $(function() {
          showBootstrapIndicator('#data_input', '#data_input textarea', "#data_input .input-indicator", goodDataFormat);
