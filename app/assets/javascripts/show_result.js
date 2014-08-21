@@ -271,6 +271,18 @@
             });
     }
 
+    var colNameMap = {
+        gene: "Gene Name",
+        mutation: "Mutation",
+        mutation_syntax: "Mutation Syntax",
+        protein_syntax: "Protein Syntax",
+        radial: "Radial SVM score",
+        phenolyzer: "Phenolyzer score",
+        icages: "iCAGES score",
+        category: "Category",
+        url: "URL",
+    };
+
     function generateTable(data) {
         var datum = data[0];
         var subheads = [];
@@ -285,7 +297,7 @@
                 tr.append($('<th></th>', {
                     "rowspan": 1,
                     "colspan": Object.keys(datum[d]).length,
-                    html: d
+                    html: colNameMap[d]
                 }));
                 subheads = subheads.concat(Object.keys(datum[d]));
 
@@ -293,7 +305,7 @@
                 tr.append($('<th></th>', {
                     "rowspan": 1,
                     "colspan": Object.keys(datum[d][0]).length,
-                    html: d
+                    html: colNameMap[d]
                 }));
                 comp_head = d;
                 subheads = subheads.concat(Object.keys(datum[d][0]));
@@ -303,7 +315,7 @@
             } else {
                 tr.append($('<th></th>', {
                     "rowspan": 2,
-                    html: d
+                    html: colNameMap[d]
                 }))
             }
         }
@@ -314,7 +326,7 @@
 
         for (var i in subheads) {
             tr.append($('<th></th>', {
-                html: subheads[i]
+                html: colNameMap[subheads[i]]
             }))
         }
 
@@ -367,7 +379,32 @@
                 }
             }
         }
+        
+        var tb_clone = $($('#summary_table')[0].cloneNode());
+        tb_clone.attr("id", "header_clone").css({
+            position: "fixed",
+            top: "0",
+            width: $('#summary_table').outerWidth() + 'px'
+        });
+        tb_clone.append($('#summary_table thead').clone());
+        $('thead', tb_clone).css("background-color", "white");
+        $('.container.hz-content').append(tb_clone);
+        var ths = $('th', $('#summary_table'));
+        $('th', tb_clone).each(function(i) {
+            $(this).css("width", $(ths[i]).outerWidth() + 'px');
+        });
+        tb_clone.hide();
+
+        var tableTop = $('#summary_table').offset()['top'];
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > tableTop) {
+                tb_clone.show();
+            } else {
+                tb_clone.hide();
+            }
+        });
     }
+
 
     // Main logic
     // should be ../results/result-" + id + ".json on server

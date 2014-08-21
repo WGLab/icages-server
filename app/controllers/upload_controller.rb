@@ -39,12 +39,11 @@ class UploadController < ApplicationController
   
   def exec_query(id, data, opts)
     working_dir = Rails.root
-    File.open(CONFIG['script']['input'],'w') do |file|
+    File.open(CONFIG['script']['input_dir'] + "-id.txt",'w') do |file|
       file.write(opts[:isFile] ? data.read : data)
     end
    
-    results_dir = working_dir.join('public', 'results')
-    `perl #{CONFIG['script']['path']}; cp #{CONFIG['script']['output']} #{results_dir}/result-#{id}.json`
+    `perl #{CONFIG['script']['path'] -i #{id} #{working_dir}\icages_config.json`
    
      
     ActiveRecord::Base.connection_pool.with_connection do

@@ -17,8 +17,11 @@
 .htaccess
 
 # app files
-/public/uploads/*
-/public/results/*
+/public/upload
+/public/results
+/public/temp
+/public/log
+/public/download
 
 \#*\#
 \#*.*\#
@@ -32,3 +35,6 @@
 
 # icages config file
 icages_config.json
+
+# icages database file
+/icages/db
