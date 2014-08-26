@@ -78,6 +78,7 @@ section {
 .hz-bar {
     height: 20px;
     margin-bottom: 0.5em;
+    display: table;
     .hz-label {
         padding: 7px 0 7px;
         font-weight: bold;
@@ -132,4 +133,83 @@ footer {
 .hz-table * {
     vertical-align: middle !important;
     text-align: center;
+}
+
+.navbar.navbar-default.hz-navbar {
+    .hz-brand {
+        img {
+            height: 100%;
+        }
+    }
+}
+@media (min-width: 1200px) {
+    .navbar.navbar-default.hz-navbar {
+        &.hz-navbar-green {
+            background-image: linear-gradient(to bottom, #fff 0%, #CDE4C4 100%);
+            .navbar-nav>li>a {
+                background-color: #EFF8DC;
+            }
+            .navbar-nav > .active > a {
+                background-color: #F5F5F5;
+            }
+        }
+        &.hz-navbar-blue {
+            background-image: linear-gradient(to bottom, #DCEDF0 0%, #CEE2EB 100%);
+            box-shadow: 0px 0px 1px 1px rgba(78, 154, 184, 0.14);
+            min-height: 41px;
+            .navbar-nav>li>a {
+                background-color: #D4ECEE;
+            }
+            .navbar-nav > .active > a {
+                background-color: #F5F5F5;
+            }
+        }
+        border: 0;
+        border-radius:0px;
+        font-size:15px;
+        .navbar-nav>li>a {
+            color: #777;
+            margin: -4px 12px -5px 4px;
+            border-radius: 10px;
+            box-shadow: 0px 3px 1px #777;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            border: 1px solid rgba(50, 50, 50, 0.14);
+            &:hover, &:focus {
+                background-color: #F5F5F5;
+            }
+        }
+        .hz-brand {
+            padding: 4px 20px;
+            height: 40px;
+            img {
+                height: 167%;
+                border-radius: 3px;
+                margin: -10px 0px 0px 1px;
+                background-color: rgba(238, 238, 238, 0.98);
+                -webkit-transition: background-color 0.5s;
+                transition: background-color 0.2s;
+                box-shadow: 1px 1px 2px 2px rgba(50, 50, 50, 0.14);
+                &:hover {
+                    background-color: rgb(255, 252, 255);
+                }
+            }
+
+        }
+        .dropdown-menu {
+            top: 111%;
+            left: 19px;
+            min-width: 122px;
+        }
+    }
+}
+#wang_lab_brand {
+    padding: 10px 15px;
+    height: 40px;
+    img {
+        height: 120%;
+        border-radius: 4px;
+        background-color: #3A3F34;
+        box-shadow: 1px 3px 1px 0px rgba(50, 50, 50, 0.14);
+    }
 }

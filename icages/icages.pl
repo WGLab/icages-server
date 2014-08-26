@@ -18,7 +18,7 @@ use Getopt::Long;
 my ($inputFile, $outputFile, $gene, $icages, $annovarLog);                                          #ANNOVAR files
 my ($annovarCommand, $callConvertToAnnovar, $callAnnovar);                                          #ANNOVAR commands
 my ($icagesDB, $icagesIndex, $refGeneDB, $refGeneIndex, $dbsnpDB, $dbsnpIndex);                     #ANNOVAR DB files: iCAGES score (index), refGene (fasta), dbSNP
-my $formatCheckFirstLine;                                                                           #ANNOVAR format checking
+my ($formatCheckFirstLine, $iNotmissense, $iMissense, $iDriver, $iKegg, $iCgc);                     #ANNOVAR checking: format, missense mutations,
 
 
 my ($huiDB, $cgcDB, $keggDB);                                                                       #iCAGES DB files: Phenolyzer score, cgc genes, kegg cancer pathway genes
@@ -67,28 +67,18 @@ sub processArguments {
     $percent=80 unless $percent;                                                                    #default value of percent
     $help and pod2usage (-verbose=>1, -exitval=>1, -output=>\*STDOUT);
     $manual and pod2usage (-verbose=>2, -exitval=>1, -output=>\*STDOUT);
-    @ARGV == 1 or pod2usage ("ERROR: Syntax Error\n");
+    @ARGV == 4 or pod2usage ("ERROR: Syntax Error\n");
     
     ################### configure file ########################
-    open(CONF, "$ARGV[0]") or die "ERROR: cannot open $ARGV[0] file\n";
-    while(<CONF>){
-        my @line;
-        my $path;
-        chomp;
-        @line = split(/:/, $_);
-        next unless defined $line[1];
-        next unless $line[1] =~ /"(.*)"/;
-        $path = $1;
-        if($line[0] =~ /input_dir/){
-            $inputLocation = $path;
-        }elsif($line[0] =~ /temp_dir/){
-            $tempLocation = $path;
-        }elsif($line[0] =~ /log_dir/){
-            $logLocation = $path;
-        }elsif($line[0] =~ /output_dir/){
-            $outputLocation = $path;
-        }
-    }
+
+    $inputLocation = $ARGV[0];
+    $outputLocation = $ARGV[1];
+    $tempLocation = $ARGV[2];
+    $logLocation = $ARGV[3];
+    $inputLocation = $1 if $ARGV[0] =~ /(.*)\/$/;
+    $outputLocation = $1 if $ARGV[1] =~ /(.*)\/$/;
+    $tempLocation = $1 if $ARGV[2] =~ /(.*)\/$/;
+    $logLocation = $1 if $ARGV[3] =~ /(.*)\/$/;
     
     ################# commnad locations ######################
     $perlCommand = "$0";
@@ -100,7 +90,7 @@ sub processArguments {
     $inputFile = $inputLocation . "/input-". $id . ".txt";
     $txt = $outputLocation . "/result-". $id . ".txt";
     $json = $outputLocation . "/result-". $id . ".json";
-    $log = $logLocation . "/log-" . $id . "log";
+    $log = $logLocation . "/log-" . $id . ".log";
   
     ####################### ANNOVAR ##########################
     $annovarCommand = $icagesLocation . "bin/annovar";
@@ -200,14 +190,6 @@ close IN;
 
 if($formatCheckFirstLine =~ /^##fileformat=VCF/){                                                               #VCF
     !system("$callConvertToAnnovar -format vcf4 $inputFile > $outputFile") or die "ERROR: cannot execute convert2annovar.pl for converting VCF file\n";
-}elsif($formatCheckFirstLine =~ /^rs(\d+)/){                                                                    #dbSNP
-    !system("$callConvertToAnnovar -format rsid $inputFile -dbsnpfile $dbsnpDB > $outputFile") or die "ERROR: cannot execute convert2annovar.pl for converting dbSNP file\n";
-}elsif($formatCheckFirstLine =~ /^#BUILD/){                                                                     #Complete Genomics
-    !system("$callConvertToAnnovar -format cg -outfile $outputFile $inputFile") or die "ERROR: cannot execute convert2annovar.pl for converting Complete Genomics file\n";
-}elsif($formatCheckFirstLine =~ /^##gff-version/){                                                              #GFF3-SOLiD
-    !system("$callConvertToAnnovar -format gff3-solid -outfile $outputFile $inputFile") or die "ERROR: cannot execute convert2annovar.pl for converting GFF3-SOLiD file\n";
-}elsif($formatCheckFirstLine =~ /^chr/){                                                                        #SOAPsnp
-    !system("$callConvertToAnnovar -format soap $inputFile > $outputFile") or die "ERROR: cannot execute convert2annovar.pl for converting GFF3-SOLiD file\n";
 }else{                                                                                                          #ANNOVAR
     !system("cp $inputFile $outputFile") or die "ERROR: cannot use input file $inputFile\n";
 }
@@ -286,6 +268,7 @@ while(<HUI>){
 
 
 open(TXT, ">$txt") or die "ERROR: cannot open file $txt\n";
+open(JSON, ">$json") or die "ERROR: cannot open file $json\n";
 open(GENE, "$gene") or die "ERROR: cannot open file $gene\n";
 open(ANNLOG, "$annovarLog") or die "ERROR: cannot open file $annovarLog\n";
 open(RADIAL, "$icages") or die "ERROR: cannot open file $icages\n";
@@ -321,9 +304,8 @@ while(<RADIAL>){
 ############### gene annotation ###################
 
 print LOG "iCAGES: start parsing gene annotation files generated from ANNOVAR output\n";
-print LOG "iCAGES: WARNING! only nonsynonynous SNVs are used in iCAGES\n";
 print "NOTICE: start parsing gene annotation files generated from ANNOVAR output\n";
-print "NOTICE: WARNING! only nonsynonynous SNVs are used in iCAGES\n";
+
 
 while(<GENE>){
     chomp;
@@ -332,34 +314,41 @@ while(<GENE>){
     my $gene;
     my ($mutationSyntax, $proteinSyntax);
     @line = split(/\t/, $_);
-    next unless $line[1] eq "nonsynonymous SNV";
-    $key = "$line[3]:$line[4]:$line[6]:$line[7]";
-    $gene = $line[2];
-    $mutationSyntax = $line[2];
-    $proteinSyntax = $line[2];
-    $proteinSyntax =~ /:(p\.[\w|\d]+?),/;
-    $proteinSyntax = $1;
-    $mutationSyntax =~ /:c\.([\w])([\d]+)(\w):/;
-    $mutationSyntax = "c.$2$1>$3";
-    $gene =~ /^([\w|\d]+?):/;
-    $gene = $1;
-    next unless defined $gene;
-    $mutationSyntax = "\"NA\"" unless defined $mutationSyntax;
-    $proteinSyntax = "\"NA\"" unless defined $proteinSyntax;
-    $radialSVM{$key} = "\"NA\"" unless exists $radialSVM{$key};
-    if(exists $icages{$gene}[0] and exists $radialSVM{$key}){
-        $icages{$gene}[0] = $icages{$gene}[0] + $radialSVM{$key};
-        $icages{$gene}[1] = max($icages{$gene}[1], $radialSVM{$key});
-    }elsif(exists $radialSVM{$key}){
-        $icages{$gene}[0] = $radialSVM{$key};
-        $icages{$gene}[1] = $radialSVM{$key};
+    if ($line[1] eq "nonsynonymous SNV"){
+        $key = "$line[3]:$line[4]:$line[6]:$line[7]";
+        $gene = $line[2];
+        $mutationSyntax = $line[2];
+        $proteinSyntax = $line[2];
+        $proteinSyntax =~ /:(p\.[\w|\d]+?),/;
+        $proteinSyntax = $1;
+        $mutationSyntax =~ /:c\.([\w])([\d]+)(\w):/;
+        $mutationSyntax = "c.$2$1>$3";
+        $gene =~ /^([\w|\d]+?):/;
+        $gene = $1;
+        next unless defined $gene;
+        $mutationSyntax = "\"NA\"" unless defined $mutationSyntax;
+        $proteinSyntax = "\"NA\"" unless defined $proteinSyntax;
+        $radialSVM{$key} = "\"NA\"" unless exists $radialSVM{$key};
+        if(exists $icages{$gene}[0] and exists $radialSVM{$key}){
+            $icages{$gene}[0] = $icages{$gene}[0] + $radialSVM{$key};
+            $icages{$gene}[1] = max($icages{$gene}[1], $radialSVM{$key});
+        }elsif(exists $radialSVM{$key}){
+            $icages{$gene}[0] = $radialSVM{$key};
+            $icages{$gene}[1] = $radialSVM{$key};
+        }else{
+            $icages{$gene}[0] = 0;
+            $icages{$gene}[1] = 0;
+        }
+        $iMissense ++;
+        $icages_txt{$gene}{$key} = "$mutationSyntax\t$proteinSyntax\t$radialSVM{$key}";
     }else{
-        $icages{$gene}[0] = 0;
-        $icages{$gene}[1] = 0;
-	}
-    $icages_txt{$gene}{$key} = "$mutationSyntax\t$proteinSyntax\t$radialSVM{$key}";
+        $iNotmissense ++;
+    }
 }
 
+
+print LOG "iCAGES: WARNING! only missense mutations are used in iCAGES. Your data contain $iNotmissense none missense mutations and they are not processed by iCAGES\n" if $iNotmissense > 0;
+print "NOTICE: WARNING! only missense mutations are used in iCAGES. Your data contain $iNotmissense none missense mutations and they are not processed by iCAGES\n" if $iNotmissense > 0;
 
 ############### multiply Phenolyzer score ###################
 print LOG "iCAGES: start multiplying radial SVM score from each mutation with Phenolyzer score\n";
@@ -424,6 +413,9 @@ if($maxGene-$minGene > 0){
         my $mutationSyntax;
         my $proteinSyntax;
         my $radial;
+        $mutationSyntax = "";
+        $proteinSyntax="";
+        $radial = 0;
 	    $hui{$key} = "\"NA\"" unless exists $hui{$key};
 	    @mutationCountEachGene = keys %{$icages_txt{$key}};
 	    $mutationCountEachGene = $#mutationCountEachGene + 1;
@@ -442,18 +434,18 @@ if($maxGene-$minGene > 0){
             $tempMutationSyntax = $infor[0];
             $tempProteinSyntax = $infor[1];
             $tempRadial = $infor[2];
-            $tempMutationSyntax = "\"NA\"" unless defined $mutationSyntax;
-            $tempProteinSyntax = "\"NA\"" unless defined $proteinSyntax;
-            $tempRadial = "\"NA\"" unless defined $radial;
+            $tempMutationSyntax = "\"NA\"" unless defined $tempMutationSyntax;
+            $tempProteinSyntax = "\"NA\"" unless defined $tempProteinSyntax;
+            $tempRadial = "\"NA\"" unless defined $tempRadial;
             
             $iMutation ++;
             if($iMutation < $mutationCountEachGene){
-                $genePrintJSONInfor = $genePrintJSONInfor . "{\n\"mutationSyntax\":\"$mutationSyntax\", \n \"proteinSyntax\":\"$proteinSyntax\", \n \"radial\": $radial},";
+                $genePrintJSONInfor = $genePrintJSONInfor . "{\n\"mutationSyntax\":\"$tempMutationSyntax\", \n \"proteinSyntax\":\"$tempProteinSyntax\", \n \"radial\": $tempRadial},";
                 $mutationSyntax .= "$tempMutationSyntax,";
                 $proteinSyntax .= "$tempProteinSyntax,";
                 $radial .= "$tempRadial,";
             }else{
-                $genePrintJSONInfor = $genePrintJSONInfor . "{\n\"mutationSyntax\":\"$mutationSyntax\", \n \"proteinSyntax\":\"$proteinSyntax\", \n \"radial\": $radial}";
+                $genePrintJSONInfor = $genePrintJSONInfor . "{\n\"mutationSyntax\":\"$tempMutationSyntax\", \n \"proteinSyntax\":\"$tempProteinSyntax\", \n \"radial\": $tempRadial}";
                 $mutationSyntax .= "$tempMutationSyntax";
                 $proteinSyntax .= "$tempProteinSyntax";
                 $radial .= "$tempRadial";
@@ -468,9 +460,11 @@ if($maxGene-$minGene > 0){
             if(exists $cgc{$key}){
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tcancer gene census\thttp://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\t$icages{$key}[1]\n";
                 print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"cancer gene census\",\n\"url\":\"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\",\n\"driver\":$icages{$key}[1]\n},";
+                $iCgc ++;
             }elsif(exists $kegg{$key}){
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tkegg cancer pathway\thttp://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\t$icages{$key}[1]\n";
                 print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"kegg cancer pathway\",\n\"url\":\"http://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\",\n\"driver\":$icages{$key}[1]\n},";
+                $iKegg ++;
             }else{
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tneither\thttp://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\t$icages{$key}[1]\n";
                 print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"neither\",\n\"url\":\"http://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\",\n\"driver\":$icages{$key}[1]\n},";
@@ -479,14 +473,21 @@ if($maxGene-$minGene > 0){
             if(exists $cgc{$key}){
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tcancer gene census\thttp://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\t$icages{$key}[1]\n";
                 print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"cancer gene census\",\n\"url\":\"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\",\n\"driver\":$icages{$key}[1]\n}";
+                $iCgc ++;
             }elsif(exists $kegg{$key}){
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tkegg cancer pathway\thttp://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\t$icages{$key}[1]\n";
                 print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"kegg cancer pathway\",\n\"url\":\"http://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\",\n\"driver\":$icages{$key}[1]\n}";
+                $iKegg ++;
             }else{
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tneither\thttp://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\t$icages{$key}[1]\n";
                 print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"neither\",\n\"url\":\"http://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\",\n\"driver\":$icages{$key}[1]\n}";
             }
         };
+        
+        
+        
+        ############### number of cancer driver genes ##############
+        $iDriver ++ if $icages{$key}[1] eq "true";
 	}
 
 }else{
@@ -495,6 +496,13 @@ if($maxGene-$minGene > 0){
 }
 
 print JSON "\n]";
+
+$nowString = localtime;
+
+
+
+print LOG "SUMMARY: your data contain $iMissense missense mutations harbored in $iGene genes. Among these genes, $iDriver are predicted to be cancer driver genes, $iCgc belong to Cancer Gene Census and $iKegg belong to KEGG cancer gene pathway\n";
+print "SUMMARY: your data contain $iMissense missense mutations harbored in $iGene genes. Among these genes, $iDriver are predicted to be cancer driver genes, $iCgc belong to Cancer Gene Census and $iKegg belong to KEGG cancer gene pathway\n";
 
 print LOG "iCAGES: finished at $nowString\n";
 print "NOTICE: finished at $nowString\n";
@@ -521,7 +529,7 @@ print "NOTICE: finished at $nowString\n";
                                                                                                                                                                                                                                                               
  Function: iCAGES predicts cancer driver genes given protein altering somatic mutations from a patient.                                                                                                                                                                        
                                                                                                                                                                                                                                                                                
- Example: icages.pl example_input.txt                                                                                                                                                                                                                                          
+ Example: icages.pl -i 5000 /path/to/input /path/to/output /path/to/temp /path/to/log
                                                                                                                                                                                                                                                                                
  Input: configuration file                                                                                                                                                                                                           
                                                                                                                                                                                                                                                                                

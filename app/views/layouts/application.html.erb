@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-no-turbolink>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,14 +28,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-
+    <%= yield :head %>
+    <script>
+    $(function() {
+        $('.hz-navbar .navbar-nav>li:not(:last-child)>a').click(function() {
+            $(this).addClass('animated pulse');
+        });
+    });
+    </script>
 </head>
 
 <body>
 
-<%= render 'layouts/header' %> 
+<%= render 'shared/header' %> 
 <%= yield %>
-<%= render 'layouts/footer' %>
+<%= render 'shared/footer' %>
 </body>
 
 </html>

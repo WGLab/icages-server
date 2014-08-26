@@ -1,3 +1,9 @@
+<% if @submission.done %>
+   <% content_for :head do %>
+      <%= render 'shared/walkme_script' %>
+   <% end %>
+<% end %>
+
 <div class="container hz-content">
   <h3>Submission id: <%= @submission.id %></h3>
   <% if @submission.done %>
@@ -21,7 +27,7 @@
     <div class="page-header">
         <h3>Download</h3>
     </div>
-    <p>Please click <a href = "">here</a> to download summary table
+    <p>Please click <a href = "../results/result-<%= @submission.id %>.txt">here</a> to download summary table
     </p>
     <div class="page-header">
         <h3>Summary</h3>
