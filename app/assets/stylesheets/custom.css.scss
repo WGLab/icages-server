@@ -6,15 +6,6 @@ h1 {
     font-weight: bold;
 }
 
-#logo {
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 38px;
-    color: rgb(69, 194, 124);
-    &:hover {
-	color: white;
-    }
-}
-
 #flash_msg {
     background-color: #DFF0D8; 
     color: #468847;
@@ -77,12 +68,15 @@ section {
 }
 .hz-bar {
     height: 20px;
-    margin-bottom: 0.5em;
+    margin-top: 0.5em;
     display: table;
     .hz-label {
         padding: 7px 0 7px;
         font-weight: bold;
         display: inline-block;
+    }
+    button {
+	margin-right: 10px;
     }
 }
 .input-indicator {
@@ -115,9 +109,6 @@ section {
 .ex-btn {
     padding: 0px;
 }
-#submit_text {
-    margin-top: 10px;
-}
 footer {
     margin-top: 20px;
 }
@@ -137,6 +128,7 @@ footer {
 
 .navbar.navbar-default.hz-navbar {
     .hz-brand {
+        padding: 5px;
         img {
             height: 100%;
         }
@@ -158,7 +150,7 @@ footer {
             box-shadow: 0px 0px 1px 1px rgba(78, 154, 184, 0.14);
             min-height: 41px;
             .navbar-nav>li>a {
-                background-color: #D4ECEE;
+                background-color: #e5f3f0;
             }
             .navbar-nav > .active > a {
                 background-color: #F5F5F5;
@@ -203,6 +195,12 @@ footer {
         }
     }
 }
+@media (max-width: 1024px) {
+    #wang_lab_brand {
+        display: none;
+    }
+}
+
 #wang_lab_brand {
     padding: 10px 15px;
     height: 40px;
@@ -212,4 +210,8 @@ footer {
         background-color: #3A3F34;
         box-shadow: 1px 3px 1px 0px rgba(50, 50, 50, 0.14);
     }
+}
+#sample_btn {
+    background-image: linear-gradient(to bottom, #dcedf0 0%, #cee2eb 100%);
+    background-color: #cee2eb;
 }

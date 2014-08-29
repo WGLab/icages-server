@@ -1,6 +1,6 @@
  (function() {
      function goodDataFormat(val) {
-         return /^(\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]+)*\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s|\n]*$/g.test(val);
+         return /^(\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]+)*\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]*$/g.test(val) || /^[\n]*##fileformat=VCFv[\S\n\s]+$/g.test(val);
      }
 
      function goodEmailFormat(val) {
@@ -154,5 +154,8 @@
          .on('dragleave', function(e) {
              $(this).css('border-color', '#c3c3c3');
          });
+     $('#sample_btn').click(function() {
+         $('#data_input textarea').val("1 12919840 12919840 T C");
+     });
  })();
 
