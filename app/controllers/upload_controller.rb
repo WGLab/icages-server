@@ -40,7 +40,7 @@ class UploadController < ApplicationController
   def exec_query(id, data, opts)
     working_dir = Rails.root
     config = CONFIG['script']
-    File.open(CONFIG['script']['input_dir'] + "-id.txt",'w') do |file|
+    File.open(CONFIG['script']['input_dir'] + "/input-#{id}.txt",'w') do |file|
       file.write(opts[:isFile] ? data.read : data)
     end
    

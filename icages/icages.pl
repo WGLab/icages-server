@@ -459,28 +459,28 @@ if($maxGene-$minGene > 0){
         if($iGene < $geneNumber){
             if(exists $cgc{$key}){
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tcancer gene census\thttp://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\t$icages{$key}[1]\n";
-                print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"cancer gene census\",\n\"url\":\"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\",\n\"driver\":$icages{$key}[1]\n},";
+                print JSON "{\n\"gene\": \"$key\",\n\"mutation\":[$genePrintJSONInfor],\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"cancer gene census\",\n\"url\":\"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\",\n\"driver\":$icages{$key}[1]\n},";
                 $iCgc ++;
             }elsif(exists $kegg{$key}){
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tkegg cancer pathway\thttp://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\t$icages{$key}[1]\n";
-                print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"kegg cancer pathway\",\n\"url\":\"http://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\",\n\"driver\":$icages{$key}[1]\n},";
+                print JSON "{\n\"gene\": \"$key\",\n\"mutation\":[$genePrintJSONInfor],\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"kegg cancer pathway\",\n\"url\":\"http://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\",\n\"driver\":$icages{$key}[1]\n},";
                 $iKegg ++;
             }else{
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tneither\thttp://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\t$icages{$key}[1]\n";
-                print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"neither\",\n\"url\":\"http://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\",\n\"driver\":$icages{$key}[1]\n},";
+                print JSON "{\n\"gene\": \"$key\",\n\"mutation\":[$genePrintJSONInfor],\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"neither\",\n\"url\":\"http://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\",\n\"driver\":$icages{$key}[1]\n},";
             }
         }else{
             if(exists $cgc{$key}){
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tcancer gene census\thttp://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\t$icages{$key}[1]\n";
-                print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"cancer gene census\",\n\"url\":\"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\",\n\"driver\":$icages{$key}[1]\n}";
+                print JSON "{\n\"gene\": \"$key\",\n\"mutation\":[$genePrintJSONInfor],\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"cancer gene census\",\n\"url\":\"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=$key\",\n\"driver\":$icages{$key}[1]\n}";
                 $iCgc ++;
             }elsif(exists $kegg{$key}){
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tkegg cancer pathway\thttp://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\t$icages{$key}[1]\n";
-                print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"kegg cancer pathway\",\n\"url\":\"http://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\",\n\"driver\":$icages{$key}[1]\n}";
+                print JSON "{\n\"gene\": \"$key\",\n\"mutation\":[$genePrintJSONInfor],\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"kegg cancer pathway\",\n\"url\":\"http://www.genome.jp/dbget-bin/www_bget?hsa:$kegg{$key}\",\n\"driver\":$icages{$key}[1]\n}";
                 $iKegg ++;
             }else{
                 print TXT "$key\t$genePrintTXTInfor\t$hui{$key}\t$icages{$key}[0]\tneither\thttp://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\t$icages{$key}[1]\n";
-                print JSON "{\n\"gene\": \"$key\",\n$genePrintJSONInfor,\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"neither\",\n\"url\":\"http://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\",\n\"driver\":$icages{$key}[1]\n}";
+                print JSON "{\n\"gene\": \"$key\",\n\"mutation\":[$genePrintJSONInfor],\n\"phenolyzer\":$hui{$key},\n\"icages\":$icages{$key}[0],\n\"category\":\"neither\",\n\"url\":\"http://www.genecards.org/cgi-bin/carddisp.pl?gene=$key&search=96a88d95c4a24ffc2ac1129a92af7b02\",\n\"driver\":$icages{$key}[1]\n}";
             }
         };
         

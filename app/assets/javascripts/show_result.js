@@ -310,7 +310,7 @@
                 comp_head = d;
                 subheads = subheads.concat(Object.keys(datum[d][0]));
 
-            } else if (typeof datum[d] === "boolean") {
+            } else if (typeof datum[d] === "boolean" || d === "url") {
                 continue;
             } else {
                 tr.append($('<th></th>', {
@@ -366,13 +366,13 @@
                             tbody.append(tr_2);
                         }
                     }
-                } else if (typeof gene[f] === "boolean") {
+                } else if (typeof gene[f] === "boolean" || f === "url" ) {
                     continue;
                 } else {
                     tr.append($('<td></td>', {
-                        html: f === "url" ? $('<a></a>', {
+                        html: f === "gene" ? $('<a></a>', {
                             html: gene[f],
-                            href: gene[f]
+                            href: gene["url"]
                         }) : gene[f],
                         "rowspan": rowspan
                     }));

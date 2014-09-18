@@ -5,6 +5,10 @@
   </li>
   <li><a href="/contact"><i class="glyphicon glyphicon-user"></i>&nbsp;Contact</a>
   </li>
+  <li><a href="/example"><i class="glyphicon glyphicon-search"></i>&nbsp;Example</a>
+  </li>
+  <li><a href="/package"><i class="glyphicon glyphicon-cloud-download"></i>&nbsp;Download</a>
+  </li>
 <% end %>
 
  <!-- Carousel
@@ -43,7 +47,7 @@
             <div class="carousel-caption">
               <h1>Why should I choose iCAGES?</h1>
               <p>iCAGES is simple and effective. It has a very friendly user-interface, which is very easy for researchers, clinicians and other medical professionals to use. It demonstrates high performance in our current study. And ... it is fast.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <p><a class="btn btn-lg btn-primary" href="/example" role="button">See example</a></p>
             </div>
           </div>
         </div>
@@ -52,7 +56,15 @@
       <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div><!-- /.carousel -->
 </div>
-    <!-- Marketing messaging and featurettes
+  
+<script>
+$('.carousel').carousel({
+  interval: 2000;
+  pause: hover
+})
+</script>  
+
+  <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 

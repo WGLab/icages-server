@@ -1,17 +1,21 @@
+<% content_for :navtabs do %>
+    <li><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
+   </li>
+   <li class="active"><a href="/about"><i class="glyphicon glyphicon-question-sign"></i>&nbsp;About</a>
+   </li>
+   <li><a href="/contact"><i class="glyphicon glyphicon-user"></i>&nbsp;Contact</a>
+   </li>
+   <li><a href="/example"><i class="glyphicon glyphicon-user"></i>&nbsp;Example</a>
+   </li>
+<% end %>
 
-  <div class="wrap" role="document" id="contenuto">
-          <div id="full-width-slider" class="royalSlider"><div class="rsContent">
 
+<!-- app/views/static_pages/about.html.erb -->
+    <div class="container hz-content">
 
-            <div class="container" ><div class="header-titolo">
-            
-		<ul id="clock" class="hidden-xs">
-		  <li id="sec"></li>
-		  <li id="hour"></li>
-		  <li id="min"></li>
-		      </ul>
-            <h1 class="animated fadeInDown">iCAGES package</h1><h2 class="animated fadeInDown">command line iCAGES can be downloaded <a href="/download/icages.tar.gz">here</a>, or you can follow the instructions below to download and use iCAGES through command line.</h2></div></div>
-
+        <h1 class="animated fadeInDown">iCAGES package</h1>
+        <h2 class="animated fadeInDown">command line iCAGES can be downloaded <a href="/download/icages.tar.gz">here</a>, or you can follow the instructions below to download and use iCAGES through command line.</h2>
+        </div>
 
 
     <!-- Marketing messaging and featurettes
@@ -26,7 +30,7 @@
       </div>
       <p class="lead">Copy and paste the command line below to download and uncompress iCAGES.</p>
             <div class="jumbotron">
-                <div class="lead"><code>wget http://icages.usc.edu:5000/download/icages.tar.gz</code></div>
+                <div class="lead"><code>wget http://icages.usc.edu/download/icages.tar.gz</code></div>
                 <div class="lead"><code>tar -zxvf icages.tar.gz</code></div>
             </div>
     </div>
