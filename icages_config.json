@@ -1,8 +1,0 @@
-{
-	"script": {
-		"path": "/home/cocodong/project/iCAGES/pipeline.pl",
-		"input": "/home/cocodong/project/iCAGES/pipeline/input.txt",
-		"output": "/home/cocodong/project/iCAGES/pipeline/result.json",
-		"score": "/home/cocodong/project/iCAGES/pipeline/result_score.txt"
-	}
-}
