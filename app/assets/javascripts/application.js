@@ -18,8 +18,5 @@
 //= require jquery-file-upload/js/vendor/jquery.ui.widget
 //= require jquery-file-upload/js/jquery.iframe-transport
 //= require jquery-file-upload/js/jquery.fileupload
-<<<<<<< HEAD
 //= require ie10-viewport-bug-workaround
 //= require ie-emulation-modes-warning
-=======
->>>>>>> 18580dc0a8db62f8542224ce6184f09f796d93b1
