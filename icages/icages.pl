@@ -63,11 +63,76 @@ sub processArguments {
                 'id|i=i' => \$id
                 )or pod2usage ();
     
+    
+    
+    
+    ######################################################################################################################################
+    ######################################################## file download (optional) ####################################################
+    ######################################################################################################################################
+    
+    if($downloadDB){
+        
+        ################# commnad locations ######################
+        $perlCommand = "$0";
+        $perlCommand =~ /(.*)icages\.pl/;
+        $icagesLocation = $1;
+        $DBLocation = $icagesLocation. "db/";
+
+        ######################## databases #######################
+        $huiDB = $DBLocation . "phenolyzer.score";
+        $cgcDB = $DBLocation . "cgc.gene";
+        $keggDB = $DBLocation . "kegg.gene";
+        $icagesDB = $DBLocation . "hg19_iCAGES.txt";
+        $icagesIndex = $DBLocation . "hg19_iCAGES.idx";
+        $refGeneDB = $DBLocation . "hg19_refGene.txt";
+        $refGeneIndex = $DBLocation . "hg19_refGeneMrna.fa";
+        $dbsnpDB = $DBLocation . "hg19_snp138.txt";
+        $dbsnpIndex = $DBLocation . "hg19_snp138.txt.idx";
+        
+        unless(-e "$cgcDB"){
+            !system("wget -O $cgcDB http://icages.usc.edu:5000/download/icages/db/cgc.gene") or die "ERROR: cannot download database file $cgcDB\n";
+        }
+        
+        unless(-e "$keggDB"){
+            !system("wget -O $keggDB http://icages.usc.edu:5000/download/icages/db/kegg.gene") or die "ERROR: cannot download database file $keggDB\n";
+        }
+        
+        unless(-e "$huiDB"){
+            !system("wget -O $huiDB http://icages.usc.edu:5000/download/icages/db/phenolyzer.score") or die "ERROR: cannot download database file $huiDB\n";
+        }
+        
+        unless(-e "$icagesDB"){
+            !system("wget -O $icagesDB http://icages.usc.edu:5000/download/icages/db/hg19_iCAGES.txt") or die "ERROR: cannot download database file $icagesDB\n";
+        }
+        
+        unless(-e "$icagesIndex"){
+            !system("wget -O $icagesIndex http://icages.usc.edu:5000/download/icages/db/hg19_iCAGES.idx") or die "ERROR: cannot download database file $icagesIndex\n";
+        }
+        
+        unless(-e "$refGeneDB"){
+            !system("wget -O $refGeneDB http://icages.usc.edu:5000/download/icages/db/hg19_refGene.txt") or die "ERROR: cannot download database file $refGeneDB\n";
+        }
+        
+        unless(-e "$refGeneIndex"){
+            !system("wget -O $refGeneIndex http://icages.usc.edu:5000/download/icages/db/hg19_refGeneMrna.fa") or die "ERROR: cannot download database file $refGeneIndex\n";
+        }
+        
+        unless(-e "$dbsnpDB"){
+            !system("wget -O $dbsnpDB http://icages.usc.edu:5000/download/icages/db/hg19_snp138.txt") or die "ERROR: cannot download database file $dbsnpDB\n";
+        }
+        
+        unless(-e "$dbsnpIndex"){
+            !system("wget -O $dbsnpIndex http://icages.usc.edu:5000/download/icages/db/hg19_snp138.txt.idx") or die "ERROR: cannot download database file $dbsnpIndex\n";
+        }
+    }
+    
+
+    
     ######################## arguments ########################
     $percent=80 unless $percent;                                                                    #default value of percent
     $help and pod2usage (-verbose=>1, -exitval=>1, -output=>\*STDOUT);
     $manual and pod2usage (-verbose=>2, -exitval=>1, -output=>\*STDOUT);
-    @ARGV == 4 or pod2usage ("ERROR: Syntax Error\n");
+
     
     ################### configure file ########################
 
@@ -124,51 +189,6 @@ sub processArguments {
     die "ERROR: cannot open database file $refGeneIndex. if you do not have this file in your .db/ folder, please download them using: icages.pl -downloadDB\n" unless -e $refGeneIndex ;
     die "ERROR: cannot open database file $dbsnpDB. if you do not have this file in your .db/ folder, please download them using: icages.pl -downloadDB\n" unless -e $dbsnpDB ;
     die "ERROR: cannot open database file $dbsnpIndex. if you do not have this file in your .db/ folder, please download them using: icages.pl -downloadDB\n" unless -e $dbsnpIndex ;
-}
-
-
-
-######################################################################################################################################
-######################################################## file download (optional) ####################################################
-######################################################################################################################################
-
-if($downloadDB){
-
-    unless(-e "$cgcDB"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/cgc.gene") or die "ERROR: cannot download database file $cgcDB\n";
-    }
-    
-    unless(-e "$keggDB"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/kegg.gene") or die "ERROR: cannot download database file $keggDB\n";
-    }
-    
-    unless(-e "$huiDB"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/phenolyzer.score") or die "ERROR: cannot download database file $huiDB\n";
-    }
-    
-    unless(-e "$icagesDB"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/hg19_iCAGES.txt") or die "ERROR: cannot download database file $icagesDB\n";
-    }
-    
-    unless(-e "$icagesIndex"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/hg19_iCAGES.idx") or die "ERROR: cannot download database file $icagesIndex\n";
-    }
-    
-    unless(-e "$refGeneDB"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/hg19_refGene.txt") or die "ERROR: cannot download database file $refGeneDB\n";
-    }
-    
-    unless(-e "$refGeneIndex"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/hg19_refGeneMrna.fa") or die "ERROR: cannot download database file $refGeneIndex\n";
-    }
-    
-    unless(-e "$dbsnpDB"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/hg19_snp138.txt") or die "ERROR: cannot download database file $dbsnpDB\n";
-    }
-    
-    unless(-e "$dbsnpIndex"){
-        !system("wget -O $DBLocation http://icages.usc.edu:5000/download/icages/db/hg19_snp138.txt.idx") or die "ERROR: cannot download database file $dbsnpIndex\n";
-    }
 }
 
 
