@@ -124,7 +124,7 @@ sub processArguments {
         unless(-e "$dbsnpIndex"){
             !system("wget -O $dbsnpIndex http://icages.usc.edu:5000/download/icages/db/hg19_snp138.txt.idx") or die "ERROR: cannot download database file $dbsnpIndex\n";
         }
-    }
+    }else{
     
 
     
@@ -132,7 +132,7 @@ sub processArguments {
     $percent=80 unless $percent;                                                                    #default value of percent
     $help and pod2usage (-verbose=>1, -exitval=>1, -output=>\*STDOUT);
     $manual and pod2usage (-verbose=>2, -exitval=>1, -output=>\*STDOUT);
-
+    @ARGV == 4 or pod2usage ();
     
     ################### configure file ########################
 
@@ -189,6 +189,7 @@ sub processArguments {
     die "ERROR: cannot open database file $refGeneIndex. if you do not have this file in your .db/ folder, please download them using: icages.pl -downloadDB\n" unless -e $refGeneIndex ;
     die "ERROR: cannot open database file $dbsnpDB. if you do not have this file in your .db/ folder, please download them using: icages.pl -downloadDB\n" unless -e $dbsnpDB ;
     die "ERROR: cannot open database file $dbsnpIndex. if you do not have this file in your .db/ folder, please download them using: icages.pl -downloadDB\n" unless -e $dbsnpIndex ;
+    }
 }
 
 
