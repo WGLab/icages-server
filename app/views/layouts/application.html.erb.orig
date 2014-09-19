@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html data-no-turbolink>
 <head>
     <meta charset="utf-8">
@@ -45,6 +46,7 @@
 <%= render 'shared/footer' %>
 </body>
 
+=======
 <html>
 <head>
   <title>iCAGES</title>
@@ -58,4 +60,5 @@
 <%= yield %>
 
 </body>
+>>>>>>> 18580dc0a8db62f8542224ce6184f09f796d93b1
 </html>
