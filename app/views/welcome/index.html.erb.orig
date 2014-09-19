@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <% content_for :navtabs do %>
   <li><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
   </li>
@@ -92,6 +93,7 @@ $('.carousel').carousel({
 
    </div>
 
+=======
 <div class="container home_content">
 
         <section><center><h1>Integrated CAncer GEnome Score</h1></center></section>
@@ -143,3 +145,4 @@ $('.carousel').carousel({
         </section>
 	<script src="assets/upload.js"></script>
 </div>
+>>>>>>> 18580dc0a8db62f8542224ce6184f09f796d93b1
