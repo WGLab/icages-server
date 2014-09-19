@@ -3,9 +3,12 @@ class UploadController < ApplicationController
   before_filter :add_headers, :only => [:handle_upload, :options]
   #Thread::abort_on_exception = true
 
+<<<<<<< HEAD
   def index
   end
 
+=======
+>>>>>>> 18580dc0a8db62f8542224ce6184f09f796d93b1
   def options
     head :ok
   end
@@ -26,12 +29,18 @@ class UploadController < ApplicationController
     if inputData
       submission = Submission.create(done: false, email: email)
       t = Thread.new { exec_query(submission.id, inputData, {isFile: false}) }
+<<<<<<< HEAD
+=======
       t.join
+>>>>>>> 18580dc0a8db62f8542224ce6184f09f796d93b1
       render json: {id: submission.id, msg:"Submission: #{submission.id} created #{email_msg} url: #{result_path(submission, only_path: false)}"}
     elsif inputFile
       submission = Submission.create(done: false, email: email)
       t = Thread.new { exec_query(submission.id, inputFile, {isFile: true}) }
+<<<<<<< HEAD
+=======
       t.join
+>>>>>>> 18580dc0a8db62f8542224ce6184f09f796d93b1
       render json: {id: submission.id, msg: "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{email_msg}"}
     end
     
@@ -41,6 +50,7 @@ class UploadController < ApplicationController
   
   def exec_query(id, data, opts)
     working_dir = Rails.root
+<<<<<<< HEAD
     config = CONFIG['script']
     File.open(CONFIG['script']['input_dir'] + "/input-#{id}.txt",'w') do |file|
       file.write(opts[:isFile] ? data.read : data)
@@ -54,6 +64,7 @@ class UploadController < ApplicationController
         NotificationMailer.job_done(submission).deliver unless submission.email.empty?
     end
 
+=======
     File.open(CONFIG['script']['input'],'w') do |file|
       file.write(opts[:isFile] ? data.read : data)
     end
@@ -65,6 +76,7 @@ class UploadController < ApplicationController
     submission.update(done: true)
     NotificationMailer.job_done(submission).deliver unless submission.email.empty?
    
+>>>>>>> 18580dc0a8db62f8542224ce6184f09f796d93b1
   end
 
   def add_headers
