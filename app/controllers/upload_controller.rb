@@ -26,10 +26,12 @@ class UploadController < ApplicationController
     if inputData
       submission = Submission.create(done: false, email: email)
       t = Thread.new { exec_query(submission.id, inputData, {isFile: false}) }
+      t.join
       render json: {id: submission.id, msg:"Submission: #{submission.id} created #{email_msg} url: #{result_path(submission, only_path: false)}"}
     elsif inputFile
       submission = Submission.create(done: false, email: email)
       t = Thread.new { exec_query(submission.id, inputFile, {isFile: true}) }
+      t.join
       render json: {id: submission.id, msg: "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{email_msg}"}
     end
     
@@ -52,6 +54,19 @@ class UploadController < ApplicationController
         NotificationMailer.job_done(submission).deliver unless submission.email.empty?
     end
 
+=======
+    File.open(CONFIG['script']['input'],'w') do |file|
+      file.write(opts[:isFile] ? data.read : data)
+    end
+   
+    results_dir = working_dir.join('public', 'results')
+    `perl #{CONFIG['script']['path']}; cp #{CONFIG['script']['output']} #{results_dir}/result-#{id}.json`
+    
+    submission = Submission.find(id)
+    submission.update(done: true)
+    NotificationMailer.job_done(submission).deliver unless submission.email.empty?
+   
+>>>>>>> 18580dc0a8db62f8542224ce6184f09f796d93b1
   end
 
   def add_headers
