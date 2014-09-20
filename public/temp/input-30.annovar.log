@@ -1,0 +1,11 @@
+ANNOVAR Version:
+	$Date: 2014-07-14 03:13:01 -0700 (Mon, 14 Jul 2014) $
+ANNOVAR Information:
+	For questions, comments, documentation, bug reports and program update, please visit http://www.openbioinformatics.org/annovar/
+ANNOVAR Command:
+	/home/cocodong/www/iCAGES/icages/bin/annovar/annotate_variation.pl -filter -out /home/cocodong/www/iCAGES/public/temp/input-30.annovar -build hg19 -dbtype iCAGES /home/cocodong/www/iCAGES/public/temp/input-30.annovar /home/cocodong/www/iCAGES/icages/db/
+ANNOVAR Started:
+	Fri Sep 19 22:53:53 2014
+NOTICE: Variants matching filtering criteria are written to /home/cocodong/www/iCAGES/public/temp/input-30.annovar.hg19_iCAGES_dropped, other variants are written to /home/cocodong/www/iCAGES/public/temp/input-30.annovar.hg19_iCAGES_filtered
+NOTICE: Processing next batch with 126 unique variants in 126 input lines
+NOTICE: Scanning filter database /home/cocodong/www/iCAGES/icages/db/hg19_iCAGES.txt...Done

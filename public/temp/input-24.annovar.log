@@ -1,0 +1,14 @@
+ANNOVAR Version:
+	$Date: 2014-07-14 03:13:01 -0700 (Mon, 14 Jul 2014) $
+ANNOVAR Information:
+	For questions, comments, documentation, bug reports and program update, please visit http://www.openbioinformatics.org/annovar/
+ANNOVAR Command:
+	/home/cocodong/www/iCAGES/icages/bin/annovar/annotate_variation.pl -out /home/cocodong/www/iCAGES/public/temp/input-24.annovar -build hg19 /home/cocodong/www/iCAGES/public/temp/input-24.annovar /home/cocodong/www/iCAGES/icages/db/
+ANNOVAR Started:
+	Fri Sep 19 22:36:25 2014
+NOTICE: The --geneanno operation is set to ON by default
+NOTICE: Reading gene annotation from /home/cocodong/www/iCAGES/icages/db/hg19_refGene.txt ... Done with 48660 transcripts (including 10375 without coding sequence annotation) for 25588 unique genes
+NOTICE: Reading FASTA sequences from /home/cocodong/www/iCAGES/icages/db/hg19_refGeneMrna.fa ... Done with 214 sequences
+WARNING: A total of 333 sequences will be ignored due to lack of correct ORF annotation
+NOTICE: Finished gene-based annotation on 126 genetic variants in /home/cocodong/www/iCAGES/public/temp/input-24.annovar
+NOTICE: Output files were written to /home/cocodong/www/iCAGES/public/temp/input-24.annovar.variant_function, /home/cocodong/www/iCAGES/public/temp/input-24.annovar.exonic_variant_function

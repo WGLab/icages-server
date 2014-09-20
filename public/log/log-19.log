@@ -1,0 +1,28 @@
+iCAGES: start runing iCAGES packge at Fri Sep 19 00:26:49 2014
+iCAGES: start input file format checking and converting format if needed
+iCAGES: start to run ANNOVAR index function to fetch radial SVM score for each mutation
+iCAGES: start annotating each mutaiton using ANNOVAR
+iCAGES: start loading Cancer Gene Census data
+iCAGES: start loading KEGG Cancer Pathway gene data
+iCAGES: start extracting Phenolyzer score for each gene
+ANNOVAR Version:
+	$Date: 2014-07-14 03:13:01 -0700 (Mon, 14 Jul 2014) $
+ANNOVAR Information:
+	For questions, comments, documentation, bug reports and program update, please visit http://www.openbioinformatics.org/annovar/
+ANNOVAR Command:
+	/home/cocodong/www/iCAGES/icages/bin/annovar/annotate_variation.pl -out /home/cocodong/www/iCAGES/public/temp/input-19.annovar -build hg19 /home/cocodong/www/iCAGES/public/temp/input-19.annovar /home/cocodong/www/iCAGES/icages/db/
+ANNOVAR Started:
+	Fri Sep 19 00:37:01 2014
+NOTICE: The --geneanno operation is set to ON by default
+NOTICE: Reading gene annotation from /home/cocodong/www/iCAGES/icages/db/hg19_refGene.txt ... Done with 48660 transcripts (including 10375 without coding sequence annotation) for 25588 unique genes
+NOTICE: Finished gene-based annotation on 1479 genetic variants in /home/cocodong/www/iCAGES/public/temp/input-19.annovar (including 1479 with invalid format written to /home/cocodong/www/iCAGES/public/temp/input-19.annovar.invalid_input)
+NOTICE: Output files were written to /home/cocodong/www/iCAGES/public/temp/input-19.annovar.variant_function, /home/cocodong/www/iCAGES/public/temp/input-19.annovar.exonic_variant_function
+iCAGES: start extracting radial SVM score for each mutation from ANNOVAR OUTPUT
+iCAGES: start parsing gene annotation files generated from ANNOVAR output
+iCAGES: start multiplying radial SVM score from each mutation with Phenolyzer score
+iCAGES: start filtering genes whose most deleterious mutation ranks above top 80 percent
+iCAGES: start generating output
+WARNING: not enough mutations for analysis, please make sure there are more than 1 non-synonymous mutations
+WARNING: no genes is given iCAGES score
+SUMMARY: your data contain  missense mutations harbored in 0 genes. Among these genes,  are predicted to be cancer driver genes,  belong to Cancer Gene Census and  belong to KEGG cancer gene pathway
+iCAGES: finished at Fri Sep 19 00:37:09 2014

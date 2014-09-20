@@ -1,0 +1,1 @@
+GeneName	MutationSyntax	ProteinSyntax	RadialSVMScore	PhenolyzerSocre	iCAGESScore	Category	URL	Driver?

@@ -1,0 +1,886 @@
+[
+{
+"gene": "ARAF",
+"mutation":[{
+"mutationSyntax":"c.641C>G", 
+ "proteinSyntax":"p.S214C", 
+ "radial": 0.932}],
+"phenolyzer":0.2617,
+"icages":1,
+"category":"kegg cancer pathway",
+"url":"http://www.genome.jp/dbget-bin/www_bget?hsa:369",
+"driver":true
+},{
+"gene": "IFNA7",
+"mutation":[{
+"mutationSyntax":"c.334C>A", 
+ "proteinSyntax":"p.L112I", 
+ "radial": 1.079}],
+"phenolyzer":0.1651,
+"icages":0.805094510556977,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=IFNA7&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "NCOA2",
+"mutation":[{
+"mutationSyntax":"c.1633G>T", 
+ "proteinSyntax":"p.G545W", 
+ "radial": 0.961}],
+"phenolyzer":0.1841,
+"icages":0.801470346988766,
+"category":"cancer gene census",
+"url":"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=NCOA2",
+"driver":true
+},{
+"gene": "EXT1",
+"mutation":[{
+"mutationSyntax":"c.1813C>T", 
+ "proteinSyntax":"p.R605W", 
+ "radial": 0.939}],
+"phenolyzer":0.1795,
+"icages":0.776664328506183,
+"category":"cancer gene census",
+"url":"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=EXT1",
+"driver":true
+},{
+"gene": "DICER1",
+"mutation":[{
+"mutationSyntax":"c.5515C>T", 
+ "proteinSyntax":"p.R1839W", 
+ "radial": 1.065}],
+"phenolyzer":0.1575,
+"icages":0.774254739872755,
+"category":"cancer gene census",
+"url":"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=DICER1",
+"driver":true
+},{
+"gene": "COL3A1",
+"mutation":[{
+"mutationSyntax":"c.1978G>T", 
+ "proteinSyntax":"p.G660C", 
+ "radial": 0.952}],
+"phenolyzer":0.1371,
+"icages":0.663946261846292,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=COL3A1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "TJP1",
+"mutation":[{
+"mutationSyntax":"c.683T>C", 
+ "proteinSyntax":"p.V228A", 
+ "radial": 0.931}],
+"phenolyzer":0.1336,
+"icages":0.645755497766922,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=TJP1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "CUL5",
+"mutation":[{
+"mutationSyntax":"c.1630T>G", 
+ "proteinSyntax":"p.F544V", 
+ "radial": 0.950}],
+"phenolyzer":0.1258,
+"icages":0.631316934437761,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CUL5&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "NUP210",
+"mutation":[{
+"mutationSyntax":"c.1653G>T", 
+ "proteinSyntax":"p.Q551H", 
+ "radial": 0.891}],
+"phenolyzer":0.1296,
+"icages":0.619353756627221,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=NUP210&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "DACT1",
+"mutation":[{
+"mutationSyntax":"c.923G>C", 
+ "proteinSyntax":"p.G308A", 
+ "radial": 1.203}],
+"phenolyzer":0.08088,
+"icages":0.565486380207775,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=DACT1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "PHKA1",
+"mutation":[{
+"mutationSyntax":"c.3404T>A", 
+ "proteinSyntax":"p.I1135N", 
+ "radial": 0.944}],
+"phenolyzer":0.09388,
+"icages":0.539772483262473,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=PHKA1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "LRP12",
+"mutation":[{
+"mutationSyntax":"c.2050G>T", 
+ "proteinSyntax":"p.A684S", 
+ "radial": 1.021}],
+"phenolyzer":0.08353,
+"icages":0.52987749123827,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=LRP12&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "RXFP2",
+"mutation":[{
+"mutationSyntax":"c.458C>A", 
+ "proteinSyntax":"p.P153Q", 
+ "radial": 0.927}],
+"phenolyzer":0.09008,
+"icages":0.524601974042892,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=RXFP2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "BRK1",
+"mutation":[{
+"mutationSyntax":"c.110A>G", 
+ "proteinSyntax":"p.N37S", 
+ "radial": 1.071}],
+"phenolyzer":0.07594,
+"icages":0.518163304253185,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=BRK1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "UBE2A",
+"mutation":[{
+"mutationSyntax":"c.349C>T", 
+ "proteinSyntax":"p.R117C", 
+ "radial": 0.818}],
+"phenolyzer":0.09858,
+"icages":0.516108485311542,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=UBE2A&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "CDH5",
+"mutation":[{
+"mutationSyntax":"c.541C>A", 
+ "proteinSyntax":"p.P181T", 
+ "radial": 0.957}],
+"phenolyzer":0.0821,
+"icages":0.509977104758629,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CDH5&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true
+},{
+"gene": "SLIT2",
+"mutation":[{
+"mutationSyntax":"c.1612A>G", 
+ "proteinSyntax":"p.T538A", 
+ "radial": 1.006}],
+"phenolyzer":0.06845,
+"icages":0.481201340869388,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=SLIT2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "PREX1",
+"mutation":[{
+"mutationSyntax":"c.3063C>G", 
+ "proteinSyntax":"p.C1021W", 
+ "radial": 1.105}],
+"phenolyzer":0.052,
+"icages":0.447411676499003,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=PREX1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ACADVL",
+"mutation":[{
+"mutationSyntax":"c.520A>G", 
+ "proteinSyntax":"p.I174V", 
+ "radial": 1.035}],
+"phenolyzer":0.04772,
+"icages":0.423494212348896,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ACADVL&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "TTN",
+"mutation":[{
+"mutationSyntax":"c.17743G>T", 
+ "proteinSyntax":"p.V5915F", 
+ "radial": 0.936}],
+"phenolyzer":0.04898,
+"icages":0.412987694589472,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=TTN&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "IL20RA",
+"mutation":[{
+"mutationSyntax":"c.577G>A", 
+ "proteinSyntax":"p.D193N", 
+ "radial": 0.979}],
+"phenolyzer":0.04615,
+"icages":0.411018441236817,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=IL20RA&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ZNF189",
+"mutation":[{
+"mutationSyntax":"c.924A>T", 
+ "proteinSyntax":"p.K308N", 
+ "radial": 1.016}],
+"phenolyzer":0.04179,
+"icages":0.402950290838534,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ZNF189&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "GPD2",
+"mutation":[{
+"mutationSyntax":"c.82G>T", 
+ "proteinSyntax":"p.A28S", 
+ "radial": 0.679}],
+"phenolyzer":0.0437,
+"icages":0.365053833855574,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=GPD2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "OR52E4",
+"mutation":[{
+"mutationSyntax":"c.376G>T", 
+ "proteinSyntax":"p.V126F", 
+ "radial": 0.299}],
+"phenolyzer":0.07861,
+"icages":0.346773236281149,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=OR52E4&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "RALGAPA1",
+"mutation":[{
+"mutationSyntax":"c.2641A>G", 
+ "proteinSyntax":"p.M881V", 
+ "radial": 0.169}],
+"phenolyzer":0.1307,
+"icages":0.342576195238208,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=RALGAPA1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "SLC6A1",
+"mutation":[{
+"mutationSyntax":"c.658A>T", 
+ "proteinSyntax":"p.I220F", 
+ "radial": 1.052}],
+"phenolyzer":0.02012,
+"icages":0.339843371996709,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=SLC6A1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "OR52A1",
+"mutation":[{
+"mutationSyntax":"c.863C>A", 
+ "proteinSyntax":"p.P288Q", 
+ "radial": 0.250}],
+"phenolyzer":0.07997,
+"icages":0.336364613617128,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=OR52A1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "SOX6",
+"mutation":[{
+"mutationSyntax":"c.1430G>A", 
+ "proteinSyntax":"p.R477Q", 
+ "radial": 0.966}],
+"phenolyzer":0.01998,
+"icages":0.334314181134498,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=SOX6&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "CDH18",
+"mutation":[{
+"mutationSyntax":"c.1750C>A", 
+ "proteinSyntax":"p.L584I", 
+ "radial": 0.944}],
+"phenolyzer":0.01664,
+"icages":0.323666585368984,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CDH18&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ZNF765",
+"mutation":[{
+"mutationSyntax":"c.1049C>T", 
+ "proteinSyntax":"p.T350I", 
+ "radial": 1.159}],
+"phenolyzer":0.01123,
+"icages":0.315686223427431,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ZNF765&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "MYPN",
+"mutation":[{
+"mutationSyntax":"c.2303A>T", 
+ "proteinSyntax":"p.D768V", 
+ "radial": 0.949}],
+"phenolyzer":0.01117,
+"icages":0.308527877977246,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=MYPN&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "TOMM70A",
+"mutation":[{
+"mutationSyntax":"c.1501A>G", 
+ "proteinSyntax":"p.K501E", 
+ "radial": 0.899}],
+"phenolyzer":0.01089,
+"icages":0.306126528773585,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=TOMM70A&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "IGSF11",
+"mutation":[{
+"mutationSyntax":"c.900C>A", 
+ "proteinSyntax":"p.H300Q", 
+ "radial": 1.143}],
+"phenolyzer":0.007889,
+"icages":0.303835543471454,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=IGSF11&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "RAD54L2",
+"mutation":[{
+"mutationSyntax":"c.3055C>T", 
+ "proteinSyntax":"p.P1019S", 
+ "radial": 0.937}],
+"phenolyzer":0.008767,
+"icages":0.301457229105258,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=RAD54L2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "GALNTL6",
+"mutation":[{
+"mutationSyntax":"c.401T>A", 
+ "proteinSyntax":"p.M134K", 
+ "radial": 0.677}],
+"phenolyzer":0.01202,
+"icages":0.301228602712154,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=GALNTL6&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "CNTLN",
+"mutation":[{
+"mutationSyntax":"c.2659A>G", 
+ "proteinSyntax":"p.I887V", 
+ "radial": 1.068}],
+"phenolyzer":0.006375,
+"icages":0.297289562518585,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CNTLN&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ZC4H2",
+"mutation":[{
+"mutationSyntax":"c.320A>T", 
+ "proteinSyntax":"p.H107L", 
+ "radial": 1.024}],
+"phenolyzer":0.006375,
+"icages":0.296458209982698,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ZC4H2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ZFHX4",
+"mutation":[{
+"mutationSyntax":"c.5755G>C", 
+ "proteinSyntax":"p.E1919Q", 
+ "radial": 0.918},{
+"mutationSyntax":"c.9970C>A", 
+ "proteinSyntax":"p.Q3324K", 
+ "radial": 0.939}],
+"phenolyzer":0.003227,
+"icages":0.294871198003308,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ZFHX4&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "UNC79",
+"mutation":[{
+"mutationSyntax":"c.839A>T", 
+ "proteinSyntax":"p.E280V", 
+ "radial": 0.978}],
+"phenolyzer":0.005707,
+"icages":0.293652790844535,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=UNC79&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "FBLN7",
+"mutation":[{
+"mutationSyntax":"c.1268A>T", 
+ "proteinSyntax":"p.Q423L", 
+ "radial": 1.007}],
+"phenolyzer":0.0043,
+"icages":0.289944021966201,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=FBLN7&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "DRP2",
+"mutation":[{
+"mutationSyntax":"c.2519G>T", 
+ "proteinSyntax":"p.R840L", 
+ "radial": 1.017}],
+"phenolyzer":0.004233,
+"icages":0.289869514403279,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=DRP2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "PKD1L1",
+"mutation":[{
+"mutationSyntax":"c.6776C>A", 
+ "proteinSyntax":"p.A2259E", 
+ "radial": 1.106}],
+"phenolyzer":0.003227,
+"icages":0.287688439537657,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=PKD1L1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "IGSF1",
+"mutation":[{
+"mutationSyntax":"c.1058C>A", 
+ "proteinSyntax":"p.A353E", 
+ "radial": 0.740}],
+"phenolyzer":0.004628,
+"icages":0.287260635303307,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=IGSF1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "TTC29",
+"mutation":[{
+"mutationSyntax":"c.268C>G", 
+ "proteinSyntax":"p.R90G", 
+ "radial": 1.086}],
+"phenolyzer":0.003111,
+"icages":0.287123783709752,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=TTC29&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "FAM171B",
+"mutation":[{
+"mutationSyntax":"c.2202G>T", 
+ "proteinSyntax":"p.K734N", 
+ "radial": 1.037}],
+"phenolyzer":0.003227,
+"icages":0.287028505670639,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=FAM171B&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ASPM",
+"mutation":[{
+"mutationSyntax":"c.5030G>A", 
+ "proteinSyntax":"p.S1677N", 
+ "radial": 0.405}],
+"phenolyzer":0.003518,
+"icages":0.281333195456257,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ASPM&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "DLGAP3",
+"mutation":[{
+"mutationSyntax":"c.2653G>T", 
+ "proteinSyntax":"p.D885Y", 
+ "radial": 0.943}],
+"phenolyzer":0.001359,
+"icages":0.28090861882587,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=DLGAP3&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "DDX4",
+"mutation":[{
+"mutationSyntax":"c.1876C>T", 
+ "proteinSyntax":"p.L626F", 
+ "radial": 1.031}],
+"phenolyzer":0.001122,
+"icages":0.280538867005497,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=DDX4&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ZNF534",
+"mutation":[{
+"mutationSyntax":"c.231C>A", 
+ "proteinSyntax":"p.N77K", 
+ "radial": 0.037}],
+"phenolyzer":0.03089,
+"icages":0.280497812120195,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ZNF534&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "CRISP1",
+"mutation":[{
+"mutationSyntax":"c.452C>G", 
+ "proteinSyntax":"p.S151C", 
+ "radial": 0.195}],
+"phenolyzer":0.004277,
+"icages":0.279582242535084,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CRISP1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "AHNAK2",
+"mutation":[{
+"mutationSyntax":"c.11345G>C", 
+ "proteinSyntax":"p.S3782T", 
+ "radial": 0.542}],
+"phenolyzer":0.001359,
+"icages":0.279293456449383,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=AHNAK2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "DNAH6",
+"mutation":[{
+"mutationSyntax":"c.9437G>T", 
+ "proteinSyntax":"p.S3146I", 
+ "radial": 1.016}],
+"phenolyzer":0.0005621,
+"icages":0.27880298986974,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=DNAH6&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "CCDC60",
+"mutation":[{
+"mutationSyntax":"c.1422G>C", 
+ "proteinSyntax":"p.K474N", 
+ "radial": 1.110}],
+"phenolyzer":0.0003095,
+"icages":0.278128575945862,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CCDC60&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "NACC1",
+"mutation":[{
+"mutationSyntax":"c.1516G>T", 
+ "proteinSyntax":"p.V506L", 
+ "radial": 1.090}],
+"phenolyzer":0.0001988,
+"icages":0.277752606023456,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=NACC1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "CAGE1",
+"mutation":[{
+"mutationSyntax":"c.1972C>G", 
+ "proteinSyntax":"p.L658V", 
+ "radial": 1.112}],
+"phenolyzer":2.322e-05,
+"icages":0.277186896971177,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CAGE1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "PAGE5",
+"mutation":[{
+"mutationSyntax":"c.311G>T", 
+ "proteinSyntax":"p.G104V", 
+ "radial": 0.985}],
+"phenolyzer":"NA",
+"icages":0.277116236168695,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=PAGE5&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "MROH7",
+"mutation":[{
+"mutationSyntax":"c.1063G>T", 
+ "proteinSyntax":"p.V355L", 
+ "radial": 1.114}],
+"phenolyzer":"NA",
+"icages":0.27711356908653,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=MROH7&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "BOD1L1",
+"mutation":[{
+"mutationSyntax":"c.418G>T", 
+ "proteinSyntax":"p.D140Y", 
+ "radial": 0.986}],
+"phenolyzer":"NA",
+"icages":0.277113029535093,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=BOD1L1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "CST8",
+"mutation":[{
+"mutationSyntax":"c.332C>G", 
+ "proteinSyntax":"p.S111C", 
+ "radial": 0.227}],
+"phenolyzer":"NA",
+"icages":0.277111482218568,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CST8&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "MAGEE2",
+"mutation":[{
+"mutationSyntax":"c.286G>C", 
+ "proteinSyntax":"p.V96L", 
+ "radial": 1.149}],
+"phenolyzer":"NA",
+"icages":0.27711127214437,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=MAGEE2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "FOLH1B",
+"mutation":[{
+"mutationSyntax":"c.442A>G", 
+ "proteinSyntax":"p.I148V", 
+ "radial": "NA"}],
+"phenolyzer":0.0001954,
+"icages":0.277110369147497,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=FOLH1B&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "SSPO",
+"mutation":[{
+"mutationSyntax":"c.871C>A", 
+ "proteinSyntax":"p.L291M", 
+ "radial": "NA"}],
+"phenolyzer":0.008048,
+"icages":0.277110369147497,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=SSPO&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "SSX3",
+"mutation":[{
+"mutationSyntax":"c.224G>T", 
+ "proteinSyntax":"p.R75L", 
+ "radial": -0.927}],
+"phenolyzer":"NA",
+"icages":0.27710997751393,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=SSX3&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "CYLC2",
+"mutation":[{
+"mutationSyntax":"c.360C>A", 
+ "proteinSyntax":"p.D120E", 
+ "radial": -0.591}],
+"phenolyzer":"NA",
+"icages":0.277109046329298,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=CYLC2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "PRAMEF2",
+"mutation":[{
+"mutationSyntax":"c.580T>C", 
+ "proteinSyntax":"p.Y194H", 
+ "radial": -0.770}],
+"phenolyzer":"NA",
+"icages":0.277108239755415,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=PRAMEF2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "VN1R4",
+"mutation":[{
+"mutationSyntax":"c.215G>C", 
+ "proteinSyntax":"p.R72T", 
+ "radial": -0.983}],
+"phenolyzer":"NA",
+"icages":0.277107458338651,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=VN1R4&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "PDILT",
+"mutation":[{
+"mutationSyntax":"c.1209C>A", 
+ "proteinSyntax":"p.D403E", 
+ "radial": -0.472}],
+"phenolyzer":0.0003344,
+"icages":0.276642568705656,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=PDILT&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "TTC40",
+"mutation":[{
+"mutationSyntax":"c.6603G>T", 
+ "proteinSyntax":"p.Q2201H", 
+ "radial": -0.449}],
+"phenolyzer":0.001752,
+"icages":0.274778883195087,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=TTC40&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "SV2C",
+"mutation":[{
+"mutationSyntax":"c.1645C>A", 
+ "proteinSyntax":"p.P549T", 
+ "radial": -0.041}],
+"phenolyzer":0.04631,
+"icages":0.271482927531044,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=SV2C&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "PCDH15",
+"mutation":[{
+"mutationSyntax":"c.563T>G", 
+ "proteinSyntax":"p.L188W", 
+ "radial": -0.166}],
+"phenolyzer":0.01405,
+"icages":0.270197843231452,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=PCDH15&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ANKRD30A",
+"mutation":[{
+"mutationSyntax":"c.2618G>A", 
+ "proteinSyntax":"p.R873H", 
+ "radial": -0.360}],
+"phenolyzer":0.007728,
+"icages":0.268864774626848,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ANKRD30A&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "AUTS2",
+"mutation":[{
+"mutationSyntax":"c.603C>A", 
+ "proteinSyntax":"p.S201R", 
+ "radial": -0.607}],
+"phenolyzer":0.004609,
+"icages":0.268818589362795,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=AUTS2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "USH2A",
+"mutation":[{
+"mutationSyntax":"c.3569C>A", 
+ "proteinSyntax":"p.A1190D", 
+ "radial": -1.004}],
+"phenolyzer":0.003279,
+"icages":0.267353117863946,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=USH2A&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "PPIL6",
+"mutation":[{
+"mutationSyntax":"c.397G>A", 
+ "proteinSyntax":"p.A133T", 
+ "radial": -0.794}],
+"phenolyzer":0.004277,
+"icages":0.267045407764192,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=PPIL6&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "OR4S1",
+"mutation":[{
+"mutationSyntax":"c.500G>C", 
+ "proteinSyntax":"p.C167S", 
+ "radial": -0.053}],
+"phenolyzer":0.07863,
+"icages":0.26475896007608,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=OR4S1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "GPA33",
+"mutation":[{
+"mutationSyntax":"c.5T>A", 
+ "proteinSyntax":"p.V2E", 
+ "radial": -1.034}],
+"phenolyzer":0.007294,
+"icages":0.254757222979035,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=GPA33&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "ZIM2",
+"mutation":[{
+"mutationSyntax":"c.806T>A", 
+ "proteinSyntax":"p.I269K", 
+ "radial": -0.677}],
+"phenolyzer":0.03089,
+"icages":0.215129317998391,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=ZIM2&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "LCT",
+"mutation":[{
+"mutationSyntax":"c.5015A>C", 
+ "proteinSyntax":"p.N1672T", 
+ "radial": -0.454}],
+"phenolyzer":0.0729,
+"icages":0.179017883089545,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=LCT&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "OR4L1",
+"mutation":[{
+"mutationSyntax":"c.904C>T", 
+ "proteinSyntax":"p.R302W", 
+ "radial": -0.945}],
+"phenolyzer":0.07861,
+"icages":0.0569384312167216,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=OR4L1&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+},{
+"gene": "SOST",
+"mutation":[{
+"mutationSyntax":"c.56G>A", 
+ "proteinSyntax":"p.R19H", 
+ "radial": -0.971}],
+"phenolyzer":0.09629,
+"icages":0,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=SOST&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":false
+}
+]

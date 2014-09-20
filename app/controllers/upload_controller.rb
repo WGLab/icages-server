@@ -26,12 +26,12 @@ class UploadController < ApplicationController
     if inputData
       submission = Submission.create(done: false, email: email)
       t = Thread.new { exec_query(submission.id, inputData, {isFile: false}) }
-      t.join
+      #t.join
       render json: {id: submission.id, msg:"Submission: #{submission.id} created #{email_msg} url: #{result_path(submission, only_path: false)}"}
     elsif inputFile
       submission = Submission.create(done: false, email: email)
       t = Thread.new { exec_query(submission.id, inputFile, {isFile: true}) }
-      t.join
+      #t.join
       render json: {id: submission.id, msg: "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{email_msg}"}
     end
     
