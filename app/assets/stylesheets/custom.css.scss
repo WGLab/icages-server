@@ -166,7 +166,7 @@ footer {
         }
     }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
     .navbar.navbar-default.hz-navbar {
         &.hz-navbar-green {
             background-image: linear-gradient(to bottom, #fff 0%, #CDE4C4 100%);
@@ -247,5 +247,5 @@ footer {
     background-image: linear-gradient(to bottom, #dcedf0 0%, #cee2eb 100%);
     background-color: #cee2eb;
 }
-}
+
 

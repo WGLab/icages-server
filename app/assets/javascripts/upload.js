@@ -1,6 +1,6 @@
  (function() {
      function goodDataFormat(val) {
-         return /^(\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]+)*\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]*$/g.test(val) || /^[\n]*##fileformat=VCFv[\S\n\s]+$/g.test(val);
+         return /^(\t*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]+)*\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]*$/g.test(val) || /^[\n]*##fileformat=VCFv[\S\n\s]+$/g.test(val);
      }
 
      function goodEmailFormat(val) {
