@@ -281,6 +281,7 @@
         icages: "iCAGES score",
         category: "Category",
         url: "URL",
+        driver: "Whether this is a driver gene",
     };
 
     function generateTable(data) {
