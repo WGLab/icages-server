@@ -274,8 +274,8 @@
     var colNameMap = {
         gene: "Gene Name",
         mutation: "Mutation",
-        mutation_syntax: "Mutation Syntax",
-        protein_syntax: "Protein Syntax",
+        mutationSyntax: "Mutation Syntax",
+        proteinSyntax: "Protein Syntax",
         radial: "Radial SVM score",
         phenolyzer: "Phenolyzer score",
         icages: "iCAGES score",
