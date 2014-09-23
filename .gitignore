@@ -32,7 +32,7 @@
 *.swo
 *.*~
 *~
-
+.DS_Store
 # icages config file
 /icages_config.json
 
