@@ -103,7 +103,7 @@
                 if (d.gene)
                     return d.gene;
                 else
-                    return "";
+                    return d.drug;
             });
 
         node.selectAll("circle").transition()
