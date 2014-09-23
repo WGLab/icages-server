@@ -417,7 +417,7 @@
             rowspan = gene[comp_head].length;
 
             for (var f in gene) {
-		if ( f === "children" || f === "url" ) continue;
+		if ( f === "url" ) continue;
                 if (f === comp_head) {
                     for (var i = 0; i < gene[f].length; i++) {
                         if (i === 0) {
