@@ -468,7 +468,7 @@ for(0..$#drugs){
 foreach my $key (sort keys %drug){
     foreach my $drugkey (sort keys %{$drug{$key}}){
         $iDrug++;
-        $drug{$key}{$drugkey} = (($drug{$key}{$drugkey} - $minscore)/($maxzscore-$minzscore)) * $icages{$key}[0];
+        $drug{$key}{$drugkey} = (($drug{$key}{$drugkey} - $minzscore)/($maxzscore-$minzscore)) * $icages{$key}[0];
     }
 }
 
