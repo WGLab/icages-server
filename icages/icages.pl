@@ -673,6 +673,7 @@ sub processArguments {
         $icagesLocation = $1;
         $DBLocation = $icagesLocation. "db/";
         
+        
         ######################## databases #######################
         $huiDB = $DBLocation . "phenolyzer.score";
         $cgcDB = $DBLocation . "cgc.gene";
@@ -788,21 +789,7 @@ sub processArguments {
         $icages = $snpFile . ".hg19_iCAGES_dropped";                                                    #radial SVM score for each mutation
         $cnv = $cnvFile . ".hg19_cnv";
         $annovarLog = $outputFile .".log";
-        
-        ######################## databases #######################
-        $huiDB = $DBLocation . "phenolyzer.score";
-        $cgcDB = $DBLocation . "cgc.gene";
-        $keggDB = $DBLocation . "kegg.gene";
-        $icagesDB = $DBLocation . "hg19_iCAGES.txt";
-        $icagesIndex = $DBLocation . "hg19_iCAGES.idx";
-        $refGeneDB = $DBLocation . "hg19_refGene.txt";
-        $refGeneIndex = $DBLocation . "hg19_refGeneMrna.fa";
-        $dbsnpDB = $DBLocation . "hg19_snp138.txt";
-        $dbsnpIndex = $DBLocation . "hg19_snp138.txt.idx";
-        $cnvDB = $DBLocation . "hg19_cnv.txt";
-        $suppressorDB = $DBLocation . "suppressor.gene";
-        $oncogeneDB = $DBLocation . "oncogene.gene";
-        $zscoreDB = $DBLocation . "drug.zscore";
+
 
         
         
