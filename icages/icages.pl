@@ -205,14 +205,13 @@ close ONC;
 push (@log, "iCAGES: start extracting oncogenes");
 print "NOTICE: start extracting oncogenes\n";
 
-$minzscore = 10;
+
 
 while(<ZSCORE>){
     chomp;
     my @line;
     @line = split(/\t/, $_);
     $zscore{$line[0]} = $line[1];
-    $minzscore = min($line[1], $minzscore);
 }
 
 
@@ -445,6 +444,7 @@ $othergenes = join(",", @othergenes);
 
 ######################### get drugs zscores #######################
 $maxzscore = 0;
+$minzscore = 10;
 
 $iDrug = 0;
 
@@ -455,11 +455,12 @@ for(0..$#drugs){
         my @line = split(/\t/, $_);
         my $drugscore ;
         if(exists $zscore{$line[1]}){
-            $drugscore = $zscore{$line[1]};
+            $drugscore = $zscore{$line[1]}  * $icages{$line[0]}[0];
             $drug{$line[0]}{$line[1]} = $drugscore;
-            $maxzscore = max($maxzscore, $drugscore)
+            $maxzscore = max($maxzscore, $drugscore);
+            $maxzscore = min($minzscore, $drugscore);
         }else{
-            $drug{$line[0]}{$line[1]} = $minzscore;
+            $drug{$line[0]}{$line[1]} = 0;
         }
     }
 }
@@ -468,7 +469,7 @@ for(0..$#drugs){
 foreach my $key (sort keys %drug){
     foreach my $drugkey (sort keys %{$drug{$key}}){
         $iDrug++;
-        $drug{$key}{$drugkey} = (($drug{$key}{$drugkey} - $minzscore)/($maxzscore-$minzscore)) * $icages{$key}[0];
+        $drug{$key}{$drugkey} = (($drug{$key}{$drugkey} - $minzscore)/($maxzscore-$minzscore));
     }
 }
 
