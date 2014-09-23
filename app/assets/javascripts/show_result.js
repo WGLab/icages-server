@@ -1,8 +1,8 @@
 (function(id) {
 
     var colorScale = d3.scale.ordinal()
-        .domain(["neither", "cancer gene census", "kegg cancer pathway"])
-        .range(['#5cb85c', '#d62728', '#1f77b4']);
+        .domain(["neither", "cancer gene census", "kegg cancer pathway", "drug"])
+        .range(['#5cb85c', '#d62728', '#1f77b4', "rgb(226, 172, 158)"]);
 
     function plotBubble(data) {
         var width = 960,
@@ -16,7 +16,7 @@
             node, clusters = {};
 
         m = 0;
-        nodes = $.extend(true, [], data);
+        nodes = data;
         for (var n in nodes) {
             if (clusters[nodes[n].category] === undefined) {
                 clusters[nodes[n].category] = null;
@@ -25,17 +25,27 @@
         }
 
 
+        var links = d3.layout.tree().links(nodes);
+
+        nodes = flatten(nodes);
+
         nodes.map(function(d, i) {
-            d.x = Math.cos(i / m * 2 * Math.PI) * 200 + width / 2 + Math.random();
-            d.y = Math.sin(i / m * 2 * Math.PI) * 200 + height / 2 + Math.random();
-            var r = Math.round(d.icages * 60);
-            d.radius = r;
-            if (clusters[d.category] === null || r > clusters[d.category].radius) clusters[d.category] = d;
+            //d.x = Math.cos(i / m * 2 * Math.PI) * 200 + width / 2 + Math.random();
+            //d.y = Math.sin(i / m * 2 * Math.PI) * 200 + height / 2 + Math.random();
+            if (d.category === undefined) {
+                d.radius = Math.round(d.score * 40);
+            } else {
+                d.radius = Math.round(d.icages * 60);
+                if (clusters[d.category] === null || d.radius > clusters[d.category].radius) clusters[d.category] = d;
+            }
+            d.radius = d.radius < 4 ? 4 : d.radius;
             return d;
         });
 
         var force = d3.layout.force()
             .nodes(nodes)
+            .links(links)
+            .linkDistance(100)
             .size([width, height])
             .gravity(.02)
             .charge(0)
@@ -45,6 +55,24 @@
         var svg = d3.select("#bubble_chart > section").append("svg")
             .attr("width", width)
             .attr("height", height);
+
+        link = svg.selectAll("line")
+            .data(links)
+            .enter().append("line")
+            .attr("class", "link")
+            .attr("x1", function(d) {
+                return d.source.x;
+            })
+            .attr("y1", function(d) {
+                return d.source.y;
+            })
+            .attr("x2", function(d) {
+                return d.target.x;
+            })
+            .attr("y2", function(d) {
+                return d.target.y;
+            });
+
 
         node = svg.selectAll(".node")
             .data(nodes)
@@ -56,7 +84,12 @@
 
         node.append("circle")
             .style("fill", function(d) {
-                return colorScale(d.category);
+                if (d.category) {
+                    return colorScale(d.category);
+                } else {
+                    return colorScale("drug");
+                }
+
             });
 
         node.append("text")
@@ -67,7 +100,10 @@
             .style("-ms-user-select", "none")
             .style("cursor", "default")
             .text(function(d) {
-                return d.gene;
+                if (d.gene)
+                    return d.gene;
+                else
+                    return "";
             });
 
         node.selectAll("circle").transition()
@@ -84,16 +120,31 @@
 
         function tick(e) {
             node
-                .each(cluster(10 * e.alpha * e.alpha))
+                .each(cluster(5 * e.alpha * e.alpha))
                 .each(collide(.5))
                 .attr("transform", function(d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 });
+
+            link
+                .attr("x1", function(d) {
+                    return d.source.x;
+                })
+                .attr("y1", function(d) {
+                    return d.source.y;
+                })
+                .attr("x2", function(d) {
+                    return d.target.x;
+                })
+                .attr("y2", function(d) {
+                    return d.target.y;
+                })
         }
 
         // Move d to be adjacent to the cluster node
         function cluster(alpha) {
             return function(d) {
+                if (d.category === undefined) return;
                 var cluster = clusters[d.category];
                 if (cluster === d) return;
                 var x = d.x - cluster.x,
@@ -136,6 +187,22 @@
                     return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
                 });
             };
+        }
+
+        function flatten(arr) {
+            var nodes = [];
+
+            function add_node(as) {
+                as.forEach(function(d) {
+                    if (d.children) {
+                        add_node(d.children);
+                    }
+                    nodes.push(d);
+                })
+            }
+
+            add_node(arr);
+            return nodes;
         }
     }
 
@@ -274,14 +341,15 @@
     var colNameMap = {
         gene: "Gene Name",
         mutation: "Mutation",
-        mutationSyntax: "Mutation Syntax",
-        proteinSyntax: "Protein Syntax",
+        mutation_syntax: "Mutation Syntax",
+        protein_syntax: "Protein Syntax",
         radial: "Radial SVM score",
         phenolyzer: "Phenolyzer score",
         icages: "iCAGES score",
         category: "Category",
         url: "URL",
     };
+
 
     function generateTable(data) {
         var datum = data[0];
@@ -327,7 +395,7 @@
         for (var i in subheads) {
             tr.append($('<th></th>', {
                 html: colNameMap[subheads[i]]
-            }))
+            }));
         }
 
         thead.append(tr);
@@ -344,6 +412,7 @@
         for (var g in data) {
             gene = data[g];
             tr = $('<tr></tr>');
+
             tbody.append(tr);
             rowspan = gene[comp_head].length;
 
@@ -366,7 +435,7 @@
                             tbody.append(tr_2);
                         }
                     }
-                } else if (typeof gene[f] === "boolean" || f === "url" ) {
+                } else if (typeof gene[f] === "boolean" || f === "url") {
                     continue;
                 } else {
                     tr.append($('<td></td>', {
@@ -379,7 +448,8 @@
                 }
             }
         }
-        
+
+
         var tb_clone = $($('#summary_table')[0].cloneNode());
         tb_clone.attr("id", "header_clone").css({
             position: "fixed",
@@ -405,17 +475,24 @@
         });
     }
 
+    function generateLogInfo(log) {
+        var keys = Object.keys(log);
+        $(".log-info > li").each(function(i) {
+            $("span", this).html(log[keys[i]]);
+        });
+    }
 
     // Main logic
     // should be ../results/result-" + id + ".json on server
-    d3.json("../results/result-" + id + ".json", function(error, result) {
-        var plotData = result.filter(function(d) {
+    d3.json("mocking.json", function(error, result) {
+        var plotData = result.output.filter(function(d) {
             return d.driver;
         })
         plotBubble(plotData);
         plotBar(plotData);
-        generateTable(result);
+        generateLogInfo(result.log);
+        generateTable(result.output);
+
     });
 
-})(SUBMISSION_ID);
-
+})();
