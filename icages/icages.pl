@@ -212,6 +212,7 @@ while(<ZSCORE>){
     my @line;
     @line = split(/\t/, $_);
     $zscore{$line[0]} = $line[1];
+    print "$line[0]:$zscore{$line[0]}\n";
     $minzscore = min($line[1], $minzscore);
 }
 
@@ -455,6 +456,7 @@ for(0..$#drugs){
         my @line = split(/\t/, $_);
         if(exists $zscore{$line[1]}){
             $drug{$line[0]}{$line[1]} = $zscore{$line[1]};
+            print "$zscore{$line[1]}\n";
             $maxzscore = max($maxzscore, $zscore{$line[1]})
         }else{
             $drug{$line[0]}{$line[1]} = $minzscore;
@@ -479,7 +481,8 @@ foreach my $key (sort keys %drug){
 
 
 
-
+close DRUGOUT;
+close DRUG;
 
 
 
