@@ -558,7 +558,7 @@ if($maxGene-$minGene > 0){
         ############ loop to get information for each drug ###############
         
         $drugPrintJSONInfor = "[\n";
-        foreach my $drugkey (sort { $drug{$b} <=> $drug{$a} } keys %{$drug{$key}}){
+        foreach my $drugkey (sort { $drug{$key}{$b} <=> $drug{$key}{$a} } keys %{$drug{$key}}){
             $iDrug++;
             my $tempinfo;
             if($iDrug < $drugCountEachGene){
@@ -633,12 +633,12 @@ print "NOTICE: finished at $nowString\n";
 ######################################################################################################################################
 
     print JSON "\"log\":{\n";
-    print JSON "\"genecount\":$iGene\n";
-    print JSON "\"drivercount\":$iDriver\n";
-    print JSON "\"cgccount\":$iCgc\n";
-    print JSON "\"keggcount\":$iCgc\n";
-    print JSON "\"missensecount\":$iCgc\n";
-    print JSON "\"structuralcount\":$iCnv\n";
+    print JSON "\"genecount\":$iGene,\n";
+    print JSON "\"drivercount\":$iDriver,\n";
+    print JSON "\"cgccount\":$iCgc,\n";
+    print JSON "\"keggcount\":$iKegg,\n";
+    print JSON "\"missensecount\":$iMissense,\n";
+    print JSON "\"structuralcount\":$iCnv,\n";
     print JSON "\"drugcount\":$iDrug\n";
     print JSON "}\n}\n";
 
