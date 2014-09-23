@@ -455,7 +455,7 @@ for(0..$#drugs){
         my @line = split(/\t/, $_);
         my $drugscore ;
         if(exists $zscore{$line[1]}){
-            $drugscore = $zscore{$line[1]}  * ($icages{$key}[0] - $minGene)/($maxGene-$minGene);
+            $drugscore = $zscore{$line[1]}  * ($icages{$line[0]}[0] - $minGene)/($maxGene-$minGene);
             $drug{$line[0]}{$line[1]} = $drugscore;
             $maxzscore = max($maxzscore, $drugscore);
             $maxzscore = min($minzscore, $drugscore);
