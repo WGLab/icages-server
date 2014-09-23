@@ -188,6 +188,7 @@ while(<SUP>){
     $sup{$_} = 1;
 }
 
+close SUP;
 
 ################### oncogene #######################
 push (@log, "iCAGES: start extracting oncogenes");
@@ -198,7 +199,7 @@ while(<ONC>){
     $onc{$_} = 1;
 }
 
-
+close ONC;
 
 ################### oncogene #######################
 push (@log, "iCAGES: start extracting oncogenes");
@@ -216,7 +217,7 @@ while(<ZSCORE>){
 
 
 
-
+close ZSCORE;
 
 ######################################################################################################################################
 ################################################ processing ANNVOAR output ###########################################################
@@ -741,6 +742,7 @@ sub processArguments {
         if(defined $id){
             $inputFile = $inputLocation . "/input-". $id . ".txt";
             $txt = $outputLocation . "/result-". $id . ".txt";
+            $json = $outputLocation . "/result-". $id . ".json";
             $log = $logLocation . "/log-" . $id . ".log";
             $drug = $outputLocation . "/drug-". $id . ".txt";
             $suppressordrugs = $tempLocation . "/suppressordrugs-" . $id . ".drug";
@@ -750,6 +752,7 @@ sub processArguments {
         }else{
             $inputFile = $ARGV[0];
             $txt = $ARGV[0] . ".result.txt";
+            $json = $ARGV[0] . ".result.json";
             $log = $ARGV[0] . ".log";
             $drug = $ARGV[0] . ".drug.txt";
             $suppressordrugs = $ARGV[0] . ".suppressordrugs.drug";
