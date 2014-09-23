@@ -438,9 +438,9 @@ print "NOTICE: start getting list of drugs for predicted cancer driver genes\n";
 $suppressors = join(",", @suppressors);
 $oncogenes = join(",", @oncogenes);
 $othergenes = join(",", @othergenes);
-!system("$callDgidb --genes='$suppressors' --interaction_type='activator' --source_trust_levels='Expert curated' --output='$suppressordrugs'") or die "ERROR: cannot get drugs\n";
-!system("$callDgidb --genes='$oncogenes' --interaction_type='inhibitor' --source_trust_levels='Expert curated' --output='$oncogenedrugs'") or die "ERROR: cannot get drugs\n";
-!system("$callDgidb --genes='$othergenes' --interaction_type='activator,inhibitor' --source_trust_levels='Expert curated' --output='$otherdrugs'") or die "ERROR: cannot get drugs\n";
+!system("$callDgidb --genes='$suppressors' --interaction_type='activator,other/unknown,n/a,inducer,stimulator' --source_trust_levels='Expert curated' --output='$suppressordrugs'") or die "ERROR: cannot get drugs\n";
+!system("$callDgidb --genes='$oncogenes' --interaction_type='inhibitor,suppressor,antibody,antagonist,blocker,other/unknown,n/a' --source_trust_levels='Expert curated' --output='$oncogenedrugs'") or die "ERROR: cannot get drugs\n";
+!system("$callDgidb --genes='$othergenes' --interaction_type='inhibitor,suppressor,antibody,antagonist,blocker,activator,other/unknown,n/a,inducer,stimulator' --source_trust_levels='Expert curated' --output='$otherdrugs'") or die "ERROR: cannot get drugs\n";
 
 
 ######################### get drugs zscores #######################
