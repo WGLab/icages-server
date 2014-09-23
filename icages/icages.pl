@@ -458,7 +458,7 @@ for(0..$#drugs){
             $drugscore = $zscore{$line[1]}  * ($icages{$line[0]}[0] - $minGene)/($maxGene-$minGene);
             $drug{$line[0]}{$line[1]} = $drugscore;
             $maxzscore = max($maxzscore, $drugscore);
-            $maxzscore = min($minzscore, $drugscore);
+            $minzscore = min($minzscore, $drugscore);
         }else{
             $drug{$line[0]}{$line[1]} = 0;
         }
@@ -469,7 +469,7 @@ for(0..$#drugs){
 foreach my $key (sort keys %drug){
     foreach my $drugkey (sort keys %{$drug{$key}}){
         $iDrug++;
-        $drug{$key}{$drugkey} = (($drug{$key}{$drugkey} - $minzscore)/($maxzscore-$minzscore));
+        $drug{$key}{$drugkey} = ($drug{$key}{$drugkey} - $minzscore)/($maxzscore-$minzscore);
     }
 }
 
