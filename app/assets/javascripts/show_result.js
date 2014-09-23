@@ -326,7 +326,7 @@
             .data(data)
             .enter().append("text")
             .attr("x", function(d) {
-                return x(d.children[0].drug);
+                return x(d.icages);
             })
             .attr("y", function(d) {
                 return y(d.gene);
