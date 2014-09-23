@@ -444,7 +444,7 @@ $othergenes = join(",", @othergenes);
 
 
 ######################### get drugs zscores #######################
-$maxzscore = 10;
+$maxzscore = 0;
 
 $iDrug = 0;
 
@@ -457,7 +457,7 @@ for(0..$#drugs){
         if(exists $zscore{$line[1]}){
             $drugscore = $zscore{$line[1]};
             $drug{$line[0]}{$line[1]} = $drugscore;
-            $maxzscore = max($maxzscore, $zscore{$line[1]})
+            $maxzscore = max($maxzscore, $drugscore)
         }else{
             $drug{$line[0]}{$line[1]} = $minzscore;
         }
@@ -468,7 +468,7 @@ for(0..$#drugs){
 foreach my $key (sort keys %drug){
     foreach my $drugkey (sort keys %{$drug{$key}}){
         $iDrug++;
-        $drug{$key}{$drugkey} = (($maxzscore - $drug{$key}{$drugkey})/($maxzscore-$minzscore)) * $icages{$key}[2];
+        $drug{$key}{$drugkey} = (($maxzscore - $drug{$key}{$drugkey})/($maxzscore-$minzscore)) * $icages{$key}[0];
     }
 }
 
@@ -565,9 +565,9 @@ if($maxGene-$minGene > 0){
             $iDrug++;
             my $tempinfo;
             if($iDrug < $drugCountEachGene){
-                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey} \n},\n";
+                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\": $drug{$key}{$drugkey} \n},\n";
             }else{
-                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey} \n}\n";
+                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\": $drug{$key}{$drugkey} \n}\n";
             }
         }
         $drugPrintJSONInfor = $drugPrintJSONInfor . "]\n";
