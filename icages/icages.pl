@@ -673,21 +673,7 @@ sub processArguments {
         $icagesLocation = $1;
         $DBLocation = $icagesLocation. "db/";
         
-        
-        ######################## databases #######################
-        $huiDB = $DBLocation . "phenolyzer.score";
-        $cgcDB = $DBLocation . "cgc.gene";
-        $keggDB = $DBLocation . "kegg.gene";
-        $icagesDB = $DBLocation . "hg19_iCAGES.txt";
-        $icagesIndex = $DBLocation . "hg19_iCAGES.idx";
-        $refGeneDB = $DBLocation . "hg19_refGene.txt";
-        $refGeneIndex = $DBLocation . "hg19_refGeneMrna.fa";
-        $dbsnpDB = $DBLocation . "hg19_snp138.txt";
-        $dbsnpIndex = $DBLocation . "hg19_snp138.txt.idx";
-        $cnvDB = $DBLocation . "hg19_cnv.txt";
-        $suppressorDB = $DBLocation . "suppressor.gene";
-        $oncogeneDB = $DBLocation . "oncogene.gene";
-        $zscoreDB = $DBLocation . "drug.score";
+
         
         unless(-e "$cgcDB"){
             !system("wget -O $cgcDB http://icages.usc.edu/download/icages/db/cgc.gene") or die "ERROR: cannot download database file $cgcDB\n";
@@ -791,6 +777,21 @@ sub processArguments {
         $annovarLog = $outputFile .".log";
 
 
+        
+        ######################## databases #######################
+        $huiDB = $DBLocation . "phenolyzer.score";
+        $cgcDB = $DBLocation . "cgc.gene";
+        $keggDB = $DBLocation . "kegg.gene";
+        $icagesDB = $DBLocation . "hg19_iCAGES.txt";
+        $icagesIndex = $DBLocation . "hg19_iCAGES.idx";
+        $refGeneDB = $DBLocation . "hg19_refGene.txt";
+        $refGeneIndex = $DBLocation . "hg19_refGeneMrna.fa";
+        $dbsnpDB = $DBLocation . "hg19_snp138.txt";
+        $dbsnpIndex = $DBLocation . "hg19_snp138.txt.idx";
+        $cnvDB = $DBLocation . "hg19_cnv.txt";
+        $suppressorDB = $DBLocation . "suppressor.gene";
+        $oncogeneDB = $DBLocation . "oncogene.gene";
+        $zscoreDB = $DBLocation . "drug.score";
         
         
         
