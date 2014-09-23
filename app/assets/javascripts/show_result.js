@@ -326,7 +326,7 @@
             .data(data)
             .enter().append("text")
             .attr("x", function(d) {
-                return x(d.children);
+                return x(d.drug);
             })
             .attr("y", function(d) {
                 return y(d.gene);
@@ -347,7 +347,7 @@
         phenolyzer: "Phenolyzer score",
         icages: "iCAGES score",
         category: "Category",
-	driver: "Driver",
+        driver: "Driver",
         url: "URL",
     };
 
