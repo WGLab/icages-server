@@ -201,7 +201,7 @@ while(<ONC>){
 
 close ONC;
 
-################### oncogene #######################
+################### drug #######################
 push (@log, "iCAGES: start extracting oncogenes");
 print "NOTICE: start extracting oncogenes\n";
 
