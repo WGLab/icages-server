@@ -74,3 +74,4 @@ class UploadController < ApplicationController
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
 end
+

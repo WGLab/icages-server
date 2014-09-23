@@ -71170,3 +71170,640 @@ Started GET "/assets/application.js?body=1" for 75.140.76.123 at 2014-09-22 20:5
 
 
 Started GET "/assets/bootstrap/glyphicons-halflings-regular.woff" for 75.140.76.123 at 2014-09-22 20:52:42 -0700
+
+
+Started GET "/" for 128.125.249.145 at 2014-09-22 21:01:24 -0700
+Processing by WelcomeController#index as */*
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+  Rendered shared/_header.html.erb (0.3ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 47ms (Views: 46.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/upload" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+Processing by UploadController#index as HTML
+  Rendered shared/_walkme_script.html.erb (0.3ms)
+  Rendered upload/index.html.erb within layouts/application (1.4ms)
+  Rendered shared/_header.html.erb (0.0ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 25ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/animate.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/result.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/carousel.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/upload.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/application.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/jquery-file-upload/css/jquery.fileupload.css?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/d3/d3.min.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/vendor/jquery.ui.widget.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.iframe-transport.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.fileupload.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/upload.js" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/application.js?body=1" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular.woff" for 128.125.249.145 at 2014-09-22 21:40:47 -0700
+
+
+Started POST "/upload" for 128.125.249.145 at 2014-09-22 21:40:58 -0700
+Processing by UploadController#handle_upload as */*
+  Parameters: {"email"=>"chenglid@usc.edu", "inputData"=>"1\t12919840\t12919840\tT\tC\n1\t35332717\t35332717\tC\tA\n1\t55148456\t55148456\tG\tT\n1\t70504789\t70504789\tC\tT\n1\t167059520\t167059520\tA\tT\n1\t182496864\t182496864\tA\tT\n1\t197073351\t197073351\tC\tT\n1\t216373211\t216373211\tG\tT\n10\t37490170\t37490170\tG\tA\n10\t56089432\t56089432\tA\tC\n10\t69957135\t69957135\tA\tT\n10\t125601918\t125601918\tC\tA\n10\t125804220\t125804220\tC\tA\n10\t134649656\t134649656\tC\tA\n11\t5172737\t5172737\tG\tT\n11\t5905898\t5905898\tG\tT\n11\t6942832\t6942832\tC\tA\n11\t16068172\t16068172\tC\tT\n11\t44297060\t44297060\tG\tA\n11\t48328274\t48328274\tG\tC\n11\t89409330\t89409330\tA\tG\n11\t107965601\t107965601\tT\tG\n11\t120180145\t120180145\tC\tA\n12\t32481489\t32481489\tG\tA\n12\t67699695\t67699695\tG\tT\n12\t96883571\t96883571\tT\tC\n12\t119968739\t119968739\tG\tC\n13\t32340125\t32340125\tC\tA\n13\t36521559\t36521559\tG\tA\n14\t20529107\t20529107\tC\tT\n14\t36154270\t36154270\tT\tC\n14\t59112264\t59112264\tG\tC\n14\t63174963\t63174963\tC\tA\n14\t94007023\t94007023\tA\tT\n14\t95557552\t95557552\tG\tA\n14\t105410443\t105410443\tC\tG\n15\t20739706\t20739706\tT\tC\n15\t30054548\t30054548\tA\tG\n16\t20376770\t20376770\tG\tT\n16\t66422268\t66422268\tC\tA\n17\t7125396\t7125396\tA\tG\n17\t21731175\t21731175\tC\tA\n17\t26958542\t26958542\tC\tT\n17\t41836054\t41836054\tC\tT\n18\t14852153\t14852153\tG\tT\n18\t55319937\t55319937\tG\tA\n18\t58039082\t58039082\tC\tA\n18\t61170854\t61170854\tC\tT\n19\t13249152\t13249152\tG\tT\n19\t52938422\t52938422\tC\tA\n19\t53770704\t53770704\tC\tG\n19\t53911857\t53911857\tC\tT\n19\t57286834\t57286834\tA\tT\n2\t84940277\t84940277\tG\tT\n2\t112945031\t112945031\tA\tT\n2\t136552307\t136552307\tT\tG\n2\t157332699\t157332699\tG\tT\n2\t179588352\t179588352\tC\tA\n2\t187627271\t187627271\tG\tT\n2\t189863400\t189863400\tG\tT\n2\t189910616\t189910616\tA\tG\n2\t201533514\t201533514\tT\tC\n2\t238245127\t238245127\tC\tA\n20\t23473695\t23473695\tC\tG\n20\t29956465\t29956465\tG\tA\n20\t47266080\t47266080\tG\tC\n22\t30661003\t30661003\tG\tC\n3\t10157495\t10157495\tA\tG\n3\t11064098\t11064098\tA\tT\n3\t13413467\t13413467\tC\tA\n3\t51690015\t51690015\tC\tT\n3\t52417509\t52417509\tG\tT\n3\t63821060\t63821060\tT\tA\n3\t100087931\t100087931\tT\tC\n3\t112998777\t112998777\tC\tT\n3\t118621763\t118621763\tG\tT\n4\t13617077\t13617077\tC\tA\n4\t20533629\t20533629\tA\tG\n4\t147830310\t147830310\tG\tC\n4\t173269688\t173269688\tT\tA\n5\t19483542\t19483542\tG\tT\n5\t37326041\t37326041\tC\tA\n5\t55110949\t55110949\tC\tT\n5\t75596562\t75596562\tC\tA\n5\t140536091\t140536091\tC\tG\n5\t140616128\t140616128\tC\tG\n5\t140723876\t140723876\tG\tT\n5\t159686516\t159686516\tG\tA\n6\t7368953\t7368953\tG\tC\n6\t49808692\t49808692\tG\tC\n6\t109752383\t109752383\tC\tT\n6\t137329736\t137329736\tC\tT\n7\t47867026\t47867026\tG\tT\n7\t69583198\t69583198\tC\tA\n7\t93518498\t93518498\tG\tA\n7\t149475905\t149475905\tC\tA\n8\t3076901\t3076901\tG\tA\n8\t11995670\t11995670\tG\tT\n8\t37704629\t37704629\tC\tT\n8\t71068967\t71068967\tC\tA\n8\t77764912\t77764912\tG\tC\n8\t77775920\t77775920\tC\tA\n8\t79510674\t79510674\tA\tC\n8\t88363968\t88363968\tC\tA\n8\t89179974\t89179974\tG\tA\n8\t105503431\t105503431\tC\tA\n8\t118819526\t118819526\tG\tA\n8\t118831993\t118831993\tC\tA\n9\t17409334\t17409334\tA\tG\n9\t21201831\t21201831\tG\tT\n9\t43627065\t43627065\tC\tT\n9\t79325065\t79325065\tC\tA\n9\t104171019\t104171019\tA\tT\n9\t105767273\t105767273\tC\tA\nX\t47426121\t47426121\tC\tG\nX\t48213490\t48213490\tC\tA\nX\t54020144\t54020144\tG\tT\nX\t55249114\t55249114\tG\tT\nX\t64140039\t64140039\tT\tA\nX\t71802303\t71802303\tA\tT\nX\t75004601\t75004601\tC\tG\nX\t76939716\t76939716\tG\tA\nX\t78216983\t78216983\tT\tA\nX\t100513426\t100513426\tG\tT\nX\t118717207\t118717207\tC\tT\nX\t130416606\t130416606\tG\tT"}
+Input file is [empty]..
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (88.4ms)[0m  [1mINSERT INTO "submissions" ("created_at", "done", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-09-23 04:40:58.693284"], ["done", "f"], ["email", "chenglid@usc.edu"], ["updated_at", "2014-09-23 04:40:58.693284"]]
+  [1m[35m (257.5ms)[0m  commit transaction
+Completed 200 OK in 393ms (Views: 0.2ms | ActiveRecord: 346.3ms)
+
+
+Started GET "/result/33" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+Processing by ResultController#show as HTML
+  Parameters: {"id"=>"33"}
+  [1m[36mSubmission Load (0.2ms)[0m  [1mSELECT  "submissions".* FROM "submissions"  WHERE "submissions"."id" = ? LIMIT 1[0m  [["id", 33]]
+  Rendered result/show.html.erb within layouts/application (1.0ms)
+  Rendered shared/_header.html.erb (0.0ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 33ms (Views: 30.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/animate.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+
+
+Started GET "/assets/result.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+
+
+Started GET "/assets/upload.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+
+
+Started GET "/assets/application.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:02 -0700
+
+
+Started GET "/assets/jquery-file-upload/css/jquery.fileupload.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/carousel.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/d3/d3.min.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/vendor/jquery.ui.widget.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.iframe-transport.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.fileupload.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/application.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular.woff" for 128.125.249.145 at 2014-09-22 21:41:03 -0700
+
+
+Started GET "/result/33" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+Processing by ResultController#show as HTML
+  Parameters: {"id"=>"33"}
+  [1m[35mSubmission Load (0.1ms)[0m  SELECT  "submissions".* FROM "submissions"  WHERE "submissions"."id" = ? LIMIT 1  [["id", 33]]
+  Rendered result/show.html.erb within layouts/application (0.1ms)
+  Rendered shared/_header.html.erb (0.0ms)
+  Rendered shared/_footer.html.erb (0.0ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/animate.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/carousel.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/result.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/upload.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/application.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/jquery-file-upload/css/jquery.fileupload.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/d3/d3.min.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/vendor/jquery.ui.widget.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.iframe-transport.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.fileupload.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/application.js?body=1" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular.woff" for 128.125.249.145 at 2014-09-22 21:41:33 -0700
+
+
+Started GET "/result/33" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+Processing by ResultController#show as HTML
+  Parameters: {"id"=>"33"}
+  [1m[35mSubmission Load (0.2ms)[0m  SELECT  "submissions".* FROM "submissions"  WHERE "submissions"."id" = ? LIMIT 1  [["id", 33]]
+  Rendered result/show.html.erb within layouts/application (4.6ms)
+  Rendered shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 179ms (Views: 156.5ms | ActiveRecord: 0.6ms)
+
+
+
+Started GET "/assets/animate.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+
+
+Started GET "/assets/carousel.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+Started GET "/assets/result.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+Started GET "/assets/custom.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/upload.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/application.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/jquery-file-upload/css/jquery.fileupload.css?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/d3/d3.min.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/vendor/jquery.ui.widget.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.iframe-transport.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.fileupload.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/application.js?body=1" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular.woff" for 128.125.249.145 at 2014-09-22 21:42:03 -0700
+
+
+Started GET "/result/1000" for 128.125.249.145 at 2014-09-22 21:42:05 -0700
+Processing by ResultController#show as HTML
+  Parameters: {"id"=>"1000"}
+  [1m[35mSubmission Load (0.1ms)[0m  SELECT  "submissions".* FROM "submissions"  WHERE "submissions"."id" = ? LIMIT 1  [["id", 1000]]
+Completed 404 Not Found in 22ms
+
+ActiveRecord::RecordNotFound (Couldn't find Submission with 'id'=1000):
+  app/controllers/result_controller.rb:3:in `show'
+
+
+  Rendered /home/cocodong/usr/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /home/cocodong/usr/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/cocodong/usr/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/cocodong/usr/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started GET "/result/17" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+Processing by ResultController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mSubmission Load (0.1ms)[0m  [1mSELECT  "submissions".* FROM "submissions"  WHERE "submissions"."id" = ? LIMIT 1[0m  [["id", 17]]
+  Rendered shared/_walkme_script.html.erb (0.3ms)
+  Rendered result/show.html.erb within layouts/application (6.0ms)
+  Rendered shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 141ms (Views: 137.2ms | ActiveRecord: 0.6ms)
+
+
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+Started GET "/assets/ie-emulation-modes-warning.js" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/carousel.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/result.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/static_pages.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/upload.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/welcome.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/application.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/jquery-file-upload/css/jquery.fileupload.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/animate.css?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/d3/d3.min.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/vendor/jquery.ui.widget.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.iframe-transport.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/jquery-file-upload/js/jquery.fileupload.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/ie10-viewport-bug-workaround.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/ie-emulation-modes-warning.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/application.js?body=1" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/show_result.js" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular.woff" for 128.125.249.145 at 2014-09-22 21:46:16 -0700
+
+
+Started GET "/upload" for 128.125.249.145 at 2014-09-22 21:50:28 -0700
+Processing by UploadController#index as */*
+  Rendered shared/_walkme_script.html.erb (0.3ms)
+  Rendered upload/index.html.erb within layouts/application (5.8ms)
+  Rendered shared/_header.html.erb (0.4ms)
+  Rendered shared/_footer.html.erb (0.3ms)
+Completed 200 OK in 177ms (Views: 158.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/upload" for 128.125.249.145 at 2014-09-22 22:13:09 -0700
+Processing by UploadController#index as HTML
+  Rendered shared/_walkme_script.html.erb (0.3ms)
+  Rendered upload/index.html.erb within layouts/application (1.5ms)
+  Rendered shared/_header.html.erb (0.3ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/upload.js" for 128.125.249.145 at 2014-09-22 22:13:10 -0700
