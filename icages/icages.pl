@@ -210,7 +210,7 @@ while(<ZSCORE>){
     chomp;
     my @line;
     @line = split(/\t/, $_);
-    $zscore{$line[0]}[ = $line[1];
+    $zscore{$line[0]} = $line[1];
     $minzscore = min($line[1], $minzscore);
 }
 
@@ -564,6 +564,7 @@ if($maxGene-$minGene > 0){
                 $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey}},\n";
             }else{
                 $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey}}\n";
+            }
         }
         $drugPrintJSONInfor = $drugPrintJSONInfor . "]\n";
     
@@ -602,7 +603,7 @@ if($maxGene-$minGene > 0){
         
         ############### number of cancer driver genes ##############
         $iDriver ++ if $icages{$key}[1] eq "true";
-	}
+    };
 
 }else{
     print LOG "WARNING: not enough mutations for analysis, please make sure there are more than 1 non-synonymous mutations\n";
