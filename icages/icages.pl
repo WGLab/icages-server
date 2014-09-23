@@ -50,7 +50,7 @@ my ($minzscore, $maxzscore);
 
 my $geneNumber;                                                                                     #JSON number of genes
 my $iGene;
-my $iDrug
+my $iDrug;
 
 my (@radialSVMUnsort, @radialSVMSort);                                                              #PERCENT sort mutations according to radial SVM score (small to large)
 my (@cnvUnsort, @cnvSort);                                                                          #PERCENT sort mutations according to cnv score (small to large)
