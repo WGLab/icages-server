@@ -212,7 +212,6 @@ while(<ZSCORE>){
     my @line;
     @line = split(/\t/, $_);
     $zscore{$line[0]} = $line[1];
-    print "$line[0]:$zscore{$line[0]}\n";
     $minzscore = min($line[1], $minzscore);
 }
 
@@ -454,9 +453,10 @@ for(0..$#drugs){
     while(<DRUGOUT>){
         chomp;
         my @line = split(/\t/, $_);
+        my $drugscore ;
         if(exists $zscore{$line[1]}){
-            $drug{$line[0]}{$line[1]} = $zscore{$line[1]};
-            print "$zscore{$line[1]}\n";
+            $drugscore = $zscore{$line[1]};
+            $drug{$line[0]}{$line[1]} = $drugscore;
             $maxzscore = max($maxzscore, $zscore{$line[1]})
         }else{
             $drug{$line[0]}{$line[1]} = $minzscore;
@@ -565,9 +565,9 @@ if($maxGene-$minGene > 0){
             $iDrug++;
             my $tempinfo;
             if($iDrug < $drugCountEachGene){
-                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey}},\n";
+                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey} \n},\n";
             }else{
-                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey}}\n";
+                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey} \n}\n";
             }
         }
         $drugPrintJSONInfor = $drugPrintJSONInfor . "]\n";
