@@ -1,0 +1,74 @@
+{
+    "output":
+[
+{
+"gene": "ARAF",
+"mutation":[
+{"mutation_syntax":"c.641C>G", 
+ "protein_syntax":"p.S214C", 
+ "radial": 0.932},
+{"mutation_syntax":"c.64A>T",
+"protein_syntax":"p.A21P",
+"radial": 0.70}
+],
+"phenolyzer":0.2617,
+"icages":1,
+"category":"kegg cancer pathway",
+"url":"http://www.genome.jp/dbget-bin/www_bget?hsa:369",
+"driver":true,
+"children":[
+            {"drug": "SORAFENIB",
+            "score": 0.5},
+            {"drug": "EFG",
+            "score": 0.1}
+ ]q
+},{
+"gene": "IFNA7",
+"mutation":[
+{"mutation_syntax":"c.334C>A", 
+ "protein_syntax":"p.L112I", 
+ "radial": 1.079}
+],
+"phenolyzer":0.1651,
+"icages":0.805094510556977,
+"category":"neither",
+"url":"http://www.genecards.org/cgi-bin/carddisp.pl?gene=IFNA7&search=96a88d95c4a24ffc2ac1129a92af7b02",
+"driver":true,
+"children":[
+             {"drug": "HIJ",
+             "score": 0.999},
+             {"drug": "LMN",
+             "score": 0.3},
+             {"drug": "XYZ",
+             "score": 0}
+             ]
+},{
+"gene": "NCOA2",
+"mutation":[
+{"mutation_syntax":"c.1633G>T", 
+ "protein_syntax":"p.G545W", 
+ "radial": 0.961}
+],
+"phenolyzer":0.1841,
+"icages":0.801470346988766,
+"category":"cancer gene census",
+"url":"http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=NCOA2",
+"driver":true,
+"children":[
+             {"drug": "PLX",
+             "score": 0.85},
+             {"drug": "SSS",
+             "score": 0.001}
+             ]
+}
+],
+    "log":{
+"genecount": 3,
+"drivercount": 3,
+"cgccount":1,
+"keggcount":1,
+"missensecount": 4,
+"strucutralcount": 0,
+"drugcount": 7
+    }
+}

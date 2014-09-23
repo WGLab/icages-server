@@ -201,7 +201,7 @@ while(<ONC>){
 
 close ONC;
 
-################### oncogene #######################
+################### drug #######################
 push (@log, "iCAGES: start extracting oncogenes");
 print "NOTICE: start extracting oncogenes\n";
 
@@ -444,7 +444,7 @@ $othergenes = join(",", @othergenes);
 
 
 ######################### get drugs zscores #######################
-$maxzscore = 10;
+$maxzscore = 0;
 
 $iDrug = 0;
 
@@ -453,9 +453,11 @@ for(0..$#drugs){
     while(<DRUGOUT>){
         chomp;
         my @line = split(/\t/, $_);
+        my $drugscore ;
         if(exists $zscore{$line[1]}){
-            $drug{$line[0]}{$line[1]} = $zscore{$line[1]};
-            $maxzscore = max($maxzscore, $zscore{$line[1]})
+            $drugscore = $zscore{$line[1]};
+            $drug{$line[0]}{$line[1]} = $drugscore;
+            $maxzscore = max($maxzscore, $drugscore)
         }else{
             $drug{$line[0]}{$line[1]} = $minzscore;
         }
@@ -466,7 +468,7 @@ for(0..$#drugs){
 foreach my $key (sort keys %drug){
     foreach my $drugkey (sort keys %{$drug{$key}}){
         $iDrug++;
-        $drug{$key}{$drugkey} = (($maxzscore - $drug{$key}{$drugkey})/($maxzscore-$minzscore)) * $icages{$key}[2];
+        $drug{$key}{$drugkey} = (($drug{$key}{$drugkey} - $minzscore)/($maxzscore-$minzscore)) * $icages{$key}[0];
     }
 }
 
@@ -479,7 +481,8 @@ foreach my $key (sort keys %drug){
 
 
 
-
+close DRUGOUT;
+close DRUG;
 
 
 
@@ -558,13 +561,13 @@ if($maxGene-$minGene > 0){
         ############ loop to get information for each drug ###############
         
         $drugPrintJSONInfor = "[\n";
-        foreach my $drugkey (sort { $drug{$b} <=> $drug{$a} } keys %{$drug{$key}}){
+        foreach my $drugkey (sort { $drug{$key}{$b} <=> $drug{$key}{$a} } keys %{$drug{$key}}){
             $iDrug++;
             my $tempinfo;
             if($iDrug < $drugCountEachGene){
-                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey}},\n";
+                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\": $drug{$key}{$drugkey} \n},\n";
             }else{
-                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\":$drug{$key}{$drugkey}}\n";
+                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\": $drug{$key}{$drugkey} \n}\n";
             }
         }
         $drugPrintJSONInfor = $drugPrintJSONInfor . "]\n";
@@ -633,12 +636,12 @@ print "NOTICE: finished at $nowString\n";
 ######################################################################################################################################
 
     print JSON "\"log\":{\n";
-    print JSON "\"genecount\":$iGene\n";
-    print JSON "\"drivercount\":$iDriver\n";
-    print JSON "\"cgccount\":$iCgc\n";
-    print JSON "\"keggcount\":$iCgc\n";
-    print JSON "\"missensecount\":$iCgc\n";
-    print JSON "\"structuralcount\":$iCnv\n";
+    print JSON "\"genecount\":$iGene,\n";
+    print JSON "\"drivercount\":$iDriver,\n";
+    print JSON "\"cgccount\":$iCgc,\n";
+    print JSON "\"keggcount\":$iKegg,\n";
+    print JSON "\"missensecount\":$iMissense,\n";
+    print JSON "\"structuralcount\":$iCnv,\n";
     print JSON "\"drugcount\":$iDrug\n";
     print JSON "}\n}\n";
 
