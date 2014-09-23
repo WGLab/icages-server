@@ -561,16 +561,18 @@ if($maxGene-$minGene > 0){
         ############ loop to get information for each drug ###############
         
         $drugPrintJSONInfor = "[\n";
+        my $tempinfo;
+        
         foreach my $drugkey (sort { $drug{$key}{$b} <=> $drug{$key}{$a} } keys %{$drug{$key}}){
             $iDrug++;
-            my $tempinfo;
+            
             if($iDrug < $drugCountEachGene){
-                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\": $drug{$key}{$drugkey} \n},\n";
+                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\": $drug{$key}{$drugkey}\n},\n";
             }else{
-                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\": $drug{$key}{$drugkey} \n}\n";
+                $tempinfo = $tempinfo . "{\n\"drug\":\"$drugkey\", \n \"score\": $drug{$key}{$drugkey}\n}\n";
             }
         }
-        $drugPrintJSONInfor = $drugPrintJSONInfor . "]\n";
+        $drugPrintJSONInfor = $tempinfo . "]\n";
     
         
         ################ print information for each gene #################
