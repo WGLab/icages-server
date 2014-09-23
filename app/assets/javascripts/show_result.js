@@ -16,7 +16,7 @@
             node, clusters = {};
 
         m = 0;
-        nodes = data;
+        nodes = $.extend(true, [], data);
         for (var n in nodes) {
             if (clusters[nodes[n].category] === undefined) {
                 clusters[nodes[n].category] = null;
@@ -347,6 +347,7 @@
         phenolyzer: "Phenolyzer score",
         icages: "iCAGES score",
         category: "Category",
+	driver: "Driver",
         url: "URL",
     };
 
@@ -361,6 +362,7 @@
         var comp_head;
 
         for (var d in datum) {
+	    if ( d === "children" || d === "url") continue;
             if (typeof datum[d] === "object" && !datum[d] instanceof Array) {
                 tr.append($('<th></th>', {
                     "rowspan": 1,
@@ -378,8 +380,6 @@
                 comp_head = d;
                 subheads = subheads.concat(Object.keys(datum[d][0]));
 
-            } else if (typeof datum[d] === "boolean" || d === "url") {
-                continue;
             } else {
                 tr.append($('<th></th>', {
                     "rowspan": 2,
@@ -417,6 +417,7 @@
             rowspan = gene[comp_head].length;
 
             for (var f in gene) {
+		if ( f === "children" || f === "url" ) continue;
                 if (f === comp_head) {
                     for (var i = 0; i < gene[f].length; i++) {
                         if (i === 0) {
@@ -435,8 +436,6 @@
                             tbody.append(tr_2);
                         }
                     }
-                } else if (typeof gene[f] === "boolean" || f === "url") {
-                    continue;
                 } else {
                     tr.append($('<td></td>', {
                         html: f === "gene" ? $('<a></a>', {
@@ -484,7 +483,7 @@
 
     // Main logic
     // should be ../results/result-" + id + ".json on server
-    d3.json("mocking.json", function(error, result) {
+    d3.json("../results/result-1000.json", function(error, result) {
         var plotData = result.output.filter(function(d) {
             return d.driver;
         })
