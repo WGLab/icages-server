@@ -120,7 +120,7 @@
  
         function charge(d){
             if(d.gene)
-                return 10;
+                return 1;
             else
                 return -1;
         }
