@@ -47,7 +47,7 @@
             .links(links)
             .linkDistance(100)
             .size([width, height])
-            .gravity(0.1)
+            .gravity(gravity)
             .charge(charge)
             .on("tick", tick)
             .start();
@@ -125,6 +125,13 @@
                 return -1;
         }
 
+ 
+        function charge(d){
+            if(d.gene)
+                return 0.01;
+            else
+                return -0.01;
+        }
 
         function tick(e) {
             node
