@@ -127,9 +127,9 @@
  
         function gravity(d){
             if(d.gene)
-                return 0.01;
+                return 10;
             else
-                return -1;
+                return -0.1;
         }
 
         function tick(e) {
