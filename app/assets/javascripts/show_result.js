@@ -47,8 +47,8 @@
             .links(links)
             .linkDistance(100)
             .size([width, height])
-            .gravity(.02)
-            .charge(.01)
+            .gravity(.03)
+            .charge(.03)
             .on("tick", tick)
             .start();
 
