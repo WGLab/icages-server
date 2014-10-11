@@ -1,0 +1,41 @@
+FLT3	SUNITINIB	multitarget	DrugBank	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SORAFENIB	antagonist	DrugBank	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SUNITINIB	n/a	TEND	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SORAFENIB	n/a	TEND	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	MIDOSTAURIN	inhibitor	TTD	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SUNITINIB	inhibitor	TTD	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SUNITINIB MALATE	inhibitor	TTD	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	TANDUTINIB	inhibitor	TTD	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	4SC-203	inhibitor	TTD	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SU5614	inhibitor	TTD	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	QUIZARTINIB	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	PONATINIB	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	AS703569	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	LESTAURTINIB	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	ENMD-0276	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	TANDUTINIB	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	AMUVATINIB	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	MIDOSTAURIN	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	PLX3397	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SUNITINIB	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	CABOZANTINIB	inhibitor	MyCancerGenome	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	PLX108-01	inhibitor	CancerCommons	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	PLX3397	inhibitor	CancerCommons	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SORAFENIB	inhibitor	TALC	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SUNITINIB	inhibitor	TALC	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	XL999	inhibitor	TALC	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	AMUVATINIB	inhibitor	TALC	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	ENMD-0276	inhibitor	TALC	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	AS703569	inhibitor	TALC	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	AZACITIDINE	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SORAFENIB TOSYLATE	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	BORTEZOMIB	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	CLOFARABINE	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	4'-N-BENZOYLSTAUROSPORINE	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	4'-N-BENZOYLSTAUROSPORINE	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	IDARUBICINE	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SORAFENIB TOSYLATE	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	4'-N-BENZOYLSTAUROSPORINE	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	CRENOLANIB	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	CRENOLANIB	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
+FLT3	SUNITINIB	inhibitor	MyCancerGenomeClinicalTrial	cell surface,clinically actionable,druggable genome,kinase,tyrosine kinase
