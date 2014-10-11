@@ -47,7 +47,7 @@
             .links(links)
             .linkDistance(100)
             .size([width, height])
-            .gravity(.01)
+            .gravity(gravity)
             .charge(charge)
             .on("tick", tick)
             .start();
@@ -121,6 +121,13 @@
         function charge(d){
             if(d.gene)
                 return 0;
+            else
+                return -10;
+        }
+ 
+        function gravity(d){
+            if(d.gene)
+                return 0.01;
             else
                 return -10;
         }
