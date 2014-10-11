@@ -122,7 +122,7 @@
             if(d.gene)
                 return 10;
             else
-                return -5;
+                return -1;
         }
  
         function gravity(d){
