@@ -47,7 +47,7 @@
             .links(links)
             .linkDistance(100)
             .size([width, height])
-            .gravity(gravity)
+            .gravity(10)
             .charge(charge)
             .on("tick", tick)
             .start();
@@ -124,13 +124,7 @@
             else
                 return -d.drug*0.01;
         }
- 
-        function gravity(d){
-            if(d.gene)
-                return 100;
-            else
-                return -d.drug*0.01;
-        }
+
 
         function tick(e) {
             node
