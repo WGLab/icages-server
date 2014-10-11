@@ -120,14 +120,14 @@
  
         function charge(d){
             if(d.gene)
-                return 10;
+                return 100;
             else
                 return -d.drug*0.01;
         }
  
         function gravity(d){
             if(d.gene)
-                return 10;
+                return 100;
             else
                 return -d.drug*0.01;
         }
