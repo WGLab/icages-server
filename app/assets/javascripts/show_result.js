@@ -129,7 +129,7 @@
             if(d.gene)
                 return 10;
             else
-                return -0.1;
+                return - d.drug;
         }
 
         function tick(e) {
