@@ -120,9 +120,9 @@
  
         function charge(d){
             if(d.gene)
-                return 100;
+                return 10;
             else
-                return -d.drug*0.01;
+                return -1;
         }
 
 
