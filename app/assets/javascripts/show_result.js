@@ -126,7 +126,7 @@
         }
 
  
-        function charge(d){
+        function gravity(d){
             if(d.gene)
                 return 0.01;
             else
