@@ -48,7 +48,7 @@
             .linkDistance(100)
             .size([width, height])
             .gravity(.01)
-            .charge(-.03)
+            .charge(charge)
             .on("tick", tick)
             .start();
 
@@ -117,6 +117,13 @@
                     return d.radius = i(t);
                 };
             });
+ 
+        function charge(d){
+            if(d.gene)
+                return 0;
+            else
+                return -10;
+        }
 
         function tick(e) {
             node
@@ -204,6 +211,7 @@
             add_node(arr);
             return nodes;
         }
+
     }
 
 
