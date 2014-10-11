@@ -129,7 +129,7 @@
             if(d.gene)
                 return 10;
             else
-                return -0.5;
+                return 0;
         }
 
         function tick(e) {
