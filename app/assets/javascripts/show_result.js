@@ -120,7 +120,7 @@
  
         function charge(d){
             if(d.gene)
-                return 0.00001;
+                return 0.0000001;
             else
                 return 0;
         }
@@ -130,7 +130,7 @@
             if(d.gene)
                 return 0.01;
             else
-                return 0;
+                return 0.00001;
         }
 
         function tick(e) {
