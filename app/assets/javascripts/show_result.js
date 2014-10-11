@@ -122,13 +122,13 @@
             if(d.gene)
                 return 1;
             else
-                return -1;
+                return -0.01;
         }
 
  
         function gravity(d){
             if(d.gene)
-                return 0.01;
+                return 1;
             else
                 return -0.01;
         }
