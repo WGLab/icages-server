@@ -122,14 +122,14 @@
             if(d.gene)
                 return 10;
             else
-                return -1;
+                return -0.5;
         }
  
         function gravity(d){
             if(d.gene)
                 return 10;
             else
-                return -1;
+                return -0.5;
         }
 
         function tick(e) {
