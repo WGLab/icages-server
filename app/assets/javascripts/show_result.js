@@ -120,7 +120,7 @@
  
         function charge(d){
             if(d.gene)
-                return 1;
+                return 0.01;
             else
                 return -0.00001;
         }
@@ -128,9 +128,9 @@
  
         function gravity(d){
             if(d.gene)
-                return 1;
+                return 0.01;
             else
-                return 0.5;
+                return 0.00005;
         }
 
         function tick(e) {
