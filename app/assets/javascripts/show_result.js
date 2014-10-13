@@ -371,7 +371,7 @@
         var datum = data[0];
         var subheads = [];
 
-        var thead = $('<thead></thead');
+        var thead = $('<thead></thead>');
         var tr = $('<tr></tr>');
 
 
