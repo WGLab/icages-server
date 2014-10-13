@@ -364,9 +364,8 @@
         icages: "iCAGES score",
         category: "Category",
         driver: "Driver",
-        url: "URL",
+	children: "Drug"
     };
-
 
     function generateTable(data) {
         var datum = data[0];
@@ -375,32 +374,21 @@
         var thead = $('<thead></thead>');
         var tr = $('<tr></tr>');
 
-        var comp_head;
 
         for (var d in datum) {
-	    if ( d === "children" || d === "url") continue;
-            if (typeof datum[d] === "object" && !datum[d] instanceof Array) {
-                tr.append($('<th></th>', {
-                    "rowspan": 1,
-                    "colspan": Object.keys(datum[d]).length,
-                    html: colNameMap[d]
-                }));
-                subheads = subheads.concat(Object.keys(datum[d]));
-
-            } else if ((datum[d] instanceof Array) && (datum[d].length > 0) && typeof(datum[d][0] === "object")) {
+            if (d === "url") continue;
+            if (d === "mutation") {
                 tr.append($('<th></th>', {
                     "rowspan": 1,
                     "colspan": Object.keys(datum[d][0]).length,
                     html: colNameMap[d]
                 }));
-                comp_head = d;
                 subheads = subheads.concat(Object.keys(datum[d][0]));
-
             } else {
                 tr.append($('<th></th>', {
                     "rowspan": 2,
                     html: colNameMap[d]
-                }))
+                }));
             }
         }
 
@@ -416,12 +404,12 @@
 
         thead.append(tr);
 
-        $('#summary_table').append(thead);
+        var tb = $('#summary_table');
 
-        //real deal 
+        tb.append(thead);
 
         var tbody = $('<tbody></tbody>');
-        $('#summary_table').append(tbody);
+        tb.append(tbody);
 
         var gene, rowspan;
 
@@ -430,11 +418,11 @@
             tr = $('<tr></tr>');
 
             tbody.append(tr);
-            rowspan = gene[comp_head].length;
+            rowspan = gene["mutation"].length;
 
             for (var f in gene) {
-		if ( f === "children" || f === "url" ) continue;
-                if (f === comp_head) {
+                if (f === "url") continue;
+                if (f === "mutation") {
                     for (var i = 0; i < gene[f].length; i++) {
                         if (i === 0) {
                             for (var k in gene[f][i]) {
@@ -457,7 +445,7 @@
                         html: f === "gene" ? $('<a></a>', {
                             html: gene[f],
                             href: gene["url"]
-                        }) : gene[f],
+                        }) : f === "driver" ? (gene[f] ? "Yes" : "no") : f === "children" ? (gene[f].length > 0 ? gene[f][0]["drug"] : "None") : gene[f],
                         "rowspan": rowspan
                     }));
                 }
@@ -465,28 +453,42 @@
         }
 
 
-        var tb_clone = $($('#summary_table')[0].cloneNode());
+        var tb_clone = $(tb[0].cloneNode());
         tb_clone.attr("id", "header_clone").css({
             position: "fixed",
             top: "0",
-            width: $('#summary_table').outerWidth() + 'px'
+            width: tb.outerWidth() + 'px'
         });
         tb_clone.append($('#summary_table thead').clone());
         $('thead', tb_clone).css("background-color", "white");
         $('.container.hz-content').append(tb_clone);
-        var ths = $('th', $('#summary_table'));
-        $('th', tb_clone).each(function(i) {
-            $(this).css("width", $(ths[i]).outerWidth() + 'px');
-        });
+        var ths = $('th', tb);
+
+        function resizeCloneTable() {
+            $('th', tb_clone).each(function(i) {
+                $(this).css("width", $(ths[i]).outerWidth() + 'px');
+            });
+            tb_clone.css({
+                "width": tb.outerWidth() + 'px',
+                "left": tb.offset()['left'] - $(window).scrollLeft()
+            });
+        }
+
+        resizeCloneTable();
         tb_clone.hide();
 
-        var tableTop = $('#summary_table').offset()['top'];
+        var tableTop = tb.offset()['top'];
+
+        $(window).resize(resizeCloneTable);
+
         $(window).scroll(function() {
             if ($(window).scrollTop() > tableTop) {
                 tb_clone.show();
+                tb_clone.css("left", tb.offset()['left'] - $(window).scrollLeft());
             } else {
                 tb_clone.hide();
             }
+
         });
     }
 
