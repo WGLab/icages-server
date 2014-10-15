@@ -120,23 +120,23 @@
  
         function charge(d){
             if(d.gene)
-                return 0.001;
+                return 0.01;
             else
-                return 0.0000001;
+                return -0.005;
         }
 
  
         function gravity(d){
             if(d.gene)
-                return 0.1;
+                return 0.01;
             else
-                return 0.1;
+                return -0.005;
         }
 
         function tick(e) {
             node
-                .each(cluster(5 * e.alpha * e.alpha))
-                .each(collide(.5))
+                .each(cluster(1 * e.alpha * e.alpha))
+                .each(collide(.1))
                 .attr("transform", function(d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 });
