@@ -5,7 +5,7 @@ ANNOVAR Information:
 ANNOVAR Command:
 	/home/cocodong/www/iCAGES/icages/bin/annovar/annotate_variation.pl -out /home/cocodong/www/iCAGES/public/temp/input-16.annovar -build hg19 /home/cocodong/www/iCAGES/public/temp/input-16.annovar /home/cocodong/www/iCAGES/icages/db/
 ANNOVAR Started:
-	Thu Sep 18 19:51:12 2014
+	Wed Oct 15 14:19:13 2014
 NOTICE: The --geneanno operation is set to ON by default
 NOTICE: Reading gene annotation from /home/cocodong/www/iCAGES/icages/db/hg19_refGene.txt ... Done with 48660 transcripts (including 10375 without coding sequence annotation) for 25588 unique genes
 NOTICE: Reading FASTA sequences from /home/cocodong/www/iCAGES/icages/db/hg19_refGeneMrna.fa ... Done with 214 sequences
