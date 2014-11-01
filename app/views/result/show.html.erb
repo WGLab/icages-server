@@ -1,0 +1,74 @@
+<% if @submission.done %>
+   <% content_for :head do %>
+      <%= render 'shared/walkme_script' %>
+   <% end %>
+<% end %>
+
+<% content_for :navtabs do %>
+   <li><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
+   </li>
+   <li><a href="/about"><i class="glyphicon glyphicon-question-sign"></i>&nbsp;About</a>
+   </li>
+   <li><a href="/contact"><i class="glyphicon glyphicon-user"></i>&nbsp;Contact</a>
+   </li>
+   <li><a href="/example"><i class="glyphicon glyphicon-user"></i>&nbsp;Example</a>
+   </li>
+    <li><a href="/package"><i class="glyphicon glyphicon-user"></i>&nbsp;Download</a>
+   </li>
+<% end %>
+
+
+<div class="container hz-content">
+  <h3>Submission id: <%= @submission.id %></h3>
+  <% if @submission.done %>
+    <script>var SUBMISSION_ID = <%= @submission.id %>;</script>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#bubble_chart" role="tab" data-toggle="tab">Bubble Chart</a>
+        </li>
+        <li><a href="#bar_chart" role="tab" data-toggle="tab">Bar Chart</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="bubble_chart">
+           <section class="hz-chart">
+           </section>
+        </div>
+        <div class="tab-pane fade" id="bar_chart">
+           <section class="hz-chart">
+           </section>
+        </div>
+    </div>
+    <div class="page-header">
+      <h3>Log information</h3>
+    </div>
+    <ul class="log-info">
+      <li>There are <span></span> genes found related in total</li>
+      <li><span></span> of them are drivers</li>
+      <li><span></span> of them are in Cancer Gene Gensus</li>
+      <li><span></span> of them are in Kegg Cancer Pathway</li>
+      <li><span></span> miscounts occured</li>
+      <li>Found <span></span> drugs related</li>
+    </ul>
+    <div class="page-header">
+        <h3>Download</h3>
+    </div>
+    <p>Please click <a href = "../results/result-<%= @submission.id %>.txt">here</a> to download summary table of all mutated genes with iCAGES score
+    </p>
+    <p>Please click <a href = "../results/drug-<%= @submission.id %>.txt">here</a> to download summary table of all drugs with iCAGES drug weight
+    </p>
+    <div class="page-header">
+        <h3>Summary</h3>
+    </div>
+    <table class="table table-bordered hz-table" id="summary_table">
+    </table>
+    <script src="../assets/show_result.js"></script>
+
+  <% else %>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%"><span class="sr-only">Loading...</span></div>
+    </div>
+    <p>Your result will be shown momentarily, this page will refresh every 30 seconds</p>
+   <script>$(function() { setTimeout(function() { location.reload() }, 30000); }); </script>
+  <% end %>
+</div>
+
