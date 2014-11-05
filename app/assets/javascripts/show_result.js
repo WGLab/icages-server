@@ -413,6 +413,41 @@
 
         var gene, rowspan;
 
+	function simpleField(gene, f) {
+            switch(f) {
+                case "gene": 
+                    return $('<a></a>', {
+                                html: gene[f],
+                                href: gene["url"]
+                            });
+                case "driver":
+                    return gene[f] ? "Yes" : "no";
+                case "children":
+
+                    if (gene[f].length > 0) {
+                        domlst = [$('<div></div>', {
+                            html: gene[f][0]["drug"]
+                        })];
+
+                        ol = $('<ol></ol>', {
+                            "class":"fadeIn"
+                        });
+                        for (i = 0; i < gene[f].length; i++) {
+                            ol.append($('<li></li>', {
+                                html: gene[f][i]["drug"]
+                            }));
+                        }
+                        domlst.push(ol);
+                        return domlst;
+                    } else {
+                        return "None";
+                    }
+                    
+                default:
+                    return gene[f];
+            }
+        }
+
         for (var g in data) {
             gene = data[g];
             tr = $('<tr></tr>');
@@ -440,17 +475,31 @@
                             tbody.append(tr_2);
                         }
                     }
+		} else if (f !== "children") {
+		    tr.append($('<td></td>', {
+			html: simpleField(gene,f),
+			"rowspan": rowspan
+		   }));
                 } else {
-                    tr.append($('<td></td>', {
-                        html: f === "gene" ? $('<a></a>', {
-                            html: gene[f],
-                            href: gene["url"]
-                        }) : f === "driver" ? (gene[f] ? "Yes" : "no") : f === "children" ? (gene[f].length > 0 ? gene[f][0]["drug"] : "None") : gene[f],
-                        "rowspan": rowspan
+		    tr.append($('<td></td>', {
+                        html: simpleField(gene,f),
+                        "rowspan": rowspan,
+                        "class":"hz-drug"
                     }));
+                 
                 }
             }
         }
+	
+	
+	$('.hz-drug').on("mouseenter",function() {
+            $('div', this).css("visibility", "hidden");
+            $('ol.fadeIn', this).show();
+        });
+        $('ol.fadeIn').on("mouseleave", function() {
+            $('.hz-drug div').css("visibility", "initial");
+            $(this).hide();
+        });
 
 
         var tb_clone = $(tb[0].cloneNode());
