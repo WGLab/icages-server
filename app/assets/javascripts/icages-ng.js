@@ -20,11 +20,18 @@ var icages = angular.module('icages', [])
         success(function(data) {
             console.log(data);
 
+
+
             $scope.log = data.log;
             $scope.data = data.output;
             if ($scope.data.length > 0) {
-                $scope.headers = Object.keys($scope.data[0]);
-                $scope.subHeaders = Object.keys($scope.data[0]["mutation"]);
+
+            	var hs = Object.keys($scope.data[0]);
+            	$scope.headers = hs.filter(function(h) {
+            		return h !== "url";
+            	});
+
+                $scope.subHeaders = Object.keys($scope.data[0]["mutation"][0]);
             }
 
         });
