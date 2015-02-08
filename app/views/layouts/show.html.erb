@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-no-turbolink>
+<html data-no-turbolink ng-app="icages">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +29,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= yield :head %>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
 </head>
 
 <body>
