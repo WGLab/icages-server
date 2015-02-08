@@ -29,7 +29,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= yield :head %>
-    <%= javascript_include_tag "/angular/angular.min", "icages-ng" %>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+    <script type="text/javascript" src="/assets/icages-ng.js"></script>
 </head>
 
 <body>

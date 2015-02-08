@@ -1,6 +1,6 @@
 <% if @submission.done %>
    <% content_for :head do %>
-      <%= javascript_include_tag "walkme" %>
+      <script type="text/javascript" src="/assets/walkme.js"></script>
    <% end %>
 <% end %>
 
@@ -61,7 +61,7 @@
     </div>
     <table class="table table-bordered hz-table" id="summary_table">
     </table>
-    <%= javascript_include_tag "show_result" %>
+    <script type="text/javascript" src="/assets/show_result.js"></script>
 
   <% else %>
     <div class="progress">
@@ -70,5 +70,5 @@
     <p>Your result will be shown momentarily, this page will refresh every 30 seconds</p>
    <script>$(function() { setTimeout(function() { location.reload() }, 30000); }); </script>
   <% end %>
-</div>
+ </div>
 
