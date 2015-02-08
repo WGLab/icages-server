@@ -17,11 +17,11 @@ var icages = angular.module('icages', [])
         };
 
         $scope.rowspan = function(s) {
-        	return s === "mutation" ? : 1 : 2;
+        	return s === "mutation" ? 1 : 2;
         }
 
         $scope.colspan = function(s) {
-        	return s === "mutation" ? : 3 : 1;
+        	return s === "mutation" ? 3 : 1;
         }
 
         $http.get("../results/result-" + SUBMISSION_ID + ".json").
