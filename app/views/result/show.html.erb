@@ -1,6 +1,6 @@
 <% if @submission.done %>
    <% content_for :head do %>
-      <script type="text/javascript" src="../assets/javascript/walkme.js"></script>
+      <%= javascript_include_tag "walkme" %>
    <% end %>
 <% end %>
 
@@ -61,7 +61,7 @@
     </div>
     <table class="table table-bordered hz-table" id="summary_table">
     </table>
-    <script src="../assets/show_result.js"></script>
+    <%= javascript_include_tag "upload" %>
 
   <% else %>
     <div class="progress">
