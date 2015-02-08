@@ -44,12 +44,12 @@
         <h3>Log information</h3>
       </div>
       <ul class="log-info">
-        <li>There are <span></span> genes found related in total</li>
-        <li><span></span> of them are drivers</li>
-        <li><span></span> of them are in Cancer Gene Gensus</li>
-        <li><span></span> of them are in Kegg Cancer Pathway</li>
-        <li><span></span> miscounts occured</li>
-        <li>Found <span></span> drugs related</li>
+        <li>There are {{log.genecount}} genes found related in total</li>
+        <li>{{log.drivercount}} of them are drivers</li>
+        <li>{{log.cgccount}} of them are in Cancer Gene Gensus</li>
+        <li>{{log.keggcount}} of them are in Kegg Cancer Pathway</li>
+        <li>{{log.missensecount}} miscounts occured</li>
+        <li>Found {{log.structuralcount}} drugs related</li>
       </ul>
       <div class="page-header">
           <h3>Download</h3>
@@ -62,7 +62,14 @@
           <h3>Summary</h3>
       </div>
       <table class="table table-bordered hz-table" id="summary_table">
-
+        <thead>
+          <tr>
+            <th ng-repeat="th in headers" rowspan="{{rowspan(th)}}" colspan="{{colspan(th)}}">{{colNameMap[th]}}</th>
+          </tr>
+          <tr>
+            <th ng-repeat="sh in subHeaders">{{colNameMap[sh]}}</th>
+          </tr>
+        </thead>
       </table>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>

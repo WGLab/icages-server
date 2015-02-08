@@ -541,12 +541,12 @@
         });
     }
 
-    function generateLogInfo(log) {
-        var keys = Object.keys(log);
-        $(".log-info > li").each(function(i) {
-            $("span", this).html(log[keys[i]]);
-        });
-    }
+    // function generateLogInfo(log) {
+    //     var keys = Object.keys(log);
+    //     $(".log-info > li").each(function(i) {
+    //         $("span", this).html(log[keys[i]]);
+    //     });
+    // }
 
     // Main logic
     //../results/result-1000.json
@@ -558,7 +558,7 @@
         plotBubble(plotData);
         plotBar(plotData);
         generateLogInfo(result.log);
-        generateTable(result.output);
+        //generateTable(result.output);
 
     });
 
