@@ -16,6 +16,14 @@ var icages = angular.module('icages', [])
             children: "Drug"
         };
 
+        $scope.rowspan = function(s) {
+        	return s === "mutation" ? : 1 : 2;
+        }
+
+        $scope.colspan = function(s) {
+        	return s === "mutation" ? : 3 : 1;
+        }
+
         $http.get("../results/result-" + SUBMISSION_ID + ".json").
         success(function(data) {
             console.log(data);
