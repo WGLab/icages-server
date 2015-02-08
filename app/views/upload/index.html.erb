@@ -1,5 +1,5 @@
 <% content_for :head do %>
-   <%= render 'shared/walkme_script' %>
+   <%= javascript_include_tag "walkme" %>
 <% end %>
 
 <% content_for :navtabs do %>
@@ -91,5 +91,5 @@
 	  </div>
 	  
         </div>
-       <script src="assets/upload.js"></script>
+       <%= javascript_include_tag "upload" %>
 </div>
