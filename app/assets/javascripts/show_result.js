@@ -557,7 +557,7 @@
         })
         plotBubble(plotData);
         plotBar(plotData);
-        generateLogInfo(result.log);
+        //generateLogInfo(result.log);
         //generateTable(result.output);
 
     });
