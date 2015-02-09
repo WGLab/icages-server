@@ -475,19 +475,19 @@
                             tbody.append(tr_2);
                         }
                     }
-                }
-            } else if (f !== "children") {
-                tr.append($('<td></td>', {
-                    html: simpleField(gene, f),
-                    "rowspan": rowspan
-                }));
-            } else {
-                tr.append($('<td></td>', {
-                    html: simpleField(gene, f),
-                    "rowspan": rowspan,
-                    "class": "hz-drug"
-                }));
+                } else if (f !== "children") {
+                    tr.append($('<td></td>', {
+                        html: simpleField(gene, f),
+                        "rowspan": rowspan
+                    }));
+                } else {
+                    tr.append($('<td></td>', {
+                        html: simpleField(gene, f),
+                        "rowspan": rowspan,
+                        "class": "hz-drug"
+                    }));
 
+                }
             }
         }
 
