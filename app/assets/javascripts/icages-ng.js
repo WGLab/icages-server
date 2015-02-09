@@ -79,7 +79,7 @@ var icages = angular.module('icages', [])
 
             $scope.log = data.log;
             var gData = data.output;
-            if ($scope.data.length > 0) {
+            if (gdata.length > 0) {
 
                 var hs = Object.keys(gData[0]);
                 $scope.headers = hs.filter(function(h) {
