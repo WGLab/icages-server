@@ -1,7 +1,7 @@
 'use strict'
 
 var icages = angular.module('icages', [])
-    .controller('SummaryCtrl', ['$scope', '$http', '$timeout'function($scope, $http, $timeout) {
+    .controller('SummaryCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 
         $scope.colNameMap = {
             gene: "Gene Name",
