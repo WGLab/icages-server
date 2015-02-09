@@ -61,6 +61,7 @@ var icages = angular.module('icages', [])
                 }
 
                 r.rowspan = muts.length;
+                r.hasDrug = r.drugs.length > 0;
 
                 result.push(r);
                 for (var j = 1; j < muts.length; j++) {
