@@ -78,7 +78,7 @@
             <td ng-repeat="sh in mutationHeaders">{{datum.mutation[sh]}}</td>
             <td ng-if="datum.firstRow" ng-repeat="f in datum.otherFields" rowspan="{{datum.rowspan}}">{{f}}</td>
             <td ng-if="datum.firstRow" rowspan="{{datum.rowspan}}" class="hz-drug">
-              <div>{{datum.drugs[0]}}</div>
+              <div>{{datum.drugs[0].drug}}</div>
               <ol class="fadeIn" style="display:none;">
                 <li ng-repeat="obj in datum.drugs">{{obj.drug}}</li>
               </ol>

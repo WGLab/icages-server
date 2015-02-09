@@ -30,9 +30,12 @@ var icages = angular.module('icages', [])
                 var r = {};
                 r.otherFields = [];
                 r.firstRow = true;
-                r.rowspan
 
-                var muts;
+                var muts = [{
+                	mutation_syntax: "",
+                	protein_syntax: "",
+                	radial: ""
+                }];
 
                 for (var i in d) {
                     switch (i) {
@@ -56,6 +59,9 @@ var icages = angular.module('icages', [])
                             break;
                     }
                 }
+
+                r.rowspan = muts.length;
+
                 result.push(r);
                 for (var j = 1; j < muts.length; j++) {
                     result.push({
@@ -64,7 +70,6 @@ var icages = angular.module('icages', [])
                         rowspan: 1
                     });
                 }
-
             });
 
 			return result;
