@@ -1,7 +1,7 @@
 'use strict'
 
 var icages = angular.module('icages', [])
-    .controller('SummaryCtrl', ['$scope', '$http', function($scope, $http) {
+    .controller('SummaryCtrl', ['$scope', '$http', '$timeout'function($scope, $http, $timeout) {
 
         $scope.colNameMap = {
             gene: "Gene Name",
@@ -98,18 +98,18 @@ var icages = angular.module('icages', [])
 
                 console.log($scope.geneData);
 
+                $timeout(function() {
+                    $('.hz-drug').on("mouseenter", function() {
+                        $('div', this).css("visibility", "hidden");
+                        $('ol.fadeIn', this).show();
+                    });
+                    $('ol.fadeIn').on("mouseleave", function() {
+                        $('.hz-drug div').css("visibility", "initial");
+                        $(this).hide();
+                    });
 
+                });
 
             });
-
-        $('.hz-drug').on("mouseenter", function() {
-            $('div', this).css("visibility", "hidden");
-            $('ol.fadeIn', this).show();
-        });
-        $('ol.fadeIn').on("mouseleave", function() {
-            $('.hz-drug div').css("visibility", "initial");
-            $(this).hide();
-        });
-
 
     }]);
