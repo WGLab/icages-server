@@ -109,6 +109,46 @@ var icages = angular.module('icages', [])
                         $(this).hide();
                     });
 
+                    //Code for adding a header that is always on top
+                    var tb = $('#summary_table');
+                    var tb_clone = $(tb[0].cloneNode());
+                    tb_clone.attr("id", "header_clone").css({
+                        position: "fixed",
+                        top: "0",
+                        width: tb.outerWidth() + 'px'
+                    });
+                    tb_clone.append($('#summary_table thead').clone());
+                    $('thead', tb_clone).css("background-color", "white");
+                    $('.container.hz-content').append(tb_clone);
+                    var ths = $('th', tb);
+
+                    function resizeCloneTable() {
+                        $('th', tb_clone).each(function(i) {
+                            $(this).css("width", $(ths[i]).outerWidth() + 'px');
+                        });
+                        tb_clone.css({
+                            "width": tb.outerWidth() + 'px',
+                            "left": tb.offset()['left'] - $(window).scrollLeft()
+                        });
+                    }
+
+                    resizeCloneTable();
+                    tb_clone.hide();
+
+                    var tableTop = tb.offset()['top'];
+
+                    $(window).resize(resizeCloneTable);
+
+                    $(window).scroll(function() {
+                        if ($(window).scrollTop() > tableTop) {
+                            tb_clone.show();
+                            tb_clone.css("left", tb.offset()['left'] - $(window).scrollLeft());
+                        } else {
+                            tb_clone.hide();
+                        }
+
+                    });
+
                 });
 
             });

@@ -117,17 +117,17 @@
                     return d.radius = i(t);
                 };
             });
- 
-        function charge(d){
-            if(d.gene)
+
+        function charge(d) {
+            if (d.gene)
                 return 0.01;
             else
                 return -0.005;
         }
 
- 
-        function gravity(d){
-            if(d.gene)
+
+        function gravity(d) {
+            if (d.gene)
                 return 0.01;
             else
                 return -0.005;
@@ -364,7 +364,7 @@
         icages: "iCAGES score",
         category: "Category",
         driver: "Driver",
-	children: "Drug"
+        children: "Drug"
     };
 
     function generateTable(data) {
@@ -413,13 +413,13 @@
 
         var gene, rowspan;
 
-	function simpleField(gene, f) {
-            switch(f) {
-                case "gene": 
+        function simpleField(gene, f) {
+            switch (f) {
+                case "gene":
                     return $('<a></a>', {
-                                html: gene[f],
-                                href: gene["url"]
-                            });
+                        html: gene[f],
+                        href: gene["url"]
+                    });
                 case "driver":
                     return gene[f] ? "Yes" : "no";
                 case "children":
@@ -430,7 +430,7 @@
                         })];
 
                         ol = $('<ol></ol>', {
-                            "class":"fadeIn"
+                            "class": "fadeIn"
                         });
                         for (i = 0; i < gene[f].length; i++) {
                             ol.append($('<li></li>', {
@@ -442,7 +442,7 @@
                     } else {
                         return "None";
                     }
-                    
+
                 default:
                     return gene[f];
             }
@@ -475,24 +475,25 @@
                             tbody.append(tr_2);
                         }
                     }
-		} else if (f !== "children") {
-		    tr.append($('<td></td>', {
-			html: simpleField(gene,f),
-			"rowspan": rowspan
-		   }));
-                } else {
-		    tr.append($('<td></td>', {
-                        html: simpleField(gene,f),
-                        "rowspan": rowspan,
-                        "class":"hz-drug"
-                    }));
-                 
                 }
+            } else if (f !== "children") {
+                tr.append($('<td></td>', {
+                    html: simpleField(gene, f),
+                    "rowspan": rowspan
+                }));
+            } else {
+                tr.append($('<td></td>', {
+                    html: simpleField(gene, f),
+                    "rowspan": rowspan,
+                    "class": "hz-drug"
+                }));
+
             }
         }
-	
-	
-	$('.hz-drug').on("mouseenter",function() {
+
+
+
+        $('.hz-drug').on("mouseenter", function() {
             $('div', this).css("visibility", "hidden");
             $('ol.fadeIn', this).show();
         });
@@ -541,6 +542,7 @@
         });
     }
 
+
     // function generateLogInfo(log) {
     //     var keys = Object.keys(log);
     //     $(".log-info > li").each(function(i) {
@@ -551,7 +553,7 @@
     // Main logic
     //../results/result-1000.json
     // should be ../results/result-" + id + ".json on server
-    d3.json("../results/result-" + id  + ".json", function(error, result) {
+    d3.json("../results/result-" + id + ".json", function(error, result) {
         var plotData = result.output.filter(function(d) {
             return d.driver;
         })
