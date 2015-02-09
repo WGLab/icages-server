@@ -67,9 +67,24 @@
             <th ng-repeat="th in headers" rowspan="{{rowspan(th)}}" colspan="{{colspan(th)}}">{{colNameMap[th]}}</th>
           </tr>
           <tr>
-            <th ng-repeat="sh in subHeaders">{{colNameMap[sh]}}</th>
+            <th ng-repeat="sh in mutationHeaders">{{colNameMap[sh]}}</th>
           </tr>
         </thead>
+        <tbody>
+          <tr ng-repeat="datum in geneData">
+            <td ng-if="datum.firstRow" rowspan="{{datum.rowspan}}">
+              <a href="{{datum.url}}">{{datum.geneName}}</a>
+            </td>
+            <td ng-repeat="sh in mutationHeaders">{{datum.mutation[sh]}}</td>
+            <td ng-if="datum.firstRow" ng-repeat="f in datum.otherFields" rowspan="{{datum.rowspan}}">{{f}}</td>
+            <td ng-if="datum.firstRow" rowspan="{{datum.rowspan}}" class="hz-drug">
+              <div>{{datum.drugs[0]}}</div>
+              <ol class="fadeIn" style="display:none;">
+                <li ng-repeat="obj in datum.drugs">{{obj.drug}}</li>
+              </ol>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
