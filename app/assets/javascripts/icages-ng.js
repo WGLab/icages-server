@@ -32,16 +32,16 @@ var icages = angular.module('icages', [])
                 r.firstRow = true;
 
                 var muts = [{
-                	mutation_syntax: "",
-                	protein_syntax: "",
-                	radial: ""
+                    mutation_syntax: "",
+                    protein_syntax: "",
+                    radial: ""
                 }];
 
                 for (var i in d) {
                     switch (i) {
-                    	case "url":
-                    		r.url = d[i];
-                    		break;
+                        case "url":
+                            r.url = d[i];
+                            break;
                         case "gene":
                             r.geneName = d[i];
                             break;
@@ -72,32 +72,44 @@ var icages = angular.module('icages', [])
                 }
             });
 
-			return result;
+            return result;
 
         }
 
-        $http.get("../results/result-" + SUBMISSION_ID + ".json").
-        success(function(data) {
-            console.log(data);
+        $http.get("../results/result-" + SUBMISSION_ID + ".json")
+            .success(function(data) {
+                console.log(data);
+
+
+                $scope.log = data.log;
+                var gData = data.output;
+                if (gData.length > 0) {
+
+                    var hs = Object.keys(gData[0]);
+                    $scope.headers = hs.filter(function(h) {
+                        return h !== "url";
+                    });
+
+                    $scope.mutationHeaders = Object.keys(gData[0]["mutation"][0]);
+                }
+
+
+                $scope.geneData = processDataForTable(gData);
+
+                console.log($scope.geneData);
 
 
 
-            $scope.log = data.log;
-            var gData = data.output;
-            if (gData.length > 0) {
+            });
 
-                var hs = Object.keys(gData[0]);
-                $scope.headers = hs.filter(function(h) {
-                    return h !== "url";
-                });
-
-                $scope.mutationHeaders = Object.keys(gData[0]["mutation"][0]);
-            }
-
-
-            $scope.geneData = processDataForTable(gData);
-
-            console.log($scope.geneData);
-
+        $('.hz-drug').on("mouseenter", function() {
+            $('div', this).css("visibility", "hidden");
+            $('ol.fadeIn', this).show();
         });
+        $('ol.fadeIn').on("mouseleave", function() {
+            $('.hz-drug div').css("visibility", "initial");
+            $(this).hide();
+        });
+
+
     }]);
