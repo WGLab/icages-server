@@ -83,6 +83,7 @@
                 <li ng-repeat="obj in datum.drugs">{{obj.drug}}</li>
               </ol>
             </td>
+            <td ng-if="!datum.hasDrug"></td>
           </tr>
         </tbody>
       </table>
