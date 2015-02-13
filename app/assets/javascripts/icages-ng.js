@@ -3,25 +3,68 @@
 var icages = angular.module('icages', [])
     .controller('SummaryCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 
-        $scope.colNameMap = {
-            gene: "Gene Name",
-            mutation: "Mutation",
-            mutation_syntax: "Mutation Syntax",
-            protein_syntax: "Protein Syntax",
-            radial: "Radial SVM score",
-            phenolyzer: "Phenolyzer score",
-            icages: "iCAGES score",
-            category: "Category",
-            driver: "Driver",
-            children: "Drug"
-        };
+        //Constants for obj key strings
+        var F_NAME = "Name",
+            F_CHILDREN = "children",
+            F_URL = "Gene_url",
+            F_CATEGORY = "Category",
+            F_PHENO_SCORE = "Phenolyzer_score",
+            F_ICAGES_SCORE = "iCAGES_gene_score",
+            F_MUT = "Mutation",
+            F_SCORE_CAT = "Score_category",
+            F_REF_ALLELE = "Reference_allele",
+            F_DRIVER_MUT_SCORE = "Driver_mutation_score",
+            F_ALT_ALLELE = "Alternative_allele",
+            F_PROTEIN_SYNTAX = "Protein_syntax",
+            F_END_POS = "End_position",
+            F_MUT_CATEGORY = " Mutation_category",
+            F_START_POS = "Start_position",
+            F_MUT_SYNTAX = "Mutation_syntax",
+            F_CHROMOSOME = "Chromosome",
+            F_DRIVER = "Driver",
+            F_BIOSYS_PROBABILITY = "Biosystems_probability",
+            F_DRUG_NAME = "Drug_name",
+            F_PUBCHEM_PROBABILITY = "PubChem_active_probability",
+            F_DIRECT_TARGET_GENE = "Direct_target_gene",
+            F_ICAGES_DRUG_SCORE = "iCAGES_drug_score",
+            F_FINAL_TARGET_GENE = "Final_target_gene";
+
+
+        var _dataKeys = [F_NAME, F_MUT, F_PHENO_SCORE, F_ICAGES_SCORE, F_CATEGORY, F_DRIVER, F_CHILDREN, F_URL];
+
+        var _mutationKeys = [F_MUT_SYNTAX, F_PROTEIN_SYNTAX, F_DRIVER_MUT_SCORE]
+
+        var _mutationMoreKeys = [F_SCORE_CAT, F_REF_ALLELE, F_ALT_ALLELE, F_END_POS, F_MUT_CATEGORY, F_START_POS, F_CHROMOSOME];
+
+
+        var _map = {};
+
+        _map[F_NAME] = "Gene Name";
+        _map[F_CHILDREN] = "Drug";
+        _map[F_CATEGORY] = "Category";
+        _map[F_PHENO_SCORE] = "Phenolyzer score";
+        _map[F_ICAGES_SCORE] = "iCAGES score";
+        _map[F_MUT] = "Mutation";
+        _map[F_DRIVER] = "Driver";
+        _map[F_SCORE_CAT] = "Score Category";
+        _map[F_REF_ALLELE] = "Reference allele";
+        _map[F_DRIVER_MUT_SCORE] = "Driver Mutation Score";
+        _map[F_ALT_ALLELE] = "Alternative Allele";
+        _map[F_PROTEIN_SYNTAX] = "Protein Syntax";
+        _map[F_END_POS] = "End Position";
+        _map[F_MUT_CATEGORY] = "Mutation Category";
+        _map[F_START_POS] = "Start Position";
+        _map[F_MUT_SYNTAX] = "Mutation Syntax";
+        _map[F_CHROMOSOME] = "Chromosome";
+
+        $scope.colNameMap = _map;
 
         $scope.rowspan = function(s) {
-            return s === "mutation" ? 1 : 2;
+            return s === F_MUT ? 1 : 2;
         }
 
         $scope.colspan = function(s) {
-            return s === "mutation" ? 3 : 1;
+            return s === F_MUT ? 3 : 1;
         }
 
         function processDataForTable(data) {
@@ -31,28 +74,24 @@ var icages = angular.module('icages', [])
                 r.otherFields = [];
                 r.firstRow = true;
 
-                var muts = [{
-                    mutation_syntax: "",
-                    protein_syntax: "",
-                    radial: ""
-                }];
+                var muts;
 
-                for (var i in d) {
+                for (var i in _dataKeys) {
                     switch (i) {
-                        case "url":
+                        case F_URL:
                             r.url = d[i];
                             break;
-                        case "gene":
+                        case F_NAME:
                             r.geneName = d[i];
                             break;
-                        case "mutation":
+                        case F_MUT:
                             if (d[i].length > 0) {
                                 muts = d[i];
                                 r.mutation = muts[0];
                             }
                             break;
-                        case "children":
-                            r.drugs = d[i];
+                        case F_CHILDREN:
+                            r.drugs = d[i] || [];
                             break;
                         default:
                             r.otherFields.push(d[i]);
@@ -77,6 +116,10 @@ var icages = angular.module('icages', [])
 
         }
 
+        $scope.getDrugName = function(obj) {
+            return obj[F_DRUG_NAME];
+        }
+
         $http.get("../results/result-" + SUBMISSION_ID + ".json")
             .success(function(data) {
                 console.log(data);
@@ -86,12 +129,12 @@ var icages = angular.module('icages', [])
                 var gData = data.output;
                 if (gData.length > 0) {
 
-                    var hs = Object.keys(gData[0]);
-                    $scope.headers = hs.filter(function(h) {
-                        return h !== "url";
+
+                    $scope.headers = _dataKeys.filter(function(k) {
+                        return k !== F_URL;
                     });
 
-                    $scope.mutationHeaders = Object.keys(gData[0]["mutation"][0]);
+                    $scope.mutationKeys = _mutationKeys;
                 }
 
 
