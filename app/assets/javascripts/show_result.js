@@ -1,7 +1,32 @@
 (function(id) {
 
+    var F_NAME = "Name",
+        F_CHILDREN = "children",
+        F_URL = "Gene_url",
+        F_CATEGORY = "Category",
+        F_PHENO_SCORE = "Phenolyzer_score",
+        F_ICAGES_SCORE = "iCAGES_gene_score",
+        F_MUT = "Mutation",
+        F_SCORE_CAT = "Score_category",
+        F_REF_ALLELE = "Reference_allele",
+        F_DRIVER_MUT_SCORE = "Driver_mutation_score",
+        F_ALT_ALLELE = "Alternative_allele",
+        F_PROTEIN_SYNTAX = "Protein_syntax",
+        F_END_POS = "End_position",
+        F_MUT_CATEGORY = " Mutation_category",
+        F_START_POS = "Start_position",
+        F_MUT_SYNTAX = "Mutation_syntax",
+        F_CHROMOSOME = "Chromosome",
+        F_DRIVER = "Driver",
+        F_BIOSYS_PROBABILITY = "Biosystems_probability",
+        F_DRUG_NAME = "Drug_name",
+        F_PUBCHEM_PROBABILITY = "PubChem_active_probability",
+        F_DIRECT_TARGET_GENE = "Direct_target_gene",
+        F_ICAGES_DRUG_SCORE = "iCAGES_drug_score",
+        F_FINAL_TARGET_GENE = "Final_target_gene";
+
     var colorScale = d3.scale.ordinal()
-        .domain(["neither", "cancer gene census", "kegg cancer pathway", "drug"])
+        .domain(["Other Category", "Cancer Gene Census", "KEGG Cancer Pathway", "drug"])
         .range(['#5cb85c', '#d62728', '#1f77b4', "rgb(226, 172, 158)"]);
 
     function plotBubble(data) {
@@ -18,8 +43,8 @@
         m = 0;
         nodes = $.extend(true, [], data);
         for (var n in nodes) {
-            if (clusters[nodes[n].category] === undefined) {
-                clusters[nodes[n].category] = null;
+            if (clusters[nodes[n][F_CATEGORY]] === undefined) {
+                clusters[nodes[n][F_CATEGORY]] = null;
                 m++;
             }
         }
@@ -32,11 +57,11 @@
         nodes.map(function(d, i) {
             //d.x = Math.cos(i / m * 2 * Math.PI) * 200 + width / 2 + Math.random();
             //d.y = Math.sin(i / m * 2 * Math.PI) * 200 + height / 2 + Math.random();
-            if (d.category === undefined) {
-                d.radius = Math.round(d.score * 40);
+            if (d[F_CATEGORY] === undefined) {
+                d.radius = Math.round(d[F_ICAGES_DRUG_SCORE] * 40);
             } else {
-                d.radius = Math.round(d.icages * 60);
-                if (clusters[d.category] === null || d.radius > clusters[d.category].radius) clusters[d.category] = d;
+                d.radius = Math.round(d[F_ICAGES_SCORE] * 60);
+                if (clusters[d[F_CATEGORY]] === null || d.radius > clusters[d[F_CATEGORY]].radius) clusters[d[F_CATEGORY]] = d;
             }
             d.radius = d.radius < 4 ? 4 : d.radius;
             return d;
@@ -84,8 +109,8 @@
 
         node.append("circle")
             .style("fill", function(d) {
-                if (d.category) {
-                    return colorScale(d.category);
+                if (d[F_CATEGORY]) {
+                    return colorScale(d[F_CATEGORY]);
                 } else {
                     return colorScale("drug");
                 }
@@ -100,10 +125,10 @@
             .style("-ms-user-select", "none")
             .style("cursor", "default")
             .text(function(d) {
-                if (d.gene)
-                    return d.gene;
+                if (d[F_NAME])
+                    return d[F_NAME];
                 else
-                    return d.drug;
+                    return d[F_DRUG_NAME];
             });
 
         node.selectAll("circle").transition()
@@ -119,7 +144,7 @@
             });
 
         function charge(d) {
-            if (d.gene)
+            if (d[F_NAME])
                 return 0.01;
             else
                 return -0.005;
@@ -127,7 +152,7 @@
 
 
         function gravity(d) {
-            if (d.gene)
+            if (d[F_NAME])
                 return 0.01;
             else
                 return -0.005;
@@ -159,8 +184,8 @@
         // Move d to be adjacent to the cluster node
         function cluster(alpha) {
             return function(d) {
-                if (d.category === undefined) return;
-                var cluster = clusters[d.category];
+                if (d[F_CATEGORY] === undefined) return;
+                var cluster = clusters[d[F_CATEGORY]];
                 if (cluster === d) return;
                 var x = d.x - cluster.x,
                     y = d.y - cluster.y,
@@ -190,7 +215,7 @@
                         var x = d.x - quad.point.x,
                             y = d.y - quad.point.y,
                             l = Math.sqrt(x * x + y * y),
-                            r = d.radius + quad.point.radius + (d.category === quad.point.category ? padding : clusterPadding);
+                            r = d.radius + quad.point.radius + (d[F_CATEGORY] === quad.point[F_CATEGORY] ? padding : clusterPadding);
                         if (l < r) {
                             l = (l - r) / l * alpha;
                             d.x -= x *= l;
@@ -265,13 +290,13 @@
 
 
         x.domain([d3.min(data, function(d) {
-            return d.icages;
+            return d[F_ICAGES_SCORE];
         }), d3.max(data, function(d) {
-            return d.icages;
+            return d[F_ICAGES_SCORE];
         })]).nice();
 
         y.domain(data.map(function(d) {
-            return d.gene;
+            return d[F_NAME];
         }));
 
         // xAxis vertical ticks
@@ -301,17 +326,17 @@
             .data(data)
             .enter().append("a")
             .attr("xlink:href", function(d) {
-                return d.url;
+                return d[F_URL];
             })
             .attr("target", "_blank")
             .append("text")
             .attr('y', function(d) {
-                return y(d.gene);
+                return y(d[F_NAME]);
             })
             .attr("dy", "1.35em")
             .attr("text-anchor", "end")
             .text(function(d) {
-                return d.gene;
+                return d[F_NAME];
             });
 
         // bars
@@ -323,34 +348,34 @@
             .data(data)
             .enter().append("a")
             .attr("xlink:href", function(d) {
-                return d.url;
+                return d[F_URL];
             })
             .append("rect")
             .attr("class", "bar")
             .attr("y", function(d) {
-                return y(d.gene);
+                return y(d[F_NAME]);
             })
             .style("fill", function(d) {
-                return colorScale(d.category);
+                return colorScale(d[F_CATEGORY]);
             })
             .attr("height", y.rangeBand())
             .attr("width", function(d) {
-                return x(d.icages);
+                return x(d[F_ICAGES_SCORE]);
             });
 
         chart.selectAll("text")
             .data(data)
             .enter().append("text")
             .attr("x", function(d) {
-                return x(d.icages);
+                return x(d[F_ICAGES_SCORE]);
             })
             .attr("y", function(d) {
-                return y(d.gene);
+                return y(d[F_NAME]);
             })
             .attr("dy", "1.35em")
             .attr("dx", "0.5em")
             .text(function(d) {
-                return d3.format(".3f")(d.icages);
+                return d3.format(".3f")(d[F_ICAGES_SCORE]);
             });
     }
 
