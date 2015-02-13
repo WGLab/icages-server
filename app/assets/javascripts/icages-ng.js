@@ -77,7 +77,7 @@ var icages = angular.module('icages', [])
 
                 var muts;
 
-                for (var i in _dataKeys) {
+                _dataKeys.forEach(function(i) {
                     switch (i) {
                         case F_URL:
                             r.url = d[i];
@@ -98,9 +98,9 @@ var icages = angular.module('icages', [])
                             r.otherFields.push(d[i]);
                             break;
                     }
-                }
+                });
 
-                r.rowspan = muts.length;
+                r.rowspan = muts? muts.length : 1;
                 r.hasDrug = r.drugs.length > 0;
 
                 result.push(r);
