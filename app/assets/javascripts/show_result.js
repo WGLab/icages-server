@@ -580,7 +580,7 @@
     // should be ../results/result-" + id + ".json on server
     d3.json("../results/result-" + id + ".json", function(error, result) {
         var plotData = result.Output.filter(function(d) {
-            return d.driver;
+            return d[F_DRIVER] === "TRUE";
         })
         plotBubble(plotData);
         plotBar(plotData);
