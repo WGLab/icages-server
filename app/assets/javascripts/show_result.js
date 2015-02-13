@@ -554,7 +554,7 @@
     //../results/result-1000.json
     // should be ../results/result-" + id + ".json on server
     d3.json("../results/result-" + id + ".json", function(error, result) {
-        var plotData = result.output.filter(function(d) {
+        var plotData = result.Output.filter(function(d) {
             return d.driver;
         })
         plotBubble(plotData);

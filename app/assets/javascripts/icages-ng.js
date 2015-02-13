@@ -3,6 +3,7 @@
 var icages = angular.module('icages', [])
     .controller('SummaryCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
 
+
         //Constants for obj key strings
         var F_NAME = "Name",
             F_CHILDREN = "children",
@@ -125,8 +126,8 @@ var icages = angular.module('icages', [])
                 console.log(data);
 
 
-                $scope.log = data.log;
-                var gData = data.output;
+                $scope.log = data.Log;
+                var gData = data.Output;
                 if (gData.length > 0) {
 
 
