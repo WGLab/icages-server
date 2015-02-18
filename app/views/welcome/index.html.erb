@@ -1,5 +1,5 @@
 <% content_for :navtabs do %>
-  <li><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
+  <li><a href="#upload" data-toggle="modal"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
   </li>
   <li><a href="/about"><i class="glyphicon glyphicon-question-sign"></i>&nbsp;About</a>
   </li>
@@ -100,4 +100,19 @@ $('.carousel').carousel({
 
 </div>
 
+<div class = "modal fade" id = "upload" role = "dialog">
+        <div class = "modal-dialog">
+                <div class = "modal-content">
+                        <div class="modal-header">
+                                <h4><strong>Agreement on Terms of Use</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                                <p>Thanks for using iCAGES. By using our Services, you are agreeing to these terms, please read them carefully. When you upload, submit, store or receive data through our Services, you give us (and those we work with) a worldwide license to use, host, store, reproduce, modify and create derivative works for research and educational purposes (such as meta-analysis of personal cancer variants). iCAGES is currently developed for research purpose, and does not provide any medical or healthcare Services or advice. When using iCAGES for research or business purpose, please cite iCAGES original publication.</p>
+                        </div>
+                        <div class="modal-footer">
+                                <a class="btn btn-primary" href="/upload">I agree</a>
+                        </div>
+                </div>
+        </div>
+</div>
 
