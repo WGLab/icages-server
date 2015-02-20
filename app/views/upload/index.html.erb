@@ -1,9 +1,9 @@
 <% content_for :head do %>
-   <%= render 'shared/walkme_script' %>
+   <script type="text/javascript" src="/assets/walkme.js"></script>
 <% end %>
 
 <% content_for :navtabs do %>
-   <li   class="active"><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
+   <li class="active"><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
    </li>
    <li><a href="/about"><i class="glyphicon glyphicon-question-sign"></i>&nbsp;About</a>
    </li>
@@ -12,84 +12,85 @@
    <li><a href="/example"><i class="glyphicon glyphicon-user"></i>&nbsp;Example</a>
    </li>
     <li><a href="/package"><i class="glyphicon glyphicon-user"></i>&nbsp;Download</a>
-   </li>
 <% end %>
 
-
 <div class="container hz-content">
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-7">
-                <center>
-                    <h1>Submit a query</h1>
-                </center>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-7">
+            <center>
+                <h1>Submit a query</h1>
+            </center>
+        </div>
+    </div>
+    <div id="flash_msg">submit successfully!!!</div>
+    <div class="form-horizontal hz-form" role="form">
+        <div class="form-group" id="email_input">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-7 hz-inline">
+                <div id="email_sign" class="input-group-addon">@</div>
+                <input type="email" class="form-control" placeholder="Please leave an email address">
+                <span class="input-indicator"></span>
+            </div>
+            <div class="col-sm-3">
+                We will notify you when job is done
             </div>
         </div>
-        <div id="flash_msg">submit successfully!!!</div>
-        <div class="form-horizontal hz-form" role="form">
-            <div class="form-group" id="email_input">
-                <label class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-7 hz-inline">
-                    <div id="email_sign" class="input-group-addon">@</div>
-                    <input type="email" class="form-control" placeholder="Please leave an email address">
-                    <span class="input-indicator"></span>
-                </div>
-                <div class="col-sm-3">
-                    We will notify you when job is done
+        <div class="form-group" id="data_input">
+            <label class="col-sm-2 control-label">Enter data</label>
+            <div class="col-sm-7">
+                <textarea class="form-control" name="inputData" placeholder="Copy and paste your data here..." rows="7"></textarea>
+                <span class="input-indicator"></span>
+                <div class="hz-bar">
+                    <button id="submit_text" class="btn btn-default">Submit text</button>
+                    <button id="sample_btn" class="btn btn-default">Paste Sample</button>
                 </div>
             </div>
-            <div class="form-group" id="data_input">
-                <label class="col-sm-2 control-label">Enter data</label>
-                <div class="col-sm-7">
-                    <textarea class="form-control" name="inputData" placeholder="Copy and paste your data here..." rows="7"></textarea>
-                    <span class="input-indicator"></span>
-		    <div class="hz-bar">
-                        <button id="submit_text" class="btn btn-default">Submit text</button>
-                        <button id="sample_btn" class="btn btn-default">Paste Sample</button>
-                    </div>
+            <div class="col-sm-3">
+                <div class="hz-bar">
+                    <span>iCAGES supports two input format:
+                        </span>
                 </div>
-                <div class="col-sm-3">
-                    <div class="hz-bar">
-                        <span>iCAGES supports two input format:
+                <div class="hz-bar">
+                    <span> <a class="annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format
+                            <button id="an_ex_btn" type="button" class="btn btn-sm btn-link ex-btn" data-toggle="popover" data-content="This format is denoted by the author of ANNOVAR package. The format is essentially Tab or Space deliminated table with five columns indicating 'chromosome id', 'start coordinate of the mutation (1 based)', 'end coordinate of the mutation (1 based)', 'reference allele', 'alternative allele'. Example of one row: '1  12919840    12919840    T   C'">(?)</button>
                         </span>
-                    </div>
-                    <div class="hz-bar">
-                        <span> <a class="annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format
-                            <button id="an_ex_btn" type="button" class="btn btn-sm btn-link ex-btn" data-toggle="popover" data-content="This format is denoted by the author of ANNOVAR package. The format is essentially Tab or Space deliminated table with five columns indicating 'chromosome id', 'start coordinate of the mutation (1 based)', 'end coordinate of the mutation (1 based)', 'reference allele', 'alternative allele'. Example of one row: '1	12919840	12919840	T	C'">(?)</button>
-                        </span>
-                    </div>
-                    <div class="hz-bar">
-                        <span> <a href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">VCF</a> input format
+                </div>
+                <div class="hz-bar">
+                    <span> <a href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">VCF</a> input format
                         <button id="vcf_ex_btn" type="button" class="btn btn-sm btn-link ex-btn" data-toggle="popover" data-content="The Variant Call Format (VCF) specifies the format of a text file used in bioinformatics for storing gene sequence variations. Please click the hyperlink 'VCF' for more details.">(?)</button>
                         </span>
-                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">
-                    <span class="hz-label">Or you can</span>
-                </label>
-                <div class="col-sm-7">
-                    <div id="file_dropzone">
-                        <div>
-                            <span class="btn btn-default hz-file-btn">
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">
+                <span class="hz-label">Or you can</span>
+            </label>
+            <div class="col-sm-7">
+                <div id="file_dropzone">
+                    <div>
+                        <span class="btn btn-default hz-file-btn">
                                 <span><i class="glyphicon glyphicon-paperclip"></i>
                                 </span>
-                                <input id="file_upload" type="file" name="inputFile">
-                            </span>
-                            <span>Add or drag your data file here</span>
-                        </div>
+                        <input id="file_upload" type="file" name="inputFile">
+                        </span>
+                        <span>Add or drag your data file here</span>
                     </div>
-		
-                    <div id="upload_progress" class="progress">
-                        <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
-                            <span class="sr-only"></span>
-                        </div>
-                    </div>
-                    <button id="submit_file" class="btn btn-default">Submit file</button>
                 </div>
 
-	  </div>
-	  
+                <div id="upload_progress" class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+                <button id="submit_file" class="btn btn-default">Submit file</button>
+            </div>
+
         </div>
-       <script src="assets/upload.js"></script>
+
+    </div>
+
+
+
+    <script type="text/javascript" src="/assets/upload.js"></script>
 </div>
