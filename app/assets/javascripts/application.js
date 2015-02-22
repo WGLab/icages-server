@@ -20,3 +20,4 @@
 //= require jquery-file-upload/js/jquery.fileupload
 //= require ie10-viewport-bug-workaround
 //= require ie-emulation-modes-warning
+//= require icages-ui
