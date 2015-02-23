@@ -124,7 +124,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
         $scope.openMutationModal = function(datum) {
 
             var mutationModal = $modal.open({
-                templateUrl: '/assets/mutationModal.html',
+                templateUrl: '/ng-templates/mutationModal.html',
                 controller: "MutationModalCtrl",
                 size: "sm",
                 resolve: {
