@@ -144,7 +144,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
             mutationModal.result.then(function() {
 
             }, function() {
-                $log.info('Modal dismissed at: ' + new Date());
+                console.log('Modal dismissed at: ' + new Date());
             });
 
         }
