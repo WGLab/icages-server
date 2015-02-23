@@ -18,7 +18,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
             F_ALT_ALLELE = "Alternative_allele",
             F_PROTEIN_SYNTAX = "Protein_syntax",
             F_END_POS = "End_position",
-            F_MUT_CATEGORY = " Mutation_category",
+            F_MUT_CATEGORY = "Mutation_category",
             F_START_POS = "Start_position",
             F_MUT_SYNTAX = "Mutation_syntax",
             F_CHROMOSOME = "Chromosome",
@@ -141,7 +141,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
 
             });
 
-            modalInstance.result.then(function() {
+            mutationModal.result.then(function() {
 
             }, function() {
                 $log.info('Modal dismissed at: ' + new Date());
