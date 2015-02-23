@@ -1,6 +1,6 @@
 'use strict'
 
-var icages = angular.module('icages', [])
+var icages = angular.module('icages', ['ui.bootstrap'])
     .controller('SummaryCtrl', ['$scope', '$http', '$timeout', '$modal', function($scope, $http, $timeout, $modal) {
 
 
