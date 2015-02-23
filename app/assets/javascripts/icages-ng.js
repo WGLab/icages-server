@@ -1,7 +1,7 @@
 'use strict'
 
 var icages = angular.module('icages', [])
-    .controller('SummaryCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+    .controller('SummaryCtrl', ['$scope', '$http', '$timeout', '$modal', function($scope, $http, $timeout, $modal) {
 
 
         //Constants for obj key strings
@@ -31,11 +31,11 @@ var icages = angular.module('icages', [])
             F_FINAL_TARGET_GENE = "Final_target_gene";
 
 
-        var _dataKeys = [F_NAME, F_MUT, F_PHENO_SCORE, F_ICAGES_SCORE, F_CATEGORY, F_DRIVER, F_CHILDREN, F_URL];
+        var _dataFields = [F_NAME, F_MUT, F_PHENO_SCORE, F_ICAGES_SCORE, F_CATEGORY, F_DRIVER, F_CHILDREN, F_URL];
 
-        var _mutationKeys = [F_MUT_SYNTAX, F_PROTEIN_SYNTAX, F_DRIVER_MUT_SCORE]
+        var _mutationFields = [F_PROTEIN_SYNTAX, F_DRIVER_MUT_SCORE]
 
-        var _mutationMoreKeys = [F_SCORE_CAT, F_REF_ALLELE, F_ALT_ALLELE, F_END_POS, F_MUT_CATEGORY, F_START_POS, F_CHROMOSOME];
+        var _mutationMoreFields = [F_SCORE_CAT, F_REF_ALLELE, F_ALT_ALLELE, F_END_POS, F_MUT_CATEGORY, F_START_POS, F_CHROMOSOME];
 
 
         var _map = {};
@@ -77,7 +77,7 @@ var icages = angular.module('icages', [])
 
                 var muts;
 
-                _dataKeys.forEach(function(i) {
+                _dataFields.forEach(function(i) {
                     switch (i) {
                         case F_URL:
                             r.url = d[i];
@@ -100,7 +100,7 @@ var icages = angular.module('icages', [])
                     }
                 });
 
-                r.rowspan = muts? muts.length : 1;
+                r.rowspan = muts ? muts.length : 1;
                 r.hasDrug = r.drugs.length > 0;
 
                 result.push(r);
@@ -121,6 +121,34 @@ var icages = angular.module('icages', [])
             return obj[F_DRUG_NAME];
         }
 
+        $scope.openMutationModal = function(datum) {
+
+            var mutationModal = $modal.open({
+                templateUrl: '/assets/mutationModal.html',
+                controller: "MutationModalCtrl",
+                size: "sm",
+                resolve: {
+                    datum: function() {
+                        return datum;
+                    },
+                    fields: function() {
+                        return _mutationMoreFields;
+                    },
+                    map: function() {
+                        return _map;
+                    }
+                }
+
+            });
+
+            modalInstance.result.then(function() {
+
+            }, function() {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+
+        }
+
         $http.get("../results/result-" + SUBMISSION_ID + ".json")
             .success(function(data) {
                 console.log(data);
@@ -131,11 +159,12 @@ var icages = angular.module('icages', [])
                 if (gData.length > 0) {
 
 
-                    $scope.headers = _dataKeys.filter(function(k) {
+                    $scope.headers = _dataFields.filter(function(k) {
                         return k !== F_URL;
                     });
 
-                    $scope.mutationKeys = _mutationKeys;
+                    $scope.mutationPrimaryField = F_MUT_SYNTAX;
+                    $scope.mutationFields = _mutationFields;
                 }
 
 
@@ -196,5 +225,22 @@ var icages = angular.module('icages', [])
                 });
 
             });
+
+    }])
+    .controller("MutationModalCtrl", ['$scope', '$modalInstance', 'datum', 'fields', 'map', function($scope, $modalInstance, datum, fields, map) {
+
+        $scope.datum = datum;
+        $scope.fields = fields;
+        $scope.map = map;
+
+        $scope.ok = function() {
+            $modalInstance.close();
+        };
+
+        $scope.cancel = function() {
+            $modalInstance.dismiss('cancel');
+        };
+
+
 
     }]);
