@@ -1,7 +1,7 @@
 (function(id) {
 
     var F_NAME = "Name",
-        F_CHILDREN = "children",
+        F_CHILDREN = "Children",
         F_URL = "Gene_url",
         F_CATEGORY = "Category",
         F_PHENO_SCORE = "Phenolyzer_score",
@@ -50,7 +50,9 @@
         }
 
 
-        var links = d3.layout.tree().links(nodes);
+        var links = d3.layout.tree().links(nodes).children(function(d) {
+            return d[F_CHILDREN];
+        });
 
         nodes = flatten(nodes);
 

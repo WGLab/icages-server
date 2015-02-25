@@ -6,7 +6,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
 
         //Constants for obj key strings
         var F_NAME = "Name",
-            F_CHILDREN = "children",
+            F_CHILDREN = "Children",
             F_URL = "Gene_url",
             F_CATEGORY = "Category",
             F_PHENO_SCORE = "Phenolyzer_score",
@@ -167,6 +167,10 @@ var icages = angular.module('icages', ['ui.bootstrap'])
                     $scope.mutationFields = _mutationFields;
                 }
 
+
+                gData.sort(function(g1,g2) {
+                    return g1[F_ICAGES_SCORE] > g2[F_ICAGES_SCORE];
+                });
 
                 $scope.geneData = processDataForTable(gData);
 
