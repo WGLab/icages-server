@@ -49,10 +49,12 @@
             }
         }
 
-
-        var links = d3.layout.tree().children(function(d) {
+        var treeLayout = d3.layout.tree();
+        treeLayout.children(function(d) {
             return d[F_CHILDREN];
-        }).links(nodes);
+        });
+
+        var links = treeLayout.links(nodes);
 
         nodes = flatten(nodes);
 

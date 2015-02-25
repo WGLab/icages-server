@@ -169,7 +169,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
 
 
                 gData.sort(function(g1,g2) {
-                    return g1[F_ICAGES_SCORE] > g2[F_ICAGES_SCORE];
+                    return parseFloat(g1[F_ICAGES_SCORE]) > parseFloat(g2[F_ICAGES_SCORE]);
                 });
 
                 $scope.geneData = processDataForTable(gData);
