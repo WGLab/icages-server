@@ -50,9 +50,9 @@
         }
 
 
-        var links = d3.layout.tree().links(nodes).children(function(d) {
+        var links = d3.layout.tree().children(function(d) {
             return d[F_CHILDREN];
-        });
+        }).links(nodes);
 
         nodes = flatten(nodes);
 
