@@ -48,7 +48,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
         _map[F_MUT] = "Mutation";
         _map[F_DRIVER] = "Driver";
         _map[F_SCORE_CAT] = "Score Category";
-        _map[F_REF_ALLELE] = "Reference allele";
+        _map[ F_REF_ALLELE] = "Reference allele";
         _map[F_DRIVER_MUT_SCORE] = "Driver Mutation Score";
         _map[F_ALT_ALLELE] = "Alternative Allele";
         _map[F_PROTEIN_SYNTAX] = "Protein Syntax";
@@ -169,7 +169,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
 
 
                 gData.sort(function(g1,g2) {
-                    return parseFloat(g1[F_ICAGES_SCORE]) > parseFloat(g2[F_ICAGES_SCORE]);
+                    return parseFloat(g1[F_ICAGES_SCORE]) < parseFloat(g2[F_ICAGES_SCORE]);
                 });
 
                 $scope.geneData = processDataForTable(gData);
