@@ -9,7 +9,7 @@ iCAGES (integrated CAncer GEnome Score) is an effective tool for prioritizing ca
 
 ## What does this repository contain?
 
-This repository contains Ruby on Rails application for running the iCAGES server. The actual backend program for iCAGES analysis is available at http://www.github.com/WangGenomicsLab/icages/ as Perl code. The frontend is implemented with AngularJS.
+This repository contains Ruby on Rails application for running the iCAGES server. The actual backend program for iCAGES analysis is available at [here](http://www.github.com/WangGenomicsLab/icages/) as Perl code. The frontend is implemented with AngularJS.
 
 ## What is unique about iCAGES server?
 
