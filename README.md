@@ -17,9 +17,9 @@ iCAGES server is simple yet highly effective. It has a very user-friendly interf
 
 ## Reference
 
-Dong C, Yang H, He Z, Liu X, Wang K. iCAGES: integrated CAncer GEnome Score for understanding personal cancer genomes. bioRxiv doi: http://dx.doi.org/10.1101/015008
+Dong C, Yang H, He Z, Liu X, Wang K. **iCAGES: integrated CAncer GEnome Score for understanding personal cancer genomes**. bioRxiv doi: http://dx.doi.org/10.1101/015008
 
 ## Credits
 
-* [Zeyu He](https://github.com/hezzze)
-* [Coco Chengliang Dong](https://github.com/coco90417)
+- [Zeyu He](https://github.com/hezzze)
+- [Coco Chengliang Dong](https://github.com/coco90417)
