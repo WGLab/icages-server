@@ -390,7 +390,7 @@
             });
     }
 
-    function plotCharts(data) {
+    function plotD3Charts(data) {
         var plotData = data.Output.filter(function(d) {
             return d[F_DRIVER] === "TRUE";
         })
@@ -526,8 +526,12 @@
             $http.get("../results/result-" + SUBMISSION_ID + ".json")
                 .success(function(data) {
 
+                    data.Output.sort(function(g1, g2) {
+                        return parseFloat(g2[F_ICAGES_SCORE]) - parseFloat(g1[F_ICAGES_SCORE]);
+                    });
+
                     //generate d3 charts 
-                    plotCharts(angular.copy(data));
+                    plotD3Charts(angular.copy(data));
 
                     console.log(data);
 
@@ -544,11 +548,6 @@
                         $scope.mutationPrimaryField = F_MUT_SYNTAX;
                         $scope.mutationFields = _mutationFields;
                     }
-
-
-                    gData.sort(function(g1, g2) {
-                        return parseFloat(g2[F_ICAGES_SCORE]) - parseFloat(g1[F_ICAGES_SCORE]);
-                    });
 
                     $scope.geneData = processDataForTable(gData);
 
