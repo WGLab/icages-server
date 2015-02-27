@@ -1,23 +1,19 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-
 h1 {
     font-size: 45px;
     font-weight: bold;
 }
-
-
 #logo {
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 38px;
     color: rgb(69, 194, 124);
     &:hover {
-	color: white;
+        color: white;
     }
 }
-
 #flash_msg {
-    background-color: #DFF0D8; 
+    background-color: #DFF0D8;
     color: #468847;
     padding: 0.5em 1em;
     margin-top: 1em;
@@ -25,25 +21,22 @@ h1 {
     border-radius: 5px;
     display: none;
 }
-
 .hz-content {
     margin-top: 90px;
 }
-
 #upload_progress {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 #file_dropzone {
     height: 9em;
     text-align: center;
     border: 1px dashed #c3c3c3;
     &>div {
-	margin-top: 35px;
-	font-size: 20px;
-	color: #5a5a5a;
-    }	
+        margin-top: 35px;
+        font-size: 20px;
+        color: #5a5a5a;
+    }
     .hz-file-btn {
         font-size: 24px;
         color: rgba(66, 139, 202, 0.64);
@@ -53,7 +46,7 @@ h1 {
         input {
             position: absolute;
             top: 0;
-            right: 0;   
+            right: 0;
             margin: 0;
             opacity: 0;
             -ms-filter: 'alpha(opacity=0)';
@@ -70,13 +63,12 @@ h1 {
     }
     border: 4px dashed #c3c3c3;
     &>div {
-	margin-top: 32px;
-	font-size: 30px;
-	color: #BDBDBD;
-    	font-family: Geog;
-    }	
-} 
-
+        margin-top: 32px;
+        font-size: 30px;
+        color: #BDBDBD;
+        font-family: Geog;
+    }
+}
 #email_sign {
     width: 1%;
 }
@@ -95,11 +87,12 @@ section {
         display: inline-block;
     }
     button {
-	margin-right: 10px;
+        margin-right: 10px;
     }
 }
 .input-indicator {
     /*customization for showing indicator without control label*/
+    
     top: 0;
 }
 .hz-chart {
@@ -117,12 +110,10 @@ section {
     .bar:hover {
         fill: #f0ad4e !important;
     }
-    .axis path,
-    .axis line {
+    .axis path, .axis line {
         stroke: #000;
         shape-rendering: crispEdges;
     }
-
 }
 .hz-inline {
     display: inline-table;
@@ -147,13 +138,13 @@ footer {
     background-color: rgb(248, 248, 248);
     padding: 2em 0 1em;
     label {
-       font-size: 18px;
+        font-size: 18px;
     }
 }
 .hz-table * {
     vertical-align: middle !important;
     text-align: center;
-    .hz-drug  {
+    .hz-drug {
         position: relative;
         ol {
             position: absolute;
@@ -163,13 +154,18 @@ footer {
             border-radius: 3px;
             z-index: 1;
             display: none;
-            padding-top: 8px; 
+            padding-top: 8px;
             padding-bottom: 8px;
             padding-right: 4px;
         }
     }
+    td {
+        display: relative;
+    }
+    a {
+        cursor: pointer; 
+    }
 }
-
 .navbar.navbar-default.hz-navbar {
     .hz-brand {
         padding: 5px;
@@ -230,7 +226,6 @@ footer {
                     background-color: rgb(255, 252, 255);
                 }
             }
-
         }
         .dropdown-menu {
             top: 111%;
@@ -247,7 +242,6 @@ footer {
         display: none;
     }
 }
-
 #wang_lab_brand {
     padding: 10px 15px;
     height: 40px;
@@ -267,3 +261,4 @@ footer {
     stroke: #9ecae1;
     stroke-width: 1.5px;
 }
+
