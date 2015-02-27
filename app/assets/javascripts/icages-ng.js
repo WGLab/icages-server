@@ -31,11 +31,11 @@ var icages = angular.module('icages', ['ui.bootstrap'])
             F_FINAL_TARGET_GENE = "Final_target_gene";
 
 
-        var _dataFields = [F_NAME, F_MUT, F_PHENO_SCORE, F_ICAGES_SCORE, F_CATEGORY, F_DRIVER, F_CHILDREN, F_URL];
+        var _dataFields = [F_NAME, F_CATEGORY, F_DRIVER, F_PHENO_SCORE, F_ICAGES_SCORE, F_MUT, F_CHILDREN, F_URL];
 
-        var _mutationFields = [F_PROTEIN_SYNTAX, F_DRIVER_MUT_SCORE]
+        var _mutationFields = [F_MUT_CATEGORY, F_DRIVER_MUT_SCORE]
 
-        var _mutationMoreFields = [F_SCORE_CAT, F_REF_ALLELE, F_ALT_ALLELE, F_END_POS, F_MUT_CATEGORY, F_START_POS, F_CHROMOSOME];
+        var _mutationMoreFields = [F_CHROMOSOME, F_START_POS, F_END_POS, F_REF_ALLELE, F_ALT_ALLELE, F_PROTEIN_SYNTAX, F_SCORE_CAT];
 
 
         var _map = {};
@@ -48,7 +48,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
         _map[F_MUT] = "Mutation";
         _map[F_DRIVER] = "Driver";
         _map[F_SCORE_CAT] = "Score Category";
-        _map[ F_REF_ALLELE] = "Reference allele";
+        _map[F_REF_ALLELE] = "Reference allele";
         _map[F_DRIVER_MUT_SCORE] = "Driver Mutation Score";
         _map[F_ALT_ALLELE] = "Alternative Allele";
         _map[F_PROTEIN_SYNTAX] = "Protein Syntax";
@@ -168,7 +168,7 @@ var icages = angular.module('icages', ['ui.bootstrap'])
                 }
 
 
-                gData.sort(function(g1,g2) {
+                gData.sort(function(g1, g2) {
                     return parseFloat(g2[F_ICAGES_SCORE]) - parseFloat(g1[F_ICAGES_SCORE]);
                 });
 

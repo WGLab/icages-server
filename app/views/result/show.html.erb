@@ -78,9 +78,9 @@
             <td ng-if="datum.firstRow" rowspan="{{datum.rowspan}}">
               <a href="{{datum.url}}">{{datum.geneName}}</a>
             </td>
+            <td ng-if="datum.firstRow" ng-repeat="f in datum.otherFields" rowspan="{{datum.rowspan}}">{{f}}</td>
             <td><a ng-click="openMutationModal(datum)">{{datum.mutation[mutationPrimaryField]}}</a></td>
             <td ng-repeat="k in mutationFields">{{datum.mutation[k]}}</td>
-            <td ng-if="datum.firstRow" ng-repeat="f in datum.otherFields" rowspan="{{datum.rowspan}}">{{f}}</td>
             <td ng-if="datum.firstRow && datum.hasDrug" rowspan="{{datum.rowspan}}" class="hz-drug">
               <div>{{getDrugName(datum.drugs[0])}}</div>
               <ol class="fadeIn" style="display:none;">
