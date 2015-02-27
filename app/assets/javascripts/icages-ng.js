@@ -92,7 +92,7 @@
             .attr("width", width)
             .attr("height", height);
 
-        link = svg.selectAll("line")
+        var link = svg.selectAll("line")
             .data(links)
             .enter().append("line")
             .attr("class", "link")
