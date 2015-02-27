@@ -1,6 +1,6 @@
 {
 	"script": {
-		"path": "/home/cocodong/www/iCAGES-dev/icages/icages.pl",
+		"path": "/home/cocodong/www/iCAGES-dev/icages/serverCallsIcages.pl",
 		"input_dir": "/home/cocodong/www/iCAGES-dev/public/upload",
 		"output_dir": "/home/cocodong/www/iCAGES-dev/public/results",
 		"temp_dir": "/home/cocodong/www/iCAGES-dev/public/temp",

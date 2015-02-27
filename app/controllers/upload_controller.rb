@@ -59,7 +59,6 @@ class UploadController < ApplicationController
     end
    
     results_dir = working_dir.join('public', 'results')
-    `perl #{CONFIG['script']['path']}; cp #{CONFIG['script']['output']} #{results_dir}/result-#{id}.json`
     
     submission = Submission.find(id)
     submission.update(done: true)

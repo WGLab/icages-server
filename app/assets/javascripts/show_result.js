@@ -1,7 +1,7 @@
 (function(id) {
 
     var F_NAME = "Name",
-        F_CHILDREN = "children",
+        F_CHILDREN = "Children",
         F_URL = "Gene_url",
         F_CATEGORY = "Category",
         F_PHENO_SCORE = "Phenolyzer_score",
@@ -49,6 +49,13 @@
             }
         }
 
+        //Change field name to comply with
+        // the standard d3 field name 
+        // for children
+        nodes.forEach(function(n) {
+            n.children = n[F_CHILDREN];
+            delete n[F_CHILDREN];
+        })
 
         var links = d3.layout.tree().links(nodes);
 
