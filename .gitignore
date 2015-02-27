@@ -24,9 +24,8 @@ ee https://help.github.com/articles/ignoring-files for more about ignoring files
 /public/log
 /public/download
 
-# icages annovar and DGIdb 
-/icages/bin/DGIdb/
-/icages/bin/annovar/
+# icages 
+/icages/
 /icages-backup/
 
 \#*\#
