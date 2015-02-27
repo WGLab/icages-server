@@ -282,7 +282,7 @@
             .range([0, width - margin.left - margin.right - barLabelWidth]);
 
 
-        y = d3.scale.ordinal()
+        var y = d3.scale.ordinal()
             .rangeBands([0, height], .1, .5);
 
         var xAxis = d3.svg.axis()
