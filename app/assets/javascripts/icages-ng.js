@@ -534,7 +534,7 @@
                 var drugModal = $modal.open({
                     templateUrl: '/ng-templates/drugModal.html',
                     controller: "DrugModalCtrl",
-                    size: "sm",
+                    size: "lg",
                     resolve: {
                         drugs: function() {
                             return drugs;
