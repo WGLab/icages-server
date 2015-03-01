@@ -411,28 +411,34 @@
 
             var _mutationMoreFields = [F_CHROMOSOME, F_START_POS, F_END_POS, F_REF_ALLELE, F_ALT_ALLELE, F_PROTEIN_SYNTAX, F_SCORE_CAT];
 
+            var _drugFields = [F_DRUG_NAME, F_FINAL_TARGET_GENE, F_DIRECT_TARGET_GENE, F_BIOSYS_PROBABILITY, F_ICAGES_DRUG_SCORE];
 
-            var _map = {};
+            var _colNameMap = {};
 
-            _map[F_NAME] = "Gene Name";
-            _map[F_CHILDREN] = "Drug";
-            _map[F_CATEGORY] = "Category";
-            _map[F_PHENO_SCORE] = "Phenolyzer score";
-            _map[F_ICAGES_SCORE] = "iCAGES score";
-            _map[F_MUT] = "Mutation";
-            _map[F_DRIVER] = "Driver";
-            _map[F_SCORE_CAT] = "Score Category";
-            _map[F_REF_ALLELE] = "Reference allele";
-            _map[F_DRIVER_MUT_SCORE] = "Driver Mutation Score";
-            _map[F_ALT_ALLELE] = "Alternative Allele";
-            _map[F_PROTEIN_SYNTAX] = "Protein Syntax";
-            _map[F_END_POS] = "End Position";
-            _map[F_MUT_CATEGORY] = "Mutation Category";
-            _map[F_START_POS] = "Start Position";
-            _map[F_MUT_SYNTAX] = "Mutation Syntax";
-            _map[F_CHROMOSOME] = "Chromosome";
+            _colNameMap[F_NAME] = "Gene Name";
+            _colNameMap[F_CHILDREN] = "Drug";
+            _colNameMap[F_CATEGORY] = "Category";
+            _colNameMap[F_PHENO_SCORE] = "Phenolyzer score";
+            _colNameMap[F_ICAGES_SCORE] = "iCAGES score";
+            _colNameMap[F_MUT] = "Mutation";
+            _colNameMap[F_DRIVER] = "Driver";
+            _colNameMap[F_SCORE_CAT] = "Score Category";
+            _colNameMap[F_REF_ALLELE] = "Reference allele";
+            _colNameMap[F_DRIVER_MUT_SCORE] = "Driver Mutation Score";
+            _colNameMap[F_ALT_ALLELE] = "Alternative Allele";
+            _colNameMap[F_PROTEIN_SYNTAX] = "Protein Syntax";
+            _colNameMap[F_END_POS] = "End Position";
+            _colNameMap[F_MUT_CATEGORY] = "Mutation Category";
+            _colNameMap[F_START_POS] = "Start Position";
+            _colNameMap[F_MUT_SYNTAX] = "Mutation Syntax";
+            _colNameMap[F_CHROMOSOME] = "Chromosome";
+            _colNameMap[F_DRUG_NAME] = "Drug Name";
+            _colNameMap[F_FINAL_TARGET_GENE] = "Final Target Gene";
+            _colNameMap[F_DIRECT_TARGET_GENE] = "Direct Target Gene";
+            _colNameMap[F_BIOSYS_PROBABILITY] = "BioSystems Probability";
+            _colNameMap[F_ICAGES_DRUG_SCORE] = "iCAGES Drug Score";
 
-            $scope.colNameMap = _map;
+            $scope.colNameMap = _colNameMap;
 
             $scope.rowspan = function(s) {
                 return s === F_MUT ? 1 : 2;
@@ -508,14 +514,42 @@
                         fields: function() {
                             return _mutationMoreFields;
                         },
-                        map: function() {
-                            return _map;
+                        colNameMap: function() {
+                            return _colNameMap;
                         }
                     }
 
                 });
 
                 mutationModal.result.then(function() {
+
+                }, function() {
+                    console.log('Modal dismissed at: ' + new Date());
+                });
+
+            }
+
+            $scope.openDrugModal = function(drugs) {
+
+                var drugModal = $modal.open({
+                    templateUrl: '/ng-templates/drugModal.html',
+                    controller: "DrugModalCtrl",
+                    size: "sm",
+                    resolve: {
+                        drugs: function() {
+                            return drugs;
+                        },
+                        fields: function() {
+                            return _drugFields;
+                        },
+                        colNameMap: function() {
+                            return _colNameMap;
+                        }
+                    }
+
+                });
+
+                drugModal.result.then(function() {
 
                 }, function() {
                     console.log('Modal dismissed at: ' + new Date());
@@ -554,14 +588,14 @@
                     console.log($scope.geneData);
 
                     $timeout(function() {
-                        $('.hz-drug').on("mouseenter", function() {
-                            $('div', this).css("visibility", "hidden");
-                            $('ol.fadeIn', this).show();
-                        });
-                        $('ol.fadeIn').on("mouseleave", function() {
-                            $('.hz-drug div').css("visibility", "initial");
-                            $(this).hide();
-                        });
+                        // $('.hz-drug').on("mouseenter", function() {
+                        //     $('div', this).css("visibility", "hidden");
+                        //     $('ol.fadeIn', this).show();
+                        // });
+                        // $('ol.fadeIn').on("mouseleave", function() {
+                        //     $('.hz-drug div').css("visibility", "initial");
+                        //     $(this).hide();
+                        // });
 
                         //Code for adding a header that is always on top
                         var tb = $('#summary_table');
@@ -608,11 +642,11 @@
                 });
 
         }])
-        .controller("MutationModalCtrl", ['$scope', '$modalInstance', 'datum', 'fields', 'map', function($scope, $modalInstance, datum, fields, map) {
+        .controller("MutationModalCtrl", ['$scope', '$modalInstance', 'datum', 'fields', 'colNameMap', function($scope, $modalInstance, datum, fields, colNameMap) {
 
             $scope.datum = datum;
             $scope.fields = fields;
-            $scope.map = map;
+            $scope.colNameMap = colNameMap;
 
             $scope.ok = function() {
                 $modalInstance.close();
@@ -624,7 +658,21 @@
 
 
 
-        }]);
+        }])
+        .controller("DrugModalCtrl", ['$scope', '$modalInstance', 'drugs', 'fields', 'colNameMap', function($scope, $modalInstance, drugs, fields, colNameMap) {
+            $scope.headers = fields;
+            $scope.drugs = drugs;
+            $scope.colNameMap = colNameMap;
+
+            $scope.ok = function() {
+                $modalInstance.close();
+            };
+
+            $scope.cancel = function() {
+                $modalInstance.dismiss('cancel');
+            };
+
+        }])
 
 
 
