@@ -82,10 +82,10 @@
             <td><a ng-click="openMutationModal(datum)">{{datum.mutation[mutationPrimaryField]}}</a></td>
             <td ng-repeat="k in mutationFields">{{datum.mutation[k]}}</td>
             <td ng-if="datum.firstRow && datum.hasDrug" rowspan="{{datum.rowspan}}" class="hz-drug">
-              <div>{{getDrugName(datum.drugs[0])}}</div>
-              <ol class="fadeIn" style="display:none;">
+              <div><a ng-click="openDrugModal(datum.drugs)">{{getDrugName(datum.drugs[0])}}</a></div>
+              <!-- <ol class="fadeIn" style="display:none;">
                 <li ng-repeat="obj in datum.drugs">{{getDrugName(obj)}}</li>
-              </ol>
+              </ol> -->
             </td>
             <td ng-if="!datum.hasDrug"></td>
           </tr>
