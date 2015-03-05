@@ -21,7 +21,7 @@
         F_MUT_SYNTAX = "Mutation_syntax",
         F_CHROMOSOME = "Chromosome",
         F_DRIVER = "Driver",
-        F_BIOSYS_PROBABILITY = "Biosystems_probability",
+        F_BIOSYS_PROBABILITY = "BioSystems_probability",
         F_DRUG_NAME = "Drug_name",
         F_PUBCHEM_PROBABILITY = "PubChem_active_probability",
         F_DIRECT_TARGET_GENE = "Direct_target_gene",
