@@ -53,17 +53,7 @@ class UploadController < ApplicationController
 	submission.update(done: true)
         NotificationMailer.job_done(submission).deliver unless submission.email.empty?
     end
-
-    File.open(CONFIG['script']['input'],'w') do |file|
-      file.write(opts[:isFile] ? data.read : data)
-    end
-   
-    results_dir = working_dir.join('public', 'results')
-    
-    submission = Submission.find(id)
-    submission.update(done: true)
-    NotificationMailer.job_done(submission).deliver unless submission.email.empty?
-   
+  
   end
 
   def add_headers
