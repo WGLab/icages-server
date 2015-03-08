@@ -54,17 +54,6 @@ class UploadController < ApplicationController
         NotificationMailer.job_done(submission).deliver unless submission.email.empty?
     end
 
-    File.open(CONFIG['script']['input'],'w') do |file|
-      file.write(opts[:isFile] ? data.read : data)
-    end
-   
-    results_dir = working_dir.join('public', 'results')
-    `perl #{CONFIG['script']['path']}; cp #{CONFIG['script']['output']} #{results_dir}/result-#{id}.json`
-    
-    submission = Submission.find(id)
-    submission.update(done: true)
-    NotificationMailer.job_done(submission).deliver unless submission.email.empty?
-   
   end
 
   def add_headers
