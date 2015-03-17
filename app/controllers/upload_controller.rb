@@ -40,18 +40,20 @@ class UploadController < ApplicationController
   private 
   
   def exec_query(id, data, opts)
-    working_dir = Rails.root
+
     config = CONFIG['script']
     File.open(CONFIG['script']['input_dir'] + "/input-#{id}.txt",'w') do |file|
       file.write(opts[:isFile] ? data.read : data)
     end
    
     `perl #{config['path']} -i #{id} #{config['input_dir']} #{config['output_dir']} #{config['temp_dir']} #{config['log_dir']}`
-   
+  
+    raise "result json not found!" unless File.exist?("#{config['output_dir']}/result-#{id}.json")
+
     ActiveRecord::Base.connection_pool.with_connection do
-	submission = Submission.find(id)
-	submission.update(done: true)
-        NotificationMailer.job_done(submission).deliver unless submission.email.empty?
+      submission = Submission.find(id)
+      submission.update(done: true)
+      NotificationMailer.job_done(submission).deliver unless submission.email.empty?
     end
   
   end
