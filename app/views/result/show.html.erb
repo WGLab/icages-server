@@ -1,4 +1,4 @@
-<% if @submission.done %>
+<% if @submission and @submission.done %>
    <% content_for :head do %>
       <script type="text/javascript" src="/assets/walkme.js"></script>
    <% end %>
