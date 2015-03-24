@@ -20,7 +20,7 @@
 
 <div class="container hz-content" ng-app="icages">
 
-  <% if !@submission %>
+  <% if not @submission %>
   <p>Oops, record not found!!!</p>
   <% elsif @submission.done %>
     <h3>Submission id: <%= @submission.id %></h3>
