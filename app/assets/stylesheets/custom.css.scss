@@ -81,11 +81,11 @@ section {
     display: table;
     height: 45px;
     margin-bottom: 0.5em;
-    .hz-label {
-        padding: 7px 0 7px;
-        font-weight: bold;
-        display: inline-block;
-    }
+    // .hz-label {
+    //     padding: 7px 0 7px;
+    //     font-weight: bold;
+    //     display: inline-block;
+    // }
     button {
         margin-right: 10px;
     }
@@ -121,10 +121,10 @@ section {
     .form-control {
         border-radius: 0;
     }
-    & > .form-control {
-        width: 100%;
-        vertical-align: middle;
-    }
+    // & > .form-control {
+    //     width: 100%;
+    //     vertical-align: middle;
+    // }
 }
 .ex-btn {
     padding: 0px;
