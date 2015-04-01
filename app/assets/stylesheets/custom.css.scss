@@ -278,11 +278,13 @@ footer {
     position: relative;
     i {
         position: absolute;
+        margin-left: -8px;
         top: -5px;
-        left: 49px;
+        left: 100%;
         font-size: large;
-        color: rgba(63, 54, 54, 1);
+        color: #3f3636;
         opacity: 0.5;
+        z-index: 1;
         transition: opacity 1s;
         -webkit-transition: opacity 1s;
         &:hover {
