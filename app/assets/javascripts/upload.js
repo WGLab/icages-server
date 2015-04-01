@@ -192,6 +192,7 @@
 
             var icon = $('<i></i>', {
                 "class": "glyphicon glyphicon-remove-circle"
+                "style": "display: none;"
             });
             
 
@@ -210,7 +211,7 @@
                 icon.show();
             }, function() {
                 icon.hide();
-            })
+            });
 
             $('#tags_container').append(div);
 
