@@ -214,6 +214,7 @@
 
             $('#tags_container').append(div);
 
+            $('#cancer_subtype_input').val("");
             $('#cancer_subtype_input').focus();
         },
         change: function(event, ui) {
