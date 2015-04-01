@@ -13,4 +13,6 @@
  *= require_tree .
  *= require_self
  *= require jquery-file-upload/css/jquery.fileupload
+ *= require jquery-ui/themes/smoothness/jquery-ui.min
+ *= require jquery-ui/themes/smoothness/theme
  */
