@@ -10,7 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+
+//= require jquery/dist/jquery.min
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
@@ -21,3 +22,4 @@
 //= require ie10-viewport-bug-workaround
 //= require ie-emulation-modes-warning
 //= require icages-ui
+//= require jquery-ui/jquery-ui.min
