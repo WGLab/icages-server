@@ -191,7 +191,7 @@
             _selectedSubTypes.push(ui.item.value);
 
             var icon = $('<i></i>', {
-                "class": "glyphicon glyphicon-remove-circle"
+                "class": "glyphicon glyphicon-remove-circle",
                 "style": "display: none;"
             });
             
