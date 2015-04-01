@@ -166,7 +166,7 @@
     var subtypes = ["Acute Myeloid Leukemia [LAML]", "Adrenocortical carcinoma [ACC]", "Bladder Urothelial Carcinoma [BLCA]", "Brain Lower Grade Glioma [LGG]", "Breast invasive carcinoma [BRCA]", "Cervical squamous cell carcinoma and endocervical adenocarcinoma [CESC]", "Cholangiocarcinoma [CHOL]", "Colon adenocarcinoma [COAD]", "Esophageal carcinoma [ESCA]", "FFPE Pilot Phase II [FPPP]", "Glioblastoma multiforme [GBM]", "Head and Neck squamous cell carcinoma [HNSC]", "Kidney Chromophobe [KICH]", "Kidney renal clear cell carcinoma [KIRC]", "Kidney renal papillary cell carcinoma [KIRP]", "Liver hepatocellular carcinoma [LIHC]", "Lung adenocarcinoma [LUAD]", "Lung squamous cell carcinoma [LUSC]", "Lymphoid Neoplasm Diffuse Large B-cell Lymphoma [DLBC]", "Mesothelioma [MESO]", "Ovarian serous cystadenocarcinoma [OV]", "Pancreatic adenocarcinoma [PAAD]", "Pheochromocytoma and Paraganglioma [PCPG]", "Prostate adenocarcinoma [PRAD]", "Rectum adenocarcinoma [READ]", "Sarcoma [SARC]", "Skin Cutaneous Melanoma [SKCM]", "Stomach adenocarcinoma [STAD]", "Testicular Germ Cell Tumors [TGCT]", "Thymoma [THYM]", "Thyroid carcinoma [THCA]", "Uterine Carcinosarcoma [UCS]", "Uterine Corpus Endometrial Carcinoma [UCEC]", "Uveal Melanoma [UVM]"];
 
 
-    subtypes.map(function(d) {
+    subtypes = subtypes.map(function(d) {
         var match = /([^\[\]]*) *\[(.*)\]/g.exec(d);
         return {
             label: match[1],
@@ -203,8 +203,8 @@
                 "class": "hz-tag",
             });
 
-            div.hover(function(){
-                icon.show();            
+            div.hover(function() {
+                icon.show();
             }, function() {
                 icon.hide();
             })
