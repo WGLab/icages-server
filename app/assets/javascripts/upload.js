@@ -193,15 +193,17 @@
             var icon = $('<i></i>', {
                 "class": "glyphicon glyphicon-remove-circle"
             });
-            icon.click(function() {
-                _selectedSubTypes.splice(_selectedSubTypes.indexOf(ui.item.value), 1);
-                $(this).remove();
-            });
+            
 
             var div = $('<div></div>', {
                 html: [ui.item.value, icon],
                 title: ui.item.label,
                 "class": "hz-tag",
+            });
+
+            icon.click(function() {
+                _selectedSubTypes.splice(_selectedSubTypes.indexOf(ui.item.value), 1);
+                $(div).remove();
             });
 
             div.hover(function() {
