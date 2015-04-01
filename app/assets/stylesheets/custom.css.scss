@@ -261,4 +261,31 @@ footer {
     stroke: #9ecae1;
     stroke-width: 1.5px;
 }
+.hz-tag {
+    &:first-child {
+        margin-left: 0px;
+    }
+    margin: 10px 0px 10px;
+    display: inline-block;
+    float: left;
+    background-color: rgb(248, 248, 248);
+    padding: 5px 10px 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 4px 6px 1px rgba(50, 50, 50, 0.14);
+    box-shadow: 0 1px 1px 1px rgba(50, 50, 50, 0.34);
+    color: rgb(16, 74, 74);
+    i {
+        position: absolute;
+        top: -5px;
+        left: 49px;
+        font-size: large;
+        color: rgba(63, 54, 54, 1);
+        opacity: 0.5;
+        transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
 

@@ -88,6 +88,7 @@
             </label>
             <div class="col-sm-7">
                 <input class="form-control" id="cancer_subtype_input"></input>
+                <div id="tags_container"></div>
             </div>
         </div>
         <div class="row">
@@ -137,17 +138,6 @@ var myclick = function() {
     }
 };
 me.click(myclick);
-
-var subtypes = ["Acute Myeloid Leukemia [LAML]", "Adrenocortical carcinoma [ACC]", "Bladder Urothelial Carcinoma [BLCA]", "Brain Lower Grade Glioma [LGG]", "Breast invasive carcinoma [BRCA]", "Cervical squamous cell carcinoma and endocervical adenocarcinoma [CESC]", "Cholangiocarcinoma [CHOL]", "Colon adenocarcinoma [COAD]", "Esophageal carcinoma [ESCA]", "FFPE Pilot Phase II [FPPP]", "Glioblastoma multiforme [GBM]", "Head and Neck squamous cell carcinoma [HNSC]", "Kidney Chromophobe [KICH]", "Kidney renal clear cell carcinoma [KIRC]", "Kidney renal papillary cell carcinoma [KIRP]", "Liver hepatocellular carcinoma [LIHC]", "Lung adenocarcinoma [LUAD]", "Lung squamous cell carcinoma [LUSC]", "Lymphoid Neoplasm Diffuse Large B-cell Lymphoma [DLBC]", "Mesothelioma [MESO]", "Ovarian serous cystadenocarcinoma [OV]", "Pancreatic adenocarcinoma [PAAD]", "Pheochromocytoma and Paraganglioma [PCPG]", "Prostate adenocarcinoma [PRAD]", "Rectum adenocarcinoma [READ]", "Sarcoma [SARC]", "Skin Cutaneous Melanoma [SKCM]", "Stomach adenocarcinoma [STAD]", "Testicular Germ Cell Tumors [TGCT]", "Thymoma [THYM]", "Thyroid carcinoma [THCA]", "Uterine Carcinosarcoma [UCS]", "Uterine Corpus Endometrial Carcinoma [UCEC]", "Uveal Melanoma [UVM]"];
-
-$('#cancer_subtype_input').autocomplete({
-    source: subtypes,
-    autoFocus: true,
-    position: {my: "left bottom", at: "left top", collision: "none"}
-
-});
-
-
 </script>
 </div>
 
