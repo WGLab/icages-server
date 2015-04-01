@@ -169,7 +169,7 @@
     subtypes = subtypes.map(function(d) {
         var match = /([^\[\]]*) *\[(.*)\]/g.exec(d);
         return {
-            label: match[1],
+            label: match[1].trim(),
             value: match[2]
         };
     });
@@ -187,19 +187,20 @@
         select: function(event, ui) {
             event.preventDefault();
 
-            _selectedSubTypes.push(ui.value);
+
+            _selectedSubTypes.push(ui.item.value);
 
             var icon = $('<i></i>', {
                 "class": "glyphicon glyphicon-remove-circle"
             });
             icon.click(function() {
-                _selectedSubTypes.splice(_selectedSubTypes.indexOf(ui.value), 1);
+                _selectedSubTypes.splice(_selectedSubTypes.indexOf(ui.item.value), 1);
                 $(this).remove();
             });
 
             var div = $('<div></div>', {
-                html: [ui.value, icon],
-                title: ui.label,
+                html: [ui.item.value, icon],
+                title: ui.item.label,
                 "class": "hz-tag",
             });
 
