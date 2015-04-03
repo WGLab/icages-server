@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'example', to: 'static_pages#example'
   get 'contact', to: 'static_pages#contact'
-  get 'result/drugs', to: 'result#drugs'
+  get 'drugs', to: 'result#drugs'
 
   # Example of regular route:3
   #   get 'products/:id' => 'catalog#view'
