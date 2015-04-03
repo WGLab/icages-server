@@ -175,52 +175,64 @@
     });
 
     var _selectedSubTypes = [];
+    var _selectedDrugs = [];
 
-    $('#cancer_subtype_input').autocomplete({
-        source: subtypes,
-        autoFocus: true,
-        position: {
-            my: "left bottom",
-            at: "left top",
-            collision: "none"
-        },
-        select: function(event, ui) {
-            event.preventDefault();
+    autoCompleteInit("#cancer_subtype_input", "#subtyoe_tags", subtypes, _selectedSubTypes);
 
 
-            _selectedSubTypes.push(ui.item.value);
+    $.getJSON("/drugs", function(data) {
+        autoCompleteInit("drugs_input", "drugs_tags", data, _selectedDrugs);
+    })
 
-            var icon = $('<i></i>', {
-                "class": "glyphicon glyphicon-remove-circle",
-                "style": "display: none;"
-            });
-            
+    function autoCompleteInit(inputId, tagDivId, source, selected) {
+        $(inputId).autocomplete({
+            source: source,
+            autoFocus: true,
+            position: {
+                my: "left bottom",
+                at: "left top",
+                collision: "none"
+            },
+            select: function(event, ui) {
+                event.preventDefault();
 
-            var div = $('<div></div>', {
-                html: [ui.item.value, icon],
-                title: ui.item.label,
-                "class": "hz-tag",
-            });
 
-            icon.click(function() {
-                _selectedSubTypes.splice(_selectedSubTypes.indexOf(ui.item.value), 1);
-                $(div).remove();
-            });
+                selected.push(ui.item.value);
 
-            div.hover(function() {
-                icon.show();
-            }, function() {
-                icon.hide();
-            });
+                var icon = $('<i></i>', {
+                    "class": "glyphicon glyphicon-remove-circle",
+                    "style": "display: none;"
+                });
 
-            $('#tags_container').append(div);
 
-            $('#cancer_subtype_input').val("");
-            $('#cancer_subtype_input').focus();
-        },
-        change: function(event, ui) {
-            event.preventDefault();
-        }
-    });
+                var div = $('<div></div>', {
+                    html: [ui.item.value, icon],
+                    title: ui.item.label,
+                    "class": "hz-tag",
+                });
+
+                icon.click(function() {
+                    selected.splice(selected.indexOf(ui.item.value), 1);
+                    $(div).remove();
+                });
+
+                div.hover(function() {
+                    icon.show();
+                }, function() {
+                    icon.hide();
+                });
+
+                $(tagDivId).append(div);
+
+                $(inputId).val("");
+                $(inputId).focus();
+            },
+            change: function(event, ui) {
+                event.preventDefault();
+            }
+        });
+    }
+
+
 
 })();
