@@ -181,7 +181,7 @@
 
 
     $.getJSON("/drugs", function(data) {
-        autoCompleteInit("drugs_input", "drugs_tags", data, _selectedDrugs);
+        autoCompleteInit("#drugs_input", "#drugs_tags", data, _selectedDrugs);
     })
 
     function autoCompleteInit(inputId, tagDivId, source, selected) {
