@@ -54,7 +54,7 @@ class UploadController < ApplicationController
    
     `perl #{config['path']} -i #{id} #{subtypeOpt} #{config['input_dir']} #{config['output_dir']} #{config['temp_dir']} #{config['log_dir']}`
 
-    if $?.exitstatus !== 0
+    if $?.exitstatus != 0
       logger.debug "\n---- Perl execution error!\n"
       return
     end
