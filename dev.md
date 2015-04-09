@@ -47,3 +47,11 @@
   iCAGES_drug_score: float
 }
 ```
+
+### Config files
+
+##### icages_config.json
+
+all the paths have to end with a "/"
+
+
