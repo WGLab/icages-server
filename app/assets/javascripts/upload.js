@@ -177,7 +177,7 @@
     var _selectedSubTypes = [];
     var _selectedDrugs = [];
 
-    autoCompleteInit("#cancer_subtype_input", "#subtyoe_tags", subtypes, _selectedSubTypes);
+    autoCompleteInit("#cancer_subtype_input", "#subtype_tags", subtypes, _selectedSubTypes);
 
 
     $.getJSON("/drugs", function(data) {
