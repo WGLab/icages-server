@@ -52,7 +52,7 @@ class UploadController < ApplicationController
    
     `perl #{config['path']} -i #{id} #{subtypeOpt} #{config['input_dir']} #{config['output_dir']} #{config['temp_dir']} #{config['log_dir']}`
   
-    raise "result json not found!" unless File.exist?("#{config['output_dir']}/result-#{id}.json")
+    logger.debug "result json not found!" unless File.exist?("#{config['output_dir']}/result-#{id}.json")
 
     ActiveRecord::Base.connection_pool.with_connection do
       submission = Submission.find(id)
