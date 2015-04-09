@@ -48,13 +48,21 @@ class UploadController < ApplicationController
       file.write(opts[:isFile] ? data.read : data)
     end
 
+    logger.debug opts[:subtype]
+
     subtypeOpt = opts[:subtype].empty? ? "" : "-s #{opts[:subtype]}"
    
     `perl #{config['path']} -i #{id} #{subtypeOpt} #{config['input_dir']} #{config['output_dir']} #{config['temp_dir']} #{config['log_dir']}`
 
-    logger.debug "---- Perl execution error" unless $?.exitstatus == 0
-  
-    logger.debug "---- Result json not found!" unless File.exist?("#{config['output_dir']}/result-#{id}.json")
+    if $?.exitstatus !== 0
+      logger.debug "\n---- Perl execution error!\n"
+      return
+    end
+
+    if not File.exist?("#{config['output_dir']}/result-#{id}.json")
+      logger.debug "\n---- Result json not found!\n"
+      return
+    end
 
     ActiveRecord::Base.connection_pool.with_connection do
       submission = Submission.find(id)
