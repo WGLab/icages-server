@@ -48,7 +48,7 @@ class UploadController < ApplicationController
       file.write(opts[:isFile] ? data.read : data)
     end
 
-    subtypeOpt = opts[:subtype].empty? "" : "-s #{opts[:subtype]}"
+    subtypeOpt = opts[:subtype].empty? ? "" : "-s #{opts[:subtype]}"
    
     `perl #{config['path']} -i #{id} #{subtypeOpt} #{config['input_dir']} #{config['output_dir']} #{config['temp_dir']} #{config['log_dir']}`
   
