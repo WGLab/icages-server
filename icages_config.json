@@ -1,10 +1,10 @@
 {
 	"script": {
 		"path": "/home/cocodong/www/iCAGES-dev/icages/serverCallsIcages.pl",
-		"input_dir": "/home/cocodong/www/iCAGES-dev/public/upload",
-		"output_dir": "/home/cocodong/www/iCAGES-dev/public/results",
-		"temp_dir": "/home/cocodong/www/iCAGES-dev/public/temp",
-		"log_dir": "/home/cocodong/www/iCAGES-dev/public/log"
+		"input_dir": "/home/cocodong/www/iCAGES-dev/public/upload/",
+		"output_dir": "/home/cocodong/www/iCAGES-dev/public/results/",
+		"temp_dir": "/home/cocodong/www/iCAGES-dev/public/temp/",
+		"log_dir": "/home/cocodong/www/iCAGES-dev/public/log/"
 	},
 	"drug_data":"/home/cocodong/www/iCAGES-dev/icages/db/drug.score" 
 
