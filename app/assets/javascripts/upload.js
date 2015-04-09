@@ -88,7 +88,8 @@
                     type: "POST",
                     data: {
                         email: goodEmail ? email_val : "",
-                        inputData: $('#data_input textarea').val()
+                        inputData: $('#data_input textarea').val(),
+                        subtype: _selectedSubTypes[0]
                     },
                     success: function(data) {
                         console.log("server returned\n" + data.msg);
@@ -131,7 +132,8 @@
                         return;
                     }
                     data.formData = {
-                        email: goodEmail ? email_val : ''
+                        email: goodEmail ? email_val : '',
+                        subtype: _selectedSubTypes[0],
                     };
                     data.submit();
                 });
@@ -173,7 +175,7 @@
             return {
                 label: d.name,
                 value: d.codeName
-            }
+            };
         });
 
         autoCompleteInit("#cancer_subtype_input", "#subtype_tags", subtypes, _selectedSubTypes);

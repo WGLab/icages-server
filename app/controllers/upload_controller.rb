@@ -17,6 +17,8 @@ class UploadController < ApplicationController
 
     inputFile = params[:inputFile]
 
+    subtype = params[:subtype]
+
     email = params[:email] || ''
     
     logger.debug "Input file is [#{'empty' if inputFile.nil?}].." 
@@ -25,12 +27,12 @@ class UploadController < ApplicationController
 
     if inputData
       submission = Submission.create(done: false, email: email)
-      t = Thread.new { exec_query(submission.id, inputData, {isFile: false}) }
+      t = Thread.new { exec_query(submission.id, inputData, {isFile: false, subtype: subtype}) }
       #t.join
       render json: {id: submission.id, msg:"Submission: #{submission.id} created #{email_msg} url: #{result_path(submission, only_path: false)}"}
     elsif inputFile
       submission = Submission.create(done: false, email: email)
-      t = Thread.new { exec_query(submission.id, inputFile, {isFile: true}) }
+      t = Thread.new { exec_query(submission.id, inputFile, subtype, {isFile: true, subtype: subtype}) }
       #t.join
       render json: {id: submission.id, msg: "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{email_msg}"}
     end
@@ -45,8 +47,10 @@ class UploadController < ApplicationController
     File.open(CONFIG['script']['input_dir'] + "/input-#{id}.txt",'w') do |file|
       file.write(opts[:isFile] ? data.read : data)
     end
+
+    subtypeOpt = opts[:subtype].empty? "" : "-s #{opts[:subtype]}"
    
-    `perl #{config['path']} -i #{id} #{config['input_dir']} #{config['output_dir']} #{config['temp_dir']} #{config['log_dir']}`
+    `perl #{config['path']} -i #{id} #{subtypeOpt} #{config['input_dir']} #{config['output_dir']} #{config['temp_dir']} #{config['log_dir']}`
   
     raise "result json not found!" unless File.exist?("#{config['output_dir']}/result-#{id}.json")
 
