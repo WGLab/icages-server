@@ -208,7 +208,7 @@
 
 
                 var div = $('<div></div>', {
-                    html: [ui.item.value, icon],
+                    html: [ui.item.label, icon],
                     title: ui.item.label,
                     "class": "hz-tag",
                 });
