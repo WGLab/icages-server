@@ -1,0 +1,133 @@
+[{
+    "sciName": "Acute Myeloid Leukemia",
+    "codeName": "LAML",
+    "name": "Leukemia"
+}, {
+    "sciName": "Adrenocortical carcinoma",
+    "codeName": "ACC",
+    "name": "Adrenal gland cancer"
+}, {
+    "sciName": "Bladder Urothelial Carcinoma",
+    "codeName": "BLCA",
+    "name": "Bladder/ Urethra cancer"
+}, {
+    "sciName": "Brain Lower Grade Glioma",
+    "codeName": "LGG",
+    "name": "Brain cancer (benign)"
+}, {
+    "sciName": "Breast invasive carcinoma",
+    "codeName": "BRCA",
+    "name": "Breast cancer"
+}, {
+    "sciName": "Cervical squamous cell carcinoma and endocervical adenocarcinoma",
+    "codeName": "CESC",
+    "name": "Cervical cancer"
+}, {
+    "sciName": "Cholangiocarcinoma",
+    "codeName": "CHOL",
+    "name": "Bile cancer"
+}, {
+    "sciName": "Colon adenocarcinoma",
+    "codeName": "COAD",
+    "name": "Colon cancer"
+}, {
+    "sciName": "Esophageal carcinoma",
+    "codeName": "ESCA",
+    "name": "Esophagus cancer"
+}, {
+    "sciName": "Glioblastoma multiforme",
+    "codeName": "GBM",
+    "name": "Brain cancer (invasive)"
+}, {
+    "sciName": "Head and Neck squamous cell carcinoma",
+    "codeName": "HNSC",
+    "name": "Head and neck cancer"
+}, {
+    "sciName": "Kidney Chromophobe",
+    "codeName": "KICH",
+    "name": "Kidney cancer (chromophobe cell)"
+}, {
+    "sciName": "Kidney renal clear cell carcinoma",
+    "codeName": "KIRC",
+    "name": "Kidney cancer (clear cell)"
+}, {
+    "sciName": "Kidney renal papillary cell carcinoma",
+    "codeName": "KIRP",
+    "name": "Kidney cancer (papillary cell)"
+}, {
+    "sciName": "Liver hepatocellular carcinoma",
+    "codeName": "LIHC",
+    "name": "Liver cancer"
+}, {
+    "sciName": "Lung adenocarcinoma",
+    "codeName": "LUAD",
+    "name": "Lung cancer"
+}, {
+    "sciName": "Lung squamous cell carcinoma",
+    "codeName": "LUSC",
+    "name": "Lung cancer (squamous cell)"
+}, {
+    "sciName": "Lymphoid Neoplasm Diffuse Large B-cell Lymphoma",
+    "codeName": "DLBC",
+    "name": "Lymphoma"
+}, {
+    "sciName": "Mesothelioma",
+    "codeName": "MESO",
+    "name": "Mesothelial cancer"
+}, {
+    "sciName": "Ovarian serous cystadenocarcinoma",
+    "codeName": "OV",
+    "name": "Ovarian cancer"
+}, {
+    "sciName": "Pancreatic adenocarcinoma",
+    "codeName": "PAAD",
+    "name": "Pancreatic cancer"
+}, {
+    "sciName": "Pheochromocytoma and Paraganglioma",
+    "codeName": "PCPG",
+    "name": "Extra-adrenal gland cancer"
+}, {
+    "sciName": "Prostate adenocarcinoma",
+    "codeName": "PRAD",
+    "name": "Prostate cancer"
+}, {
+    "sciName": "Rectum adenocarcinoma",
+    "codeName": "READ",
+    "name": "Rectum cancer"
+}, {
+    "sciName": "Sarcoma",
+    "codeName": "SARC",
+    "name": "Connective tissue cancer"
+}, {
+    "sciName": "Skin Cutaneous Melanoma",
+    "codeName": "SKCM",
+    "name": "Skin cancer"
+}, {
+    "sciName": "Stomach adenocarcinoma",
+    "codeName": "STAD",
+    "name": "Stomach cancer"
+}, {
+    "sciName": "Testicular Germ Cell Tumors",
+    "codeName": "TGCT",
+    "name": "Testicle cancer"
+}, {
+    "sciName": "Thymoma",
+    "codeName": "THYM",
+    "name": "Thymus cancer (benign)"
+}, {
+    "sciName": "Thyroid carcinoma",
+    "codeName": "THCA",
+    "name": "Thyroid cancer"
+}, {
+    "sciName": "Uterine Carcinosarcoma",
+    "codeName": "UCS",
+    "name": "Uterus cancer"
+}, {
+    "sciName": "Uterine Corpus Endometrial Carcinoma",
+    "codeName": "UCEC",
+    "name": "Uterus cancer (endometrial cell)"
+}, {
+    "sciName": "Uveal Melanoma",
+    "codeName": "UVM",
+    "name": "Eye cancer"
+}]
