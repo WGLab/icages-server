@@ -407,9 +407,9 @@
 
             var _dataFields = [F_NAME, F_CATEGORY, F_DRIVER, F_PHENO_SCORE, F_ICAGES_SCORE, F_MUT, F_CHILDREN, F_URL];
 
-            var _mutationFields = [F_MUT_CATEGORY, F_DRIVER_MUT_SCORE]
+            var _mutationFields = [F_MUT_CATEGORY, F_PROTEIN_SYNTAX];
 
-            var _mutationMoreFields = [F_CHROMOSOME, F_START_POS, F_END_POS, F_REF_ALLELE, F_ALT_ALLELE, F_PROTEIN_SYNTAX, F_SCORE_CAT];
+            var _mutationMoreFields = [F_CHROMOSOME, F_START_POS, F_END_POS, F_REF_ALLELE, F_ALT_ALLELE, F_SCORE_CAT, F_DRIVER_MUT_SCORE];
 
             var _drugFields = [F_DRUG_NAME, F_FINAL_TARGET_GENE, F_DIRECT_TARGET_GENE, F_BIOSYS_PROBABILITY, F_ICAGES_DRUG_SCORE];
 
