@@ -45,7 +45,32 @@
   Direct_target_gene: string
   BioSystems_probability: float
   iCAGES_drug_score: float
+  Target_mutation_tag: boolean
+  Children: list of <TargetMutationInfo> # if Target_mutation_tag is TRUE
+  FDA_tag: boolean 
+  FDA_Info: <FDAInfo> # if FDA_tag is TRUE
+  CT_tag: boolean
+  CT_Children: list of <CTInfo> # if CT_tag is TRUE
 }
+
+<TargetMutationInfo> {
+  Target_mutation: string
+  Rating: float
+}
+
+<FDAInfo> {
+  Status: string
+  Active_ingredient: string
+}
+
+<CTInfo> {
+  Name: string
+  Organization: string
+  Phase: string
+  URL: string
+}
+
+
 ```
 
 ### Config files
