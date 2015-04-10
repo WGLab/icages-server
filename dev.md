@@ -64,11 +64,10 @@
 }
 
 <CTInfo> {
+  Name: string
   Organization: string
   Phase: string
-  Nation: string
-  City: string
-  Contact: string
+  URL: string
 }
 
 
