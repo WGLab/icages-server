@@ -73,6 +73,26 @@
 
 ```
 
+### Front-end data structure specification
+```
+geneRows: list of <GeneRow>
+
+<GeneRow> {
+  otherFields: list of string
+  firstRow: boolean
+  hasDrug: boolean
+  drugs: list of <DrugInfo>
+  rowspan: integer
+  mutation: <MutationInfo>
+  url: string
+}
+
+availableDrugs: list of <DrugInfo> //each with an extra field isAccordionOpen
+
+```
+
+
+
 ### Config files
 
 ##### icages_config.json
