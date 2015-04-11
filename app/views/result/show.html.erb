@@ -60,6 +60,53 @@
           <li>Found {{log.Noncoding_count}} noncodings </li>
         </ul>
         <div class="page-header">
+          <h3>Drugs</h3>
+        </div>
+        <accordion close-others="true">
+          <accordion-group ng-repeat="drug in availableDrugs" is-open="drug.isOpen">
+            <accordion-heading>{{drug.Drug_name}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': drug.isOpen, 'glyphicon-chevron-right': !drug.isOpen}"></i>
+            </accordion-heading>
+            <div class="row">
+              <div class="col-sm-4">
+                <table class="table table-striped">
+                  <thead>
+                    <th>Target Mutation</th>
+                    <th>Rating</th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="target in drug.Children">
+                      <td>{{target.Target_mutation}}</td>
+                      <td>{{target.Rating}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div ng-if="drug.FDA_tag === 'TRUE'" class="col-sm-4">
+                <ul>
+                  <li>Status: {{drug.FDA_Info.Status}}</li>
+                  <li>Active Ingredient: {{drug.FDA_Info.Activ}}</li>
+                </ul>
+              </div>
+              <div ng-if="drug.CT_tag === 'TRUE'" class="col-sm-4">
+                 <table class="table table-striped">
+                  <thead>
+                    <th>Name</th>
+                    <th>Organization</th>
+                    <th>Phase</th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="ct in drug.CT_Children">
+                      <td><a href="{{ct.URL}}">{{ct.Name}}</a></td>
+                      <td>{{ct.Organization}}</td>
+                      <td>{{ct.Phase}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </accordion-group>
+        </accordion>
+        <div class="page-header">
             <h3>Download</h3>
         </div>
         <p>Please click <a href = "../results/result-<%= @submission.id %>.txt">here</a> to download summary table of all mutated genes with iCAGES score
@@ -80,20 +127,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="datum in geneData">
-              <td ng-if="datum.firstRow" rowspan="{{datum.rowspan}}">
-                <a href="{{datum.url}}">{{datum.geneName}}</a>
+            <tr ng-repeat="geneRow in geneRows">
+              <td ng-if="geneRow.firstRow" rowspan="{{geneRow.rowspan}}">
+                <a href="{{geneRow.url}}">{{geneRow.geneName}}</a>
               </td>
-              <td ng-if="datum.firstRow" ng-repeat="f in datum.otherFields" rowspan="{{datum.rowspan}}">{{f}}</td>
-              <td><a ng-click="openMutationModal(datum)">{{datum.mutation[mutationPrimaryField]}}</a></td>
-              <td ng-repeat="k in mutationFields">{{datum.mutation[k]}}</td>
-              <td ng-if="datum.firstRow && datum.hasDrug" rowspan="{{datum.rowspan}}" class="hz-drug">
-                <div><a ng-click="openDrugModal(datum.drugs)">{{getDrugName(datum.drugs[0])}}</a></div>
+              <td ng-if="geneRow.firstRow" ng-repeat="f in geneRow.otherFields" rowspan="{{geneRow.rowspan}}">{{f}}</td>
+              <td><a ng-click="openMutationModal(geneRow)">{{geneRow.mutation[mutationPrimaryField]}}</a></td>
+              <td ng-repeat="k in mutationFields">{{geneRow.mutation[k]}}</td>
+              <td ng-if="geneRow.firstRow && geneRow.hasDrug" rowspan="{{geneRow.rowspan}}" class="hz-drug">
+                <div><a ng-click="openDrugModal(geneRow.drugs)">{{getDrugName(geneRow.drugs[0])}}</a></div>
                 <!-- <ol class="fadeIn" style="display:none;">
-                  <li ng-repeat="obj in datum.drugs">{{getDrugName(obj)}}</li>
+                  <li ng-repeat="obj in geneRow.drugs">{{getDrugName(obj)}}</li>
                 </ol> -->
               </td>
-              <td ng-if="!datum.hasDrug"></td>
+              <td ng-if="!geneRow.hasDrug"></td>
             </tr>
           </tbody>
         </table>

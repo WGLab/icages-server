@@ -3,6 +3,7 @@
 
 (function() {
     //Constants for obj key strings
+    // no duplicates allowed
     var F_NAME = "Name",
         F_CHILDREN = "Children",
         F_URL = "Gene_url",
@@ -26,7 +27,9 @@
         F_PUBCHEM_PROBABILITY = "PubChem_active_probability",
         F_DIRECT_TARGET_GENE = "Direct_target_gene",
         F_ICAGES_DRUG_SCORE = "iCAGES_drug_score",
-        F_FINAL_TARGET_GENE = "Final_target_gene";
+        F_FINAL_TARGET_GENE = "Final_target_gene",
+        F_TARGET_MUTATION_TAG = "Target_mutation_tag";
+
 
 
     var colorScale = d3.scale.ordinal()
@@ -399,280 +402,318 @@
     }
 
 
-
     //---------------------------ng-Logic---------------------------
 
-    var icages = angular.module('icages', ['ui.bootstrap'])
-        .controller('SummaryCtrl', ['$scope', '$http', '$timeout', '$modal', function($scope, $http, $timeout, $modal) {
+    angular.module('icages', ['ui.bootstrap'])
 
-            var _dataFields = [F_NAME, F_CATEGORY, F_DRIVER, F_PHENO_SCORE, F_ICAGES_SCORE, F_MUT, F_CHILDREN, F_URL];
+    .controller('SummaryCtrl', ['$scope', '$http', '$timeout', '$modal', function($scope, $http, $timeout, $modal) {
 
-            var _mutationFields = [F_MUT_CATEGORY, F_PROTEIN_SYNTAX];
+        var _dataFields = [F_NAME, F_CATEGORY, F_DRIVER, F_PHENO_SCORE, F_ICAGES_SCORE, F_MUT, F_CHILDREN, F_URL];
 
-            var _mutationMoreFields = [F_CHROMOSOME, F_START_POS, F_END_POS, F_REF_ALLELE, F_ALT_ALLELE, F_SCORE_CAT, F_DRIVER_MUT_SCORE];
+        var _mutationFields = [F_MUT_CATEGORY, F_PROTEIN_SYNTAX];
 
-            var _drugFields = [F_DRUG_NAME, F_FINAL_TARGET_GENE, F_DIRECT_TARGET_GENE, F_BIOSYS_PROBABILITY, F_ICAGES_DRUG_SCORE];
+        var _mutationMoreFields = [F_CHROMOSOME, F_START_POS, F_END_POS, F_REF_ALLELE, F_ALT_ALLELE, F_SCORE_CAT, F_DRIVER_MUT_SCORE];
 
-            var _colNameMap = {};
+        var _drugFields = [F_DRUG_NAME, F_FINAL_TARGET_GENE, F_DIRECT_TARGET_GENE, F_BIOSYS_PROBABILITY, F_ICAGES_DRUG_SCORE];
 
-            _colNameMap[F_NAME] = "Gene Name";
-            _colNameMap[F_CHILDREN] = "Drug";
-            _colNameMap[F_CATEGORY] = "Category";
-            _colNameMap[F_PHENO_SCORE] = "Phenolyzer score";
-            _colNameMap[F_ICAGES_SCORE] = "iCAGES score";
-            _colNameMap[F_MUT] = "Mutation";
-            _colNameMap[F_DRIVER] = "Driver";
-            _colNameMap[F_SCORE_CAT] = "Score Category";
-            _colNameMap[F_REF_ALLELE] = "Reference allele";
-            _colNameMap[F_DRIVER_MUT_SCORE] = "Driver Mutation Score";
-            _colNameMap[F_ALT_ALLELE] = "Alternative Allele";
-            _colNameMap[F_PROTEIN_SYNTAX] = "Protein Syntax";
-            _colNameMap[F_END_POS] = "End Position";
-            _colNameMap[F_MUT_CATEGORY] = "Mutation Category";
-            _colNameMap[F_START_POS] = "Start Position";
-            _colNameMap[F_MUT_SYNTAX] = "Mutation Syntax";
-            _colNameMap[F_CHROMOSOME] = "Chromosome";
-            _colNameMap[F_DRUG_NAME] = "Drug Name";
-            _colNameMap[F_FINAL_TARGET_GENE] = "Final Target Gene";
-            _colNameMap[F_DIRECT_TARGET_GENE] = "Direct Target Gene";
-            _colNameMap[F_BIOSYS_PROBABILITY] = "BioSystems Probability";
-            _colNameMap[F_ICAGES_DRUG_SCORE] = "iCAGES Drug Score";
+        var _colNameMap = {};
 
-            $scope.colNameMap = _colNameMap;
-
-            $scope.rowspan = function(s) {
-                return s === F_MUT ? 1 : 2;
-            }
-
-            $scope.colspan = function(s) {
-                return s === F_MUT ? 3 : 1;
-            }
-
-            function processDataForTable(data) {
-                var result = [];
-                data.forEach(function(d) {
-                    var r = {};
-                    r.otherFields = [];
-                    r.firstRow = true;
-
-                    var muts;
-
-                    _dataFields.forEach(function(i) {
-                        switch (i) {
-                            case F_URL:
-                                r.url = d[i];
-                                break;
-                            case F_NAME:
-                                r.geneName = d[i];
-                                break;
-                            case F_MUT:
-                                if (d[i].length > 0) {
-                                    muts = d[i];
-                                    r.mutation = muts[0];
-                                }
-                                break;
-                            case F_CHILDREN:
-                                r.drugs = d[i] || [];
-                                break;
-                            default:
-                                r.otherFields.push(d[i]);
-                                break;
-                        }
-                    });
-
-                    r.rowspan = muts ? muts.length : 1;
-                    r.hasDrug = r.drugs.length > 0;
-
-                    result.push(r);
-                    for (var j = 1; j < muts.length; j++) {
-                        result.push({
-                            firstRow: false,
-                            mutation: muts[j],
-                            rowspan: 1
-                        });
-                    }
-                });
-
-                return result;
-
-            }
-
-            $scope.getDrugName = function(obj) {
-                return obj[F_DRUG_NAME];
-            }
-
-            $scope.openMutationModal = function(datum) {
-
-                var mutationModal = $modal.open({
-                    templateUrl: '/ng-templates/mutationModal.html',
-                    controller: "MutationModalCtrl",
-                    size: "sm",
-                    resolve: {
-                        datum: function() {
-                            return datum;
-                        },
-                        fields: function() {
-                            return _mutationMoreFields;
-                        },
-                        colNameMap: function() {
-                            return _colNameMap;
-                        }
-                    }
-
-                });
-
-                mutationModal.result.then(function() {
-
-                }, function() {
-                    console.log('Modal dismissed at: ' + new Date());
-                });
-
-            }
-
-            $scope.openDrugModal = function(drugs) {
-
-                var drugModal = $modal.open({
-                    templateUrl: '/ng-templates/drugModal.html',
-                    controller: "DrugModalCtrl",
-                    size: "lg",
-                    resolve: {
-                        drugs: function() {
-                            return drugs;
-                        },
-                        fields: function() {
-                            return _drugFields;
-                        },
-                        colNameMap: function() {
-                            return _colNameMap;
-                        }
-                    }
-
-                });
-
-                drugModal.result.then(function() {
-
-                }, function() {
-                    console.log('Modal dismissed at: ' + new Date());
-                });
-
-            }
-
-            $http.get("../results/result-" + SUBMISSION_ID + ".json")
-                .success(function(data) {
-
-                    data.Output.sort(function(g1, g2) {
-                        return parseFloat(g2[F_ICAGES_SCORE]) - parseFloat(g1[F_ICAGES_SCORE]);
-                    });
-
-                    //generate d3 charts 
-                    plotD3Charts(angular.copy(data));
-
-                    console.log(data);
+        _colNameMap[F_NAME] = "Gene Name";
+        _colNameMap[F_CHILDREN] = "Drug";
+        _colNameMap[F_CATEGORY] = "Category";
+        _colNameMap[F_PHENO_SCORE] = "Phenolyzer score";
+        _colNameMap[F_ICAGES_SCORE] = "iCAGES score";
+        _colNameMap[F_MUT] = "Mutation";
+        _colNameMap[F_DRIVER] = "Driver";
+        _colNameMap[F_SCORE_CAT] = "Score Category";
+        _colNameMap[F_REF_ALLELE] = "Reference allele";
+        _colNameMap[F_DRIVER_MUT_SCORE] = "Driver Mutation Score";
+        _colNameMap[F_ALT_ALLELE] = "Alternative Allele";
+        _colNameMap[F_PROTEIN_SYNTAX] = "Protein Syntax";
+        _colNameMap[F_END_POS] = "End Position";
+        _colNameMap[F_MUT_CATEGORY] = "Mutation Category";
+        _colNameMap[F_START_POS] = "Start Position";
+        _colNameMap[F_MUT_SYNTAX] = "Mutation Syntax";
+        _colNameMap[F_CHROMOSOME] = "Chromosome";
+        _colNameMap[F_DRUG_NAME] = "Drug Name";
+        _colNameMap[F_FINAL_TARGET_GENE] = "Final Target Gene";
+        _colNameMap[F_DIRECT_TARGET_GENE] = "Direct Target Gene";
+        _colNameMap[F_BIOSYS_PROBABILITY] = "BioSystems Probability";
+        _colNameMap[F_ICAGES_DRUG_SCORE] = "iCAGES Drug Score";
 
 
-                    $scope.log = data.Log;
-                    var gData = data.Output;
-                    if (gData.length > 0) {
+        $scope.colNameMap = _colNameMap;
+
+        $scope.rowspan = function(s) {
+            return s === F_MUT ? 1 : 2;
+        }
+
+        $scope.colspan = function(s) {
+            return s === F_MUT ? 3 : 1;
+        }
+
+        function processData(data) {
+            var geneRows = [];
+            var drugData = [];
+
+            for (var i = 0; i < data.length; i++) {
+                var datum = data[i];
+                var field;
 
 
-                        $scope.headers = _dataFields.filter(function(k) {
-                            return k !== F_URL;
-                        });
+                var row = {};
+                row.otherFields = [];
+                row.firstRow = true;
 
-                        $scope.mutationPrimaryField = F_MUT_SYNTAX;
-                        $scope.mutationFields = _mutationFields;
-                    }
+                var muts;
 
-                    $scope.geneData = processDataForTable(gData);
+                for (var j = 0; j < _dataFields.length; j++) {
+                    field = _dataFields[j];
 
-                    console.log($scope.geneData);
-
-                    $timeout(function() {
-                        // $('.hz-drug').on("mouseenter", function() {
-                        //     $('div', this).css("visibility", "hidden");
-                        //     $('ol.fadeIn', this).show();
-                        // });
-                        // $('ol.fadeIn').on("mouseleave", function() {
-                        //     $('.hz-drug div').css("visibility", "initial");
-                        //     $(this).hide();
-                        // });
-
-                        //Code for adding a header that is always on top
-                        var tb = $('#summary_table');
-                        var tb_clone = $(tb[0].cloneNode());
-                        tb_clone.attr("id", "header_clone").css({
-                            position: "fixed",
-                            top: "0",
-                            width: tb.outerWidth() + 'px'
-                        });
-                        tb_clone.append($('#summary_table thead').clone());
-                        $('thead', tb_clone).css("background-color", "white");
-                        $('.container.hz-content').append(tb_clone);
-                        var ths = $('th', tb);
-
-                        function resizeCloneTable() {
-                            $('th', tb_clone).each(function(i) {
-                                $(this).css("width", $(ths[i]).outerWidth() + 'px');
-                            });
-                            tb_clone.css({
-                                "width": tb.outerWidth() + 'px',
-                                "left": tb.offset()['left'] - $(window).scrollLeft()
-                            });
-                        }
-
-                        resizeCloneTable();
-                        tb_clone.hide();
-
-                        var tableTop = tb.offset()['top'];
-
-                        $(window).resize(resizeCloneTable);
-
-                        $(window).scroll(function() {
-                            if ($(window).scrollTop() > tableTop) {
-                                tb_clone.show();
-                                tb_clone.css("left", tb.offset()['left'] - $(window).scrollLeft());
-                            } else {
-                                tb_clone.hide();
+                    switch (field) {
+                        case F_URL:
+                            row.url = datum[F_URL];
+                            break;
+                        case F_NAME:
+                            row.geneName = datum[F_NAME];
+                            break;
+                        case F_MUT:
+                            if (datum[F_MUT].length > 0) {
+                                muts = datum[F_MUT];
+                                row.mutation = muts[0];
                             }
+                            break;
+                        case F_CHILDREN:
 
-                        });
+                            if (datum[F_CHILDREN] !== null) {
 
+                                var drugs = datum[F_CHILDREN];
+
+                                row.drugs = drugs;
+
+                                var availables = drugs.filter(function(d) {
+                                    return d.hasOwnProperty(F_TARGET_MUTATION_TAG) && d[F_TARGET_MUTATION_TAG] === "TRUE";
+                                });
+
+                                Array.prototype.push.apply(drugData, availables);
+
+                            } else {
+                                row.drugs = [];
+                            }
+                            break;
+                        default:
+                            row.otherFields.push(datum[field]);
+                            break;
+                    }
+                }
+
+
+                row.rowspan = muts ? muts.length : 1;
+                row.hasDrug = row.drugs.length > 0;
+
+                geneRows.push(row);
+                for (var k = 1; k < muts.length; k++) {
+                    geneRows.push({
+                        firstRow: false,
+                        mutation: muts[k],
+                        rowspan: 1
                     });
+                }
+
+            }
+
+            return {
+                geneRows: geneRows,
+                drugData: drugData
+            };
+
+        }
+
+        $scope.getDrugName = function(obj) {
+            return obj[F_DRUG_NAME];
+        }
+
+        $scope.openMutationModal = function(datum) {
+
+            var mutationModal = $modal.open({
+                templateUrl: '/ng-templates/mutationModal.html',
+                controller: "MutationModalCtrl",
+                size: "sm",
+                resolve: {
+                    datum: function() {
+                        return datum;
+                    },
+                    fields: function() {
+                        return _mutationMoreFields;
+                    },
+                    colNameMap: function() {
+                        return _colNameMap;
+                    }
+                }
+
+            });
+
+            mutationModal.result.then(function() {
+
+            }, function() {
+                console.log('Modal dismissed at: ' + new Date());
+            });
+
+        }
+
+        $scope.openDrugModal = function(drugs) {
+
+            var drugModal = $modal.open({
+                templateUrl: '/ng-templates/drugModal.html',
+                controller: "DrugModalCtrl",
+                size: "lg",
+                resolve: {
+                    drugs: function() {
+                        return drugs;
+                    },
+                    fields: function() {
+                        return _drugFields;
+                    },
+                    colNameMap: function() {
+                        return _colNameMap;
+                    }
+                }
+
+            });
+
+            drugModal.result.then(function() {
+
+            }, function() {
+                console.log('Modal dismissed at: ' + new Date());
+            });
+
+        }
+
+        function onDataLoad(data) {
+
+            data.Output.sort(function(g1, g2) {
+                return parseFloat(g2[F_ICAGES_SCORE]) - parseFloat(g1[F_ICAGES_SCORE]);
+            });
+
+            //generate d3 charts 
+            plotD3Charts(angular.copy(data));
+
+            console.log(data);
+
+
+            $scope.log = data.Log;
+
+            var gData = data.Output;
+            if (gData.length > 0) {
+
+
+                $scope.headers = _dataFields.filter(function(k) {
+                    return k !== F_URL;
+                });
+
+                $scope.mutationPrimaryField = F_MUT_SYNTAX;
+                $scope.mutationFields = _mutationFields;
+            }
+
+
+            var frontEndModels = processData(gData);
+
+            $scope.geneRows = frontEndModels.geneRows;
+            $scope.availableDrugs = frontEndModels.drugData;
+
+            console.log($scope.geneRows);
+
+            $timeout(function() {
+                // $('.hz-drug').on("mouseenter", function() {
+                //     $('div', this).css("visibility", "hidden");
+                //     $('ol.fadeIn', this).show();
+                // });
+                // $('ol.fadeIn').on("mouseleave", function() {
+                //     $('.hz-drug div').css("visibility", "initial");
+                //     $(this).hide();
+                // });
+
+                //Code for adding a header that is always on top
+                var tb = $('#summary_table');
+                var tb_clone = $(tb[0].cloneNode());
+                tb_clone.attr("id", "header_clone").css({
+                    position: "fixed",
+                    top: "0",
+                    width: tb.outerWidth() + 'px'
+                });
+                tb_clone.append($('#summary_table thead').clone());
+                $('thead', tb_clone).css("background-color", "white");
+                $('.container.hz-content').append(tb_clone);
+                var ths = $('th', tb);
+
+                function resizeCloneTable() {
+                    $('th', tb_clone).each(function(i) {
+                        $(this).css("width", $(ths[i]).outerWidth() + 'px');
+                    });
+                    tb_clone.css({
+                        "width": tb.outerWidth() + 'px',
+                        "left": tb.offset()['left'] - $(window).scrollLeft()
+                    });
+                }
+
+                resizeCloneTable();
+                tb_clone.hide();
+
+                var tableTop = tb.offset()['top'];
+
+                $(window).resize(resizeCloneTable);
+
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() > tableTop) {
+                        tb_clone.show();
+                        tb_clone.css("left", tb.offset()['left'] - $(window).scrollLeft());
+                    } else {
+                        tb_clone.hide();
+                    }
 
                 });
 
-        }])
-        .controller("MutationModalCtrl", ['$scope', '$modalInstance', 'datum', 'fields', 'colNameMap', function($scope, $modalInstance, datum, fields, colNameMap) {
-
-            $scope.datum = datum;
-            $scope.fields = fields;
-            $scope.colNameMap = colNameMap;
-
-            $scope.ok = function() {
-                $modalInstance.close();
-            };
-
-            $scope.cancel = function() {
-                $modalInstance.dismiss('cancel');
-            };
+            });
+        }
 
 
+        $http.get("../results/result-" + SUBMISSION_ID + ".json")
+            .success(onDataLoad);
 
-        }])
-        .controller("DrugModalCtrl", ['$scope', '$modalInstance', 'drugs', 'fields', 'colNameMap', function($scope, $modalInstance, drugs, fields, colNameMap) {
-            $scope.headers = fields;
-            $scope.drugs = drugs;
-            $scope.colNameMap = colNameMap;
+    }])
 
-            $scope.ok = function() {
-                $modalInstance.close();
-            };
+    .controller("MutationModalCtrl", ['$scope', '$modalInstance', 'datum', 'fields', 'colNameMap', function($scope, $modalInstance, datum, fields, colNameMap) {
 
-            $scope.cancel = function() {
-                $modalInstance.dismiss('cancel');
-            };
+        $scope.datum = datum;
+        $scope.fields = fields;
+        $scope.colNameMap = colNameMap;
 
-        }])
+        $scope.ok = function() {
+            $modalInstance.close();
+        };
+
+        $scope.cancel = function() {
+            $modalInstance.dismiss('cancel');
+        };
+
+
+
+    }])
+
+    .controller("DrugModalCtrl", ['$scope', '$modalInstance', 'drugs', 'fields', 'colNameMap', function($scope, $modalInstance, drugs, fields, colNameMap) {
+        $scope.headers = fields;
+        $scope.drugs = drugs;
+        $scope.colNameMap = colNameMap;
+
+        $scope.ok = function() {
+            $modalInstance.close();
+        };
+
+        $scope.cancel = function() {
+            $modalInstance.dismiss('cancel');
+        };
+
+    }]);
 
 
 
