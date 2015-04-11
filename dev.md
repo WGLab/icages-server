@@ -45,8 +45,53 @@
   Direct_target_gene: string
   BioSystems_probability: float
   iCAGES_drug_score: float
+  Target_mutation_tag: boolean
+  Children: list of <TargetMutationInfo> # if Target_mutation_tag is TRUE
+  FDA_tag: boolean 
+  FDA_Info: <FDAInfo> # if FDA_tag is TRUE
+  CT_tag: boolean
+  CT_Children: list of <CTInfo> # if CT_tag is TRUE
 }
+
+<TargetMutationInfo> {
+  Target_mutation: string
+  Rating: float
+}
+
+<FDAInfo> {
+  Status: string
+  Active_ingredient: string
+}
+
+<CTInfo> {
+  Name: string
+  Organization: string
+  Phase: string
+  URL: string
+}
+
+
 ```
+
+### Front-end data structure specification
+```
+geneRows: list of <GeneRow>
+
+<GeneRow> {
+  otherFields: list of string
+  firstRow: boolean
+  hasDrug: boolean
+  drugs: list of <DrugInfo>
+  rowspan: integer
+  mutation: <MutationInfo>
+  url: string
+}
+
+availableDrugs: list of <DrugInfo> //each with an extra field isAccordionOpen
+
+```
+
+
 
 ### Config files
 
