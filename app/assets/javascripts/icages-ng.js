@@ -621,7 +621,7 @@
             $scope.geneRows = frontEndModels.geneRows;
             $scope.availableDrugs = frontEndModels.drugData;
 
-            console.log($scope.geneRows);
+            console.log(frontEndModels);
 
             $timeout(function() {
                 // $('.hz-drug').on("mouseenter", function() {
