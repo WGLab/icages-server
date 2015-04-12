@@ -67,28 +67,23 @@
             <accordion-heading>{{drug.Drug_name}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': drug.isOpen, 'glyphicon-chevron-right': !drug.isOpen}"></i>
             </accordion-heading>
             <div class="row">
-              <div class="col-sm-4">
-                <table class="table table-striped">
-                  <thead>
-                    <th>Target Mutation</th>
-                    <th>Rating</th>
-                  </thead>
+              <div ng-if="drug.FDA_tag === 'TRUE'" class="col-sm-4">
+                <table class="table">
                   <tbody>
-                    <tr ng-repeat="target in drug.Children">
-                      <td>{{target.Target_mutation}}</td>
-                      <td>{{target.Rating}}</td>
+                    <tr>
+                      <th scope="row">Status</th>
+                      <td>{{drug.FDA_Info.Status}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Active Ingredient</th>
+                      <td>{{drug.FDA_Info.Active_ingredient}}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <div ng-if="drug.FDA_tag === 'TRUE'" class="col-sm-4">
-                <ul>
-                  <li>Status: {{drug.FDA_Info.Status}}</li>
-                  <li>Active Ingredient: {{drug.FDA_Info.Active_ingredient}}</li>
-                </ul>
-              </div>
               <div ng-if="drug.CT_tag === 'TRUE'" class="col-sm-4">
-                 <table class="table table-striped">
+                <center><h4>Clinical Trials</h4></center>
+                <table class="table">
                   <thead>
                     <th>Name</th>
                     <th>Organization</th>
@@ -99,6 +94,21 @@
                       <td><a href="{{ct.URL}}">{{ct.Name}}</a></td>
                       <td>{{ct.Organization}}</td>
                       <td>{{ct.Phase}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-sm-4">
+                <center><h4>Target Mutations</h4></center>
+                <table class="table">
+                  <thead>
+                    <th>Name</th>
+                    <th>Rating</th>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="target in drug.Children">
+                      <td>{{target.Target_mutation}}</td>
+                      <td>{{target.Rating}}</td>
                     </tr>
                   </tbody>
                 </table>
