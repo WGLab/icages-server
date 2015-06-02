@@ -5,90 +5,90 @@
    </li>
    <li><a href="/contact"><i class="glyphicon glyphicon-user"></i>&nbsp;Contact</a>
    </li>
-   <li><a href="/example"><i class="glyphicon glyphicon-user"></i>&nbsp;Example</a>
+   <li><a href="/example"><i class="glyphicon glyphicon-search"></i>&nbsp;Example</a>
    </li>
-    <li><a href="/package"><i class="glyphicon glyphicon-user"></i>&nbsp;Download</a>
+    <li><a href="/package"><i class="glyphicon glyphicon-cloud-download"></i>&nbsp;Download</a>
    </li>
 <% end %>
 
 
 <!-- app/views/static_pages/about.html.erb -->
-<div class="container hz-content">
+    <div class="container hz-content">
 
-    <h1 class="animated fadeInDown">iCAGES</h1>
-    <h2 class="animated fadeInDown">a rapid, effect tool for prioritizing cancer driver genes</h2>
-    <p class="animated fadeIn">iCAGES is a rapid, efficient tool to prioritizer cancer driver genes. Given somatic mutations detected in whole exome sequencing of tumor-normal pair, iCAGES can run through a three-layer process and output a priorized list of candidate cancer driver genes. We also developed this web interface of iCAGES to help average biologists or clinicians who do not want to download and install iCAGES tool to do rapid whole exome variant analysis on this web server, prioritize candidate cancer driver genes which are specific for a patient. With the rapid development and deployment of next-generation sequencing technologies, we hope that iCAGES can take full advantage massive amounts of cancer sequencing data and shed light on personalized cancer therapy.</p>
-</div>
+        <h1 class="animated fadeInDown">iCAGES</h1>
+        <h2 class="animated fadeInDown">a rapid, effect tool for prioritizing cancer driver genes</h2>
+        <p class="animated fadeIn">iCAGES is a rapid, efficient tool to prioritizer cancer driver genes. Given somatic mutations detected in whole exome sequencing of tumor-normal pair, iCAGES can run through a three-layer process and output a priorized list of candidate cancer driver genes. We also developed this web interface of iCAGES to help average biologists or clinicians who do not want to download and install iCAGES tool to do rapid whole exome variant analysis on this web server, prioritize candidate cancer driver genes which are specific for a patient. With the rapid development and deployment of next-generation sequencing technologies, we hope that iCAGES can take full advantage massive amounts of cancer sequencing data and shed light on personalized cancer therapy.</p>
+    </div>
 
 
 
-<!-- Marketing messaging and featurettes
+    <!-- Marketing messaging and featurettes
     ================================================== -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="container marketing">
+    <div class="container marketing">
 
-    <!-- START THE FEATURETTES -->
-    <hr class="featurette-divider">
+        <!-- START THE FEATURETTES -->
+        <hr class="featurette-divider">
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">General workflow of iCAGES:
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">General workflow of iCAGES:
                     <span class="text-muted">input somatic mutations and output cancer driver genes</span>
                 </h2>
-            <p class="lead">iCAGES takes two forms of input, <a href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format or VCF files. Using these data, iCAGES then runs its three-layer pipeline and after approximately 20-25 minutes, it can generate its output summarizing cancer driver genes that it nominated and can notify you through email.</p>
+                <p class="lead">iCAGES takes two forms of input, <a href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format or VCF files. Using these data, iCAGES then runs its three-layer pipeline and after approximately 20-25 minutes, it can generate its output summarizing cancer driver genes that it nominated and can notify you through email.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive" src="/img/flowchart.png" alt="Generic placeholder image">
+            </div>
         </div>
-        <div class="col-md-5">
-            <img class="featurette-image img-responsive" src="/img/flowchart.png" alt="Generic placeholder image">
-        </div>
-    </div>
-    <!--  -->
-    <hr class="featurette-divider">
+        <!--  -->
+        <hr class="featurette-divider">
 
-    <div class="row featurette">
-        <div class="col-md-5">
-            <img class="featurette-image img-responsive" src="/img/first_layer.png" alt="Generic placeholder image">
-        </div>
-        <div class="col-md-7">
-            <h2 class="featurette-heading">First layer of iCAGES:
+        <div class="row featurette">
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive" src="/img/first_layer.png" alt="Generic placeholder image">
+            </div>
+            <div class="col-md-7">
+                <h2 class="featurette-heading">First layer of iCAGES:
                     <span class="text-muted">from somatic mutation calls to prioritized list of candidate cancer driver mutations</span>
                 </h2>
-            <p class="lead">To comprehensively evaluate the effect of rare and common mutations on cancer pathogenesis, we used radial Support Vector Machine (SVM) trained on somatic non-synonymous Single Nucleotide Variations (nsSNVs) from COSMIC and Uniprot databases as the first layer for iCAGES. Using somatic mutations as input, iCAGES can calculate the correponding radial SVM predicted score for each mutation, evaluating the cancer diriver potential for each mutation.</p>
+                <p class="lead">To comprehensively evaluate the effect of rare and common mutations on cancer pathogenesis, we used radial Support Vector Machine (SVM) trained on somatic non-synonymous Single Nucleotide Variations (nsSNVs) from COSMIC and Uniprot databases as the first layer for iCAGES. Using somatic mutations as input, iCAGES can calculate the correponding radial SVM predicted score for each mutation, evaluating the cancer diriver potential for each mutation.</p>
+            </div>
         </div>
-    </div>
 
-    <hr class="featurette-divider">
+        <hr class="featurette-divider">
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">Second layer of iCAGES:
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Second layer of iCAGES:
                     <span class="text-muted">from candidate driver mutations to cancer driver genes</span>
                 </h2>
-            <p class="lead">To incorporate valuable knowledge generated from decades of research, we add one more layer on top of the last radial SVM layer. This layer weights each mutation using its correponding gene's <a href="http://phenolyzer.usc.edu/">Phenolyzer</a> score, which evaluates the genetic-phenotypic association based on previous knowledge. Then it filters for genes that harbor rather deleterious mutations and ranks these genes according to their total weighted score, iCAGES score.</p>
+                <p class="lead">To incorporate valuable knowledge generated from decades of research, we add one more layer on top of the last radial SVM layer. This layer weights each mutation using its correponding gene's <a href="http://phenolyzer.usc.edu/">Phenolyzer</a> score, which evaluates the genetic-phenotypic association based on previous knowledge. Then it filters for genes that harbor rather deleterious mutations and ranks these genes according to their total weighted score, iCAGES score. Finally, a binary prediction of whether not or this gene is likely to be a driver is given, which classifies genes with top 20% iCAGES score as probable driver. Note that this cutoff is currently arbitrary and may change in the future.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive" src="/img/another_second_layer.png" alt="Generic placeholder image">
+            </div>
         </div>
-        <div class="col-md-5">
-            <img class="featurette-image img-responsive" src="/img/another_second_layer.png" alt="Generic placeholder image">
-        </div>
-    </div>
 
-    <hr class="featurette-divider">
+        <hr class="featurette-divider">
 
-    <div class="row featurette">
-        <div class="col-md-5">
+        <div class="row featurette">
+            <div class="col-md-5">
             <img class="featurette-image img-responsive" src="/img/third_layer.png" alt="Generic placeholder image">
-        </div>
-        <div class="col-md-7">
+            </div>
+            <div class="col-md-7">
             <h2 class="featurette-heading">Third layer of iCAGES:
             <span class="text-muted">from candidate driver genes to candidate drugs</span>
             </h2>
             <p class="lead">To better help researchers/clinicians research for potential personalized treatment, we added the third layer of iCAGES, which gives a prioritizes drug list that are associated with each cancer driver genes. This layer search for candiate drugs interacting with our predicted cancer driver genes and weights them using the correponding target gene's iCAGES score and activity score retrieved from PubChem database.</p>
+            </div>
+
         </div>
 
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
     </div>
-
-    <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
-
-</div>
-<!-- /.container -->
+    <!-- /.container -->
