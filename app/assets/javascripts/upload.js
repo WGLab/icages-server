@@ -79,7 +79,7 @@
             var goodData = goodDataFormat(text_val);
             var goodEmail = goodEmailFormat(email_val);
             if (!goodEmail) {
-                alert("Please enter a valid email address.");
+                if(confirm("The email entered is not a valid one, we'll not be able to send you notification when the job is done, are you sure you wanna proceed?") === false) 
                 return;
             }
 
