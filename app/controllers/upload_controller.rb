@@ -1,7 +1,7 @@
 class UploadController < ApplicationController 
   protect_from_forgery except: :handle_upload
   before_filter :add_cross_origin_headers, :only => [:handle_upload, :options]
-  #Thread::abort_on_exception = true
+  Thread::abort_on_exception = true
 
   def index
   end
@@ -17,7 +17,7 @@ class UploadController < ApplicationController
 
     inputFile = params[:inputFile]
 
-    subtype = params[:subtype]
+    subtype = params[:subtype] || ''
 
     email = params[:email] || ''
     
@@ -42,6 +42,8 @@ class UploadController < ApplicationController
   private 
   
   def exec_query(id, data, opts)
+	
+    logger.debug "I'm here!!!"
 
     config = CONFIG['script']
     File.open(CONFIG['script']['input_dir'] + "/input-#{id}.txt",'w') do |file|
