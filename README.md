@@ -1,16 +1,25 @@
 iCAGES -- Integrated CAncer GEnome Score
 ==================
 
-This is a Ruby on Rails application for running iCAGES online 
+This is a Ruby on Rails application for running iCAGES online.
 
 ## What is iCAGES?
 
-iCAGES (integrated CAncer GEnome Score) is an effective tool for prioritizing cancer driver genes for a patient. Given his/her genomic mutation information, iCAGES can accurately prioritize a list of candidate cancer driver genes.
+iCAGES (integrated CAncer GEnome Score) is an effective tool for prioritizing cancer driver genes for a patient. Given his/her genomic mutation information, iCAGES can accurately prioritize a list of candidate cancer driver genes. For details, please see http://icages.usc.edu.
 
-## How does it work?
+## What does this repository contain?
 
-iCAGES is based on two layer design. The first layer takes somatic mutations as input and output a score for each mutation, evaluating its cancer driving potential. The second layer takes the output from the first layer as input and through a two-step ranking system, it outputs a list of prioritized genes that are predicted to be personalized cancer driver genes.
+This repository contains Ruby on Rails application for running the iCAGES server. The actual backend program for iCAGES analysis is available at [here](http://www.github.com/WangGenomicsLab/icages/) as Perl code. The frontend is implemented with AngularJS.
 
-## Why should I choose iCAGES?
+## What is unique about iCAGES server?
 
-iCAGES is simple and effective. It has a very friendly user-interface, which is very easy for researchers, clinicians and other medical professionals to use. It demonstrates high performance in our current study. And ... it is fast.
+iCAGES server is simple yet highly effective. It has a very user-friendly interface, which is very easy for researchers, clinicians and other medical professionals to use. Our analysis on personal cancer genomes demonstrated its good performance to identify personal driver genes. And ... it is fast.
+
+## Reference
+
+Dong C, Yang H, He Z, Liu X, Wang K. **iCAGES: integrated CAncer GEnome Score for understanding personal cancer genomes**. bioRxiv doi: http://dx.doi.org/10.1101/015008
+
+## Credits
+
+- [Zeyu He](https://github.com/hezzze)
+- [Coco Chengliang Dong](https://github.com/coco90417)

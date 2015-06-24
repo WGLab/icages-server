@@ -29,13 +29,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= yield :head %>
-    <script>
-    $(function() {
-        $('.hz-navbar .navbar-nav>li:not(:last-child)>a').click(function() {
-            $(this).addClass('animated pulse');
-        });
-    });
-    </script>
 </head>
 
 <body>

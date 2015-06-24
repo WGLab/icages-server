@@ -54,7 +54,7 @@ class UploadController < ApplicationController
         NotificationMailer.job_done(submission).deliver unless submission.email.empty?
     end
 
-  end
+ end
 
   def add_headers
     headers['Access-Control-Allow-Origin'] = '*'

@@ -1,9 +1,5 @@
-<% content_for :head do %>
-   <%= render 'shared/walkme_script' %>
-<% end %>
-
 <% content_for :navtabs do %>
-   <li   class="active"><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
+   <li class="active"><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
    </li>
    <li><a href="/about"><i class="glyphicon glyphicon-question-sign"></i>&nbsp;About</a>
    </li>
@@ -12,84 +8,129 @@
    <li><a href="/example"><i class="glyphicon glyphicon-user"></i>&nbsp;Example</a>
    </li>
     <li><a href="/package"><i class="glyphicon glyphicon-user"></i>&nbsp;Download</a>
-   </li>
 <% end %>
 
-
 <div class="container hz-content">
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-7">
-                <center>
-                    <h1>Submit a query</h1>
-                </center>
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-7">
+            <center>
+                <h1>Submit a query</h1>
+            </center>
+        </div>
+    </div>
+    <div id="flash_msg">submit successfully!!!</div>
+    <div class="form-horizontal hz-form" role="form">
+        <div class="form-group" id="email_input">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-7 hz-inline">
+                <div id="email_sign" class="input-group-addon">@</div>
+                <input type="email" class="form-control" placeholder="Please leave an email address">
+                <span class="input-indicator"></span>
+            </div>
+            <div class="col-sm-3">
+                We will notify you when job is done
             </div>
         </div>
-        <div id="flash_msg">submit successfully!!!</div>
-        <div class="form-horizontal hz-form" role="form">
-            <div class="form-group" id="email_input">
-                <label class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-7 hz-inline">
-                    <div id="email_sign" class="input-group-addon">@</div>
-                    <input type="email" class="form-control" placeholder="Please leave an email address">
-                    <span class="input-indicator"></span>
-                </div>
-                <div class="col-sm-3">
-                    We will notify you when job is done
+        <div class="form-group" id="data_input">
+            <label class="col-sm-2 control-label">Enter data</label>
+            <div class="col-sm-7">
+                <textarea class="form-control" name="inputData" placeholder="Copy and paste your data here..." rows="7"></textarea>
+                <span class="input-indicator"></span>
+                <div class="hz-bar">
+                    <button id="submit_text" class="btn btn-default" disabled = "true">Submit text</button>
+                    <button id="sample_btn" class="btn btn-default">Paste Sample</button>
                 </div>
             </div>
-            <div class="form-group" id="data_input">
-                <label class="col-sm-2 control-label">Enter data</label>
-                <div class="col-sm-7">
-                    <textarea class="form-control" name="inputData" placeholder="Copy and paste your data here..." rows="7"></textarea>
-                    <span class="input-indicator"></span>
-		    <div class="hz-bar">
-                        <button id="submit_text" class="btn btn-default">Submit text</button>
-                        <button id="sample_btn" class="btn btn-default">Paste Sample</button>
-                    </div>
+            <div class="col-sm-3">
+                <div class="hz-bar">
+                    <span>iCAGES supports two input format:
+                        </span>
                 </div>
-                <div class="col-sm-3">
-                    <div class="hz-bar">
-                        <span>iCAGES supports two input format:
+                <div class="hz-bar">
+                    <span> <a class="annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format
+                            <button id="an_ex_btn" type="button" class="btn btn-sm btn-link ex-btn" data-toggle="popover" data-content="This format is denoted by the author of ANNOVAR package. The format is essentially Tab or Space deliminated table with five columns indicating 'chromosome id', 'start coordinate of the mutation (1 based)', 'end coordinate of the mutation (1 based)', 'reference allele', 'alternative allele'. Example of one row: '1  12919840    12919840    T   C'">(?)</button>
                         </span>
-                    </div>
-                    <div class="hz-bar">
-                        <span> <a class="annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format
-                            <button id="an_ex_btn" type="button" class="btn btn-sm btn-link ex-btn" data-toggle="popover" data-content="This format is denoted by the author of ANNOVAR package. The format is essentially Tab or Space deliminated table with five columns indicating 'chromosome id', 'start coordinate of the mutation (1 based)', 'end coordinate of the mutation (1 based)', 'reference allele', 'alternative allele'. Example of one row: '1	12919840	12919840	T	C'">(?)</button>
-                        </span>
-                    </div>
-                    <div class="hz-bar">
-                        <span> <a href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">VCF</a> input format
+                </div>
+                <div class="hz-bar">
+                    <span> <a href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">VCF</a> input format
                         <button id="vcf_ex_btn" type="button" class="btn btn-sm btn-link ex-btn" data-toggle="popover" data-content="The Variant Call Format (VCF) specifies the format of a text file used in bioinformatics for storing gene sequence variations. Please click the hyperlink 'VCF' for more details.">(?)</button>
                         </span>
-                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">
-                    <span class="hz-label">Or you can</span>
-                </label>
-                <div class="col-sm-7">
-                    <div id="file_dropzone">
-                        <div>
-                            <span class="btn btn-default hz-file-btn">
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">
+                <span class="hz-label">Or you can</span>
+            </label>
+            <div class="col-sm-7">
+                <div id="file_dropzone">
+                    <div>
+                        <span class="btn btn-default hz-file-btn">
                                 <span><i class="glyphicon glyphicon-paperclip"></i>
                                 </span>
-                                <input id="file_upload" type="file" name="inputFile">
-                            </span>
-                            <span>Add or drag your data file here</span>
-                        </div>
+                        <input id="file_upload" type="file" name="inputFile">
+                        </span>
+                        <span>Add or drag your data file here</span>
                     </div>
-		
-                    <div id="upload_progress" class="progress">
-                        <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
-                            <span class="sr-only"></span>
-                        </div>
-                    </div>
-                    <button id="submit_file" class="btn btn-default">Submit file</button>
                 </div>
 
-	  </div>
-	  
+                <div id="upload_progress" class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+                <button id="submit_file" class="btn btn-default"  disabled = "true">Submit file</button>
+            </div>
+
         </div>
-       <script src="assets/upload.js"></script>
+
+<div class="row">
+    <div class="col-sm-offset-2 col-sm-7">
+    <center>
+    <input type="checkbox" id="mylittlecheckbox" >
+<label class = "control-label">I have read and agree to <a data-toggle="modal" href="#mymodal">Terms of Use</a></label>
+</center>
 </div>
+</div>
+</div>
+
+<div class = "modal fade" id = "mymodal" role = "dialog">
+<div class = "modal-dialog">
+<div class = "modal-content">
+<div class="modal-header">
+<h4><strong>Terms of Use</strong></h4>
+</div>
+<div class="modal-body">
+<p>By clicking “Accept”, You agree to the following:</p>
+<li>iCAGES is developed for Research Use Only (RUO), and it does not provide any medical or healthcare services or advices whatsoever.</li>
+<li>iCAGES is freely available for academic and non-profit purposes only. Any commercial use requires a license from legal owner of the software, namely the University of Southern California.</li>
+<li>When using results obtained from iCAGES, you agree to cite iCAGES (after publication) and its URL.</li>
+<li>Your IP address will be recorded by Google Analytics or other means for tracking purposes.</li>
+<li>You confirm and warrant that you have the full right and authority to provide genome data to iCAGES, to analyze such data, and to obtain results on such data. You further confirm and warrant that the data does not contain any identifiable information, and that we may create derivative work for research and educational purposes. You also understand that the iCAGES web server does not require user registration, so that your data is potentially accessible by third parties by decrypting URLs. Finally, you understand that any user data will be removed from the web server periodically, and it is your own responsibility to back up any data and results. You hereby irrevocably agree to hold the developers harmless from any form of liability if the data which you provide to iCAGES becomes compromised.</li>
+<li>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</li>
+</div>
+<div class="modal-footer">
+<a class="btn btn-primary" href="/upload">I agree</a>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="assets/upload.js"></script>
+<script type="text/javascript">
+var me = $('#mylittlecheckbox');
+var myclick=function(){
+if(me.prop('checked')) {
+document.getElementById('submit_file').disabled=false;
+document.getElementById('submit_text').disabled=false;
+}else{
+document.getElementById('submit_file').disabled=true;
+document.getElementById('submit_text').disabled=true;
+}
+};
+me.click(  myclick   );
+    </script>
+
+</div>
+

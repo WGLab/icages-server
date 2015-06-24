@@ -1,4 +1,3 @@
-<script type="text/javascript">
 (function() {
     var walkme = document.createElement('script');
     walkme.type = 'text/javascript';
@@ -7,4 +6,3 @@
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(walkme, s);
 })();
-</script>
