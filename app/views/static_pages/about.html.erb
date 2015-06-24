@@ -5,9 +5,9 @@
    </li>
    <li><a href="/contact"><i class="glyphicon glyphicon-user"></i>&nbsp;Contact</a>
    </li>
-   <li><a href="/example"><i class="glyphicon glyphicon-user"></i>&nbsp;Example</a>
+   <li><a href="/example"><i class="glyphicon glyphicon-search"></i>&nbsp;Example</a>
    </li>
-    <li><a href="/package"><i class="glyphicon glyphicon-user"></i>&nbsp;Download</a>
+    <li><a href="/package"><i class="glyphicon glyphicon-cloud-download"></i>&nbsp;Download</a>
    </li>
 <% end %>
 
@@ -64,10 +64,11 @@
             <h2 class="featurette-heading">Second layer of iCAGES:
                     <span class="text-muted">from candidate driver mutations to cancer driver genes</span>
                 </h2>
-            <p class="lead">To incorporate valuable knowledge generated from decades of research, we add one more layer on top of the last radial SVM layer. This layer weights each mutation using its correponding gene's <a href="http://phenolyzer.usc.edu/">Phenolyzer</a> score, which evaluates the genetic-phenotypic association based on previous knowledge. Then it filters for genes that harbor rather deleterious mutations and ranks these genes according to their total weighted score, iCAGES score.</p>
-        </div>
-        <div class="col-md-5">
-            <img class="featurette-image img-responsive" src="/img/another_second_layer.png" alt="Generic placeholder image">
+                <p class="lead">To incorporate valuable knowledge generated from decades of research, we add one more layer on top of the last radial SVM layer. This layer weights each mutation using its correponding gene's <a href="http://phenolyzer.usc.edu/">Phenolyzer</a> score, which evaluates the genetic-phenotypic association based on previous knowledge. Then it filters for genes that harbor rather deleterious mutations and ranks these genes according to their total weighted score, iCAGES score. Finally, a binary prediction of whether not or this gene is likely to be a driver is given, which classifies genes with top 20% iCAGES score as probable driver. Note that this cutoff is currently arbitrary and may change in the future.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive" src="/img/another_second_layer.png" alt="Generic placeholder image">
+            </div>
         </div>
     </div>
 
