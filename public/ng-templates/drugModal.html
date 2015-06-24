@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h3 class="modal-title">Drug Details</h3>
+</div>
+<div class="modal-body">
+
+	<table class="table table-bordered hz-table">
+		<thead>
+			<th ng-repeat="h in headers">{{colNameMap[h]}}</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="drug in drugs">
+				<td ng-repeat="h in headers">{{drug[h]}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

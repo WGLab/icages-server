@@ -1,0 +1,60 @@
+<% content_for :navtabs do %>
+   <li><a href="/upload"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Get started</a>
+   </li>
+   <li><a href="/about"><i class="glyphicon glyphicon-question-sign"></i>&nbsp;About</a>
+   </li>
+   <li><a href="/contact"><i class="glyphicon glyphicon-user"></i>&nbsp;Contact</a>
+   </li>
+   <li><a href="/example"><i class="glyphicon glyphicon-search"></i>&nbsp;Example</a>
+   </li>
+    <li   class="active"><a href="/package"><i class="glyphicon glyphicon-cloud-download"></i>&nbsp;Download</a>
+   </li>
+<% end %>
+
+
+<!-- app/views/static_pages/about.html.erb -->
+    <div class="container hz-content">
+
+        <h1 class="animated fadeInDown">iCAGES package</h1>
+        <h2 class="animated fadeInDown">command line iCAGES can be downloaded <a href="https://github.com/WangGenomicsLab/icages">here</a>, or you can follow the instructions below to download and use iCAGES through command line.</h2>
+        </div>
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+     <div class="container">
+      <div class="page-header">
+        <h2>Download iCAGES</h2>
+      </div>
+      <p class="lead">Copy and paste the command line below to download iCAGES.</p>
+            <div class="jumbotron">
+                <div class="lead"><code>wget https://github.com/WangGenomicsLab/icages/archive/v0.1.0.tar.gz -O icages.tar.gz</code></div>
+                <div class="lead"><code>tar -zxvf icages.tar.gz</code></div>
+            </div>
+    </div>
+    
+    
+     <div class="container">
+      <div class="page-header">
+        <h2>Quick start using examples</h2>
+      </div>
+      <p class="lead">In the <code>icages</code> folder, there is an example file called <code>input.txt</code>. It was in <a href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format. (Note that it can also take vcf file as input and the example input file is also given: <code>input.vcf</code>. You can also play around yourself). Copy paste the command line below to run this simple example and check the result, <code>input.txt.result.txt</code> and <code>input.txt.drug.txt</code>  </p>
+            <div class="jumbotron">
+                <div class="lead"><code>cd icages</code></div>
+                <div class="lead"><code>icages.pl input.txt</code></div>
+                <div class="lead"><code>less input.txt.result.txt</code></div>
+                <div class="lead"><code>less input.txt.drug.txt</code></div>
+            </div>
+    </div>
+
+    
+    <!-- /END THE FEATURETTES -->
+
+
+    </div><!-- /.container -->
+
+
