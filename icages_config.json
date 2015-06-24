@@ -1,9 +1,0 @@
-{
-	"script": {
-		"path": "/home/cocodong/www/iCAGES/icages/icages.pl",
-		"input_dir": "/home/cocodong/www/iCAGES/public/upload",
-		"output_dir": "/home/cocodong/www/iCAGES/public/results",
-		"temp_dir": "/home/cocodong/www/iCAGES/public/temp",
-		"log_dir": "/home/cocodong/www/iCAGES/public/log"
-	}
-}
