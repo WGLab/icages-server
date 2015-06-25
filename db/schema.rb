@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140731015436) do
 
-  create_table "submissions", force: true do |t|
+  create_table "submissions", force: :cascade do |t|
     t.boolean  "done"
     t.datetime "created_at"
     t.datetime "updated_at"
