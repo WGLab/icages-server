@@ -1,9 +1,9 @@
 (function() {
-    function goodDataFormat(val) {
+    function isGoodData(val) {
         return /^(\t*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]+)*\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]*$/g.test(val) || /^[\n]*##fileformat=VCFv[\S\n\s]+$/g.test(val);
     }
 
-    function goodEmailFormat(val) {
+    function isGoodEmail(val) {
         return /[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum|edu)\b/g.test(val);
     }
 
@@ -64,8 +64,8 @@
 
 
     $(function() {
-        showBootstrapIndicator('#data_input', '#data_input textarea', "#data_input .input-indicator", goodDataFormat);
-        showBootstrapIndicator('#email_input', '#email_input input', "#email_input .input-indicator", goodEmailFormat);
+        showBootstrapIndicator('#data_input', '#data_input textarea', "#data_input .input-indicator", isGoodData);
+        showBootstrapIndicator('#email_input', '#email_input input', "#email_input .input-indicator", isGoodEmail);
     });
 
     /*jslint unparam: true, regexp: true */
@@ -78,24 +78,7 @@
         $('#file_upload').fileupload({
             add: function(e, data) {
                 $('#file_dropzone>div').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
-                $('#submit_btn').on('click', function() {
-                    var email_val = $('#email_input input').val();
-                    var goodEmail = goodEmailFormat(email_val);
-                    if (!goodEmail) {
-                        alert("Please enter a valid email address.");
-                        return;
-                    }
-                    data.formData = {
-                        subtype: _selectedSubTypes[0]
-                    };
-                    data.submit();
-                });
-            },
-            done: function(e, data) {
-                x_data = data;
-                console.log("server returned: " + data.result.msg);
-                $('#file_dropzone>div').html(data.result.msg);
-                window.location.href = window.location.origin + "/result/" + data.result.id;
+
             },
             progress: function(e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -103,6 +86,39 @@
             },
             dropZone: $('#file_dropzone')
         });
+
+        $('#file_upload').submit(function(e) {
+
+            var emailInput = $('#email_input input').val();
+            var dataInput = $('data_input textarea').val();
+
+             
+            if (!isGoodEmail(emailInput)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            if (!isGoodData(dataInput)) {
+                alert("The data input is not valid.");
+                return;
+            }
+
+            e.preventDefault();
+            $.ajax({
+                url: '/upload',
+                type: 'POST',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    console.log("server returned: " + data.result.msg);
+                    $('#file_dropzone>div').html(data.result.msg);
+                    window.location.href = window.location.origin + "/result/" + data.result.id;
+                }
+            });
+        })；
+
+
     });
     $('#file_dropzone')
         .on('dragover', function(e) {
