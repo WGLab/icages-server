@@ -78,18 +78,18 @@
         $('#file_upload').fileupload({
             add: function(e, data) {
                 $('#file_dropzone>div').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
-            },
-            submit: function(e, data) {
-                var email_val = $('#email_input input').val();
-                var goodEmail = goodEmailFormat(email_val);
-                if (!goodEmail) {
-                    alert("Please enter a valid email address.");
-                    return false;
-                }
-                data.formData = {
-                    subtype: _selectedSubTypes[0]
-                };
-                return true;
+                $('#submit_btn').on('click', function() {
+                    var email_val = $('#email_input input').val();
+                    var goodEmail = goodEmailFormat(email_val);
+                    if (!goodEmail) {
+                        alert("Please enter a valid email address.");
+                        return;
+                    }
+                    data.formData = {
+                        subtype: _selectedSubTypes[0]
+                    };
+                    data.submit();
+                });
             },
             done: function(e, data) {
                 x_data = data;
