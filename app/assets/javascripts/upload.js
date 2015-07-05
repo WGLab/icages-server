@@ -116,7 +116,7 @@
                     window.location.href = window.location.origin + "/result/" + data.result.id;
                 }
             });
-        })；
+        });
 
 
     });
