@@ -66,50 +66,6 @@
     $(function() {
         showBootstrapIndicator('#data_input', '#data_input textarea', "#data_input .input-indicator", goodDataFormat);
         showBootstrapIndicator('#email_input', '#email_input input', "#email_input .input-indicator", goodEmailFormat);
-
-
-        $("#submit_text").click(function(e) {
-            var url = "/upload";
-
-            e.preventDefault();
-
-            var text_val = $('#data_input textarea').val();
-            var email_val = $('#email_input input').val();
-
-            var goodData = goodDataFormat(text_val);
-            var goodEmail = goodEmailFormat(email_val);
-            if (!goodEmail) {
-                if(confirm("The email entered is not a valid one, we'll not be able to send you notification when the job is done, are you sure you wanna proceed?") === false) 
-                return;
-            }
-
-            if (goodData) {
-                $.ajax(url, {
-                    type: "POST",
-                    data: {
-                        email: goodEmail ? email_val : "",
-                        inputData: $('#data_input textarea').val(),
-                        subtype: _selectedSubTypes[0]
-                    },
-                    success: function(data) {
-                        console.log("server returned\n" + data.msg);
-
-                        $('#flash_msg').removeClass('bounceIn bounceOut');
-                        $("#flash_msg").css("display", "block").addClass('bounceIn');
-                        setTimeout(function() {
-                            $("#flash_msg").addClass('bounceOut');
-                            setTimeout(function() {
-                                $("#flash_msg").css("display", "none");
-                                window.location.href = window.location.origin + "/result/" + data.id;
-                            }, 750);
-                        }, 3000);
-
-                    }
-                });
-            } else {
-                alert("Invalid input data");
-            }
-        });
     });
 
     /*jslint unparam: true, regexp: true */
@@ -124,19 +80,18 @@
             dataType: 'json',
             add: function(e, data) {
                 $('#file_dropzone>div').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
-                $('#submit_file').on("click", function() {
-                    var email_val = $('#email_input input').val();
-                    var goodEmail = goodEmailFormat(email_val);
-                    if (!goodEmail) {
-                        alert("Please enter a valid email address.");
-                        return;
-                    }
-                    data.formData = {
-                        email: goodEmail ? email_val : '',
-                        subtype: _selectedSubTypes[0],
-                    };
-                    data.submit();
-                });
+            },
+            submit: function(e, data) {
+                var email_val = $('#email_input input').val();
+                var goodEmail = goodEmailFormat(email_val);
+                if (!goodEmail) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+                data.formData = {
+                    subtype: _selectedSubTypes[0]
+                };
+                return true;
             },
             done: function(e, data) {
                 x_data = data;
@@ -183,7 +138,7 @@
         autoCompleteInit("#cancer_subtype_input", "#subtype_tags", subtypes, _selectedSubTypes);
     });
 
-    
+
     $.getJSON("/drugs", function(drugs) {
         autoCompleteInit("#drugs_input", "#drugs_tags", drugs, _selectedDrugs);
     });

@@ -19,12 +19,12 @@
         </div>
     </div>
     <div id="flash_msg">submit successfully!!!</div>
-    <div class="form-horizontal hz-card hz-form" role="form">
+    <form action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form">
         <div class="form-group" id="email_input">
             <label class="col-sm-2 control-label hz-label">Email</label>
             <div class="col-sm-7 hz-inline">
                 <div id="email_sign" class="input-group-addon">@</div>
-                <input type="email" class="form-control" placeholder="Please leave an email address">
+                <input type="email" name="email" class="form-control" placeholder="Please leave an email address">
                 <span class="input-indicator"></span>
             </div>
             <div class="col-sm-3">
@@ -37,7 +37,6 @@
                 <textarea class="form-control" name="inputData" placeholder="Copy and paste your data here..." rows="7"></textarea>
                 <span class="input-indicator"></span>
                 <div class="hz-bar">
-                    <button id="submit_text" class="btn btn-default" disabled = "true">Submit text</button>
                     <button id="sample_btn" class="btn btn-default">Paste Sample</button>
                 </div>
             </div>
@@ -49,7 +48,7 @@
                 <div class="hz-bar">
                     <span> <a class="annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format
                             <button id="an_ex_btn" type="button" class="btn btn-sm btn-link ex-btn" data-toggle="popover" data-content="This format is denoted by the author of ANNOVAR package. The format is essentially Tab or Space deliminated table with five columns indicating 'chromosome id', 'start coordinate of the mutation (1 based)', 'end coordinate of the mutation (1 based)', 'reference allele', 'alternative allele'. Example of one row: '1  12919840    12919840    T   C'">(?)</button>
-                        </span>
+                    </span>
                 </div>
                 <div class="hz-bar">
                     <span> <a href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">VCF</a> input format
@@ -79,7 +78,7 @@
                         <span class="sr-only"></span>
                     </div>
                 </div>
-                <button id="submit_file" class="btn btn-default"  disabled = "true">Submit file</button>
+                <button id="submit_file" class="btn btn-default" type="submit" disabled = "true"><i class="glyphicon glyphicon-send"></i>Submit</button>
             </div>
         </div>
         <div class="form-group">
@@ -116,7 +115,7 @@
             </div>
         </div>
 
-    </div>
+    </form>
 </div>
 
 
