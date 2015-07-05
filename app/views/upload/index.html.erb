@@ -145,11 +145,9 @@
 var me = $('#mylittlecheckbox');
 var myclick = function() {
     if (me.prop('checked')) {
-        document.getElementById('submit_file').disabled = false;
-        document.getElementById('submit_text').disabled = false;
+        document.getElementById('submit_btn').disabled = false;
     } else {
-        document.getElementById('submit_file').disabled = true;
-        document.getElementById('submit_text').disabled = true;
+        document.getElementById('submit_btn').disabled = true;
     }
 };
 me.click(myclick);
