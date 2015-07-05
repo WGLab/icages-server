@@ -92,7 +92,7 @@
             var emailInput = $('#email_input input').val();
             var dataInput = $('#data_input textarea').val();
             e.preventDefault();
-             
+
             if (!isGoodEmail(emailInput)) {
                 alert("Please enter a valid email address.");
                 return;
@@ -103,20 +103,34 @@
                 return;
             }
 
+            var fmData = new FormData(this);
+
+            fmData.append("subtype", _selectedSubTypes[0]);
+
             $.ajax({
                 url: '/upload',
                 type: 'POST',
-                data: new FormData(this),
+                data: fmData,
                 processData: false,
                 contentType: false,
                 success: function(data) {
-                    console.log("server returned: " + data.result.msg);
-                    $('#file_dropzone>div').html(data.result.msg);
-                    window.location.href = window.location.origin + "/result/" + data.result.id;
+
+                    console.log("server returned\n" + data);
+                    $('#file_dropzone>div').html(data.msg);
+
+                    $('#flash_msg').removeClass('bounceIn bounceOut');
+                    $("#flash_msg").css("display", "block").addClass('bounceIn');
+                    setTimeout(function() {
+                        $("#flash_msg").addClass('bounceOut');
+                        setTimeout(function() {
+                            $("#flash_msg").css("display", "none");
+                            window.location.href = window.location.origin + "/result/" + data.id;
+                        }, 750);
+                    }, 3000);
                 }
             });
 
-            
+
         });
 
 
