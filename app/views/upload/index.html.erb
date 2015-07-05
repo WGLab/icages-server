@@ -19,7 +19,7 @@
         </div>
     </div>
     <div id="flash_msg">submit successfully!!!</div>
-    <form action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form">
+    <form id="file_upload" action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form">
         <div class="form-group" id="email_input">
             <label class="col-sm-2 control-label hz-label">Email</label>
             <div class="col-sm-7 hz-inline">
@@ -67,7 +67,7 @@
                         <span class="btn btn-default hz-file-btn">
                                 <span><i class="glyphicon glyphicon-paperclip"></i>
                                 </span>
-                        <input id="file_upload" type="file" name="inputFile">
+                        <input  type="file" name="inputFile">
                         </span>
                         <span>Add or drag your data file here</span>
                     </div>
@@ -78,12 +78,12 @@
                         <span class="sr-only"></span>
                     </div>
                 </div>
-                <button id="submit_file" class="btn btn-default" type="submit" disabled = "true"><i class="glyphicon glyphicon-send"></i>Submit</button>
+                <button class="btn btn-default" type="submit" disabled = "true"><i class="glyphicon glyphicon-send"></i>Submit</button>
             </div>
         </div>
         <div class="form-group">
             <center>
-                <button class="btn btn-link" data-toggle="collapse" data-target="#advance_options">Advance Options</button>
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#advance_options">Advance Options</button>
             </center>
         </div>
         <div class="form-group collapse" id="advance_options">

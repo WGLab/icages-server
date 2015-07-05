@@ -76,8 +76,6 @@
     });
     $(function() {
         $('#file_upload').fileupload({
-            url: "/upload",
-            dataType: 'json',
             add: function(e, data) {
                 $('#file_dropzone>div').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
             },
