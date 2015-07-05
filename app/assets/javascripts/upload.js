@@ -90,8 +90,8 @@
         $('#file_upload').submit(function(e) {
 
             var emailInput = $('#email_input input').val();
-            var dataInput = $('data_input textarea').val();
-
+            var dataInput = $('#data_input textarea').val();
+            e.preventDefault();
              
             if (!isGoodEmail(emailInput)) {
                 alert("Please enter a valid email address.");
@@ -103,7 +103,6 @@
                 return;
             }
 
-            e.preventDefault();
             $.ajax({
                 url: '/upload',
                 type: 'POST',
@@ -116,6 +115,8 @@
                     window.location.href = window.location.origin + "/result/" + data.result.id;
                 }
             });
+
+            
         });
 
 
