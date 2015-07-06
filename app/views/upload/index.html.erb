@@ -10,7 +10,7 @@
     <li><a href="/package"><i class="glyphicon glyphicon-cloud-download"></i>&nbsp;Download</a>
 <% end %>
 
-<div class="container hz-content">
+<div class="container hz-content" ng-app="icages.upload">
     <div class="row">
         <div class="col-sm-offset-2 col-sm-7">
             <center>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div id="flash_msg">submit successfully!!!</div>
-    <form id="file_upload" action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form">
+    <form id="file_upload" action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form" ng-controller="FormCtrl">
         <div class="form-group" id="email_input">
             <label class="col-sm-2 control-label hz-label">Email</label>
             <div class="col-sm-7 hz-inline">
@@ -111,9 +111,7 @@
                 </label>
                 <div class="col-sm-7 ui-front">
                     <select class="form-control" name="referenceGenome" placeholder="Enter the drugs you've taken here">
-                        <option value="hg19" selected>hg19</option>
-                        <option value="hg18">hg18</option>
-                        <option value="hg38">hg38</option>
+                        <option ng-repeat="obj in _refGenoVals" value="{{obj.val}}">{{obj.text}}</option>
                     </select>
                 </div>
             </div>

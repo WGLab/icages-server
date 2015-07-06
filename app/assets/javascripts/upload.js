@@ -222,5 +222,22 @@
     }
 
 
+    angular.module("icages.upload", [])
+    .controller('FormCtrl', ['$scope', function($scope){
+        
+        $scope._refGenoVals = [{
+            val: "hg19",
+            text: "hg19"
+        }, {
+            val: "hg18",
+            text: "hg18"
+        }, {
+            val: "hg38",
+            text: "hg38"
+        }];
+
+
+    }]);
+
 
 })();
