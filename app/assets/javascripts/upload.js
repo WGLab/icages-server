@@ -249,6 +249,8 @@
             text: "VCF"
         }];
 
+        $scope._selectedVCFSpec = 0;
+
         $scope._VCFSpecs = [{
             val: 0,
             text: "one sample somatic mutations"
