@@ -94,8 +94,9 @@
             e.preventDefault();
 
             if (!isGoodEmail(emailInput)) {
-                alert("Please enter a valid email address.");
-                return;
+                if(!confirm("The email is not valid, we won't be able to send you a notification, do you want to proceed?")) {
+                    return;                   
+                }
             }
 
             if (!isGoodData(dataInput)) {
