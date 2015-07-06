@@ -239,7 +239,7 @@
             }]
         };
 
-        _selectedInputFormat = "ANNOVAR";
+        $scope._selectedInputFormat = "ANNOVAR";
 
         $scope._inputFormat = [{
             val: "ANNOVAR",
@@ -248,8 +248,6 @@
             val: "VCF",
             text: "VCF"
         }];
-
-        _selectedVCFSpec = 0;
 
         $scope._VCFSpecs = [{
             val: 0,

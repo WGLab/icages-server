@@ -111,7 +111,7 @@
                 </label>
                 <div class="col-sm-7 ui-front">
                     <select class="form-control" name="referenceGenome" ng-options="obj.val as obj.text for obj in _refGeno.vals" ng-model="_refGeno.default">
-                    </select>
+                    </select required>
                 </div>
             </div>
             <div class="row">
@@ -119,7 +119,7 @@
                     <span>Input format</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _inputFormat" ng-model="_selectedInputFormat">
+                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _inputFormat" ng-model="_selectedInputFormat" required>
                     </select>
                 </div>
             </div>
