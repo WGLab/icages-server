@@ -225,17 +225,42 @@
     angular.module("icages.upload", [])
     .controller('FormCtrl', ['$scope', function($scope){
         
-        $scope._refGenoVals = [{
-            val: "hg19",
-            text: "hg19"
+        $scope._refGeno = {
+            "default": "hg19",
+            vals: [{
+                    val: "hg19",
+                    text: "hg19"
+                }, {
+                    val: "hg18",
+                    text: "hg18"
+                }, {
+                    val: "hg38",
+                    text: "hg38"
+            }]
+        };
+
+        _selectedInputFormat = "ANNOVAR";
+
+        $scope._inputFormat = [{
+            val: "ANNOVAR",
+            text: "ANNOVAR"
         }, {
-            val: "hg18",
-            text: "hg18"
-        }, {
-            val: "hg38",
-            text: "hg38"
+            val: "VCF",
+            text: "VCF"
         }];
 
+        _selectedVCFSpec = 0;
+
+        $scope._VCFSpecs = [{
+            val: 0
+            text: "one sample somatic mutations"
+        }, {
+            val: 1,
+            text: "one sample tumor mutations and germline mutations"
+        }, {
+            val: 2,
+            text: "multiple samples somatic mutations"
+        }];
 
     }]);
 

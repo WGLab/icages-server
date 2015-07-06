@@ -107,12 +107,53 @@
             </div>
             <div class="row">
                 <label class="col-sm-2 control-label hz-label">
-                    <span>Reference Genome</span>
+                    <span>Reference genome</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="referenceGenome" placeholder="Enter the drugs you've taken here">
-                        <option ng-repeat="obj in _refGenoVals" value="{{obj.val}}">{{obj.text}}</option>
+                    <select class="form-control" name="referenceGenome" ng-options="obj.val as obj.text for obj in _refGeno.vals" ng-model="_refGeno.default">
                     </select>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Input format</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _inputFormat" ng-model="_selectedInputFormat">
+                    </select>
+                </div>
+            </div>
+            <div ng-if="_selectedInputFormat === 'VCF'" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>VCF specifications</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _VCFSpecs" ng-model="_selectedVCFSpec">
+                    </select>
+                </div>
+            </div>
+            <div ng-if="_selectedVCFSpec === 1" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Tumor sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="tumorSampleID" required></input>
+                </div>
+            </div>
+            <div ng-if="_selectedVCFSpec === 1" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Germline sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="germlineSampleID" required></input>
+                </div>
+            </div>
+            <div ng-if="_selectedVCFSpec === 2" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="multiSampleID" required></input>
                 </div>
             </div>
         </div>
