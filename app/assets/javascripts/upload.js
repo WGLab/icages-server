@@ -226,16 +226,16 @@
     .controller('FormCtrl', ['$scope', function($scope){
         
         $scope._refGeno = {
-            "default": "hg19",
+            selected: "hg19",
             vals: [{
-                    val: "hg19",
-                    text: "hg19"
-                }, {
-                    val: "hg18",
-                    text: "hg18"
-                }, {
-                    val: "hg38",
-                    text: "hg38"
+                val: "hg19",
+                text: "hg19"
+            }, {
+                val: "hg18",
+                text: "hg18"
+            }, {
+                val: "hg38",
+                text: "hg38"
             }]
         };
 
@@ -249,18 +249,20 @@
             text: "VCF"
         }];
 
-        $scope._selectedVCFSpec = 0;
 
-        $scope._VCFSpecs = [{
-            val: 0,
-            text: "one sample somatic mutations"
-        }, {
-            val: 1,
-            text: "one sample tumor mutations and germline mutations"
-        }, {
-            val: 2,
-            text: "multiple samples somatic mutations"
-        }];
+        $scope._VCFSpecs = {
+            selected: 0,
+            vals: [{
+                val: 0,
+                text: "one sample somatic mutations"
+            }, {
+                val: 1,
+                text: "one sample tumor mutations and germline mutations"
+            }, {
+                val: 2,
+                text: "multiple samples somatic mutations"
+            }]
+        };
 
     }]);
 
