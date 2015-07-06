@@ -83,7 +83,7 @@
         </div>
         <div class="form-group">
             <center>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#advance_options">Advance Options ({{_selectedVCFSpec}})</button>
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#advance_options">Advance Options</button>
             </center>
         </div>
         <div class="form-group collapse" id="advance_options">
@@ -128,11 +128,11 @@
                     <span>VCF specifications</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _VCFSpecs.vals" ng-model="_VCFSpec.selected">
+                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _VCFSpecs.vals" ng-model="_VCFSpecs.selected">
                     </select>
                 </div>
             </div>
-            <div ng-if="_VCFSpec.selected === '1'" class="row">
+            <div ng-if="_VCFSpecs.selected === '1'" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Tumor sample identifier</span>
                 </label>
@@ -140,7 +140,7 @@
                     <input class="form-control" type="text" name="tumorSampleID" required></input>
                 </div>
             </div>
-            <div ng-if="_VCFSpec.selected === '1'" class="row">
+            <div ng-if="_VCFSpecs.selected === '1'" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Germline sample identifier</span>
                 </label>
@@ -148,7 +148,7 @@
                     <input class="form-control" type="text" name="germlineSampleID" required></input>
                 </div>
             </div>
-            <div ng-if="_VCFSpec.selected === '2'" class="row">
+            <div ng-if="_VCFSpecs.selected === '2'" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Sample identifier</span>
                 </label>
