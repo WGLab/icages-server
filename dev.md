@@ -108,6 +108,7 @@ availableDrugs: list of <DrugInfo> //each with an extra field isAccordionOpen
   
   //in script
   subtype: string //optional
+  drug: string //optional
 }
 ```
   
