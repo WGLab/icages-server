@@ -75,11 +75,17 @@
         e.preventDefault();
     });
     $(function() {
-        $('#file_upload').fileupload({
-            add: function(e, data) {
-                $('#file_info').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
 
-            },
+        $('#file_input').change(function(e) {
+            alert("file added!");
+        });
+
+
+        $('#file_upload').fileupload({
+            // add: function(e, data) {
+            //     $('#file_info').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
+
+            // },
             progress: function(e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('#upload_progress>div.progress-bar').css('width', progress + '%');
