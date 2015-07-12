@@ -77,7 +77,7 @@
     $(function() {
         $('#file_upload').fileupload({
             add: function(e, data) {
-                $('#file_dropzone>div').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
+                $('#file_info').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
 
             },
             progress: function(e, data) {
@@ -99,6 +99,8 @@
                 }
             }
 
+            //TODO
+            // check if file or data is valid
             if (!isGoodData(dataInput)) {
                 alert("The data input is not valid.");
                 return;
@@ -107,6 +109,7 @@
             var fmData = new FormData(this);
 
             fmData.append("subtype", _selectedSubTypes[0]);
+            fmData.append("drug", _selectedDrugs[0]);
 
             $.ajax({
                 url: '/upload',
@@ -117,7 +120,7 @@
                 success: function(data) {
 
                     console.log("server returned\n" + data);
-                    $('#file_dropzone>div').html(data.msg);
+                    $('#flash_msg').html(data.msg);
 
                     $('#flash_msg').removeClass('bounceIn bounceOut');
                     $("#flash_msg").css("display", "block").addClass('bounceIn');
