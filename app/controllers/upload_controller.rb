@@ -64,7 +64,7 @@ class UploadController < ApplicationController
 
     scriptConfig = CONFIG['script']
 
-    inputFilePath = scriptConfig['input_dir'] + "/input-#{id}.txt"
+    inputFilePath = scriptConfig['input_dir'] + "/input-#{id}"
     File.open(inputFilePath,'w') do |file|
       file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
     end
@@ -80,7 +80,7 @@ class UploadController < ApplicationController
       return
     end
 
-    if not File.exist?("#{scriptConfig['output_dir']}/result-#{id}.json")
+    if not File.exist?("#{scriptConfig['output_dir']}/input-#{id}.icages.json")
       logger.debug "\n---- Result json not found!\n"
       return
     end

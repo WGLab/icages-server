@@ -677,7 +677,7 @@
         }
 
 
-        $http.get("../results/result-" + SUBMISSION_ID + ".json")
+        $http.get("../results/input-" + SUBMISSION_ID + ".icages.json")
             .success(onDataLoad);
 
     }])
