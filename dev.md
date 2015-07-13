@@ -111,7 +111,6 @@ availableDrugs: list of <DrugInfo> //each with an extra field isAccordionOpen
   drug: string //optional
 }
 ```
-  
 
 ### Config files
 
@@ -119,4 +118,10 @@ availableDrugs: list of <DrugInfo> //each with an extra field isAccordionOpen
 
 all the paths have to end with a "/"
 
+### Misc
 
+Result json naming convention
+
+```
+input-#{id}.icages.json
+```
