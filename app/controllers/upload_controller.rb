@@ -16,7 +16,7 @@ class UploadController < ApplicationController
     inputFile = params[:inputFile]
     isFileUpload = false
 
-    logger.debug "Input file is [#{'empty' if inputFile.nil?}].." 
+    logger.debug "Input file is [#{inputFile.nil? ? 'empty' : inputFile.original_filename}].." 
 
     email = params[:email]
     
@@ -31,7 +31,6 @@ class UploadController < ApplicationController
       responseMsg = "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{emailMsg}"
       isFileUpload = true
     end
-
     
     t = Thread.new { exec_query(submission.id, isFileUpload, params) }
     render json: {id: submission.id, msg: responseMsg, url: "#{result_path(submission, only_path: false)}"}
@@ -62,8 +61,8 @@ class UploadController < ApplicationController
   def exec_query(id, isFileUpload, params)
 	
     logger.debug "I'm here!!!"
-
-
+   
+    logger.debug params
 
     config = CONFIG['script']
 
@@ -71,8 +70,6 @@ class UploadController < ApplicationController
     File.open(inputFilePath,'w') do |file|
       file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
     end
-
-    logger.debug params
 
     perlCmd = getShell(config, params, inputFilePath)
 
