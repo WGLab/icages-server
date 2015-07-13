@@ -113,8 +113,8 @@
 
             var fmData = new FormData(this);
 
-            fmData.append("subtype", _selectedSubTypes[0] ? _selectedSubTypes[0] : "");
-            fmData.append("drug", _selectedDrugs[0]);
+            if (_selectedSubTypes[0]) fmData.append("subtype", _selectedSubTypes[0]);
+            if (_selectedDrugs[0]) fmData.append("drug", _selectedDrugs[0]);
             if (_fileOBj) fmData.append("inputFile", _fileOBj);
 
             $.ajax({
