@@ -39,7 +39,7 @@ class UploadController < ApplicationController
 
   private 
 
-  def getShell(config, params, inputFilePath)
+  def getShell(scriptConfig, params, inputFilePath)
     options = {
       :tumorSampleID => "-t",
       :gemlineSampleID => "-g",
@@ -47,7 +47,7 @@ class UploadController < ApplicationController
       :subtype => "-s"
     }
 
-    perlCmd = "perl #{config['path']}"
+    perlCmd = "perl #{scriptConfig['path']}"
 
     options.each do |k, v|
       if params[k] && !params[k].empty?
@@ -55,24 +55,21 @@ class UploadController < ApplicationController
       end
     end
 
-    perlCmd += " --logdir #{config['log_dir']} --tempdir #{config['temp_dir']} --outputdir #{config['output_dir']} #{inputFilePath}"
+    perlCmd += " --logdir #{scriptConfig['log_dir']} --tempdir #{scriptConfig['temp_dir']} --outputdir #{scriptConfig['output_dir']} #{inputFilePath}"
   end
   
   def exec_query(id, isFileUpload, params)
-	
-    logger.debug "I'm here!!!"
    
+    logger.debug params
 
+    scriptConfig = CONFIG['script']
 
-    config = CONFIG['script']
-
-    inputFilePath = config['script']['input_dir'] + "/input-#{id}.txt"
+    inputFilePath = scriptConfig['input_dir'] + "/input-#{id}.txt"
     File.open(inputFilePath,'w') do |file|
-      logger.debug params
       file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
     end
 
-    perlCmd = getShell(config, params, inputFilePath)
+    perlCmd = getShell(scriptConfig, params, inputFilePath)
 
     logger.debug perlCmd
 
@@ -83,7 +80,7 @@ class UploadController < ApplicationController
       return
     end
 
-    if not File.exist?("#{config['output_dir']}/result-#{id}.json")
+    if not File.exist?("#{scriptConfig['output_dir']}/result-#{id}.json")
       logger.debug "\n---- Result json not found!\n"
       return
     end
