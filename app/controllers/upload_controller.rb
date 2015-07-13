@@ -22,6 +22,8 @@ class UploadController < ApplicationController
     
     emailMsg = (!email || email.empty?) ? '':'for ' + email
 
+    submission = Submission.create(done: false, email: email)
+
     responseMsg = ""
     if inputData && !inputData.empty?
       responseMsg = "Submission: #{submission.id} created #{emailMsg}"
@@ -30,7 +32,7 @@ class UploadController < ApplicationController
       isFileUpload = true
     end
 
-    submission = Submission.create(done: false, email: email)
+    
     t = Thread.new { exec_query(submission.id, isFileUpload, params) }
     render json: {id: submission.id, msg: responseMsg, url: "#{result_path(submission, only_path: false)}"}
     
