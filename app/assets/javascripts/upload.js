@@ -125,7 +125,7 @@
                 contentType: false,
                 success: function(data) {
 
-                    console.log("server returned\n" + data);
+                    console.log("server returned\n" + data.msg);
                     $('#flash_msg').html(data.msg);
 
                     $('#flash_msg').removeClass('bounceIn bounceOut');

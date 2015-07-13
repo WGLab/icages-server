@@ -62,12 +62,13 @@ class UploadController < ApplicationController
 	
     logger.debug "I'm here!!!"
    
-    logger.debug params
+
 
     config = CONFIG['script']
 
     inputFilePath = config['script']['input_dir'] + "/input-#{id}.txt"
     File.open(inputFilePath,'w') do |file|
+      logger.debug params
       file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
     end
 
