@@ -10,51 +10,66 @@ class UploadController < ApplicationController
     head :ok
   end
     
-
   def handle_upload
 
     inputData = params[:inputData]
-
     inputFile = params[:inputFile]
+    isFileUpload = false
 
-    subtype = params[:subtype] || ''
+    logger.debug "Input file is [#{inputFile.nil? ? 'empty' : inputFile.original_filename}].." 
 
-    email = params[:email] || ''
+    email = params[:email]
     
-    logger.debug "Input file is [#{'empty' if inputFile.nil?}].." 
+    emailMsg = (!email || email.empty?) ? '':'for ' + email
 
-    email_msg = email.empty? ? '':'for ' + email
+    submission = Submission.create(done: false, email: email)
 
-    if inputData
-      submission = Submission.create(done: false, email: email)
-      t = Thread.new { exec_query(submission.id, inputData, {isFile: false, subtype: subtype}) }
-      #t.join
-      render json: {id: submission.id, msg:"Submission: #{submission.id} created #{email_msg} url: #{result_path(submission, only_path: false)}"}
-    elsif inputFile
-      submission = Submission.create(done: false, email: email)
-      t = Thread.new { exec_query(submission.id, inputFile, subtype, {isFile: true, subtype: subtype}) }
-      #t.join
-      render json: {id: submission.id, msg: "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{email_msg}"}
+    responseMsg = ""
+    if inputData && !inputData.empty?
+      responseMsg = "Submission: #{submission.id} created #{emailMsg}"
+    else 
+      responseMsg = "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{emailMsg}"
+      isFileUpload = true
     end
+    
+    t = Thread.new { exec_query(submission.id, isFileUpload, params) }
+    render json: {id: submission.id, msg: responseMsg, url: "#{result_path(submission, only_path: false)}"}
     
   end
 
   private 
-  
-  def exec_query(id, data, opts)
-	
-    logger.debug "I'm here!!!"
 
-    config = CONFIG['script']
-    File.open(CONFIG['script']['input_dir'] + "/input-#{id}.txt",'w') do |file|
-      file.write(opts[:isFile] ? data.read : data)
+  def getShell(scriptConfig, params, inputFilePath)
+    options = {
+      :tumorSampleID => "-t",
+      :gemlineSampleID => "-g",
+      :multiSampleID => "-i",
+      :subtype => "-s"
+    }
+
+    perlCmd = "perl #{scriptConfig['path']}"
+
+    options.each do |k, v|
+      if params[k] && !params[k].empty?
+        perlCmd += " #{v} #{params[k]}"
+      end
     end
 
-    logger.debug opts[:subtype]
+    perlCmd += " --logdir #{scriptConfig['log_dir']} --tempdir #{scriptConfig['temp_dir']} --outputdir #{scriptConfig['output_dir']} #{inputFilePath}"
+  end
+  
+  def exec_query(id, isFileUpload, params)
+   
+    logger.debug params
 
-    subtypeOpt = opts[:subtype].empty? ? "" : "-s #{opts[:subtype]}"
+    scriptConfig = CONFIG['script']
 
-    perlCmd = "perl #{config['path']} -i #{id} #{subtypeOpt} #{config['input_dir']} #{config['output_dir']} #{config['temp_dir']} #{config['log_dir']}"
+    inputFilePath = scriptConfig['input_dir'] + "/input-#{id}"
+    File.open(inputFilePath,'w') do |file|
+      file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
+    end
+
+    perlCmd = getShell(scriptConfig, params, inputFilePath)
 
     logger.debug perlCmd
 
@@ -65,7 +80,7 @@ class UploadController < ApplicationController
       return
     end
 
-    if not File.exist?("#{config['output_dir']}/result-#{id}.json")
+    if not File.exist?("#{scriptConfig['output_dir']}/input-#{id}.icages.json")
       logger.debug "\n---- Result json not found!\n"
       return
     end
