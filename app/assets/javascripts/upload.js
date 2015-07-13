@@ -74,18 +74,17 @@
     $(document).bind('drop dragover', function(e) {
         e.preventDefault();
     });
+
+    var _fileOBj = null;
+
     $(function() {
 
-        $('#file_input').change(function(e) {
-            alert("file added!");
-        });
-
-
         $('#file_upload').fileupload({
-            // add: function(e, data) {
-            //     $('#file_info').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
-
-            // },
+            add: function(e, data) {
+                $('#file_info').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
+                _fileOBj = data.files[0];
+                $('#file_input').attr("disabled", "disabled");
+            },
             progress: function(e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('#upload_progress>div.progress-bar').css('width', progress + '%');
@@ -107,8 +106,8 @@
 
             //TODO
             // check if file or data is valid
-            if (!isGoodData(dataInput)) {
-                alert("The data input is not valid.");
+            if (!isGoodData(dataInput) && !_fileOBj) {
+                alert("Please provide valid data or file.");
                 return;
             }
 
@@ -116,6 +115,7 @@
 
             fmData.append("subtype", _selectedSubTypes[0]);
             fmData.append("drug", _selectedDrugs[0]);
+            if (_fileOBj) fmData.append("inputFile", _fileOBj);
 
             $.ajax({
                 url: '/upload',
