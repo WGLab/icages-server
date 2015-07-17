@@ -1,9 +1,9 @@
 (function() {
-    function goodDataFormat(val) {
+    function isGoodData(val) {
         return /^(\t*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]+)*\s*([0-9]{1,2}|[XY])\s+[0-9]+\s+[0-9]+\s+[ATCG]\s+[ATCG][\s\n]*$/g.test(val) || /^[\n]*##fileformat=VCFv[\S\n\s]+$/g.test(val);
     }
 
-    function goodEmailFormat(val) {
+    function isGoodEmail(val) {
         return /[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Za-z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum|edu)\b/g.test(val);
     }
 
@@ -64,52 +64,8 @@
 
 
     $(function() {
-        showBootstrapIndicator('#data_input', '#data_input textarea', "#data_input .input-indicator", goodDataFormat);
-        showBootstrapIndicator('#email_input', '#email_input input', "#email_input .input-indicator", goodEmailFormat);
-
-
-        $("#submit_text").click(function(e) {
-            var url = "/upload";
-
-            e.preventDefault();
-
-            var text_val = $('#data_input textarea').val();
-            var email_val = $('#email_input input').val();
-
-            var goodData = goodDataFormat(text_val);
-            var goodEmail = goodEmailFormat(email_val);
-            if (!goodEmail) {
-                if(confirm("The email entered is not a valid one, we'll not be able to send you notification when the job is done, are you sure you wanna proceed?") === false) 
-                return;
-            }
-
-            if (goodData) {
-                $.ajax(url, {
-                    type: "POST",
-                    data: {
-                        email: goodEmail ? email_val : "",
-                        inputData: $('#data_input textarea').val(),
-                        subtype: _selectedSubTypes[0]
-                    },
-                    success: function(data) {
-                        console.log("server returned\n" + data.msg);
-
-                        $('#flash_msg').removeClass('bounceIn bounceOut');
-                        $("#flash_msg").css("display", "block").addClass('bounceIn');
-                        setTimeout(function() {
-                            $("#flash_msg").addClass('bounceOut');
-                            setTimeout(function() {
-                                $("#flash_msg").css("display", "none");
-                                window.location.href = window.location.origin + "/result/" + data.id;
-                            }, 750);
-                        }, 3000);
-
-                    }
-                });
-            } else {
-                alert("Invalid input data");
-            }
-        });
+        showBootstrapIndicator('#data_input', '#data_input textarea', "#data_input .input-indicator", isGoodData);
+        showBootstrapIndicator('#email_input', '#email_input input', "#email_input .input-indicator", isGoodEmail);
     });
 
     /*jslint unparam: true, regexp: true */
@@ -118,31 +74,16 @@
     $(document).bind('drop dragover', function(e) {
         e.preventDefault();
     });
+
+    var _fileOBj = null;
+
     $(function() {
+
         $('#file_upload').fileupload({
-            url: "/upload",
-            dataType: 'json',
             add: function(e, data) {
-                $('#file_dropzone>div').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
-                $('#submit_file').on("click", function() {
-                    var email_val = $('#email_input input').val();
-                    var goodEmail = goodEmailFormat(email_val);
-                    if (!goodEmail) {
-                        alert("Please enter a valid email address.");
-                        return;
-                    }
-                    data.formData = {
-                        email: goodEmail ? email_val : '',
-                        subtype: _selectedSubTypes[0],
-                    };
-                    data.submit();
-                });
-            },
-            done: function(e, data) {
-                x_data = data;
-                console.log("server returned: " + data.result.msg);
-                $('#file_dropzone>div').html(data.result.msg);
-                window.location.href = window.location.origin + "/result/" + data.result.id;
+                $('#file_info').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
+                _fileOBj = data.files[0];
+                $('#file_input').attr("disabled", "disabled");
             },
             progress: function(e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -150,6 +91,59 @@
             },
             dropZone: $('#file_dropzone')
         });
+
+        $('#file_upload').submit(function(e) {
+
+            var emailInput = $('#email_input input').val();
+            var dataInput = $('#data_input textarea').val();
+            e.preventDefault();
+
+            if (!isGoodEmail(emailInput)) {
+                if(!confirm("The email is not valid, we won't be able to send you a notification, do you want to proceed?")) {
+                    return;                   
+                }
+            }
+
+            //TODO
+            // check if file or data is valid
+            if (!isGoodData(dataInput) && !_fileOBj) {
+                alert("Please provide valid data or file.");
+                return;
+            }
+
+            var fmData = new FormData(this);
+
+            if (_selectedSubTypes[0]) fmData.append("subtype", _selectedSubTypes[0]);
+            if (_selectedDrugs[0]) fmData.append("drug", _selectedDrugs[0]);
+            if (_fileOBj) fmData.append("inputFile", _fileOBj);
+
+            $.ajax({
+                url: '/upload',
+                type: 'POST',
+                data: fmData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+
+                    console.log("server returned\n" + data.msg);
+                    $('#flash_msg').html(data.msg);
+
+                    $('#flash_msg').removeClass('bounceIn bounceOut');
+                    $("#flash_msg").css("display", "block").addClass('bounceIn');
+                    setTimeout(function() {
+                        $("#flash_msg").addClass('bounceOut');
+                        setTimeout(function() {
+                            $("#flash_msg").css("display", "none");
+                            window.location.href = window.location.origin + "/result/" + data.id;
+                        }, 750);
+                    }, 3000);
+                }
+            });
+
+
+        });
+
+
     });
     $('#file_dropzone')
         .on('dragover', function(e) {
@@ -183,7 +177,7 @@
         autoCompleteInit("#cancer_subtype_input", "#subtype_tags", subtypes, _selectedSubTypes);
     });
 
-    
+
     $.getJSON("/drugs", function(drugs) {
         autoCompleteInit("#drugs_input", "#drugs_tags", drugs, _selectedDrugs);
     });
@@ -237,6 +231,50 @@
         });
     }
 
+
+    angular.module("icages.upload", [])
+    .controller('FormCtrl', ['$scope', function($scope){
+        
+        $scope._refGeno = {
+            selected: "hg19",
+            vals: [{
+                val: "hg19",
+                text: "hg19"
+            }, {
+                val: "hg18",
+                text: "hg18"
+            }, {
+                val: "hg38",
+                text: "hg38"
+            }]
+        };
+
+        $scope._selectedInputFormat = "ANNOVAR";
+
+        $scope._inputFormat = [{
+            val: "ANNOVAR",
+            text: "ANNOVAR"
+        }, {
+            val: "VCF",
+            text: "VCF"
+        }];
+
+
+        $scope._VCFSpecs = {
+            selected: 0,
+            vals: [{
+                val: 0,
+                text: "one sample somatic mutations"
+            }, {
+                val: 1,
+                text: "one sample tumor mutations and germline mutations"
+            }, {
+                val: 2,
+                text: "multiple samples somatic mutations"
+            }]
+        };
+
+    }]);
 
 
 })();

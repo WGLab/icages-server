@@ -10,7 +10,7 @@
     <li><a href="/package"><i class="glyphicon glyphicon-cloud-download"></i>&nbsp;Download</a>
 <% end %>
 
-<div class="container hz-content">
+<div class="container hz-content" ng-app="icages.upload">
     <div class="row">
         <div class="col-sm-offset-2 col-sm-7">
             <center>
@@ -19,12 +19,12 @@
         </div>
     </div>
     <div id="flash_msg">submit successfully!!!</div>
-    <div class="form-horizontal hz-card hz-form" role="form">
+    <form id="file_upload" action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form" ng-controller="FormCtrl">
         <div class="form-group" id="email_input">
             <label class="col-sm-2 control-label hz-label">Email</label>
             <div class="col-sm-7 hz-inline">
                 <div id="email_sign" class="input-group-addon">@</div>
-                <input type="email" class="form-control" placeholder="Please leave an email address">
+                <input type="email" name="email" class="form-control" placeholder="Please leave an email address">
                 <span class="input-indicator"></span>
             </div>
             <div class="col-sm-3">
@@ -37,8 +37,7 @@
                 <textarea class="form-control" name="inputData" placeholder="Copy and paste your data here..." rows="7"></textarea>
                 <span class="input-indicator"></span>
                 <div class="hz-bar">
-                    <button id="submit_text" class="btn btn-default" disabled = "true">Submit text</button>
-                    <button id="sample_btn" class="btn btn-default">Paste Sample</button>
+                    <button id="sample_btn" type="button" class="btn btn-default">Paste Sample</button>
                 </div>
             </div>
             <div class="col-sm-3">
@@ -49,7 +48,7 @@
                 <div class="hz-bar">
                     <span> <a class="annovar" href="http://www.openbioinformatics.org/annovar/">ANNOVAR</a> input format
                             <button id="an_ex_btn" type="button" class="btn btn-sm btn-link ex-btn" data-toggle="popover" data-content="This format is denoted by the author of ANNOVAR package. The format is essentially Tab or Space deliminated table with five columns indicating 'chromosome id', 'start coordinate of the mutation (1 based)', 'end coordinate of the mutation (1 based)', 'reference allele', 'alternative allele'. Example of one row: '1  12919840    12919840    T   C'">(?)</button>
-                        </span>
+                    </span>
                 </div>
                 <div class="hz-bar">
                     <span> <a href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">VCF</a> input format
@@ -68,9 +67,9 @@
                         <span class="btn btn-default hz-file-btn">
                                 <span><i class="glyphicon glyphicon-paperclip"></i>
                                 </span>
-                        <input id="file_upload" type="file" name="inputFile">
+                        <input id="file_input" type="file" name="inputFile">
                         </span>
-                        <span>Add or drag your data file here</span>
+                        <span id="file_info">Add or drag your data file here</span>
                     </div>
                 </div>
 
@@ -79,25 +78,83 @@
                         <span class="sr-only"></span>
                     </div>
                 </div>
-                <button id="submit_file" class="btn btn-default"  disabled = "true">Submit file</button>
+                <button id="submit_btn" class="btn btn-default" type="submit" disabled = "true"><i class="glyphicon glyphicon-send"></i>Submit</button>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label hz-label">
-                <span>Cancer subtypes</span>
-            </label>
-            <div class="col-sm-7 ui-front">
-                <input class="form-control" id="cancer_subtype_input" placeholder="Enter your cancer subtype here"></input>
-                <div id="subtype_tags"></div>
-            </div>
+            <center>
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#advance_options">Advance Options</button>
+            </center>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label hz-label">
-                <span>Drug</span>
-            </label>
-            <div class="col-sm-7 ui-front">
-                <input class="form-control" id="drugs_input" placeholder="Enter the drugs you've taken here"></input>
-                <div id="drugs_tags"></div>
+        <div class="form-group collapse" id="advance_options">
+            <div class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Cancer subtypes</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" id="cancer_subtype_input" placeholder="Enter your cancer subtype here"></input>
+                    <div id="subtype_tags"></div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Drug</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" id="drugs_input" placeholder="Enter the drugs you've taken here"></input>
+                    <div id="drugs_tags"></div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Reference genome</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="referenceGenome" ng-options="obj.val as obj.text for obj in _refGeno.vals" ng-model="_refGeno.selected">
+                    </select required>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Input format</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _inputFormat" ng-model="_selectedInputFormat" required>
+                    </select>
+                </div>
+            </div>
+            <div ng-if="_selectedInputFormat === 'VCF'" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>VCF specifications</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="vcfSpec" ng-options="obj.val as obj.text for obj in _VCFSpecs.vals" ng-model="_VCFSpecs.selected">
+                    </select>
+                </div>
+            </div>
+            <div ng-if="_VCFSpecs.selected === 1" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Tumor sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="tumorSampleID" required></input>
+                </div>
+            </div>
+            <div ng-if="_VCFSpecs.selected === 1" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Germline sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="germlineSampleID" required></input>
+                </div>
+            </div>
+            <div ng-if="_VCFSpecs.selected === 2" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="multiSampleID" required></input>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -109,7 +166,7 @@
             </div>
         </div>
 
-    </div>
+    </form>
 </div>
 
 
@@ -134,16 +191,16 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
 <script src="assets/upload.js"></script>
+
 <script type="text/javascript">
 var me = $('#mylittlecheckbox');
 var myclick = function() {
     if (me.prop('checked')) {
-        document.getElementById('submit_file').disabled = false;
-        document.getElementById('submit_text').disabled = false;
+        document.getElementById('submit_btn').disabled = false;
     } else {
-        document.getElementById('submit_file').disabled = true;
-        document.getElementById('submit_text').disabled = true;
+        document.getElementById('submit_btn').disabled = true;
     }
 };
 me.click(myclick);

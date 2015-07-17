@@ -91,7 +91,26 @@ availableDrugs: list of <DrugInfo> //each with an extra field isAccordionOpen
 
 ```
 
+### Upload FormData Specification
 
+```
+{
+  //in html
+  email: string //optional
+  inputData: string //one or the other with inputFile
+  inputFile: File //one or the other with inputData
+  referenceGenome: string //required
+  inputFormat: string //required
+  vcfSpec: string
+  tumorSampleID: string //required if "one sample tumor mutations and germline mutations"
+  germlineSampleID: string //required if "one sample tumor mutations and germline mutations"
+  multiSampleID: string //required if "multiple samples somatic mutations"
+  
+  //in script
+  subtype: string //optional
+  drug: string //optional
+}
+```
 
 ### Config files
 
@@ -99,4 +118,10 @@ availableDrugs: list of <DrugInfo> //each with an extra field isAccordionOpen
 
 all the paths have to end with a "/"
 
+### Misc
 
+Result json naming convention
+
+```
+input-#{id}.icages.json
+```

@@ -404,7 +404,7 @@
 
     //---------------------------ng-Logic---------------------------
 
-    angular.module('icages', ['ui.bootstrap'])
+    angular.module('icages.result', ['ui.bootstrap'])
 
     .controller('SummaryCtrl', ['$scope', '$http', '$timeout', '$modal', function($scope, $http, $timeout, $modal) {
 
@@ -677,7 +677,7 @@
         }
 
 
-        $http.get("../results/result-" + SUBMISSION_ID + ".json")
+        $http.get("../results/input-" + SUBMISSION_ID + ".icages.json")
             .success(onDataLoad);
 
     }])
