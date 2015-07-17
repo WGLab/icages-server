@@ -105,16 +105,30 @@
                     <div id="drugs_tags"></div>
                 </div>
             </div>
-
-	     <div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label hz-label">
+                <span>Additional BED file for structural variation</span>
+            </label>
+            <div class="col-sm-7">
+                <div id="file_dropzone">
+		     <div>
                         <span class="btn btn-default hz-file-btn">
                                 <span><i class="glyphicon glyphicon-paperclip"></i>
                                 </span>
                         <input id="file_input_bed" type="file" name="inputFileBED">
                         </span>
-                        <span id="file_info">Add or drag your BED file for additional structural variation here</span>
+                        <span id="file_info">Add or drag your BED file here</span>
                     </div>
-           
+        	</div>
+
+                <div id="upload_progress" class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 	 <div class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Reference genome</span>
