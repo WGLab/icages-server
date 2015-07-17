@@ -4,3 +4,6 @@
 - Updated Form UI
 - Added advance options
 - Updated readme
+
+## Bug fixs
+- Make email optional
