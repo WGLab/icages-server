@@ -13,7 +13,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'icages-dev.usc.edu' }
+  config.action_mailer.default_url_options = { host: 'icages.usc.edu' }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
   # Don't care if the mailer can't send.
