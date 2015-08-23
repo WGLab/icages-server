@@ -170,7 +170,8 @@
           <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%"><span class="sr-only">Loading...</span></div>
       </div>
       <h4>Your result will be shown momentarily, this page will refresh every 30 seconds</h4>
-      <p>Please save the following URL or bookmark this to get back to the result if no email is provided</p>
+      <p>if you provided an email, a notification will be sent to you when the job is done (please do check you spam folder)</p>
+      <p>if not, please save the following URL or bookmark the page to get back to the result</p>
       <input type="text" value="<%= @url %>" disabled></input>
       <button class="btn btn-primary" id="copy_button" data-clipboard-text="<%= @url %>">Copy to clipboard</button>
       <script>
