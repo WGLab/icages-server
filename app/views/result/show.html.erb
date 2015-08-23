@@ -169,8 +169,8 @@
       <div class="progress">
           <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%"><span class="sr-only">Loading...</span></div>
       </div>
-      <p>Your result will be shown momentarily, this page will refresh every 30 seconds</p>
-      <p>Please save the following URL to get back to the result if no email is provided</p>
+      <h4>Your result will be shown momentarily, this page will refresh every 30 seconds</h4>
+      <p>Please save the following URL or bookmark this to get back to the result if no email is provided</p>
       <input type="text" value="<%= @url %>" disabled></input>
       <button class="btn btn-primary" id="copy_button" data-clipboard-text="<%= @url %>">Copy to clipboard</button>
       <script>
@@ -178,7 +178,6 @@
           setTimeout(function() { location.reload() }, 30000); 
           new ZeroClipboard( document.getElementById("copy_button") );
         });
-
       </script>
     <% end %>
 
