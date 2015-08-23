@@ -126,10 +126,14 @@
         <div class="page-header">
             <h3>Download</h3>
         </div> 
+ <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesMutations.csv">here</a> to download summary table of all mutations genes with iCAGES score
+</p>
         <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesGenes.csv">here</a> to download summary table of all mutated genes with iCAGES score
         </p>
         <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesDrug.csv">here</a> to download summary table of all drugs with iCAGES drug weight
         </p>
+<p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icages.log">here</a> to download summary table of all iCAGES running result
+</p>
         <div class="page-header">
             <h3>Summary</h3>
         </div>
@@ -169,8 +173,17 @@
       <div class="progress">
           <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%"><span class="sr-only">Loading...</span></div>
       </div>
-      <p>Your result will be shown momentarily, this page will refresh every 30 seconds</p>
-     <script>$(function() { setTimeout(function() { location.reload() }, 30000); }); </script>
+      <h4>Your result will be shown momentarily, this page will refresh every 30 seconds</h4>
+      <p>If you provided an email, a notification will be sent to you when the job is done (please do check you spam folder)</p>
+      <p>If not, please save the following URL or bookmark the page to get back to the result</p>
+      <input type="text" value="<%= @url %>" disabled></input>
+      <button class="btn btn-primary" id="copy_button" data-clipboard-text="<%= @url %>">Copy to clipboard</button>
+      <script>
+        $(function() { 
+          setTimeout(function() { location.reload() }, 30000); 
+          new ZeroClipboard( document.getElementById("copy_button") );
+        });
+      </script>
     <% end %>
 
   <% end %>

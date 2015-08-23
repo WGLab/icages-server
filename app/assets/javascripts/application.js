@@ -23,3 +23,4 @@
 //= require ie-emulation-modes-warning
 //= require icages-ui
 //= require jquery-ui/jquery-ui.min
+//= require zeroclipboard/dist/ZeroClipboard.min
