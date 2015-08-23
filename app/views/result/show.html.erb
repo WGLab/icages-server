@@ -171,8 +171,8 @@
       </div>
       <p>Your result will be shown momentarily, this page will refresh every 30 seconds</p>
       <p>Please save the following URL to get back to the result if no email is provided</p>
-      <input type="text" value="#{@url}" disabled></input>
-      <button class="btn btn-primary" id="copy_button" data-clipboard-text="#{@url}">Copy to clipboard</button>
+      <input type="text" value="<%= @url %>" disabled></input>
+      <button class="btn btn-primary" id="copy_button" data-clipboard-text="<%= @url %>">Copy to clipboard</button>
       <script>
         $(function() { 
           setTimeout(function() { location.reload() }, 30000); 
