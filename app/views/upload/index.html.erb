@@ -21,7 +21,7 @@
     <div id="flash_msg">submit successfully!!!</div>
     <form id="file_upload" action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form" ng-controller="FormCtrl">
         <div class="form-group" id="email_input">
-            <label class="col-sm-2 control-label hz-label">Email</label>
+            <label class="col-sm-2 control-label hz-label">Email (optional)</label>
             <div class="col-sm-7 hz-inline">
                 <div id="email_sign" class="input-group-addon">@</div>
                 <input type="email" name="email" class="form-control" placeholder="Please leave an email address">
@@ -80,7 +80,17 @@
                 </div>
                 <button id="submit_btn" class="btn btn-default" type="submit" disabled = "true"><i class="glyphicon glyphicon-send"></i>Submit</button>
             </div>
-        </div>
+       </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Reference genome</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="referenceGenome" ng-options="obj.val as obj.text for obj in _refGeno.vals" ng-model="_refGeno.selected">
+                    </select required>
+                </div>
+            </div>
+      
         <div class="form-group">
             <center>
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#advance_options">Advance Options</button>
@@ -105,6 +115,7 @@
                     <div id="drugs_tags"></div>
                 </div>
             </div>
+<!--
             <div class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Reference genome</span>
@@ -114,7 +125,8 @@
                     </select required>
                 </div>
             </div>
-            <div class="row">
+-->    
+        <div class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Input format</span>
                 </label>
