@@ -40,6 +40,9 @@ class UploadController < ApplicationController
   private 
 
   def getShell(scriptConfig, params, inputFilePath)
+
+    logger.debug params
+
     options = {
       :tumorSampleID => "-t",
       :gemlineSampleID => "-g",
