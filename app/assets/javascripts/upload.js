@@ -84,7 +84,7 @@
 
         var initFileUpload = function (id) {
 
-            $context = $('#' + id);
+            var $context = $('#' + id);
             $context.fileupload({
                 add: function(e, data) {
                     $('.file-info', $context).html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
