@@ -95,30 +95,30 @@
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#advance_options">Advance Options</button>
             </center>
         </div>
-        <div id="bed_file_upload" class="form-group">
-            <label class="col-sm-2 control-label hz-label">
-                <span>Bed file</span>
-            </label>
-            <div class="col-sm-7">
-                <div class="file-dropzone">
-                    <div>
-                        <span class="btn btn-default hz-file-btn">
-                                <span><i class="glyphicon glyphicon-paperclip"></i>
-                                </span>
-                        <input class="file-input" type="file" name="inputBedFile">
-                        </span>
-                        <span class="file-info">Add or drag your data file here</span>
+        <div class="form-group collapse" id="advance_options">
+            <div id="bed_file_upload" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Bed file</span>
+                </label>
+                <div class="col-sm-7">
+                    <div class="file-dropzone">
+                        <div>
+                            <span class="btn btn-default hz-file-btn">
+                                    <span><i class="glyphicon glyphicon-paperclip"></i>
+                                    </span>
+                            <input class="file-input" type="file" name="inputBedFile">
+                            </span>
+                            <span class="file-info">Add or drag your data file here</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="upload-progress" class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
-                        <span class="sr-only"></span>
+                    <div class="upload-progress" class="progress">
+                        <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
+                            <span class="sr-only"></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group collapse" id="advance_options">
             <div class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Cancer subtypes</span>
@@ -137,55 +137,55 @@
                     <div id="drugs_tags"></div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <label class="col-sm-2 control-label hz-label">
-                <span>Input format</span>
-            </label>
-            <div class="col-sm-7 ui-front">
-                <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _inputFormat" ng-model="_selectedInputFormat" required>
-                </select>
+            <div class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Input format</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _inputFormat" ng-model="_selectedInputFormat" required>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div ng-if="_selectedInputFormat === 'VCF'" class="row">
-            <label class="col-sm-2 control-label hz-label">
-                <span>VCF specifications</span>
-            </label>
-            <div class="col-sm-7 ui-front">
-                <select class="form-control" name="vcfSpec" ng-options="obj.val as obj.text for obj in _VCFSpecs.vals" ng-model="_VCFSpecs.selected">
-                </select>
+            <div ng-if="_selectedInputFormat === 'VCF'" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>VCF specifications</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="vcfSpec" ng-options="obj.val as obj.text for obj in _VCFSpecs.vals" ng-model="_VCFSpecs.selected">
+                    </select>
+                </div>
             </div>
-        </div>
-        <div ng-if="_VCFSpecs.selected === 1" class="row">
-            <label class="col-sm-2 control-label hz-label">
-                <span>Tumor sample identifier</span>
-            </label>
-            <div class="col-sm-7 ui-front">
-                <input class="form-control" type="text" name="tumorSampleID" required></input>
+            <div ng-if="_VCFSpecs.selected === 1" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Tumor sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="tumorSampleID" required></input>
+                </div>
             </div>
-        </div>
-        <div ng-if="_VCFSpecs.selected === 1" class="row">
-            <label class="col-sm-2 control-label hz-label">
-                <span>Germline sample identifier</span>
-            </label>
-            <div class="col-sm-7 ui-front">
-                <input class="form-control" type="text" name="germlineSampleID" required></input>
+            <div ng-if="_VCFSpecs.selected === 1" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Germline sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="germlineSampleID" required></input>
+                </div>
             </div>
-        </div>
-        <div ng-if="_VCFSpecs.selected === 2" class="row">
-            <label class="col-sm-2 control-label hz-label">
-                <span>Sample identifier</span>
-            </label>
-            <div class="col-sm-7 ui-front">
-                <input class="form-control" type="text" name="multiSampleID" required></input>
+            <div ng-if="_VCFSpecs.selected === 2" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Sample identifier</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <input class="form-control" type="text" name="multiSampleID" required></input>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-7">
-                <center>
-                    <input type="checkbox" id="mylittlecheckbox">
-                    <label class="control-label hz-label">I have read and agree to <a data-toggle="modal" href="#mymodal">Terms of Use</a></label>
-                </center>
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-7">
+                    <center>
+                        <input type="checkbox" id="mylittlecheckbox">
+                        <label class="control-label hz-label">I have read and agree to <a data-toggle="modal" href="#mymodal">Terms of Use</a></label>
+                    </center>
+                </div>
             </div>
         </div>
     </form>
