@@ -75,24 +75,36 @@
         e.preventDefault();
     });
 
-    var _fileOBj = null;
+    var _fileObjs = {};
 
     $(function() {
 
-        $('#file_upload').fileupload({
-            add: function(e, data) {
-                $('#file_info').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
-                _fileOBj = data.files[0];
-                $('#file_input').attr("disabled", "disabled");
-            },
-            progress: function(e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('#upload_progress>div.progress-bar').css('width', progress + '%');
-            },
-            dropZone: $('#file_dropzone')
-        });
+        var FILE_ID = "file_upload";
+        var BED_FILE_ID = "bed_file_upload";
 
-        $('#file_upload').submit(function(e) {
+        var initFileUpload = function (id) {
+
+            $context = $('#' + id);
+            $context.fileupload({
+                add: function(e, data) {
+                    $('.file-info', $context).html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
+                    _fileObjs[id] = data.files[0];
+                    $('.file-input', $context).attr("disabled", "disabled");
+                },
+                progress: function(e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('.upload-progress>div.progress-bar', $context).css('width', progress + '%');
+                },
+                dropZone: $('.file-dropzone', $context)
+            });
+        }
+
+
+
+        initFileUpload(FILE_ID);
+        initFileUpload(BED_FILE_ID);
+
+        $('#query_form').submit(function(e) {
 
             var emailInput = $('#email_input input').val();
             var dataInput = $('#data_input textarea').val();
@@ -115,7 +127,8 @@
 
             if (_selectedSubTypes[0]) fmData.append("subtype", _selectedSubTypes[0]);
             if (_selectedDrugs[0]) fmData.append("drug", _selectedDrugs[0]);
-            if (_fileOBj) fmData.append("inputFile", _fileOBj);
+            if (_fileObjs[FILE_ID]) fmData.append("inputFile", _fileOBj);
+            if (_fileObjs[BED_FILE_ID]) fmData.append("inputBedFile", _fileObjs["bed"]);
 
             $.ajax({
                 url: '/upload',
