@@ -118,7 +118,7 @@
 
             //TODO
             // check if file or data is valid
-            if (!isGoodData(dataInput) && !_fileOBj) {
+            if (!isGoodData(dataInput) && !_fileObjs[FILE_ID]) {
                 alert("Please provide valid data or file.");
                 return;
             }
