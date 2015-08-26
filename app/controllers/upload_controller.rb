@@ -44,7 +44,8 @@ class UploadController < ApplicationController
       :tumorSampleID => "-t",
       :gemlineSampleID => "-g",
       :multiSampleID => "-i",
-      :subtype => "-s"
+      :subtype => "-s",
+      :inputBedFilePath => "-b"
     }
 
     perlCmd = "perl #{scriptConfig['path']}"
@@ -67,6 +68,15 @@ class UploadController < ApplicationController
     inputFilePath = scriptConfig['input_dir'] + "/input-#{id}"
     File.open(inputFilePath,'w') do |file|
       file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
+    end
+
+    #create a file for bed file
+    if params[:inputBedFile]
+      inputBedFilePath = scriptConfig['input_dir'] + "/inputBed-#{id}"
+      File.open(inputBedFilePath, 'w') do |file|
+        file.write(params[:inputBedFile].read)
+      end
+      params[:inputBedFilePath] = inputBedFilePath
     end
 
     perlCmd = getShell(scriptConfig, params, inputFilePath)
