@@ -127,8 +127,8 @@
 
             if (_selectedSubTypes[0]) fmData.append("subtype", _selectedSubTypes[0]);
             if (_selectedDrugs[0]) fmData.append("drug", _selectedDrugs[0]);
-            if (_fileObjs[FILE_ID]) fmData.append("inputFile", _fileOBj);
-            if (_fileObjs[BED_FILE_ID]) fmData.append("inputBedFile", _fileObjs["bed"]);
+            if (_fileObjs[FILE_ID]) fmData.append("inputFile", _fileObjs[FILE_ID]);
+            if (_fileObjs[BED_FILE_ID]) fmData.append("inputBedFile", _fileObjs[BED_FILE_ID]);
 
             $.ajax({
                 url: '/upload',
