@@ -31,6 +31,15 @@
                 We will notify you when job is done
             </div>
         </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Reference genome</span>
+                </label>
+                <div class="col-sm-7 ui-front">
+                    <select class="form-control" name="referenceGenome" ng-options="obj.val as obj.text for obj in _refGeno.vals" ng-model="_refGeno.selected">
+                    </select required>
+                </div>
+            </div>
         <div class="form-group" id="data_input">
             <label class="col-sm-2 control-label hz-label">Enter data</label>
             <div class="col-sm-7">
@@ -81,15 +90,7 @@
                 <button id="submit_btn" class="btn btn-default" type="submit" disabled = "true"><i class="glyphicon glyphicon-send"></i>Submit</button>
             </div>
        </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label hz-label">
-                    <span>Reference genome</span>
-                </label>
-                <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="referenceGenome" ng-options="obj.val as obj.text for obj in _refGeno.vals" ng-model="_refGeno.selected">
-                    </select required>
-                </div>
-            </div>
+           
       
         <div class="form-group">
             <center>

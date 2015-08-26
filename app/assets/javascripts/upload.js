@@ -98,11 +98,11 @@
             var dataInput = $('#data_input textarea').val();
             e.preventDefault();
 
-            if (!isGoodEmail(emailInput)) {
-                if(!confirm("The email is not valid, we won't be able to send you a notification, do you want to proceed?")) {
-                    return;                   
-                }
-            }
+        //    if (!isGoodEmail(emailInput)) {
+        //        if(!confirm("The email is not valid, we won't be able to send you a notification, do you want to proceed?")) {
+        //            return;                   
+        //        }
+        //    }
 
             //TODO
             // check if file or data is valid
