@@ -19,9 +19,9 @@
         </div>
     </div>
     <div id="flash_msg">submit successfully!!!</div>
-    <form id="file_upload" action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form" ng-controller="FormCtrl">
+    <form id="query_form" action="/upload" class="form-horizontal hz-card hz-form" method="post" enctype="multipart/form-data" role="form" ng-controller="FormCtrl">
         <div class="form-group" id="email_input">
-            <label class="col-sm-2 control-label hz-label">Email</label>
+            <label class="col-sm-2 control-label hz-label">Email (optional)</label>
             <div class="col-sm-7 hz-inline">
                 <div id="email_sign" class="input-group-addon">@</div>
                 <input type="email" name="email" class="form-control" placeholder="Please leave an email address">
@@ -29,6 +29,15 @@
             </div>
             <div class="col-sm-3">
                 We will notify you when job is done
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label hz-label">
+                <span>Reference genome</span>
+            </label>
+            <div class="col-sm-7 ui-front">
+                <select class="form-control" name="referenceGenome" ng-options="obj.text for obj in _refGeno track by obj.val" ng-model="_selected.refGeno">
+                </select required>
             </div>
         </div>
         <div class="form-group" id="data_input">
@@ -57,23 +66,23 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div id="file_upload" class="form-group">
             <label class="col-sm-2 control-label hz-label">
                 <span>Or you can</span>
             </label>
             <div class="col-sm-7">
-                <div id="file_dropzone">
+                <div class="file-dropzone">
                     <div>
                         <span class="btn btn-default hz-file-btn">
                                 <span><i class="glyphicon glyphicon-paperclip"></i>
                                 </span>
-                        <input id="file_input" type="file" name="inputFile">
+                        <input class="file-input" type="file" name="inputFile">
                         </span>
-                        <span id="file_info">Add or drag your data file here</span>
+                        <span class="file-info">Add or drag your data file here</span>
                     </div>
                 </div>
 
-                <div id="upload_progress" class="progress">
+                <div class="upload-progress" class="progress">
                     <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
                         <span class="sr-only"></span>
                     </div>
@@ -87,6 +96,29 @@
             </center>
         </div>
         <div class="form-group collapse" id="advance_options">
+            <div id="bed_file_upload" class="row">
+                <label class="col-sm-2 control-label hz-label">
+                    <span>Bed file</span>
+                </label>
+                <div class="col-sm-7">
+                    <div class="file-dropzone">
+                        <div>
+                            <span class="btn btn-default hz-file-btn">
+                                    <span><i class="glyphicon glyphicon-paperclip"></i>
+                                    </span>
+                            <input class="file-input" type="file" name="inputBedFile">
+                            </span>
+                            <span class="file-info">Add or drag your data file here</span>
+                        </div>
+                    </div>
+
+                    <div class="upload-progress" class="progress">
+                        <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0%;">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Cancer subtypes</span>
@@ -107,32 +139,23 @@
             </div>
             <div class="row">
                 <label class="col-sm-2 control-label hz-label">
-                    <span>Reference genome</span>
-                </label>
-                <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="referenceGenome" ng-options="obj.val as obj.text for obj in _refGeno.vals" ng-model="_refGeno.selected">
-                    </select required>
-                </div>
-            </div>
-            <div class="row">
-                <label class="col-sm-2 control-label hz-label">
                     <span>Input format</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _inputFormat" ng-model="_selectedInputFormat" required>
+                    <select class="form-control" name="inputFormat" ng-options="obj.text for obj in _inputFormat track by obj.val" ng-model="_selected.inputFormat" required>
                     </select>
                 </div>
             </div>
-            <div ng-if="_selectedInputFormat === 'VCF'" class="row">
+            <div ng-if="_selected.inputFormat.val === 'VCF'" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>VCF specifications</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="vcfSpec" ng-options="obj.val as obj.text for obj in _VCFSpecs.vals" ng-model="_VCFSpecs.selected">
+                    <select class="form-control" name="vcfSpec" ng-options="obj.text for obj in _VCFSpecs track by obj.val" ng-model="_selected.VCFSpecs">
                     </select>
                 </div>
             </div>
-            <div ng-if="_VCFSpecs.selected === 1" class="row">
+            <div ng-if="_selected.VCFSpecs.val === 1" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Tumor sample identifier</span>
                 </label>
@@ -140,7 +163,7 @@
                     <input class="form-control" type="text" name="tumorSampleID" required></input>
                 </div>
             </div>
-            <div ng-if="_VCFSpecs.selected === 1" class="row">
+            <div ng-if="_selected.VCFSpecs.val === 1" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Germline sample identifier</span>
                 </label>
@@ -148,7 +171,7 @@
                     <input class="form-control" type="text" name="germlineSampleID" required></input>
                 </div>
             </div>
-            <div ng-if="_VCFSpecs.selected === 2" class="row">
+            <div ng-if="_selected.VCFSpecs.val === 2" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Sample identifier</span>
                 </label>
@@ -165,7 +188,6 @@
                 </center>
             </div>
         </div>
-
     </form>
 </div>
 
@@ -191,8 +213,8 @@
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
-<script src="assets/upload.js"></script>
+<script src="/assets/angular/angular.min.js"></script>
+<script src="/assets/upload.js"></script>
 
 <script type="text/javascript">
 var me = $('#mylittlecheckbox');

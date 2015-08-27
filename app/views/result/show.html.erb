@@ -59,10 +59,13 @@
           <li>Found {{log.Structural_variation_count}} structural variations</li>
           <li>Found {{log.Noncoding_count}} noncodings </li>
         </ul>
+<!--
         <div class="page-header">
           <h3>Drugs</h3>
         </div>
-        <accordion close-others="true">
+    
+-->
+    <accordion close-others="true">
           <accordion-group ng-repeat="drug in availableDrugs" is-open="drug.isOpen">
             <accordion-heading>{{drug.Drug_name}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': drug.isOpen, 'glyphicon-chevron-right': !drug.isOpen}"></i>
             </accordion-heading>
@@ -130,9 +133,9 @@
 </p>
         <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesGenes.csv">here</a> to download summary table of all mutated genes with iCAGES score
         </p>
-        <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesDrug.csv">here</a> to download summary table of all drugs with iCAGES drug weight
+        <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesDrugs.csv">here</a> to download summary table of all drugs with iCAGES drug weight
         </p>
-<p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icages.log">here</a> to download summary table of all iCAGES running result
+<p>Please click <a href = "../log/input-<%= @submission.id %>.annovar.icages.log">here</a> to download summary table of all iCAGES running result
 </p>
         <div class="page-header">
             <h3>Summary</h3>
@@ -166,8 +169,8 @@
           </tbody>
         </table>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
-      <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+      <script src="/assets/angular/angular.min.js"></script>
+      <script src="/assets/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
       <script type="text/javascript" src="/assets/icages-ng.js"></script>
     <% else %>
       <div class="progress">

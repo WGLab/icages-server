@@ -75,38 +75,50 @@
         e.preventDefault();
     });
 
-    var _fileOBj = null;
+    var _fileObjs = {};
 
     $(function() {
 
-        $('#file_upload').fileupload({
-            add: function(e, data) {
-                $('#file_info').html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
-                _fileOBj = data.files[0];
-                $('#file_input').attr("disabled", "disabled");
-            },
-            progress: function(e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('#upload_progress>div.progress-bar').css('width', progress + '%');
-            },
-            dropZone: $('#file_dropzone')
-        });
+        var FILE_ID = "file_upload";
+        var BED_FILE_ID = "bed_file_upload";
 
-        $('#file_upload').submit(function(e) {
+        var initFileUpload = function(id) {
+
+            var $context = $('#' + id);
+            $context.fileupload({
+                add: function(e, data) {
+                    $('.file-info', $context).html("<i class='glyphicon glyphicon-file'></i>" + data.files[0].name);
+                    _fileObjs[id] = data.files[0];
+                    $('.file-input', $context).attr("disabled", "disabled");
+                },
+                progress: function(e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('.upload-progress>div.progress-bar', $context).css('width', progress + '%');
+                },
+                dropZone: $('.file-dropzone', $context)
+            });
+        }
+
+
+
+        initFileUpload(FILE_ID);
+        initFileUpload(BED_FILE_ID);
+
+        $('#query_form').submit(function(e) {
 
             var emailInput = $('#email_input input').val();
             var dataInput = $('#data_input textarea').val();
             e.preventDefault();
 
-            if (!isGoodEmail(emailInput)) {
-                if(!confirm("The email is not valid, we won't be able to send you a notification, do you want to proceed?")) {
-                    return;                   
-                }
-            }
+            //    if (!isGoodEmail(emailInput)) {
+            //        if(!confirm("The email is not valid, we won't be able to send you a notification, do you want to proceed?")) {
+            //            return;                   
+            //        }
+            //    }
 
             //TODO
             // check if file or data is valid
-            if (!isGoodData(dataInput) && !_fileOBj) {
+            if (!isGoodData(dataInput) && !_fileObjs[FILE_ID]) {
                 alert("Please provide valid data or file.");
                 return;
             }
@@ -115,7 +127,8 @@
 
             if (_selectedSubTypes[0]) fmData.append("subtype", _selectedSubTypes[0]);
             if (_selectedDrugs[0]) fmData.append("drug", _selectedDrugs[0]);
-            if (_fileOBj) fmData.append("inputFile", _fileOBj);
+            if (_fileObjs[FILE_ID]) fmData.append("inputFile", _fileObjs[FILE_ID]);
+            if (_fileObjs[BED_FILE_ID]) fmData.append("inputBedFile", _fileObjs[BED_FILE_ID]);
 
             $.ajax({
                 url: '/upload',
@@ -233,23 +246,19 @@
 
 
     angular.module("icages.upload", [])
-    .controller('FormCtrl', ['$scope', function($scope){
-        
-        $scope._refGeno = {
-            selected: "hg19",
-            vals: [{
-                val: "hg19",
-                text: "hg19"
-            }, {
-                val: "hg18",
-                text: "hg18"
-            }, {
-                val: "hg38",
-                text: "hg38"
-            }]
-        };
 
-        $scope._selectedInputFormat = "ANNOVAR";
+    .controller('FormCtrl', ['$scope', function($scope) {
+
+        $scope._refGeno = [{
+            val: "hg19",
+            text: "hg19"
+        }, {
+            val: "hg18",
+            text: "hg18"
+        }, {
+            val: "hg38",
+            text: "hg38"
+        }];
 
         $scope._inputFormat = [{
             val: "ANNOVAR",
@@ -259,20 +268,24 @@
             text: "VCF"
         }];
 
+        $scope._VCFSpecs = [{
+            val: 0,
+            text: "one sample somatic mutations"
+        }, {
+            val: 1,
+            text: "one sample tumor mutations and germline mutations"
+        }, {
+            val: 2,
+            text: "multiple samples somatic mutations"
+        }];
 
-        $scope._VCFSpecs = {
-            selected: 0,
-            vals: [{
-                val: 0,
-                text: "one sample somatic mutations"
-            }, {
-                val: 1,
-                text: "one sample tumor mutations and germline mutations"
-            }, {
-                val: 2,
-                text: "multiple samples somatic mutations"
-            }]
-        };
+        //creating an object for ng-model inside 
+        // a ng-if
+        $scope._selected = {
+            refGeno: $scope._refGeno[0],
+            inputFormat: $scope._inputFormat[0],
+            VCFSpecs: $scope._VCFSpecs[0]
+        }
 
     }]);
 
