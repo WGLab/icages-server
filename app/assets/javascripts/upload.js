@@ -248,8 +248,7 @@
     angular.module("icages.upload", [])
     .controller('FormCtrl', ['$scope', function($scope){
         
-        $scope._refGeno = {
-            vals: [{
+        $scope._refGeno = [{
                 val: "hg19",
                 text: "hg19"
             }, {
@@ -258,8 +257,7 @@
             }, {
                 val: "hg38",
                 text: "hg38"
-            }]
-        };
+            }];
 
         $scope._selectedRefGeno = "hg19";
 
