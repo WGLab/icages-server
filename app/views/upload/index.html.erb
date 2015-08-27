@@ -36,7 +36,7 @@
                 <span>Reference genome</span>
             </label>
             <div class="col-sm-7 ui-front">
-                <select class="form-control" name="referenceGenome" ng-options="obj.val as obj.text for obj in _refGeno.vals" ng-model="_refGeno.selected">
+                <select class="form-control" name="referenceGenome" ng-options="obj.text for obj in _refGeno.vals track by obj.val" ng-model="_refGeno.selected">
                 </select required>
             </div>
         </div>
@@ -142,7 +142,7 @@
                     <span>Input format</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="inputFormat" ng-options="obj.val as obj.text for obj in _inputFormat" ng-model="_selectedInputFormat" required>
+                    <select class="form-control" name="inputFormat" ng-options="obj.text for obj in _inputFormat track by obj.val" ng-model="_selectedInputFormat" required>
                     </select>
                 </div>
             </div>
@@ -151,7 +151,7 @@
                     <span>VCF specifications</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="vcfSpec" ng-options="obj.val as obj.text for obj in _VCFSpecs.vals" ng-model="_VCFSpecs.selected">
+                    <select class="form-control" name="vcfSpec" ng-options="obj.text for obj in _VCFSpecs.vals track by obj.val" ng-model="_VCFSpecs.selected">
                     </select>
                 </div>
             </div>
