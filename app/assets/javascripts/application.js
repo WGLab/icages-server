@@ -24,3 +24,5 @@
 //= require icages-ui
 //= require jquery-ui/jquery-ui.min
 //= require zeroclipboard/dist/ZeroClipboard.min
+//= require angular/angular.min
+//= require angular-bootstrap/ui-bootstrap-tpls.min
