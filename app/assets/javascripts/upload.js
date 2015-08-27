@@ -82,7 +82,7 @@
         var FILE_ID = "file_upload";
         var BED_FILE_ID = "bed_file_upload";
 
-        var initFileUpload = function (id) {
+        var initFileUpload = function(id) {
 
             var $context = $('#' + id);
             $context.fileupload({
@@ -110,11 +110,11 @@
             var dataInput = $('#data_input textarea').val();
             e.preventDefault();
 
-        //    if (!isGoodEmail(emailInput)) {
-        //        if(!confirm("The email is not valid, we won't be able to send you a notification, do you want to proceed?")) {
-        //            return;                   
-        //        }
-        //    }
+            //    if (!isGoodEmail(emailInput)) {
+            //        if(!confirm("The email is not valid, we won't be able to send you a notification, do you want to proceed?")) {
+            //            return;                   
+            //        }
+            //    }
 
             //TODO
             // check if file or data is valid
@@ -246,22 +246,21 @@
 
 
     angular.module("icages.upload", [])
-    .controller('FormCtrl', ['$scope', function($scope){
-        
+
+    .controller('FormCtrl', ['$scope', function($scope) {
+
         $scope._refGeno = [{
-                val: "hg19",
-                text: "hg19"
-            }, {
-                val: "hg18",
-                text: "hg18"
-            }, {
-                val: "hg38",
-                text: "hg38"
-            }];
+            val: "hg19",
+            text: "hg19"
+        }, {
+            val: "hg18",
+            text: "hg18"
+        }, {
+            val: "hg38",
+            text: "hg38"
+        }];
 
         $scope._selectedRefGeno = $scope._refGeno[0];
-
-        $scope._selectedInputFormat = "VCF";
 
         $scope._inputFormat = [{
             val: "ANNOVAR",
@@ -271,20 +270,20 @@
             text: "VCF"
         }];
 
+        $scope._selectedInputFormat = $scope._inputFormat[0];
 
-        $scope._VCFSpecs = {
-            selected: 0,
-            vals: [{
-                val: 0,
-                text: "one sample somatic mutations"
-            }, {
-                val: 1,
-                text: "one sample tumor mutations and germline mutations"
-            }, {
-                val: 2,
-                text: "multiple samples somatic mutations"
-            }]
-        };
+        $scope._VCFSpecs = [{
+            val: 0,
+            text: "one sample somatic mutations"
+        }, {
+            val: 1,
+            text: "one sample tumor mutations and germline mutations"
+        }, {
+            val: 2,
+            text: "multiple samples somatic mutations"
+        }];
+
+        $scope._selectedVCFSpecs = $scope._VCFSpecs[0];
 
     }]);
 
