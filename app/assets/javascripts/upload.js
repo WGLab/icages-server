@@ -261,11 +261,11 @@
         }];
 
         $scope._inputFormat = [{
-            val: "ANNOVAR",
-            text: "ANNOVAR"
-        }, {
             val: "VCF",
             text: "VCF"
+        }, {
+            val: "ANNOVAR",
+            text: "ANNOVAR"
         }];
 
         $scope._VCFSpecs = [{
