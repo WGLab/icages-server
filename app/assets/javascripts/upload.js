@@ -273,13 +273,13 @@
         $scope._selectedInputFormat = $scope._inputFormat[0];
 
         $scope._VCFSpecs = [{
-            val: 0,
+            val: "0",
             text: "one sample somatic mutations"
         }, {
-            val: 1,
+            val: "1",
             text: "one sample tumor mutations and germline mutations"
         }, {
-            val: 2,
+            val: "2",
             text: "multiple samples somatic mutations"
         }];
 
