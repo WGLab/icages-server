@@ -249,18 +249,19 @@
     .controller('FormCtrl', ['$scope', function($scope){
         
         $scope._refGeno = {
-            selected: 0,
             vals: [{
-                val: 0,
+                val: "hg19",
                 text: "hg19"
             }, {
-                val: 1,
+                val: "hg18",
                 text: "hg18"
             }, {
-                val: 2,
+                val: "hg38",
                 text: "hg38"
             }]
         };
+
+        $scope._selectedRefGeno = "hg19";
 
         $scope._selectedInputFormat = "VCF";
 
