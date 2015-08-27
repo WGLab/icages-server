@@ -259,7 +259,7 @@
                 text: "hg38"
             }];
 
-        $scope._selectedRefGeno = "hg19";
+        $scope._selectedRefGeno = $scope._refGeno[0];
 
         $scope._selectedInputFormat = "VCF";
 
