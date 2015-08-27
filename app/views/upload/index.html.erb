@@ -146,7 +146,7 @@
                     </select>
                 </div>
             </div>
-            <div ng-if="_selectedInputFormat === 'VCF'" class="row">
+            <div ng-if="_selectedInputFormat.val === 'VCF'" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>VCF specifications</span>
                 </label>
@@ -155,7 +155,7 @@
                     </select>
                 </div>
             </div>
-            <div ng-if="_selectedVCFSpecs === 1" class="row">
+            <div ng-if="_selectedVCFSpecs.val === 1" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Tumor sample identifier</span>
                 </label>
@@ -163,7 +163,7 @@
                     <input class="form-control" type="text" name="tumorSampleID" required></input>
                 </div>
             </div>
-            <div ng-if="_selectedVCFSpecs === 1" class="row">
+            <div ng-if="_selectedVCFSpecs.val === 1" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Germline sample identifier</span>
                 </label>
@@ -171,7 +171,7 @@
                     <input class="form-control" type="text" name="germlineSampleID" required></input>
                 </div>
             </div>
-            <div ng-if="_selectedVCFSpecs === 2" class="row">
+            <div ng-if="_selectedVCFSpecs.val === 2" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Sample identifier</span>
                 </label>
