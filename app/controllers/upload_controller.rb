@@ -39,15 +39,21 @@ class UploadController < ApplicationController
 
   private 
 
-  def getShell(scriptConfig, params, inputFilePath)
+  def getShell(scriptConfig, params, inputFilePath, inputBedFilePath)
+
     options = {
       :tumorSampleID => "-t",
       :gemlineSampleID => "-g",
       :multiSampleID => "-i",
-      :subtype => "-s"
+      :subtype => "-s",
+      :referenceGenome => "--buildver"
     }
 
     perlCmd = "perl #{scriptConfig['path']}"
+
+    if inputBedFilePath
+      perlCmd += "-b #{inputBedFilePath}"
+    end
 
     options.each do |k, v|
       if params[k] && !params[k].empty?
@@ -69,7 +75,16 @@ class UploadController < ApplicationController
       file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
     end
 
-    perlCmd = getShell(scriptConfig, params, inputFilePath)
+    inputBedFilePath = nil
+    #create a file for bed file
+    if params[:inputBedFile]
+      inputBedFilePath = scriptConfig['input_dir'] + "/inputBed-#{id}"
+      File.open(inputBedFilePath, 'w') do |file|
+        file.write(params[:inputBedFile].read)
+      end
+    end
+
+    perlCmd = getShell(scriptConfig, params, inputFilePath, inputBedFilePath)
 
     logger.debug perlCmd
 
