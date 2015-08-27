@@ -272,7 +272,7 @@
             val: 0,
             text: "one sample somatic mutations"
         }, {
-            val：1,
+            val: 1,
             text: "one sample tumor mutations and germline mutations"
         }, {
             val: 2,
