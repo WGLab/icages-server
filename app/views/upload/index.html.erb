@@ -36,7 +36,7 @@
                 <span>Reference genome</span>
             </label>
             <div class="col-sm-7 ui-front">
-                <select class="form-control" name="referenceGenome" ng-options="obj.text for obj in _refGeno track by obj.val" ng-model="_selectedRefGeno">
+                <select class="form-control" name="referenceGenome" ng-options="obj.text for obj in _refGeno track by obj.val" ng-model="_selected.refGeno">
                 </select required>
             </div>
         </div>
@@ -142,20 +142,20 @@
                     <span>Input format</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="inputFormat" ng-options="obj.text for obj in _inputFormat track by obj.val" ng-model="_selectedInputFormat" required>
+                    <select class="form-control" name="inputFormat" ng-options="obj.text for obj in _inputFormat track by obj.val" ng-model="_selected.inputFormat" required>
                     </select>
                 </div>
             </div>
-            <div ng-if="_selectedInputFormat.val === 'VCF'" class="row">
+            <div ng-if="_selected.inputFormat.val === 'VCF'" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>VCF specifications</span>
                 </label>
                 <div class="col-sm-7 ui-front">
-                    <select class="form-control" name="vcfSpec" ng-options="obj.text for obj in _VCFSpecs track by obj.val" ng-model="_selectedVCFSpecs">
+                    <select class="form-control" name="vcfSpec" ng-options="obj.text for obj in _VCFSpecs track by obj.val" ng-model="_selected.VCFSpecs">
                     </select>
                 </div>
             </div>
-            <div ng-if="_selectedVCFSpecs.val === 1" class="row">
+            <div ng-if="_selected.VCFSpecs.val === 1" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Tumor sample identifier</span>
                 </label>
@@ -163,7 +163,7 @@
                     <input class="form-control" type="text" name="tumorSampleID" required></input>
                 </div>
             </div>
-            <div ng-if="_selectedVCFSpecs.val === 1" class="row">
+            <div ng-if="_selected.VCFSpecs.val === 1" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Germline sample identifier</span>
                 </label>
@@ -171,7 +171,7 @@
                     <input class="form-control" type="text" name="germlineSampleID" required></input>
                 </div>
             </div>
-            <div ng-if="_selectedVCFSpecs.val === 2" class="row">
+            <div ng-if="_selected.VCFSpecs.val === 2" class="row">
                 <label class="col-sm-2 control-label hz-label">
                     <span>Sample identifier</span>
                 </label>

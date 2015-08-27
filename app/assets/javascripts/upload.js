@@ -260,8 +260,6 @@
             text: "hg38"
         }];
 
-        $scope._selectedRefGeno = $scope._refGeno[0];
-
         $scope._inputFormat = [{
             val: "ANNOVAR",
             text: "ANNOVAR"
@@ -269,8 +267,6 @@
             val: "VCF",
             text: "VCF"
         }];
-
-        $scope._selectedInputFormat = $scope._inputFormat[0];
 
         $scope._VCFSpecs = [{
             val: "0",
@@ -283,7 +279,11 @@
             text: "multiple samples somatic mutations"
         }];
 
-        $scope._selectedVCFSpecs = $scope._VCFSpecs[0];
+        $scope._selected = {
+            refGeno: $scope._refGeno[0],
+            inputFormat: $scope._inputFormat[0],
+            VCFSpecs: $scope._VCFSpecs[0]
+        }
 
     }]);
 
