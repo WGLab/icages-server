@@ -269,16 +269,18 @@
         }];
 
         $scope._VCFSpecs = [{
-            val: "0",
+            val: 0,
             text: "one sample somatic mutations"
         }, {
-            val: "1",
+            val： 1,
             text: "one sample tumor mutations and germline mutations"
         }, {
-            val: "2",
+            val: 2,
             text: "multiple samples somatic mutations"
         }];
 
+        //creating an object for ng-model inside 
+        // a ng-if
         $scope._selected = {
             refGeno: $scope._refGeno[0],
             inputFormat: $scope._inputFormat[0],
