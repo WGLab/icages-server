@@ -30,9 +30,9 @@
       
       <script>var SUBMISSION_ID = <%= @submission.id %>;</script>
       <ul class="nav nav-tabs" role="tablist">
-          <li class="active"><a href="#bubble_chart" role="tab" data-toggle="tab">Bubble Chart</a>
+          <li class="active"><a href="#bubble_chart" role="tab" data-toggle="tab">Bubble Chart (top 9 genes)</a>
           </li>
-          <li><a href="#bar_chart" role="tab" data-toggle="tab">Bar Chart</a>
+          <li><a href="#bar_chart" role="tab" data-toggle="tab">Bar Chart (top 9 genes)</a>
           </li>
       </ul>
       <div class="tab-content">
@@ -127,7 +127,7 @@
           </accordion-group>
         </accordion>
         <div class="page-header">
-            <h3>Download</h3>
+            <h3>Download full data</h3>
         </div> 
  <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesMutations.csv">here</a> to download summary table of all mutations genes with iCAGES score
 </p>
@@ -138,7 +138,7 @@
 <p>Please click <a href = "../log/input-<%= @submission.id %>.annovar.icages.log">here</a> to download summary table of all iCAGES running result
 </p>
         <div class="page-header">
-            <h3>Summary</h3>
+            <h3>Summary of top 50 genes</h3>
         </div>
         <table class="table table-bordered hz-table" id="summary_table">
           <thead>
