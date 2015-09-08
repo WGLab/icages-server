@@ -59,12 +59,11 @@
           <li>Found {{log.Structural_variation_count}} structural variations</li>
           <li>Found {{log.Noncoding_count}} noncodings </li>
         </ul>
-<!--
-        <div class="page-header">
-          <h3>Drugs</h3>
-        </div>
-    
--->
+        <!-- TODO: later use
+          <div class="page-header">
+            <h3>Drugs</h3>
+          </div>   
+        -->
     <accordion close-others="true">
           <accordion-group ng-repeat="drug in availableDrugs" is-open="drug.isOpen">
             <accordion-heading>{{drug.Drug_name}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': drug.isOpen, 'glyphicon-chevron-right': !drug.isOpen}"></i>
