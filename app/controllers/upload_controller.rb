@@ -52,7 +52,7 @@ class UploadController < ApplicationController
     perlCmd = "perl #{scriptConfig['path']}"
 
     if inputBedFilePath
-      perlCmd += "-b #{inputBedFilePath}"
+      perlCmd += " -b #{inputBedFilePath} "
     end
 
     options.each do |k, v|
