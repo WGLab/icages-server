@@ -80,7 +80,10 @@
     $(function() {
 
         var FILE_ID = "file_upload";
-        var BED_FILE_ID = "bed_file_upload";
+        var SV_BED_FILE_ID = "sv_bed_file_upload";
+        var GE_BED_FILE_ID = "ge_bed_file_upload";
+        var SV_BED_FILE_PARAM_KEY = "inputSVBedFile";
+        var GE_BED_FILE_PARAM_KEY = "inputGEBedFile";
 
         var initFileUpload = function(id) {
 
@@ -102,7 +105,8 @@
 
 
         initFileUpload(FILE_ID);
-        initFileUpload(BED_FILE_ID);
+        initFileUpload(SV_BED_FILE_ID);
+        initFileUpload(GE_BED_FILE_ID);
 
         $('#query_form').submit(function(e) {
 
@@ -128,7 +132,12 @@
             if (_selectedSubTypes[0]) fmData.append("subtype", _selectedSubTypes[0]);
             if (_selectedDrugs[0]) fmData.append("drug", _selectedDrugs[0]);
             if (_fileObjs[FILE_ID]) fmData.append("inputFile", _fileObjs[FILE_ID]);
-            if (_fileObjs[BED_FILE_ID]) fmData.append("inputBedFile", _fileObjs[BED_FILE_ID]);
+
+            //the second param of append can only be 
+            // a Blob, File, or a string, if neither, the value is converted to a string
+            // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+            if (_fileObjs[SV_BED_FILE_ID]) fmData.append(SV_BED_FILE_PARAM_KEY, _fileObjs[SV_BED_FILE_ID]);
+            if (_fileObjs[GE_BED_FILE_ID]) fmData.append(GE_BED_FILE_PARAM_KEY, _fileObjs[GE_BED_FILE_ID]);
 
             $.ajax({
                 url: '/upload',
