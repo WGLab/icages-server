@@ -84,6 +84,8 @@ class UploadController < ApplicationController
     
     fileOptions.each do |key|
       logger.debug "@there"
+      logger.debug key
+      logger.debug params[key]
       if params[key] 
 
         logger.debug "@here"
