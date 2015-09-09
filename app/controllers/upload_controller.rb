@@ -77,7 +77,7 @@ class UploadController < ApplicationController
       file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
     end
 
-    inputBedFilePaths = []
+    inputBedFilePaths = {}
     #create a file for bed file
     
     fileOptions.each do |key|
