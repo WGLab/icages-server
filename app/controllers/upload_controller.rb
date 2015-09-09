@@ -70,7 +70,7 @@ class UploadController < ApplicationController
 
     scriptConfig = CONFIG['script']
 
-    fileOptions = [:inputSVBedFile => "-b", :inputGEBedFile => "-e"]
+    fileOptions = {:inputSVBedFile => "-b", :inputGEBedFile => "-e"}
 
     inputFilePath = scriptConfig['input_dir'] + "/input-#{id}"
     File.open(inputFilePath,'w') do |file|
