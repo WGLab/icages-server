@@ -51,6 +51,8 @@ class UploadController < ApplicationController
 
     perlCmd = "perl #{scriptConfig['path']}"
 
+    logger.debug(inputBedFilePaths, fileOptions)
+
     inputBedFilePaths.each do |key, val|
       perlCmd += " #{fileOptions[key]} #{val}"
     end
@@ -81,7 +83,9 @@ class UploadController < ApplicationController
     #create a file for bed file
     
     fileOptions.each do |key|
-      if params[key]        
+      if params[key] 
+
+        logger.debug "@here"
         path = scriptConfig['input_dir'] + "/#{key}-#{id}"
         File.open(path, 'w') do |file|
           file.write(params[key].read)
