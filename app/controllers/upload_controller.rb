@@ -83,6 +83,7 @@ class UploadController < ApplicationController
     #create a file for bed file
     
     fileOptions.each do |key|
+      logger.debug "@there"
       if params[key] 
 
         logger.debug "@here"
