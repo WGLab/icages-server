@@ -82,13 +82,8 @@ class UploadController < ApplicationController
     inputBedFilePaths = {}
     #create a file for bed file
     
-    fileOptions.each do |key|
-      logger.debug "@there"
-      logger.debug key
-      logger.debug params[key]
+    fileOptions.each do |key, val|
       if params[key] 
-
-        logger.debug "@here"
         path = scriptConfig['input_dir'] + "/#{key}-#{id}"
         File.open(path, 'w') do |file|
           file.write(params[key].read)
