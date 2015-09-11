@@ -491,11 +491,7 @@
 
                                 row.drugs = drugs;
 
-                                var availables = drugs.filter(function(d) {
-                                    return d.hasOwnProperty(F_TARGET_MUTATION_TAG) && d[F_TARGET_MUTATION_TAG] === "TRUE";
-                                });
-
-                                Array.prototype.push.apply(drugData, availables);
+                                Array.prototype.push.apply(drugData, drugs);
 
                             } else {
                                 row.drugs = [];
