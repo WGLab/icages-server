@@ -108,7 +108,10 @@
               <div class="col-sm-4">
                 <center><h4>Target Mutations</h4></center>
                 <div class="hz-card">
-                  <table class="table">
+                  <center ng-if="!drug.Children || drug.Children.length === 0">
+                    <h3>No data available</h3>
+                  </center>
+                  <table ng-if="drug.Children && drug.Children.length > 0" class="table">
                     <thead>
                       <th>Name</th>
                       <th>Rating</th>
