@@ -616,7 +616,7 @@
 
             $scope.geneRows = frontEndModels.geneRows;
             $scope.availableDrugs = frontEndModels.drugData.filter(function(d) {
-                return drug.FDA_tag === 'TRUE' || drug.CT_tag === 'TRUE' || (drug.Children && drug.Children.length > 0);
+                return d.FDA_tag === 'TRUE' || d.CT_tag === 'TRUE' || (d.Children && d.Children.length > 0);
             });
 
             console.log(frontEndModels);
