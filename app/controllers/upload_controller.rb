@@ -3,6 +3,8 @@ class UploadController < ApplicationController
   before_filter :add_cross_origin_headers, :only => [:handle_upload, :options]
   Thread::abort_on_exception = true
 
+  @job_semaphore = Mutex.new
+
   def index
   end
 
@@ -32,7 +34,11 @@ class UploadController < ApplicationController
       isFileUpload = true
     end
     
-    t = Thread.new { exec_query(submission.id, isFileUpload, params) }
+    t = Thread.new { 
+      @job_semaphore.synchronize {
+        exec_query(submission.id, isFileUpload, params)
+      }  
+    }
     render json: {id: submission.id, msg: responseMsg, url: "#{result_path(submission, only_path: false)}"}
     
   end
