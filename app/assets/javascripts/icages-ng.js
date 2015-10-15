@@ -491,11 +491,7 @@
 
                                 row.drugs = drugs;
 
-                                var availables = drugs.filter(function(d) {
-                                    return d.hasOwnProperty(F_TARGET_MUTATION_TAG) && d[F_TARGET_MUTATION_TAG] === "TRUE";
-                                });
-
-                                Array.prototype.push.apply(drugData, availables);
+                                Array.prototype.push.apply(drugData, drugs);
 
                             } else {
                                 row.drugs = [];
@@ -619,7 +615,9 @@
             var frontEndModels = processData(gData);
 
             $scope.geneRows = frontEndModels.geneRows;
-            $scope.availableDrugs = frontEndModels.drugData;
+            $scope.availableDrugs = frontEndModels.drugData.filter(function(d) {
+                return d.FDA_tag === 'TRUE' || d.CT_tag === 'TRUE' || (d.Children && d.Children.length > 0);
+            });
 
             console.log(frontEndModels);
 

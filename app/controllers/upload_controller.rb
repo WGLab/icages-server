@@ -39,7 +39,7 @@ class UploadController < ApplicationController
 
   private 
 
-  def getShell(scriptConfig, params, inputFilePath, inputBedFilePath)
+  def getShell(scriptConfig, params, inputFilePath, inputBedFilePaths, fileOptions)
 
     options = {
       :tumorSampleID => "-t",
@@ -51,10 +51,10 @@ class UploadController < ApplicationController
 
     perlCmd = "perl #{scriptConfig['path']}"
 
-    if inputBedFilePath
-      perlCmd += "-b #{inputBedFilePath}"
+    inputBedFilePaths.each do |key, val|
+      perlCmd += " #{fileOptions[key]} #{val}"
     end
-
+    
     options.each do |k, v|
       if params[k] && !params[k].empty?
         perlCmd += " #{v} #{params[k]}"
@@ -70,21 +70,26 @@ class UploadController < ApplicationController
 
     scriptConfig = CONFIG['script']
 
+    fileOptions = {:inputSVBedFile => "-b", :inputGEBedFile => "-e"}
+
     inputFilePath = scriptConfig['input_dir'] + "/input-#{id}"
     File.open(inputFilePath,'w') do |file|
       file.write(isFileUpload ? params[:inputFile].read : params[:inputData])
     end
 
-    inputBedFilePath = nil
-    #create a file for bed file
-    if params[:inputBedFile]
-      inputBedFilePath = scriptConfig['input_dir'] + "/inputBed-#{id}"
-      File.open(inputBedFilePath, 'w') do |file|
-        file.write(params[:inputBedFile].read)
+    inputBedFilePaths = {}
+    
+    fileOptions.each do |key, val|
+      if params[key] 
+        path = scriptConfig['input_dir'] + "/#{key}-#{id}"
+        File.open(path, 'w') do |file|
+          file.write(params[key].read)
+        end
+        inputBedFilePaths[key] = path
       end
     end
 
-    perlCmd = getShell(scriptConfig, params, inputFilePath, inputBedFilePath)
+    perlCmd = getShell(scriptConfig, params, inputFilePath, inputBedFilePaths, fileOptions)
 
     logger.debug perlCmd
 
