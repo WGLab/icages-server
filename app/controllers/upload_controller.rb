@@ -1,3 +1,5 @@
+require_relative '../workers/icages_worker'
+
 class UploadController < ApplicationController
   protect_from_forgery except: :handle_upload
   before_filter :add_cross_origin_headers, :only => [:handle_upload, :options]
