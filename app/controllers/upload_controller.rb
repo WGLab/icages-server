@@ -1,3 +1,5 @@
+require_relative '../jobs/icages_job'
+
 class UploadController < ApplicationController
   protect_from_forgery except: :handle_upload
   before_filter :add_cross_origin_headers, :only => [:handle_upload, :options]
@@ -40,7 +42,7 @@ class UploadController < ApplicationController
     #   }
     # }
 
-    QueryJob.perform_later(submission.id, isFileUpload, params)
+    exec_query(submission.id, isFileUpload, params)
 
     render json: {id: submission.id, msg: responseMsg, url: "#{result_path(submission, only_path: false)}"}
 
@@ -102,23 +104,25 @@ class UploadController < ApplicationController
 
     logger.debug perlCmd
 
-    `#{perlCmd}`
+    QueryJob.perform_later(perlCmd)
 
-    if $?.exitstatus != 0
-      logger.debug "\n---- Perl execution error!\n"
-      return
-    end
+    # `#{perlCmd}`
 
-    if not File.exist?("#{scriptConfig['output_dir']}/input-#{id}.icages.json")
-      logger.debug "\n---- Result json not found!\n"
-      return
-    end
+    # if $?.exitstatus != 0
+    #   logger.debug "\n---- Perl execution error!\n"
+    #   return
+    # end
 
-    ActiveRecord::Base.connection_pool.with_connection do
-      submission = Submission.find(id)
-      submission.update(done: true)
-      NotificationMailer.job_done(submission).deliver unless submission.email.empty?
-    end
+    # if not File.exist?("#{scriptConfig['output_dir']}/input-#{id}.icages.json")
+    #   logger.debug "\n---- Result json not found!\n"
+    #   return
+    # end
+
+    # ActiveRecord::Base.connection_pool.with_connection do
+    #   submission = Submission.find(id)
+    #   submission.update(done: true)
+    #   NotificationMailer.job_done(submission).deliver unless submission.email.empty?
+    # end
 
   end
 
