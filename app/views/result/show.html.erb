@@ -27,7 +27,7 @@
 
     <h3>Submission id: <%= @submission.id %></h3>
     <% if @submission.done %>
-      
+
       <script>var SUBMISSION_ID = <%= @submission.id %>;</script>
       <ul class="nav nav-tabs" role="tablist">
           <li class="active"><a href="#bubble_chart" role="tab" data-toggle="tab">Bubble Chart (top 9 genes)</a>
@@ -45,7 +45,7 @@
              </section>
           </div>
       </div>
-      <div ng-controller="SummaryCtrl">
+      <div ng-controller="SummaryCtrl" class="">
         <div class="page-header">
           <h3>Log information</h3>
         </div>
@@ -59,11 +59,11 @@
           <li>Found {{log.Structural_variation_count}} structural variations</li>
           <li>Found {{log.Noncoding_count}} noncodings </li>
         </ul>
- 
+
           <div class="page-header">
             <h3>Drugs</h3>
-          </div>   
- 
+          </div>
+
     <accordion close-others="true">
           <accordion-group ng-repeat="drug in availableDrugs" is-open="drug.isOpen">
             <accordion-heading>{{drug.Drug_name}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': drug.isOpen, 'glyphicon-chevron-right': !drug.isOpen}"></i>
@@ -127,7 +127,7 @@
         </accordion>
         <div class="page-header">
             <h3>Download full data</h3>
-        </div> 
+        </div>
  <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesMutations.csv">here</a> to download summary table of all mutations genes with iCAGES score
 </p>
         <p>Please click <a href = "../results/input-<%= @submission.id %>.annovar.icagesGenes.csv">here</a> to download summary table of all mutated genes with iCAGES score
@@ -181,8 +181,8 @@
       <input type="text" value="<%= @url %>" disabled></input>
       <button class="btn btn-primary" id="copy_button" data-clipboard-text="<%= @url %>">Copy to clipboard</button>
       <script>
-        $(function() { 
-          setTimeout(function() { location.reload() }, 30000); 
+        $(function() {
+          setTimeout(function() { location.reload() }, 30000);
           new ZeroClipboard( document.getElementById("copy_button") );
         });
       </script>
