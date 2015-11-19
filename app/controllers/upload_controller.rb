@@ -104,7 +104,7 @@ class UploadController < ApplicationController
 
     logger.debug perlCmd
 
-    QueryJob.perform_later(perlCmd)
+    QueryJob.perform_later(perlCmd, scriptConfig['output_dir'])
 
     # `#{perlCmd}`
 

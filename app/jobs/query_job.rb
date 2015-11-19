@@ -1,9 +1,9 @@
+
+
 class QueryJob < ActiveJob::Base
   queue_as :default
 
-  def perform(perlCmd)
-
-    scriptConfig = CONFIG['script']
+  def perform(perlCmd, output_path)
 
     `#{perlCmd}`
 
@@ -12,7 +12,7 @@ class QueryJob < ActiveJob::Base
       return
     end
 
-    if not File.exist?("#{scriptConfig['output_dir']}/input-#{id}.icages.json")
+    if not File.exist?("#{output_path}/input-#{id}.icages.json")
       logger.debug "\n---- Result json not found!\n"
       return
     end
