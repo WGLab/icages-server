@@ -1,4 +1,4 @@
-require_relative '../jobs/icages_job'
+require_relative '../jobs/query_job'
 
 class UploadController < ApplicationController
   protect_from_forgery except: :handle_upload
