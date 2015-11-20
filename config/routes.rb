@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'contact', to: 'static_pages#contact'
   get 'drugs', to: 'result#drugs'
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   # Example of regular route:3
   #   get 'products/:id' => 'catalog#view'
 
