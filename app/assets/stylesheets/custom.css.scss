@@ -169,23 +169,28 @@ footer {
     }
 }
 .navbar.navbar-default.hz-navbar {
-    .hz-brand {
+    color: #FFFFFF;
+	.hz-brand {
         padding: 5px;
         img {
             height: 100%;
         }
     }
+    background-color: #93c6c7;
+
 }
-@media (min-width: 1300px) {
-    .navbar.navbar-default.hz-navbar {
+/* @media (min-width: 5000px) {
+   .navbar.navbar-default.hz-navbar {
         &.hz-navbar-green {
             background-image: linear-gradient(to bottom, #fff 0%, #CDE4C4 100%);
             .navbar-nav>li>a {
                 background-color: #EFF8DC;
             }
             .navbar-nav > .active > a {
-                background-color: #F5F5F5;
-            }
+		color: #FFFFFF;
+		background-color: 93c6c7;
+               // background-color: #F5F5F5;
+             }
         }
         &.hz-navbar-blue {
             background-image: linear-gradient(to bottom, #DCEDF0 0%, #CEE2EB 100%);
@@ -195,14 +200,17 @@ footer {
                 background-color: #e5f3f0;
             }
             .navbar-nav > .active > a {
-                background-color: #F5F5F5;
+                color: #FFFFFF;
+		background-color: 93c6c7;
+		// background-color: #F5F5F5;
             }
         }
         border: 0;
         border-radius:0px;
         font-size:15px;
         .navbar-nav>li>a {
-            color: #777;
+            //color: #777;
+	    color: #FFFFFF;
             margin: -4px 12px -5px 4px;
             border-radius: 10px;
             box-shadow: 0px 3px 1px #777;
@@ -210,7 +218,8 @@ footer {
             padding-bottom: 13px;
             border: 1px solid rgba(50, 50, 50, 0.14);
             &:hover, &:focus {
-                background-color: #F5F5F5;
+        	background-color: 93c6c7; 
+	      // background-color: #F5F5F5;
             }
         }
         .hz-brand {
@@ -235,23 +244,26 @@ footer {
             min-width: 122px;
         }
     }
-}
-@media (max-width: 1024px) {
-    #wang_lab_brand {
-        display: none;
-    }
+ }
+*/
+// @media (max-width: 5000px) {
+   
+// #wang_lab_brand {
+ //       display: none;
+  //  }
     .navbar.navbar-default.hz-navbar.hz-navbar-blue .navbar-nav > li > a > i {
         display: none;
     }
-}
+// }
+
 #wang_lab_brand {
-    padding: 10px 15px;
+    padding: 10px 1px 0px 1px;
     height: 40px;
     img {
         height: 120%;
-        border-radius: 4px;
-        background-color: #3A3F34;
-        box-shadow: 1px 3px 1px 0px rgba(50, 50, 50, 0.14);
+        // border-radius: 4px;
+        // background-color: #3A3F34;
+        // box-shadow: 1px 1px 1px 0px rgba(50, 50, 50, 0.14);
     }
 }
 #sample_btn {

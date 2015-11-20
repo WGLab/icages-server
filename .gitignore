@@ -15,7 +15,7 @@
 .htaccess
 
 # app files
-/public/upload/
+/public/uploads/
 /public/results
 /public/temp
 /public/log
@@ -35,6 +35,10 @@
 *.*~
 *~
 .DS_Store
+nohup.out
+
 # icages config file
 /icages_config.json
 lib/assets
+
+
