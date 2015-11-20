@@ -5,8 +5,6 @@ class UploadController < ApplicationController
   before_filter :add_cross_origin_headers, :only => [:handle_upload, :options]
   Thread::abort_on_exception = true
 
-  # @job_semaphore = Mutex.new
-
   def index
   end
 
@@ -35,12 +33,6 @@ class UploadController < ApplicationController
       responseMsg = "File: #{inputFile.original_filename} uploaded, Submission: #{submission.id} created #{emailMsg}"
       isFileUpload = true
     end
-
-    # t = Thread.new {
-    #   @job_semaphore.synchronize {
-    #     exec_query(submission.id, isFileUpload, params)
-    #   }
-    # }
 
     exec_query(submission.id, isFileUpload, params)
 
@@ -105,24 +97,6 @@ class UploadController < ApplicationController
     logger.debug perlCmd
 
     QueryJob.perform_later(perlCmd, id, scriptConfig['output_dir'])
-
-    # `#{perlCmd}`
-
-    # if $?.exitstatus != 0
-    #   logger.debug "\n---- Perl execution error!\n"
-    #   return
-    # end
-
-    # if not File.exist?("#{scriptConfig['output_dir']}/input-#{id}.icages.json")
-    #   logger.debug "\n---- Result json not found!\n"
-    #   return
-    # end
-
-    # ActiveRecord::Base.connection_pool.with_connection do
-    #   submission = Submission.find(id)
-    #   submission.update(done: true)
-    #   NotificationMailer.job_done(submission).deliver unless submission.email.empty?
-    # end
 
   end
 
